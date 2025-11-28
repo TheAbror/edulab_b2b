@@ -34,16 +34,19 @@ class _CourseDownloadItemState extends State<CourseDownloadItem> {
     BuildContext context,
   ) {
     if (status == DownloadTaskStatus.undefined) {
-      FileDownloadUtils.requestDownload(context, material, widget.localPath, (
-        String? downloadId,
-      ) {
-        if (downloadId != null) {
-          context.read<LessonMaterialBloc>().updateFileDownloadId(
-            widget.material.name,
-            downloadId,
-          );
-        }
-      });
+      FileDownloadUtils.requestDownload(
+        context,
+        material,
+        widget.localPath,
+        (String? downloadId) {
+          if (downloadId != null) {
+            context.read<LessonMaterialBloc>().updateFileDownloadId(
+              widget.material.name,
+              downloadId,
+            );
+          }
+        },
+      );
     }
 
     if (status == DownloadTaskStatus.running) {
@@ -61,7 +64,9 @@ class _CourseDownloadItemState extends State<CourseDownloadItem> {
 
   @override
   Widget build(BuildContext context) {
-    final iconUrl = AppUtils.getIconByfileType(widget.material.src);
+    final iconUrl = AppUtils.getIconByfileType(
+      widget.material.src,
+    );
 
     return Material(
       elevation: widget.elevation,
@@ -104,7 +109,11 @@ class _CourseDownloadItemState extends State<CourseDownloadItem> {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(iconUrl, width: 24.w, height: 24.h),
+                  SvgPicture.asset(
+                    iconUrl,
+                    width: 24.w,
+                    height: 24.h,
+                  ),
                   SizedBox(width: 12.w),
                   Expanded(
                     child: Column(

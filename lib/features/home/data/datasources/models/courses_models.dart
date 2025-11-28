@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:leti_mobile/core/flutter_downloader_utils/downloadable_material_view_model.dart';
 
 part 'courses_models.g.dart';
 
@@ -173,7 +174,7 @@ class StepModel {
   @JsonKey(name: 'topic_id')
   final int? topicId;
   @JsonKey(defaultValue: [])
-  final List<dynamic> materials;
+  final List<MediaDTO> materials;
   @JsonKey(defaultValue: [])
   final List<dynamic> questions;
   final dynamic answers;

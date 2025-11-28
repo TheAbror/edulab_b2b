@@ -3,6 +3,7 @@ part of 'learning_tab_bloc.dart';
 class LearningPageState extends Equatable {
   final bool isExpanded;
   final int currentTabIndex;
+  final int materialsTabIndex;
   final SingleCourseInfo resumedCourse;
   final BlocProgress blocProgress;
   final String failureMessage;
@@ -10,6 +11,7 @@ class LearningPageState extends Equatable {
   const LearningPageState({
     required this.isExpanded,
     required this.currentTabIndex,
+    required this.materialsTabIndex,
     required this.resumedCourse,
     required this.blocProgress,
     required this.failureMessage,
@@ -57,6 +59,7 @@ class LearningPageState extends Equatable {
         ],
       ),
       currentTabIndex: 0,
+      materialsTabIndex: 0,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
     );
@@ -65,6 +68,7 @@ class LearningPageState extends Equatable {
   LearningPageState copyWith({
     bool? isExpanded,
     int? currentTabIndex,
+    int? materialsTabIndex,
     SingleCourseInfo? resumedCourse,
     BlocProgress? blocProgress,
     String? failureMessage,
@@ -72,6 +76,7 @@ class LearningPageState extends Equatable {
     return LearningPageState(
       isExpanded: isExpanded ?? this.isExpanded,
       currentTabIndex: currentTabIndex ?? this.currentTabIndex,
+      materialsTabIndex: materialsTabIndex ?? this.materialsTabIndex,
       resumedCourse: resumedCourse ?? this.resumedCourse,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
@@ -80,10 +85,11 @@ class LearningPageState extends Equatable {
 
   @override
   List<Object?> get props => [
-        isExpanded,
-        currentTabIndex,
-        resumedCourse,
-        blocProgress,
-        failureMessage,
-      ];
+    isExpanded,
+    currentTabIndex,
+    materialsTabIndex,
+    resumedCourse,
+    blocProgress,
+    failureMessage,
+  ];
 }

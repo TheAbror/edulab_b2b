@@ -13,6 +13,10 @@ class LearningPageBloc extends Cubit<LearningPageState> {
     emit(state.copyWith(currentTabIndex: index));
   }
 
+  void changeMaterialsTabIndex(int index) {
+    emit(state.copyWith(materialsTabIndex: index));
+  }
+
   void resumeCourseById(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

@@ -128,7 +128,12 @@ class FileDownloadUtils {
         ?
           // ? OpenFile.open(path)
           // :
-          requestDownload(context, material, localPath, emitDownloadId)
+          requestDownload(
+            context,
+            material,
+            localPath,
+            emitDownloadId,
+          )
         : null;
   }
 }

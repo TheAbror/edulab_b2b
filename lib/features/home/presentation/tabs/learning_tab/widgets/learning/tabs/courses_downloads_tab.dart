@@ -6,7 +6,7 @@ class CoursesDownloadsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
+      // physics: const AlwaysScrollableScrollPhysics(),
       child: BlocProvider(
         create: (context) => LessonMaterialBloc(
           downloadableMaterialViewModelsList: [

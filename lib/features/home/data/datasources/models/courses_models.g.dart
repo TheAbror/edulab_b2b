@@ -119,7 +119,11 @@ StepModel _$StepModelFromJson(Map<String, dynamic> json) => StepModel(
   courseId: (json['course_id'] as num?)?.toInt(),
   chapterId: (json['chapter_id'] as num?)?.toInt(),
   topicId: (json['topic_id'] as num?)?.toInt(),
-  materials: json['materials'] as List<dynamic>? ?? [],
+  materials:
+      (json['materials'] as List<dynamic>?)
+          ?.map((e) => MediaDTO.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      [],
   questions: json['questions'] as List<dynamic>? ?? [],
   answers: json['answers'],
   url: json['url'] as String?,
