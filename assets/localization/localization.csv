@@ -1,0 +1,360 @@
+keys,en,ru,uz
+signIn,Sign in,Войти,Tizimga kirish
+enterYourCredentials,Enter you credentials to access the platform,Введите свои учетные данные для доступа к платформе,Platformaga kirish uchun ma'lumotlaringizni kiriting
+login,Login,Авторизоваться,Tizimga kirish
+password,Password,Пароль,Parol
+continueButton,Continue,Продолжить,Davom etish
+idText,ID,ID,ID
+inCorrect,Incorrect,Неправильный,Noto'g'ri
+internalError,Internal error,Внутренняя ошибка,Ichki xato
+home,Home,Главная,Asosiy
+timetable,Timetable,Расписание,Jadval
+marks,Marks,Оценки,Baho
+attendance,Attendance,Посещаемость,Davomat
+more,More,Еще,Ko'proq
+editProfile,Profile,Профиль,Profil
+documents,Documents,Документы,Hujjatlar
+libraryButton,Library,Библиотека,Kutubxona
+faceID,FaceID security,FaceID безопасность,FaceID xavfsizligi
+logout,Logout,Выйти,Chiqish
+auto,Auto,Авто,Avtomatik
+light,Light,Светлый,Yorug`
+dark,Dark,Темный,Qorong'i
+noModulesAvailable,No Modules available,Нет доступных модулей,Modullar mavjud emas
+somethingWentWrong,Something went wrong,Что-то пошло не так,Nimadir noto'g'ri bajarildi
+yourModules,Your modules,Ваши модули,Sizning modullaringiz
+today,Today,Сегодня,Bugun
+module,Module,Модуль,Modul
+absentHours,Absent hours,Часы отсутствия,Yo'q soatlar
+course,Course,Курс,Kurs
+academicYear,Academic year,Академический год,O'quv yili
+cancelButton,Cancel,Отмена,Bekor qilish
+overallMark,Overal Mark,Общая оценка,Umumiy baho
+onlineLearning,ONLINE LEARNING,ОНЛАЙН ОБУЧЕНИЕ,ONLAYN TA'LIM
+documentsWithCapital,DOCUMENTS,ДОКУМЕНТЫ,HUJJATLAR
+noLessonsAddedYet,No lessons added yet,Уроки пока не добавлены,Hali darslar qo'shilmagan
+noOnlineLessonsAddedYet,No online lessons added yet,Онлайн-уроки пока не добавлены.,Hozircha onlayn darslar qo'shilmagan
+all,ALL,ВСЕ,BARCHA
+video,VIDEO,ВИДЕО,VIDEO
+noFilesToDownload,No files to download,Нет файлов для скачивания,Yuklab olish uchun fayl yo'q
+noVideoFilesToDownload,No video files available,Нет доступных видеофайлов,Video fayl mavjud emas
+noDocumentsToDownload,No documents available,Нет доступных документов,Hujjatlar mavjud emas
+profile,Profile,Профиль,Profil
+search,Search,Поиск,Qidirish
+filterByCategory,Filter by category,Фильтровать по категории,Kategoriya bo'yicha filtrlash
+passcodeWasRemoved,Passcode was removed,Пароль был удален,Parol olib tashlandi
+turnPasscodeOn,Turn passcode on,Включить пароль,Parolni yoqish
+changePasscode,Change Passcode,Изменить пароль,Parolni o'zgartirish
+enterNewPasscode,Enter new passcode,Введите новый пароль,Yangi parolni kiriting
+confirmNewPasscode,Confirm new passcode,Подтвердите новый пароль,Yangi parolni tasdiqlang
+passcodeWasSuccessfullyChanged,Passcode was successfully changed,Пароль успешно изменен,Parol muvaffaqiyatli almashtirildi
+passcodesDoNotMatch,Passcodes do not match,Пароли не совпадают,Parollar mos kelmaydi
+passcodeWasSuccessfullyCreated,Passcode was successfully created,Пароль успешно создан,Parol muvaffaqiyatli yaratildi
+signOut,Sign Out?,Выйти?,Tizimdan chiqish?
+doYouWannaSignOut,Do you want to sign out from the system,Вы хотите выйти из системы?,Tizimdan chiqmoqchimisiz
+yes,Yes,Да,Ha
+no,No,Нет,Yo'q
+documentType,Document type,Тип документа,Hujjat turi
+documentNumber,Document number,Номер документа,Hujjat raqami
+date,Date,Дата,Sana
+download,Download,Скачать,Yuklash
+editText,Edit,Ред...,Tahrir
+phone,Phone,Телефон,Telefon
+address,Address,Адрес,Manzil
+pleaseEnterValue,Please enter value,"Пожалуйста, введите значение","Iltimos, qiymatni kiriting"
+editTextFull,Edit,Редактировать,Tahrirlash
+saveButton,Save,Сохранить,Saqlash
+noResultsText,No Results,Нет результатов,Natijalar yoʻq
+finalGrade,Final Grade,Итоговая оценка,Yakuniy baho
+enterCurrentPasscode,Enter current passcode,Введите текущий пароль,Joriy parolni kiriting
+success,Success,Успех,Muvaffaqiyat
+incorrectPasscode,Incorrect passcode,Неправильный пароль,Noto'g'ri parol
+enterPasscode,Enter passcode,Введите пароль,Parolni kiriting
+month,Month,Месяц,Oy
+week,Week,Неделя,Hafta
+pleaseEnterID,Please enter your student id,"Пожалуйста, введите свой ID","Iltimos, talaba identifikatoringizni kiriting"
+pleaseEnterPassword,Please enter your password,Пожалуйста введите ваш пароль,"Iltimos, parolingizni kiriting"
+timetableGroup,Group,Группа,Guruh
+timetableTeacher,Teacher,Преподаватель,O'qituvchi
+timetableRoom,Room,Комната,Xona
+academicYearSelection,Select Academic year,Выберите учебный год,O'quv yilini tanlang
+assigned,Assigned,Назначенные,Tayinlangan
+created,Created,Созданные,Yaratilgan
+errorOccured,error occured,произошла ошибка,xatolik yuz berdi
+createButton,Create,Создать,Yaratish
+editInquiry,Edit an inquiry,Редактировать запрос,So'rovni tahrirlash
+createInquiry,Create an inquiry,Создать запрос,So'rov yarating
+addItem,Add Item,Добавить ,Qo'shish
+pleaseEnterTitleAndDescription,Please enter title and description of the inquiry,"Пожалуйста, введите название и описание запроса","Iltimos, so'rovning nomi va tavsifini kiriting"
+title,Title,Заголовок,Sarlavha
+description,Description,Описание,Tavsif
+recepient,Recepient,Получатель,Qabul qiluvchi
+staff,STAFF,ПЕРСОНАЛ,XODIMLAR
+recepientGroup,Recipient group,Группа получателей,Qabul qiluvchilar guruhi
+amount,Amount,Количество,Miqdori
+selectUnit,Select Unit,Выберите единицу измерения,Birlikni tanlang
+submitButton,Submit,Отправить,Yuborish
+actionButton,Action,Действие,Qaror qilish
+changeLog,Change log,Журнал изменений,Jurnalni o'zgartirish
+involvedUsers,Involved users,Вовлеченные пользователи,Ishtirokchilar
+staffFrom,From,От,Kimdan
+staffTo,To,К,Kimga
+filterByStatus,Filter by status,Фильтровать по статусу,Holat bo‘yicha filtrlash
+meetingDate,Meeting date,Дата встречи,Uchrashuv sanasi
+comment,Comment,Комментарий,Izoh
+today,Today,Сегодня,Bugun
+tomorrow,Tomorrow,Завтра,Ertaga
+newxtWeek,Next week,На следующей неделе,Keyingi hafta
+saveAsTemplate,Save as template,Сохранить шаблон,Shablonga saqlash
+quickReply,Quick reply,Быстрый ответ,Tez javob
+inspector,Inspector,Инспектор,Tekshiruvchi
+selectRecipient,Select recipient,Выберите получателя,Qabul qiluvchini tanlang
+removeButton,Remove,Удалить,O'chirish
+chooseAction,Choose Action,Выбрать действие,Amalni tanlang
+deleteButton,Delete,Удалить,Oʻchirish
+name,Name,Имя,Ism
+unit,Unit,Единица,Birlik
+selectUser,Select User,Выберите пользователя,Foydalanuvchini tanlang
+position,Position,Позиция,Lavozim
+department,Department,Отделение,Bo'lim
+selectButton,Select,Выбрать,Tanlang
+confirmButton,Confirm,Подтвердить,Tasdiqlash
+cantbeEmpty,Can`t be empty,Не может быть пустым,Bo'sh bo'lishi mumkin emas
+inquiryWasSuccessfullyDeleted,Inquiry was successfully deleted,Запрос успешно удален,So‘rov muvaffaqiyatli o‘chirildi
+inquiryUpdated,Inquiry successfully updated,Запрос успешно обновлен,So‘rov muvaffaqiyatli yangilandi
+inquiryCommentPosted,Comment template is successfully created!,Шаблон комментария успешно создан!,Fikr shabloni muvaffaqiyatli yaratildi!
+errorHappened,Error happened,Произошла ошибка,Xatolik yuz berdi
+mon,MON,ПН,DU
+tue,TUE,ВТ,SE
+wed,WED,СР,CHO
+thu,THU,ЧТ,PAY
+fri,FRI,ПТ,JU
+sat,SAT,СУ,SHA
+selectValue,Select value,Выберите значение,Qiymatni tanlang
+staffSettings,Settings,Настройки,Sozlamalar
+attachments,Attachments,Файлы,Qo'shimchalar
+open,Open,Открыть,Ochish
+ifFormatNotSupported,"If format is not supported, long press on the icon","Если формат не поддерживается, нажмите и удерживайте значок.","Agar format qo'llab-quvvatlanmasa, belgini uzoq vaqt bosib turing"
+core,Core,Основной,Asosiy
+credits,Credits,Кредиты,Kreditlar
+semester,Semester,Семестр,Semestr
+aboutTheApp,About the app,О приложении,Ilova haqida
+appVersion,App Version,Версия приложения,Ilova versiyasi
+appName,App Name,Имя приложения,Ilova nomi
+aboutUs,About us,О нас,Biz haqimizda
+customizableLMS,Customizable LMS for Universities,Система управления обучением для университетов (LMS),Ta'limni boshqarish tizimi (LMS)
+ourWebsite,Our website,Наш сайт,Bizning veb-sayt
+chooseLanguage,Choose language,Выберите язык,Tilni tanlang
+next,Next,Далее,Keyingi
+fieldsCantbeEmpty,Fields can`t be empty,Поля не могут быть пустыми,Maydonlar boʻsh boʻlishi mumkin emas
+language,Language,Язык,Til
+canteen,Canteen,Столовая,Oshxona
+shop,e-Shop,Е-магазин,Elektron do'kon
+inStock,In stock,В наличии,Mavjud
+add,Add,Добавить,Qo'shish
+featureWillBeAvailableSoon,Feature will be available soon,Функция будет доступна в ближайшее время,Xususiyat tez orada ishlaydi
+shopSizes,Sizes,Размеры,O'lchamlari
+shopColors,Colors,Цвета,Ranglar
+downloadStudyMaterials,Download study materials and e-books.,Учебные материалы и книги.,O'quv materiallari va e-kitoblar.
+attendanceHistory,Attendance history,История посещений,Davomat tarixi
+trackAttendanceRecords,Track attendance records.,Отслеживайте записи посещений.,Davomat yozuvlarini kuzatib boring.
+viewCanteenMenu,View canteen menu and prices.,Просматривайте меню и цены в столовой.,Oshxona menyusi va narxlarini ko'ring.
+buyStudyMaterials,Buy study materials and accessories.,Купите учебные материалы.,O'quv materiallarini sotib oling.
+view,View,Посмотреть,Ko‘rish
+email,Email,Электронная почта,Elektron pochta
+notifications,Notifications,Уведомления,Bildirishnomalar
+topics,Discussion’s topics,Темы для обсуждения,Munozara mavzulari
+discussion,Discussion,Дискуссия,Muhokama
+reply,Reply,Ответить,Javob berish
+addComment,Add a comment...,Добавить комментарий...,Izoh qo'shish...
+noMessagesYet,No messages yet,Сообщений пока нет,Hali hech qanday xabar yo'q
+startAConversation,"Start a conversation with your teacher. Ask questions, share updates.","Начните разговор с учителем. Задавайте вопросы, делитесь новостями.","O'qituvchingiz bilan suhbatni boshlang. Savollar bering, yangilanishlarni baham ko'ring."
+support,Support,Поддержка,Qo'llab-quvvatlash
+moduleCode,Code,Код,Kod
+inquiriesTab,Inquiries,Запросы,So'rovlar
+payments,Payments,To'lovlar,Платежи
+viewYourPaymentData,View your payment data,Toʻlov maʼlumotlaringizni koʻring,Просмотрите свои платежные данные
+debitTotalAmount,Total amount,Общая сумма,Umumiy miqdor
+debitPaidAmount,Paid amount,Оплаченная сумма,To`langan miqdor
+debitRemainingAmount,Remaining amount,Остаток,Qolgan miqdor
+paymentAcademicYear,Academic year,Академический год,O'quv yili
+paymentDebit,Debit,Дебет,Debit
+paymentStatus,Status,Статус,Holat
+paymentsDetails,Details,Детали,Tafsilotlar
+paymentMainContractAmount,Main contract amount,Основная сумма контракта,Asosiy shartnoma miqdori
+paymentsSuperContractAmount,Super contract amount,Сумма суперконтракта,Super shartnoma miqdori
+paymentsParts,Parts,Части,Qismlar
+paymentsDeadline,Payment deadline,Срок оплаты,To'lov muddati
+contractName,Contract name,Название контракта,Shartnoma nomi
+modules,Modules,Модули,Modullar
+noTopicsWereCreatedYet,No topics have been created yet,Темы пока не созданы,Mavzular hali yaratilmagan
+filter,Filter,Фильтр,Filtr
+filterByWeek,Filter by week,Фильтровать по неделе,Hafta bo'yicha filtrlash
+teachingWeek,Teaching week,Учебная неделя,Ta'lim haftasi
+enterYourCredentials,Enter you credentials to access the platform,Введите свои учетные данные для доступа к платформе,Platformaga kirish uchun ma'lumotlaringizni kiriting
+login,Login,Авторизоваться,Tizimga kirish
+password,Password,Пароль,Parol
+continueButton,Continue,Продолжить,Davom etish
+signInWith,Sign in with,Войти с помощью,Tizimga kirish
+maybeLater,May be later,Может быть позже,Keginroq
+byUsingThisApp,"By using this app, you agree to our Terms and Conditions.","Используя это приложение, вы соглашаетесь с нашими Условиями и положениями.",Ushbu ilovadan foydalanish orqali siz bizning shartlarimizga rozilik bildirasiz.
+chooseLanguage,Choose language,Выберите язык,Tilni tanlang
+language,Language,Язык,Til
+cities,Cities,Города,Shaharlar
+places,Places,Места,Joylar
+usefulApps,Useful apps,Полезные приложения,Foydali ilovalar
+articles,Articles,Статьи,Maqolalar
+search,Search...,Поиск...,Qidirish...
+favorites,Favorites,Избранное,Sevimlilar
+viewAll,View all,Просмотреть все,Hammasini ko'rish
+startYourAdventure,Start your adventure along the Silk Road — discover the wonders of Uzbekistan!,Начните свое приключение по Шелковому пути — откройте для себя чудеса Узбекистана!,Ipak yo‘li bo‘ylab sarguzashtingizni boshlang — O‘zbekiston mo‘jizalarini kashf eting!
+or,or,или,yoki
+forgotPassword,Forgot Password?,Забыли пароль?,Parolni unutdingizmi?
+dontHaveAccount,Don`t have account?,Нет учетной записи?,Hisobingiz yo'qmi?
+signUp,Sign Up,Зарегистрироваться,Ro'yxatdan o'tish
+createYourAccount,Create your account,Создайте свой аккаунт,Hisob qaydnomangizni yarating
+email,Email,Электронная почта,Elektron pochta
+cantBeEmpty,Can`t be empty,Не может быть пустым,Bo'sh bo'lishi mumkin emas
+enterYourEmail,Enter your email,Введите адрес электронной почты,Elektron pochtangizni kiriting
+weWillSendYouACode,We’ll send you a code to reset your password,Мы отправим вам код для сброса пароля,Parolingizni tiklash uchun sizga kod yuboramiz
+enterCode,Enter code,Введите код,Kodni kiriting
+weHaveSentYou,We have sent a code to,Мы отправили код на,Biz kodni yubordik
+newPassword,New password,Новый пароль,Yangi parol
+passwordMustContain,Password must contain at least 5 letters,Пароль должен содержать не менее 5 букв,Parol kamida 5 ta harfdan iborat bo'lishi kerak
+repeatPassword,Repeat password,Повторите пароль,Parolni qayta kiriting
+passwordReset,Password reset,Пароль сброшен,Parol tiklandi
+didnotGetIt,Didn’t get it?,Не получили?,Qabul qilmadingizmi?
+sendAgain,Send again,Отправить еще раз,Yana yuborish
+changePassword,Change password,Изменить пароль,Parolni o'zgartirish
+signInNow,Sign in now,Войти сейчас,Hozir kirish
+resendCode,Resend code,Отправить код повторно,Kodni qayta yuborish
+skipStep,Skip step,Пропустить шаг,Qadamni o'tkazib yuborish
+tellUsAboutY,Tell us about yourself,Расскажите о себе,O'zingiz haqingizda gapirib bering
+firstName,First name,Имя,Ism
+lastName,Last name,Фамилия,Familiya
+emailAddress,Email address,Адрес электронной почты,E-pochta manzili
+welcomeToLetiEdu,Welcome to Leti Edu,Добро пожаловать в Leti Edu,Leti Edu-ga xush kelibsiz
+trackYourLearning,"Track your learning progress, personalize your experience and earn achievments","Отслеживайте свой прогресс в обучении, персонализируйте свой опыт и получайте достижения","O'rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing"
+createAnAccount,Create an account,Создайте учетную запись,Hisob ochish
+signin,Sign in,Войти,tizimga kirish
+skipfornow,Skip for now,Пропустить,Hozircha o'tkazib yuboring
+homeTab,HOME,ГЛАВНАЯ,UY
+learingTab,LEARNING,ОБУЧЕНИЕ,DARSLIKLARIM
+coursesTab,COURSES,КУРСЫ,KURSLAR
+profileTab,PROFILE,ПРОФИЛЬ,PROFIL
+welcometoEdulab,Welcome to Edulab,Добро пожаловать в Edulab,Edulabga xush kelibsiz
+trackyourlearning,"Track your learning progress, personalize your experience and earn achievments","Отслеживайте свой прогресс в обучении, персонализируйте свой опыт и зарабатывайте достижения","O'rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing"
+createanaccount,Create an account,Создайте аккаунт,Yangi profil ochish
+createayourccount,Create your account,Создайте аккаунт,Yangi profil ochish
+skipforNow,Skip for now,Пропустить,O'tkazib yuborish
+signin,Sign in,Войти,Tizimga kirish
+signup,Sign up,Зарегистрироваться,Ro'yxatdan o'tish
+skip,Skip,Пропускать,Oʻtkazib yuborish
+bysignningAgree,By signing up you agree to Edulab’s Terms of Service and Privacy Policy.,"Регистрируясь, вы соглашаетесь с Условиями обслуживания и Политикой конфиденциальности Edulab.",Roʻyxatdan oʻtish orqali siz Edulabning xizmat koʻrsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.
+existinguser,Existing user,Существующий пользователь,Mavjud foydalanuvchi
+buildskillsfortodayetc,"Build skills for today, tomorrow, and beyond. Education to future-proof your career.","Развивайте навыки для сегодняшнего, завтрашнего дня и за его пределами. Образование, которое обеспечит вашу карьеру в будущем.","Bugun, ertaga va undan keyingi kunlar uchun ko'nikmalar hosil qiling. Kelajakdagi martabangizni isbotlash uchun ta'lim."
+emailorPhonenumber,Email or Phone number,Электронная почта или номер телефона,Elektron pochta yoki telefon raqami
+continuewithGoogle,Continue with Google,Продолжить с Google,Google bilan davom eting
+entercode,Enter code,Введите код,Kodni kiriting
+wehavesentyoucodeto,We have sent you code to,Мы отправили вам код на,Sizga kod yubordik
+resetafter,Reset after,Сбросить через,Qayta tiklash
+seconds,seconds,секунды,soniya
+resendcode,Resend code,Отправить код еще раз,Kodni qayta yuborish
+firstname,First name,Имя,Ism
+lastname,Last name,Фамилия,Familiya
+emailaddress,Email address,Адрес электронной почты,E-pochta manzili
+password,Password,Пароль,Parol
+skipstep,Skip step,Пропустить,Qadamni o'tkazib yuborish
+startlearning,Start learning,Начать обучение,O'rganishni boshlang
+donthaveanaccountyet,Don't have an account yet?,У вас еще нет учетной записи?,Hali profilingiz yo'qmi?
+forgotpassword,Forgot password,Забыли пароль,Parolni unutdingizmi
+cantbeempty,Can`t be empty,Не может быть пустым,Bo'sh bo'lishi mumkin emas
+enteryouremailorphone,Enter your email or phone,Введите адрес электронной почты или телефон,Elektron pochtangizni yoki telefoningizni kiriting
+wellsendyou,We’ll send you a link or code to reset your password,Мы вышлем вам ссылку или код для сброса пароля,Parolingizni tiklash uchun havola yoki kod yuboramiz
+checkyouremailandopen,Check your email and open the link we send to contunie,"Проверьте свою электронную почту и откройте ссылку, которую мы отправили",Elektron pochtangizni tekshiring va biz davom ettirish uchun yuborgan havolani oching
+didntgetit,Didn’t get it?,Не получил?,Kelmadimi?
+sendmeanewemail,Send me a new email,Отправьте мне новое письмо,Menga yangi elektron pochta xabarini yuboring
+newpassword,New password,Новый пароль,Yangi parol
+repeatpassword,Repeat password,Повторите пароль,Parolni qayta kiriting
+changepassword,Change password,Изменить пароль,Parolni o'zgartirish
+passwordreset,Password reset,Пароль восстановлен,Parol tiklandi
+signinnow,Sign in now,Войдите сейчас,Hozir kiring
+numberShouldStart,Number should start with 998,Номер должен начинаться с 998,Raqam 998 dan boshlanishi kerak
+pleaseEnterValidEmail,Please enter a valid email,"Введите, пожалуйста, действительный адрес электронной почты","Iltimos, to‘g‘ri elektron pochta manzilini kiriting"
+myStudy,My Study,Мое обучение,Mening o'qishim
+viewAll,View all,Посмотреть все,Hammasini ko'rish
+courseProgress,Course progress,Прогресс курса,Kursning borishi
+tellUsAboutYrself,Tell us about yourself,Расскажите о себе,O'zingiz haqingizda gapirib bering
+welcomeBack,Welcome back,Добро пожаловать,Xush kelibsiz
+or,or,или,yoki
+recommendedForYou,Recommended For You,Рекомендуется для вас,Siz uchun tavsiya etiladi
+authors,Authors,Авторы,Mualliflar
+coursesWithnumber,courses,курсы,kurslar
+softSkills,Soft Skills and self-development,Soft Skills и саморазвитие,Ko'nikmalar va o'z-o'zini rivojlantirish
+learnNewSkills,Learn new skills,Изучите новые навыки,Yangi ko'nikmalarni o'rganing
+proveYourPotential,Prove your potential.,Докажите свой потенциал.,O'z salohiyatingizni isbotlang.
+continueButton,Continue,Продолжить,Davom eting
+viewAllCourses,View all courses,Посмотреть все курсы,Barcha kurslarni ko'rish
+itLooksLikeUJNotEnroller,It looks like you’re not enrolled in any courses. Get started by finding something to learn,"Похоже, вы не записаны ни на какие курсы. Начните с поиска того, чему можно научиться","Siz hech qanday kursga yozilmaganga o'xshaysiz. O'rganish uchun biror narsa topib, boshlang"
+findsomethingToLearn,Find something to learn,Найдите чему поучиться,O'rganish uchun biror narsa toping
+showAll,Show all,Показать все,Hammasini ko'rsatish
+buy,Buy,Купить,Sotib olish
+tryForFree,Try for free,Попробуйте бесплатно,Bepul sinab ko'ring
+courseMaterials,Course materials,Материалы курса,Kurs materiallari
+whatUWillLearn,What you`ll learn,Чему вы научитесь,Siz nimani o'rganasiz
+certificateOfCompletion,Certificate of completion,Сертификат об окончании,Tugatish sertifikati
+skillLevel,SKILL LEVEL,УРОВЕНЬ НАВЫКА,MAKORAT DARAJASI
+prerequisities,Prerequisites,Предварительные условия,Oldindan talablar
+none,None,Нет,Yo'q
+timeToComplete,Time to complete,Время для завершения,Tugatish vaqti
+skilllsUWillGain,Skills you`ll gain,"Навыки, которые вы получите",Siz qo'lga kiritadigan ko'nikmalar
+description,Description,Описание,Tavsif
+clearFilter,Clear filter,Очистить фильтр,Filtrni tozalash
+allCategories,All categories,Все категории,Barcha toifalar
+search,Search,Поиск,Izlash
+filter,Filter,Фильтр,Filtr
+topic,Topic,Тема,Mavzu
+level,Level,Уровень,Daraja
+withCertificate,With certificate,С сертификатом,Sertifikat bilan
+onlyFree,Only free,Только бесплатный,Faqat bepul
+language,Language,Язык,Til
+softSkills,Soft Skills,Гибкие навыки,Yumshoq ko'nikmalar
+newCourses,New courses,Новые курсы,Yangi kurslar
+categories,Categories,Категории,Kategoriyalar
+shopOurSale,Shop our sale,Делайте покупки на нашей распродаже,Bizning sotuvimizni xarid qiling
+weHaveGotLearning,We’ve got learning for all skill levels. Get courses from 99 000 UZS.,У нас есть обучение для всех уровней квалификации. Приобретайте курсы от 99 000 сум.,Bizda barcha mahorat darajalari uchun o'rganish mavjud. 99 000 so'mdan boshlab kurslarga ega bo'ling.
+dayLeft,day left!,день остался!,kun qoldi!
+daysLeft,days left!,осталось дней!,kunlar qoldi!
+languages,Languages,Языки,Tillar
+learningStatisctics,Learning Statistics,Статистика обучения,O'rganish statistikasi
+inProgress,In progress,В процессе,Jarayonda
+completed,Completed,Завершенныe,Bajarilgan
+favorites,Favorites,Избранное,Sevimlilar
+archived,Archived,Архив,Arxivlangan
+myLearning,My Learning,Мое обучение,Mening o'rganishim
+achievements,Achievements,Достижения,Yutuqlar
+certificates,Certificates,Сертификаты,Sertifikatlar
+videoPreferences,Video preferences,Настройки видео,Video sozlamalari
+downloadOptions,Download options,Варианты загрузки,Yuklab olish imkoniyatlari
+videoPlayBackOptions,Video playback options,Параметры воспроизведения видео,Videoni ijro etish imkoniyatlari
+accountSettings,Account settings,Настройки учетной записи,Profil sozlamalari
+accountSecurity,Account security,Безопасность аккаунта,Hisob xavfsizligi
+learningReminders,Learning reminders,Напоминания об обучении,Eslatmalarni o'rganish
+emailNotifications,Email notification preferences,Настройки уведомлений по почте,Elektron pochta sozlamalari
+language,Language,Язык,Til
+appearance,Appearance,Вид,Tashqi ko'rinish
+theme,Theme,Тема,Tema
+fonSizeInSteps,Font size in steps,Размер шрифта в шагах,Shrift hajmi bosqichma-bosqich
+helpAndSupport,Help and support,Помощь и поддержка,Yordam va qo'llab-quvvatlash
+frequesntlyAskedQuestions,Frequently asked questions,Часто задаваемые вопросы,Tez so'raladigan savollar
+aboutEdulab,About Edulab,Об Edulab,Edulab haqida
+logout,Logout,Выйти,Chiqish
+chooseLanguage,Choose language,Выберите язык,Tilni tanlang
+next,Next,Далее,Keyingi
+priacySettings,Privacy settings,Настройки конфиденциальности,Maxfiylik sozlamalari
+showYourProfileToLoggedUsers,Show your profile to logged-in users,Покажите свой профиль вошедшим в систему пользователям,Tizimga kirgan foydalanuvchilarga profilingizni ko'rsating
+showCoursesYouAreTaking,Show courses you're taking on your profile page,"Покажите курсы, которые вы посещаете, на странице своего профиля.",Profil sahifangizda oʻqiyotgan kurslaringizni koʻrsating
+light,Light,Светлый,Yorug'
+dark,Dark,Темный,Qorong'i
+systemDefault,System default,Системная тема,Tizim standarti
+noResults,No results,Нет результатов,Natija yoʻq

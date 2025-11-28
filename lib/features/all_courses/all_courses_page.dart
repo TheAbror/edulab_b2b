@@ -1,0 +1,268 @@
+import 'package:leti_mobile/widget_imports.dart';
+
+class AllCoursesPage extends StatelessWidget {
+  final IdAndTitle? idAndTitle;
+
+  const AllCoursesPage({super.key, this.idAndTitle});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        final bloc = AllCoursesBloc();
+
+        if (idAndTitle?.id != null && idAndTitle?.id != 0) {
+          bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);
+        } else {
+          bloc.getAllCourses();
+        }
+
+        return bloc;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CustomAppBarBackButton(),
+              SizedBox(width: 12.w),
+              Text(
+                (idAndTitle?.title.isNotEmpty == true)
+                    ? idAndTitle?.title ?? ''
+                    : context.localizations.recommendedForYou,
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+        body: _Body(categoryID: idAndTitle?.id),
+      ),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  final int? categoryID;
+
+  const _Body({required this.categoryID});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AllCoursesBloc, AllCoursesState>(
+      builder: (context, state) {
+        if (state.blocProgress == BlocProgress.IS_LOADING) {
+          return const PrimaryLoader();
+        }
+
+        return ListView(
+          children: [
+            Divider(
+              color: context.colors.borderMuted.withOpacity(0.15),
+              height: 1.h,
+            ),
+            ListView.separated(
+              itemCount: (categoryID != null)
+                  ? state.coursesByCategory.length
+                  : state.allCourses.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) {
+                final item = (categoryID != null)
+                    ? state.coursesByCategory[index]
+                    : state.allCourses[index];
+
+                return AllCoursesItem(item: item);
+              },
+              separatorBuilder: (context, index) {
+                return Divider(
+                  color: context.colors.borderMuted.withOpacity(0.15),
+                  height: 1.h,
+                );
+              },
+            ),
+            Divider(
+              color: context.colors.borderMuted.withOpacity(0.15),
+              height: 1.h,
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class AllCoursesItem extends StatelessWidget {
+  final CourseShortInfo item;
+
+  const AllCoursesItem({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          AppRoutes.singleCoursePageForRecommended,
+          arguments: item.id,
+        );
+      },
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 230.w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      space8,
+                      Text(
+                        item.short_description,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      space8,
+                      CourseInfo(
+                        '',
+                        0,
+                        0,
+                        context,
+                        isCertificateAvailble: true,
+                      ),
+                      space8,
+                      Row(
+                        children: [
+                          Text(
+                            '${200000} UZS',
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(width: 10.w),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 2.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: context.colors.accentContainerDefault
+                                  .withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(4.r),
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '35%',
+                                  style: TextStyle(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
+                                Text(
+                                  ' off',
+                                  style: TextStyle(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4.h),
+                      Text(
+                        '350 000 UZS',
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          decoration: TextDecoration.lineThrough,
+                          fontWeight: FontWeight.w400,
+                          color: context.colors.fgMuted,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(width: 37.w),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4.r),
+              child: CachedNetworkImage(
+                imageUrl: item.thumbnail?.original_url ?? '',
+                height: 60.w,
+                width: 60.w,
+                fit: BoxFit.fill,
+                placeholder: (context, url) => Container(
+                  height: 60.w,
+                  width: 60.w,
+                  color: Colors.grey[200],
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  height: 60.w,
+                  width: 60.w,
+                  decoration: BoxDecoration(
+                    color: context.colors.neutralContainerDefault.withOpacity(
+                      0.1,
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/network_image_error_case.png',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+        // ListView(
+        //   children: [
+        //     Divider(
+        //       color: context.colors.borderMuted.withOpacity(0.15),
+        //       height: 1.h,
+        //     ),
+
+        //     Divider(
+        //       color: context.colors.borderMuted.withOpacity(0.15),
+        //       height: 1.h,
+        //     ),
+        //   ],
+        // );

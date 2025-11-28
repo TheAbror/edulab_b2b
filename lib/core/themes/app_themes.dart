@@ -1,0 +1,106 @@
+import 'package:leti_mobile/gen/fonts.gen.dart';
+import 'package:leti_mobile/widget_imports.dart';
+
+ThemeData lightTheme() {
+  return ThemeData(
+    fontFamily: FontFamily.generalSans,
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: NewColorsLight.bgPage1,
+    appBarTheme: const AppBarTheme(
+      color: NewColorsLight.bgPage1,
+      elevation: 0,
+      titleTextStyle: TextStyle(color: NewColorsLight.fgDefault),
+    ),
+    colorScheme: const ColorScheme.light(
+      primary: NewColorsLight.accentDefault,
+      background: NewColorsLight.bgSurface1,
+    ),
+    textTheme: TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle()).apply(
+      bodyColor: NewColorsLight.fgDefault,
+      displayColor: NewColorsLight.fgDefault,
+    ),
+    extensions: const [
+      CustomColors(
+        float: NewColorsLight.staticWhite,
+        borderMuted: NewColorsLight.borderMuted,
+        accentMuted: NewColorsLight.accentMuted,
+        accentContainerDefault: NewColorsLight.accentContainerDefault,
+        accentContainerSoft: NewColorsLight.accentContainerSoft,
+        neutralDefault: NewColorsLight.neutralDefault,
+        neutralOnContainer: NewColorsLight.neutralOnContainer,
+        accentOnContainer: NewColorsLight.neutralDefault,
+        neutralContainerDefault: NewColorsLight.neutralContainerDefault,
+        neutralContainerSoft: NewColorsLight.neutralContainerSoft,
+        fgMuted: NewColorsLight.fgMuted,
+        fgDefault: NewColorsLight.fgDefault,
+        fgDisabled: NewColorsLight.fgDisabled,
+        fgSoft: NewColorsLight.fgSoft,
+        bgPage1: NewColorsLight.bgPage1,
+        bgSurface1: NewColorsLight.bgSurface1,
+        bgSurface3: NewColorsLight.bgSurface3,
+        bgSurface4: NewColorsLight.bgSurface4,
+        successDefault: NewColorsLight.successDefault,
+        infoDefault: NewColorsLight.infoDefault,
+        status03ContainerDefault: NewColorsLight.status03ContainerDefault,
+        gradientContainer01Start: NewColorsLight.gradientContainer01Start,
+        gradientContainer01End: NewColorsLight.gradientContainer01End,
+        status06ContainerDefault: NewColorsLight.status06ContainerDefault,
+        containerDefault: NewColorsLight.infoContainerDefault,
+        accentOnAccent: NewColorsLight.accentOnAccent,
+        staticTransparent: NewColorsLight.staticTransparent,
+      ),
+    ],
+  );
+}
+
+ThemeData darkTheme() {
+  return ThemeData(
+    fontFamily: FontFamily.generalSans,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: NewColorsDark.bgPage1,
+    appBarTheme: const AppBarTheme(
+      color: NewColorsDark.bgPage1,
+      elevation: 0,
+      titleTextStyle: TextStyle(color: NewColorsDark.fgDefault),
+    ),
+    colorScheme: const ColorScheme.dark(
+      primary: NewColorsDark.accentDefault,
+      background: NewColorsDark.bgSurface1,
+    ),
+    textTheme: TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle()).apply(
+      bodyColor: NewColorsDark.fgDefault,
+      displayColor: NewColorsDark.fgDefault,
+    ),
+    extensions: const [
+      CustomColors(
+        float: NewColorsDark.staticWhite,
+        borderMuted: NewColorsDark.borderMuted,
+        accentMuted: NewColorsDark.accentMuted,
+        accentContainerDefault: NewColorsDark.accentContainerDefault,
+        accentContainerSoft: NewColorsDark.accentContainerSoft,
+        neutralDefault: NewColorsDark.neutralDefault,
+        neutralOnContainer: NewColorsDark.neutralOnContainer,
+        accentOnContainer: NewColorsDark.neutralDefault,
+        neutralContainerDefault: NewColorsDark.neutralContainerDefault,
+        neutralContainerSoft: NewColorsDark.neutralContainerSoft,
+        fgMuted: NewColorsDark.fgMuted,
+        fgDefault: NewColorsDark.fgDefault,
+        fgDisabled: NewColorsDark.fgDisabled,
+        fgSoft: NewColorsDark.fgSoft,
+        bgPage1: NewColorsDark.bgPage1,
+        bgSurface1: NewColorsDark.bgSurface1,
+        bgSurface3: NewColorsDark.bgSurface3,
+        bgSurface4: NewColorsDark.bgSurface4,
+        successDefault: NewColorsDark.successDefault,
+        infoDefault: NewColorsDark.infoDefault,
+        status03ContainerDefault: NewColorsDark.status03ContainerDefault,
+        gradientContainer01Start: NewColorsDark.gradientContainer01Start,
+        gradientContainer01End: NewColorsDark.gradientContainer01End,
+        status06ContainerDefault: NewColorsDark.status06ContainerDefault,
+        containerDefault: NewColorsDark.infoContainerDefault,
+        accentOnAccent: NewColorsDark.accentOnAccent,
+        staticTransparent: NewColorsDark.staticTransparent,
+      ),
+    ],
+  );
+}
