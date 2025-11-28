@@ -514,20 +514,45 @@ class CourseInfoChapterInfoText extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
+    required this.status,
   });
 
   final String text;
   final VoidCallback onTap;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Padding(
         padding: EdgeInsets.only(bottom: 8.h, left: 12.w, top: 4.h),
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                maxLines: 2,
+              ),
+            ),
+
+            status == "CLOSED"
+                ? SvgPicture.asset(
+                    Assets.icons.learning.blocked.path,
+                    colorFilter: ColorFilter.mode(
+                      context.colors.fgDisabled.withOpacity(0.6),
+                      BlendMode.srcIn,
+                    ),
+                  )
+                : SvgPicture.asset(
+                    status == "COMPLETED"
+                        ? Assets.icons.learning.completed.path
+                        : Assets.icons.learning.active.path,
+                  ),
+          ],
         ),
       ),
     );
@@ -703,75 +728,6 @@ class CourseTopLevelHeaderAndSubHeader extends StatelessWidget {
       children: [
         CourseInfoSmallHeadline(text: headlineLeft.toUpperCase()),
         CourseInfoBigHeadline(text: textLeft, isLeft: isLeft),
-      ],
-    );
-  }
-}
-
-class CourseInfoMaterialExpansionItem extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final List<String> chapterInfoText;
-  final int lessonsLength;
-  final List<CourseTopicsResponse> topics;
-
-  const CourseInfoMaterialExpansionItem({
-    super.key,
-    required this.title,
-    required this.subTitle,
-    required this.chapterInfoText,
-    required this.lessonsLength,
-    required this.topics,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ExpansionTile(
-      shape: Border(),
-      tilePadding: EdgeInsets.symmetric(vertical: 0.h),
-      title: Padding(
-        padding: EdgeInsets.only(bottom: 4.h),
-        child: Text(
-          title,
-          style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500),
-        ),
-      ),
-      trailing: Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: Icon(Icons.keyboard_arrow_down_outlined),
-      ),
-      subtitle: Text(
-        subTitle,
-        style: TextStyle(color: Theme.of(context).colorScheme.surfaceTint),
-        maxLines: 1,
-      ),
-      children: <Widget>[
-        Divider(
-          thickness: 1.h,
-          color: context.colors.borderMuted.withOpacity(0.15),
-        ),
-        space12,
-        ListView.separated(
-          itemCount: lessonsLength,
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            final topic = topics[index];
-            final chapterID = topic.chapterId;
-            final courseID = topic.courseId;
-
-            return CourseInfoChapterInfoText(
-              onTap: () {},
-              text: chapterInfoText[index],
-            );
-          },
-          separatorBuilder: (context, index) => Padding(
-            padding: EdgeInsets.only(left: 8.w),
-            child: Divider(color: context.colors.borderMuted.withOpacity(0.15)),
-          ),
-        ),
-        SizedBox(height: 18.h),
       ],
     );
   }

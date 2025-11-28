@@ -18,6 +18,57 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
     emit(state.copyWith(isDescriptionHidden: !state.isDescriptionHidden));
   }
 
+  void getSingleStepByID({
+    required int chapterId,
+    required int courseId,
+    required int topicId,
+  }) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.singleCourseServices.getSingleStepByID(
+        chapterId: chapterId,
+        courseId: courseId,
+        stepId: 0,
+        topicId: topicId,
+      );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              //
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+
+          print(state.courseMaterialsAreHidden);
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
   void getSingleCourseByItsId(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

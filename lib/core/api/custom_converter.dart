@@ -78,6 +78,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case SingleCourseInfo:
       return SingleCourseInfo.fromJson(json);
 
+    case TopicModel:
+      return TopicModel.fromJson(json);
+
     default:
       return null;
   }

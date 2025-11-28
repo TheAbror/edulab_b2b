@@ -7,22 +7,22 @@ part of 'learning_tab_models.dart';
 // **************************************************************************
 
 LearningTabStatisticsResponse _$LearningTabStatisticsResponseFromJson(
-        Map<String, dynamic> json) =>
-    LearningTabStatisticsResponse(
-      streak: StreakResponse.fromJson(json['streak'] as Map<String, dynamic>),
-      totalTimeLearning: json['total_time_learning'] as String? ?? '',
-      inProgress: json['in_progress'] as String? ?? '',
-      completed: json['completed'] as String? ?? '',
-    );
+  Map<String, dynamic> json,
+) => LearningTabStatisticsResponse(
+  streak: StreakResponse.fromJson(json['streak'] as Map<String, dynamic>),
+  totalTimeLearning: json['total_time_learning'] as String? ?? '',
+  inProgress: json['in_progress'] as String? ?? '',
+  completed: json['completed'] as String? ?? '',
+);
 
 Map<String, dynamic> _$LearningTabStatisticsResponseToJson(
-        LearningTabStatisticsResponse instance) =>
-    <String, dynamic>{
-      'streak': instance.streak,
-      'total_time_learning': instance.totalTimeLearning,
-      'in_progress': instance.inProgress,
-      'completed': instance.completed,
-    };
+  LearningTabStatisticsResponse instance,
+) => <String, dynamic>{
+  'streak': instance.streak,
+  'total_time_learning': instance.totalTimeLearning,
+  'in_progress': instance.inProgress,
+  'completed': instance.completed,
+};
 
 StreakResponse _$StreakResponseFromJson(Map<String, dynamic> json) =>
     StreakResponse(
@@ -31,10 +31,7 @@ StreakResponse _$StreakResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$StreakResponseToJson(StreakResponse instance) =>
-    <String, dynamic>{
-      'days': instance.days,
-      'label': instance.label,
-    };
+    <String, dynamic>{'days': instance.days, 'label': instance.label};
 
 StreakDaysResponse _$StreakDaysResponseFromJson(Map<String, dynamic> json) =>
     StreakDaysResponse(

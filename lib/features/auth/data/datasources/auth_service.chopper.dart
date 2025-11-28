@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'auth_service.dart';
 
@@ -20,72 +21,54 @@ final class _$AuthService extends AuthService {
   @override
   Future<Response<AuthResponse>> signIn(SignInRequest body) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<AuthResponse, AuthResponse>($request);
   }
 
   @override
   Future<Response<AuthResponse>> signUP(SignUpRequest body) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signup');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signup',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<AuthResponse, AuthResponse>($request);
   }
 
   @override
   Future<Response<MobileResponse>> sendSignUpKeyForVerification(
-      SignUpKeyRequest body) {
+    SignUpKeyRequest body,
+  ) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/verify_code/send');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/verify_code/send',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<MobileResponse, MobileResponse>($request);
   }
 
   @override
   Future<Response<MobileResponse>> getVerificationCodeBySendingLogin(
-      GetVerificationCodeBySendingLogin body) {
+    GetVerificationCodeBySendingLogin body,
+  ) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/update_password');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/update_password',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<MobileResponse, MobileResponse>($request);
   }
 
   @override
   Future<Response<AuthResponse>> resetPasswordToNew(ResetPasswordToNew body) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/reset_password');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/reset_password',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<AuthResponse, AuthResponse>($request);
   }
 }

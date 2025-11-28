@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'certificates_service.dart';
 
@@ -19,15 +20,15 @@ final class _$CertificatesServices extends CertificatesServices {
 
   @override
   Future<Response<List<CertificateByTopicIdModel>>> getCertificatesByTopicID(
-      int id) {
+    int id,
+  ) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/certificate/?topic_id=${id}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/certificate/?topic_id=${id}',
     );
-    return client.send<List<CertificateByTopicIdModel>,
-        CertificateByTopicIdModel>($request);
+    final Request $request = Request('GET', $url, client.baseUrl);
+    return client
+        .send<List<CertificateByTopicIdModel>, CertificateByTopicIdModel>(
+          $request,
+        );
   }
 }

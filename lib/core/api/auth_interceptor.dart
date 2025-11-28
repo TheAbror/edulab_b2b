@@ -1,8 +1,3 @@
-import 'dart:async';
-
-import 'package:chopper/chopper.dart';
-import 'package:leti_mobile/core/local_datasource/widgets/datasource_widgets.dart';
-
 // class NotAuthorizedInterceptor implements ResponseInterceptor {
 //   final StreamController<bool> controller = StreamController<bool>.broadcast();
 

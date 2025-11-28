@@ -7,9 +7,7 @@ class MakeCourseFavoriteRequest {
   @JsonKey(defaultValue: 0, name: 'course_id')
   final int courseID;
 
-  MakeCourseFavoriteRequest({
-    required this.courseID,
-  });
+  MakeCourseFavoriteRequest({required this.courseID});
 
   factory MakeCourseFavoriteRequest.fromJson(Map<String, dynamic> json) =>
       _$MakeCourseFavoriteRequestFromJson(json);
@@ -205,7 +203,7 @@ class StepModel {
 }
 
 @JsonSerializable(includeIfNull: true)
-class CourseTopicsResponse {
+class TopicModel {
   @JsonKey(defaultValue: 0)
   final int id;
   @JsonKey(defaultValue: '')
@@ -225,7 +223,7 @@ class CourseTopicsResponse {
   @JsonKey(defaultValue: [])
   final List<StepModel> steps;
 
-  CourseTopicsResponse({
+  TopicModel({
     required this.id,
     required this.title,
     this.description,
@@ -237,9 +235,9 @@ class CourseTopicsResponse {
     required this.steps,
   });
 
-  factory CourseTopicsResponse.fromJson(Map<String, dynamic> json) =>
-      _$CourseTopicsResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$CourseTopicsResponseToJson(this);
+  factory TopicModel.fromJson(Map<String, dynamic> json) =>
+      _$TopicModelFromJson(json);
+  Map<String, dynamic> toJson() => _$TopicModelToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)
@@ -253,7 +251,7 @@ class CourseContent {
   @JsonKey(defaultValue: 0)
   final int priority;
   @JsonKey(defaultValue: [])
-  final List<CourseTopicsResponse> topics;
+  final List<TopicModel> topics;
 
   CourseContent({
     required this.id,

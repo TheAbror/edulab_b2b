@@ -7,60 +7,58 @@ part of 'courses_models.dart';
 // **************************************************************************
 
 MakeCourseFavoriteRequest _$MakeCourseFavoriteRequestFromJson(
-        Map<String, dynamic> json) =>
-    MakeCourseFavoriteRequest(
-      courseID: (json['course_id'] as num?)?.toInt() ?? 0,
-    );
+  Map<String, dynamic> json,
+) => MakeCourseFavoriteRequest(
+  courseID: (json['course_id'] as num?)?.toInt() ?? 0,
+);
 
 Map<String, dynamic> _$MakeCourseFavoriteRequestToJson(
-        MakeCourseFavoriteRequest instance) =>
-    <String, dynamic>{
-      'course_id': instance.courseID,
-    };
+  MakeCourseFavoriteRequest instance,
+) => <String, dynamic>{'course_id': instance.courseID};
 
 MediaDTO _$MediaDTOFromJson(Map<String, dynamic> json) => MediaDTO(
-      original_name: json['original_name'] as String? ?? '',
-      src: json['src'] as String? ?? '',
-      file_size: (json['file_size'] as num?)?.toInt() ?? 0,
-      original_url: json['original_url'] as String? ?? '',
-      thumb_url: json['thumb_url'] as String? ?? '',
-      url: json['url'] as String? ?? '',
-      extension: json['extension'] as String? ?? '',
-    );
+  original_name: json['original_name'] as String? ?? '',
+  src: json['src'] as String? ?? '',
+  file_size: (json['file_size'] as num?)?.toInt() ?? 0,
+  original_url: json['original_url'] as String? ?? '',
+  thumb_url: json['thumb_url'] as String? ?? '',
+  url: json['url'] as String? ?? '',
+  extension: json['extension'] as String? ?? '',
+);
 
 Map<String, dynamic> _$MediaDTOToJson(MediaDTO instance) => <String, dynamic>{
-      'original_name': instance.original_name,
-      'src': instance.src,
-      'file_size': instance.file_size,
-      'original_url': instance.original_url,
-      'thumb_url': instance.thumb_url,
-      'url': instance.url,
-      'extension': instance.extension,
-    };
+  'original_name': instance.original_name,
+  'src': instance.src,
+  'file_size': instance.file_size,
+  'original_url': instance.original_url,
+  'thumb_url': instance.thumb_url,
+  'url': instance.url,
+  'extension': instance.extension,
+};
 
 Authors _$AuthorsFromJson(Map<String, dynamic> json) => Authors(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      userId: (json['user_id'] as num?)?.toInt() ?? 0,
-      firstname: json['firstname'] as String? ?? '',
-      lastname: json['lastname'] as String? ?? '',
-      jobPosition: json['job_position'] as String? ?? '',
-      about: json['about'] as String? ?? '',
-      courseCount: (json['course_count'] as num?)?.toInt() ?? 0,
-      avatar: json['avatar'] == null
-          ? null
-          : MediaDTO.fromJson(json['avatar'] as Map<String, dynamic>),
-    );
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  userId: (json['user_id'] as num?)?.toInt() ?? 0,
+  firstname: json['firstname'] as String? ?? '',
+  lastname: json['lastname'] as String? ?? '',
+  jobPosition: json['job_position'] as String? ?? '',
+  about: json['about'] as String? ?? '',
+  courseCount: (json['course_count'] as num?)?.toInt() ?? 0,
+  avatar: json['avatar'] == null
+      ? null
+      : MediaDTO.fromJson(json['avatar'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$AuthorsToJson(Authors instance) => <String, dynamic>{
-      'id': instance.id,
-      'user_id': instance.userId,
-      'about': instance.about,
-      'course_count': instance.courseCount,
-      'firstname': instance.firstname,
-      'job_position': instance.jobPosition,
-      'lastname': instance.lastname,
-      'avatar': instance.avatar,
-    };
+  'id': instance.id,
+  'user_id': instance.userId,
+  'about': instance.about,
+  'course_count': instance.courseCount,
+  'firstname': instance.firstname,
+  'job_position': instance.jobPosition,
+  'lastname': instance.lastname,
+  'avatar': instance.avatar,
+};
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     CategoryModel(
@@ -69,10 +67,7 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-    };
+    <String, dynamic>{'id': instance.id, 'title': instance.title};
 
 LabelValueResponse _$LabelValueResponseFromJson(Map<String, dynamic> json) =>
     LabelValueResponse(
@@ -81,21 +76,15 @@ LabelValueResponse _$LabelValueResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LabelValueResponseToJson(LabelValueResponse instance) =>
-    <String, dynamic>{
-      'label': instance.label,
-      'value': instance.value,
-    };
+    <String, dynamic>{'label': instance.label, 'value': instance.value};
 
 CourseType _$CourseTypeFromJson(Map<String, dynamic> json) => CourseType(
-      value: json['value'] as String? ?? '',
-      label: json['label'] as String? ?? '',
-    );
+  value: json['value'] as String? ?? '',
+  label: json['label'] as String? ?? '',
+);
 
 Map<String, dynamic> _$CourseTypeToJson(CourseType instance) =>
-    <String, dynamic>{
-      'value': instance.value,
-      'label': instance.label,
-    };
+    <String, dynamic>{'value': instance.value, 'label': instance.label};
 
 LanguageLevel _$LanguageLevelFromJson(Map<String, dynamic> json) =>
     LanguageLevel(
@@ -104,78 +93,73 @@ LanguageLevel _$LanguageLevelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LanguageLevelToJson(LanguageLevel instance) =>
-    <String, dynamic>{
-      'value': instance.value,
-      'label': instance.label,
-    };
+    <String, dynamic>{'value': instance.value, 'label': instance.label};
 
 Status _$StatusFromJson(Map<String, dynamic> json) => Status(
-      value: json['value'] as String? ?? '',
-      label: json['label'] as String? ?? '',
-    );
+  value: json['value'] as String? ?? '',
+  label: json['label'] as String? ?? '',
+);
 
 Map<String, dynamic> _$StatusToJson(Status instance) => <String, dynamic>{
-      'value': instance.value,
-      'label': instance.label,
-    };
+  'value': instance.value,
+  'label': instance.label,
+};
 
 StepModel _$StepModelFromJson(Map<String, dynamic> json) => StepModel(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      title: json['title'] as String? ?? '',
-      description: json['description'] as String? ?? '',
-      type: json['type'] as String? ?? '',
-      priority: (json['priority'] as num?)?.toInt() ?? 0,
-      status: json['status'] as String? ?? '',
-      media: json['media'] == null
-          ? null
-          : MediaDTO.fromJson(json['media'] as Map<String, dynamic>),
-      text: json['text'] as String?,
-      courseId: (json['course_id'] as num?)?.toInt(),
-      chapterId: (json['chapter_id'] as num?)?.toInt(),
-      topicId: (json['topic_id'] as num?)?.toInt(),
-      materials: json['materials'] as List<dynamic>? ?? [],
-      questions: json['questions'] as List<dynamic>? ?? [],
-      answers: json['answers'],
-      url: json['url'] as String?,
-    );
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  title: json['title'] as String? ?? '',
+  description: json['description'] as String? ?? '',
+  type: json['type'] as String? ?? '',
+  priority: (json['priority'] as num?)?.toInt() ?? 0,
+  status: json['status'] as String? ?? '',
+  media: json['media'] == null
+      ? null
+      : MediaDTO.fromJson(json['media'] as Map<String, dynamic>),
+  text: json['text'] as String?,
+  courseId: (json['course_id'] as num?)?.toInt(),
+  chapterId: (json['chapter_id'] as num?)?.toInt(),
+  topicId: (json['topic_id'] as num?)?.toInt(),
+  materials: json['materials'] as List<dynamic>? ?? [],
+  questions: json['questions'] as List<dynamic>? ?? [],
+  answers: json['answers'],
+  url: json['url'] as String?,
+);
 
 Map<String, dynamic> _$StepModelToJson(StepModel instance) => <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'type': instance.type,
-      'priority': instance.priority,
-      'status': instance.status,
-      'media': instance.media,
-      'text': instance.text,
-      'course_id': instance.courseId,
-      'chapter_id': instance.chapterId,
-      'topic_id': instance.topicId,
-      'materials': instance.materials,
-      'questions': instance.questions,
-      'answers': instance.answers,
-      'url': instance.url,
-    };
+  'id': instance.id,
+  'title': instance.title,
+  'description': instance.description,
+  'type': instance.type,
+  'priority': instance.priority,
+  'status': instance.status,
+  'media': instance.media,
+  'text': instance.text,
+  'course_id': instance.courseId,
+  'chapter_id': instance.chapterId,
+  'topic_id': instance.topicId,
+  'materials': instance.materials,
+  'questions': instance.questions,
+  'answers': instance.answers,
+  'url': instance.url,
+};
 
-CourseTopicsResponse _$CourseTopicsResponseFromJson(
-        Map<String, dynamic> json) =>
-    CourseTopicsResponse(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      title: json['title'] as String? ?? '',
-      description: json['description'] as String? ?? '',
-      priority: (json['priority'] as num?)?.toInt() ?? 0,
-      courseId: (json['course_id'] as num?)?.toInt(),
-      chapterId: (json['chapter_id'] as num?)?.toInt(),
-      status: json['status'] as String? ?? '',
-      stepsInfo: json['steps_info'],
-      steps: (json['steps'] as List<dynamic>?)
-              ?.map((e) => StepModel.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-    );
+TopicModel _$TopicModelFromJson(Map<String, dynamic> json) => TopicModel(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  title: json['title'] as String? ?? '',
+  description: json['description'] as String? ?? '',
+  priority: (json['priority'] as num?)?.toInt() ?? 0,
+  courseId: (json['course_id'] as num?)?.toInt(),
+  chapterId: (json['chapter_id'] as num?)?.toInt(),
+  status: json['status'] as String? ?? '',
+  stepsInfo: json['steps_info'],
+  steps:
+      (json['steps'] as List<dynamic>?)
+          ?.map((e) => StepModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      [],
+);
 
-Map<String, dynamic> _$CourseTopicsResponseToJson(
-        CourseTopicsResponse instance) =>
+Map<String, dynamic> _$TopicModelToJson(TopicModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -194,9 +178,9 @@ CourseContent _$CourseContentFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       priority: (json['priority'] as num?)?.toInt() ?? 0,
-      topics: (json['topics'] as List<dynamic>?)
-              ?.map((e) =>
-                  CourseTopicsResponse.fromJson(e as Map<String, dynamic>))
+      topics:
+          (json['topics'] as List<dynamic>?)
+              ?.map((e) => TopicModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -212,11 +196,13 @@ Map<String, dynamic> _$CourseContentToJson(CourseContent instance) =>
 
 SyllabusResponse _$SyllabusResponseFromJson(Map<String, dynamic> json) =>
     SyllabusResponse(
-      studyGoals: (json['study_goals'] as List<dynamic>?)
+      studyGoals:
+          (json['study_goals'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
-      courseContent: (json['course_content'] as List<dynamic>?)
+      courseContent:
+          (json['course_content'] as List<dynamic>?)
               ?.map((e) => CourseContent.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -232,16 +218,19 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
     SingleCourseInfo(
       id: (json['id'] as num?)?.toInt() ?? 0,
       title: json['title'] as String? ?? '',
-      description: (json['description'] as List<dynamic>?)
+      description:
+          (json['description'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
       shortDescription: json['shortDescription'] as String? ?? '',
-      authors: (json['authors'] as List<dynamic>?)
+      authors:
+          (json['authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      co_authors: (json['co_authors'] as List<dynamic>?)
+      co_authors:
+          (json['co_authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -264,7 +253,8 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       courseStatus: json['course_status'] == null
           ? null
           : LabelValueResponse.fromJson(
-              json['course_status'] as Map<String, dynamic>),
+              json['course_status'] as Map<String, dynamic>,
+            ),
       xapiCourseUrl: json['xapi_course_url'] as String?,
       file: json['file'] == null
           ? null
@@ -275,19 +265,23 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       level: json['level'] == null
           ? null
           : LanguageLevel.fromJson(json['level'] as Map<String, dynamic>),
-      willLearn: (json['will_learn'] as List<dynamic>?)
+      willLearn:
+          (json['will_learn'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
-      prerequisites: (json['prerequisites'] as List<dynamic>?)
+      prerequisites:
+          (json['prerequisites'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
-      skills: (json['skills'] as List<dynamic>?)
+      skills:
+          (json['skills'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
-      coAuthorIds: (json['co_author_ids'] as List<dynamic>?)
+      coAuthorIds:
+          (json['co_author_ids'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
               .toList() ??
           [],
@@ -303,7 +297,8 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       canPublish: json['canPublish'] as bool?,
       completionTime: json['completion_time'],
       structure: json['structure'] as Map<String, dynamic>?,
-      chapters: (json['chapters'] as List<dynamic>?)
+      chapters:
+          (json['chapters'] as List<dynamic>?)
               ?.map((e) => CourseContent.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -349,16 +344,19 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
     CourseShortInfo(
       id: (json['id'] as num?)?.toInt() ?? 0,
       title: json['title'] as String? ?? '',
-      description: (json['description'] as List<dynamic>?)
+      description:
+          (json['description'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
       short_description: json['short_description'] as String? ?? '',
-      authors: (json['authors'] as List<dynamic>?)
+      authors:
+          (json['authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      co_authors: (json['co_authors'] as List<dynamic>?)
+      co_authors:
+          (json['co_authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -368,8 +366,9 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
       previewVideo: json['preview_video'] == null
           ? null
           : MediaDTO.fromJson(json['preview_video'] as Map<String, dynamic>),
-      category:
-          CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
+      category: CategoryModel.fromJson(
+        json['category'] as Map<String, dynamic>,
+      ),
       is_favorite: json['is_favorite'] as bool? ?? false,
       is_archived: json['is_archived'] as bool? ?? false,
       type: json['type'] == null
@@ -380,7 +379,8 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
       courseStatus: json['course_status'] == null
           ? null
           : LabelValueResponse.fromJson(
-              json['course_status'] as Map<String, dynamic>),
+              json['course_status'] as Map<String, dynamic>,
+            ),
       xapiCourseUrl: json['xapi_course_url'] as String?,
       file: json['file'] == null
           ? null

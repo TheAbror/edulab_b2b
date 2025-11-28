@@ -162,7 +162,7 @@ class _BodyState extends State<_Body> {
           case 'TEXT':
             return SingleChildScrollView(
               padding: const EdgeInsets.all(16),
-              child: Text(step.text ?? ''),
+              child: Column(children: [Text(step.text ?? ''), Text('data'),]),
             );
           case 'VIDEO':
             if (_isVideoLoading) {

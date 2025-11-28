@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'single_course_services.dart';
 
@@ -20,11 +21,33 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<SingleCourseInfo>> getSingleCourseByItsId(int id) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/${id}');
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/${id}',
+    );
+    final Request $request = Request('GET', $url, client.baseUrl);
+    return client.send<SingleCourseInfo, SingleCourseInfo>($request);
+  }
+
+  @override
+  Future<Response<SingleCourseInfo>> getSingleStepByID({
+    required int chapterId,
+    required int courseId,
+    required int stepId,
+    required int topicId,
+  }) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course',
+    );
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'chapter_id': chapterId,
+      'course_id': courseId,
+      'step_id': stepId,
+      'topic_id': topicId,
+    };
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client.send<SingleCourseInfo, SingleCourseInfo>($request);
   }
@@ -32,27 +55,21 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<SingleCourseInfo>> resumeCourseById(int id) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/${id}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/${id}',
     );
+    final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<SingleCourseInfo, SingleCourseInfo>($request);
   }
 
   @override
   Future<Response<MobileResponse>> postCourseAsFavorite(
-      MakeCourseFavoriteRequest body) {
+    MakeCourseFavoriteRequest body,
+  ) {
     final Uri $url = Uri.parse(
-        'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/add-to-favorites');
-    final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/add-to-favorites',
     );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<MobileResponse, MobileResponse>($request);
   }
 }

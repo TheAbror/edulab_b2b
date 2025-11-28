@@ -19,10 +19,10 @@ class CompletedTab extends StatelessWidget {
           title: item[index].title,
           isFirst: false,
           photo: item[index].thumbnail?.original_url ?? '',
-          progress: progress?.toDouble() ?? 0,
+          progress: progress.toDouble(),
           buttonText: context.localizations.continueButton,
           onPressed: () {
-            Navigator.pushNamed(context, AppRoutes.courseContentPage);
+            Navigator.pushNamed(context, AppRoutes.mainCoursePage);
           },
         );
       },

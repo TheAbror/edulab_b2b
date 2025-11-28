@@ -1,16 +1,16 @@
 import 'package:leti_mobile/features/home/presentation/tabs/courses_tab/course_details/appbar/course_content_sliver_appbar.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
-class CourseContentPage extends StatefulWidget {
+class MainCoursePage extends StatefulWidget {
   final int id;
 
-  const CourseContentPage({super.key, required this.id});
+  const MainCoursePage({super.key, required this.id});
 
   @override
-  State<CourseContentPage> createState() => _CourseContentPageState();
+  State<MainCoursePage> createState() => _MainCoursePageState();
 }
 
-class _CourseContentPageState extends State<CourseContentPage> {
+class _MainCoursePageState extends State<MainCoursePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,7 +55,7 @@ class _CourseContentPageState extends State<CourseContentPage> {
                 body: TabBarView(
                   children: [
                     CourseContentTabInfo(),
-                    CourseContentTabMaterials(state: state),
+                    SingleCourseContent(state: state),
                     CourseContentTabNews(),
                   ],
                 ),

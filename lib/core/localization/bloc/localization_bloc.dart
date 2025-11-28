@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:leti_mobile/core/api/api_provider.dart';
 import 'package:leti_mobile/core/extensions/string_extensions.dart';
-import 'package:leti_mobile/core/local_datasource/widgets/datasource_widgets.dart';
 
 part 'localization_state.dart';
 

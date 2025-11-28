@@ -140,9 +140,9 @@ class MainRouteGenerator {
           builder: (_) => WebViewPage(),
         );
 
-      case AppRoutes.courseContentPage:
+      case AppRoutes.mainCoursePage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => CourseContentPage(id: settings.arguments as int),
+          builder: (_) => MainCoursePage(id: settings.arguments as int),
         );
 
       case AppRoutes.allCategoriesPage:

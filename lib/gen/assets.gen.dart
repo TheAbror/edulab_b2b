@@ -1,3 +1,5 @@
+// dart format width=80
+
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
@@ -5,11 +7,12 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart' as _svg;
+import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
@@ -56,19 +59,19 @@ class $AssetsFontsGen {
 
   /// List of all assets
   List<String> get values => [
-        generalSansBold,
-        generalSansBoldItalic,
-        generalSansExtralight,
-        generalSansExtralightItalic,
-        generalSansItalic,
-        generalSansLight,
-        generalSansLightItalic,
-        generalSansMedium,
-        generalSansMediumItalic,
-        generalSansRegular,
-        generalSansSemibold,
-        generalSansSemiboldItalic
-      ];
+    generalSansBold,
+    generalSansBoldItalic,
+    generalSansExtralight,
+    generalSansExtralightItalic,
+    generalSansItalic,
+    generalSansLight,
+    generalSansLightItalic,
+    generalSansMedium,
+    generalSansMediumItalic,
+    generalSansRegular,
+    generalSansSemibold,
+    generalSansSemiboldItalic,
+  ];
 }
 
 class $AssetsIconsGen {
@@ -77,17 +80,36 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow-left.svg
   SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow-left.svg');
 
+  /// Directory path: assets/icons/chat
   $AssetsIconsChatGen get chat => const $AssetsIconsChatGen();
+
+  /// Directory path: assets/icons/courses
   $AssetsIconsCoursesGen get courses => const $AssetsIconsCoursesGen();
+
+  /// Directory path: assets/icons/downloader
   $AssetsIconsDownloaderGen get downloader => const $AssetsIconsDownloaderGen();
+
+  /// Directory path: assets/icons/home_tab_icons
   $AssetsIconsHomeTabIconsGen get homeTabIcons =>
       const $AssetsIconsHomeTabIconsGen();
+
+  /// Directory path: assets/icons/language_icons
   $AssetsIconsLanguageIconsGen get languageIcons =>
       const $AssetsIconsLanguageIconsGen();
+
+  /// Directory path: assets/icons/learning
   $AssetsIconsLearningGen get learning => const $AssetsIconsLearningGen();
+
+  /// Directory path: assets/icons/main
   $AssetsIconsMainGen get main => const $AssetsIconsMainGen();
+
+  /// Directory path: assets/icons/navbar
   $AssetsIconsNavbarGen get navbar => const $AssetsIconsNavbarGen();
+
+  /// Directory path: assets/icons/profile
   $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
+
+  /// Directory path: assets/icons/welcome_sign_forgot_icons
   $AssetsIconsWelcomeSignForgotIconsGen get welcomeSignForgotIcons =>
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
@@ -113,11 +135,16 @@ class $AssetsImagesGen {
   AssetGenImage get recommendedCourse =>
       const AssetGenImage('assets/images/recommended_course.png');
 
+  /// Directory path: assets/images/stores
   $AssetsImagesStoresGen get stores => const $AssetsImagesStoresGen();
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatarImg, avatar, networkImageErrorCase, recommendedCourse];
+  List<AssetGenImage> get values => [
+    avatarImg,
+    avatar,
+    networkImageErrorCase,
+    recommendedCourse,
+  ];
 }
 
 class $AssetsLocalizationGen {
@@ -188,9 +215,10 @@ class $AssetsIconsCoursesGen {
       const SvgGenImage('assets/icons/courses/emptyState.svg');
 
   /// File path: assets/icons/courses/hand-with-loudspeaker-megaphone-with-lightnings 1.png
-  AssetGenImage get handWithLoudspeakerMegaphoneWithLightnings1 =>
-      const AssetGenImage(
-          'assets/icons/courses/hand-with-loudspeaker-megaphone-with-lightnings 1.png');
+  AssetGenImage
+  get handWithLoudspeakerMegaphoneWithLightnings1 => const AssetGenImage(
+    'assets/icons/courses/hand-with-loudspeaker-megaphone-with-lightnings 1.png',
+  );
 
   /// File path: assets/icons/courses/heart.svg
   SvgGenImage get heart => const SvgGenImage('assets/icons/courses/heart.svg');
@@ -231,26 +259,26 @@ class $AssetsIconsCoursesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        chevronDown,
-        arrowRight,
-        bottomShettTopIcon,
-        certificate,
-        clock,
-        courseSettigns,
-        courseCertificate,
-        emptyState,
-        handWithLoudspeakerMegaphoneWithLightnings1,
-        heart,
-        heartFilled,
-        moreIcon,
-        refreshIcon,
-        searchNormal,
-        shareIcon,
-        star,
-        tickCircle,
-        user,
-        videoCircle
-      ];
+    chevronDown,
+    arrowRight,
+    bottomShettTopIcon,
+    certificate,
+    clock,
+    courseSettigns,
+    courseCertificate,
+    emptyState,
+    handWithLoudspeakerMegaphoneWithLightnings1,
+    heart,
+    heartFilled,
+    moreIcon,
+    refreshIcon,
+    searchNormal,
+    shareIcon,
+    star,
+    tickCircle,
+    user,
+    videoCircle,
+  ];
 }
 
 class $AssetsIconsDownloaderGen {
@@ -287,8 +315,17 @@ class $AssetsIconsDownloaderGen {
   SvgGenImage get zip => const SvgGenImage('assets/icons/downloader/zip.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [docx, downIcon, logoutIcon, moon, other, pdf, ppt, xlsx, zip];
+  List<SvgGenImage> get values => [
+    docx,
+    downIcon,
+    logoutIcon,
+    moon,
+    other,
+    pdf,
+    ppt,
+    xlsx,
+    zip,
+  ];
 }
 
 class $AssetsIconsHomeTabIconsGen {
@@ -332,16 +369,16 @@ class $AssetsIconsHomeTabIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        close,
-        confetii,
-        confettiBottom,
-        confettiTop,
-        googleIcon,
-        notificationBell,
-        recommendedAvatar,
-        shareIcon,
-        star
-      ];
+    close,
+    confetii,
+    confettiBottom,
+    confettiTop,
+    googleIcon,
+    notificationBell,
+    recommendedAvatar,
+    shareIcon,
+    star,
+  ];
 }
 
 class $AssetsIconsLanguageIconsGen {
@@ -363,9 +400,21 @@ class $AssetsIconsLanguageIconsGen {
 class $AssetsIconsLearningGen {
   const $AssetsIconsLearningGen();
 
+  /// File path: assets/icons/learning/active.svg
+  SvgGenImage get active =>
+      const SvgGenImage('assets/icons/learning/active.svg');
+
   /// File path: assets/icons/learning/arrow-right.svg
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/learning/arrow-right.svg');
+
+  /// File path: assets/icons/learning/blocked.svg
+  SvgGenImage get blocked =>
+      const SvgGenImage('assets/icons/learning/blocked.svg');
+
+  /// File path: assets/icons/learning/completed.svg
+  SvgGenImage get completed =>
+      const SvgGenImage('assets/icons/learning/completed.svg');
 
   /// File path: assets/icons/learning/currentVideoIcon.svg
   SvgGenImage get currentVideoIcon =>
@@ -398,16 +447,19 @@ class $AssetsIconsLearningGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        arrowRight,
-        currentVideoIcon,
-        emptyDiscussionIcon,
-        fire,
-        left,
-        leftI,
-        questionMarkIcon,
-        right,
-        writeIcon
-      ];
+    active,
+    arrowRight,
+    blocked,
+    completed,
+    currentVideoIcon,
+    emptyDiscussionIcon,
+    fire,
+    left,
+    leftI,
+    questionMarkIcon,
+    right,
+    writeIcon,
+  ];
 }
 
 class $AssetsIconsMainGen {
@@ -439,13 +491,13 @@ class $AssetsIconsMainGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        letiLogo4x,
-        letiLogoSmall,
-        arrowBack,
-        googleIcon,
-        letiSmallLogoSvg,
-        notification
-      ];
+    letiLogo4x,
+    letiLogoSmall,
+    arrowBack,
+    googleIcon,
+    letiSmallLogoSvg,
+    notification,
+  ];
 }
 
 class $AssetsIconsNavbarGen {
@@ -485,15 +537,15 @@ class $AssetsIconsNavbarGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        coursesEmpty,
-        homeEmpty,
-        homeFilled,
-        learningEmpty,
-        learningFilled,
-        myLearningEmpty,
-        myLearningFilled,
-        profileEmpty
-      ];
+    coursesEmpty,
+    homeEmpty,
+    homeFilled,
+    learningEmpty,
+    learningFilled,
+    myLearningEmpty,
+    myLearningFilled,
+    profileEmpty,
+  ];
 }
 
 class $AssetsIconsProfileGen {
@@ -516,32 +568,37 @@ class $AssetsIconsWelcomeSignForgotIconsGen {
 
   /// File path: assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb1.png
   AssetGenImage get handWithLightBulb1 => const AssetGenImage(
-      'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb1.png');
+    'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb1.png',
+  );
 
   /// File path: assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb2.png.png
   AssetGenImage get handWithLightBulb2Png => const AssetGenImage(
-      'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb2.png.png');
+    'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb2.png.png',
+  );
 
   /// File path: assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb3.png.png
   AssetGenImage get handWithLightBulb3Png => const AssetGenImage(
-      'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb3.png.png');
+    'assets/icons/welcome_sign_forgot_icons/hand-with-light-bulb3.png.png',
+  );
 
   /// File path: assets/icons/welcome_sign_forgot_icons/password_reset.png
   AssetGenImage get passwordReset => const AssetGenImage(
-      'assets/icons/welcome_sign_forgot_icons/password_reset.png');
+    'assets/icons/welcome_sign_forgot_icons/password_reset.png',
+  );
 
   /// File path: assets/icons/welcome_sign_forgot_icons/success_circle.svg
   SvgGenImage get successCircle => const SvgGenImage(
-      'assets/icons/welcome_sign_forgot_icons/success_circle.svg');
+    'assets/icons/welcome_sign_forgot_icons/success_circle.svg',
+  );
 
   /// List of all assets
   List<dynamic> get values => [
-        handWithLightBulb1,
-        handWithLightBulb2Png,
-        handWithLightBulb3Png,
-        passwordReset,
-        successCircle
-      ];
+    handWithLightBulb1,
+    handWithLightBulb2Png,
+    handWithLightBulb3Png,
+    passwordReset,
+    successCircle,
+  ];
 }
 
 class $AssetsImagesStoresGen {
@@ -564,7 +621,7 @@ class $AssetsImagesStoresGen {
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
@@ -573,9 +630,18 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+    this.animation,
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
+  final AssetGenImageAnimation? animation;
 
   Image image({
     Key? key,
@@ -595,10 +661,10 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -630,15 +696,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
@@ -646,12 +705,31 @@ class AssetGenImage {
   String get keyName => _assetName;
 }
 
+class AssetGenImageAnimation {
+  const AssetGenImageAnimation({
+    required this.isAnimation,
+    required this.duration,
+    required this.frames,
+  });
+
+  final bool isAnimation;
+  final Duration duration;
+  final int frames;
+}
+
 class SvgGenImage {
-  const SvgGenImage(this._assetName);
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = false;
+
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = true;
 
   final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
 
-  SvgPicture svg({
+  _svg.SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
@@ -664,19 +742,34 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
+    _svg.SvgTheme? theme,
+    _svg.ColorMapper? colorMapper,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    return SvgPicture.asset(
-      _assetName,
+    final _svg.BytesLoader loader;
+    if (_isVecFormat) {
+      loader = _vg.AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = _svg.SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+        colorMapper: colorMapper,
+      );
+    }
+    return _svg.SvgPicture(
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
-      bundle: bundle,
-      package: package,
       width: width,
       height: height,
       fit: fit,
@@ -685,10 +778,9 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
-      color: color,
-      colorBlendMode: colorBlendMode,
+      colorFilter:
+          colorFilter ??
+          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );
