@@ -1,4 +1,4 @@
-import 'package:leti_mobile/features/home/presentation/tabs/courses_tab/course_details/appbar/course_content_sliver_appbar.dart';
+import 'package:leti_mobile/features/main_course_page/appbar/course_content_sliver_appbar.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class MainCoursePage extends StatefulWidget {

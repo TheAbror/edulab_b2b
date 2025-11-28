@@ -1,4 +1,4 @@
-import 'package:leti_mobile/features/home/presentation/tabs/learning_tab/learning_page/bloc/learning_tab_bloc.dart';
+import 'package:leti_mobile/features/learning_page/bloc/learning_tab_bloc.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 void main() async {

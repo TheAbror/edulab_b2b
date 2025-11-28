@@ -1,5 +1,5 @@
 import 'package:chewie/chewie.dart';
-import 'package:leti_mobile/features/home/presentation/tabs/learning_tab/learning_page/bloc/learning_tab_bloc.dart';
+import 'package:leti_mobile/features/learning_page/bloc/learning_tab_bloc.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 // import 'package:chewie/chewie.dart';/
@@ -157,133 +157,158 @@ class _BodyState extends State<_Body> {
     return TabBarView(
       controller: widget.controller,
       physics: const BouncingScrollPhysics(),
-      children: widget.steps.map((step) {
-        switch (step.type) {
-          case 'TEXT':
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(children: [Text(step.text ?? ''), Text('data'),]),
-            );
-          case 'VIDEO':
-            if (_isVideoLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
+      children: widget.steps.map(
+        (step) {
+          switch (step.type) {
+            case 'TEXT':
+              return LearningPageTextTab(step: step);
+            case 'VIDEO':
+              if (_isVideoLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-            if (_chewieController != null &&
-                _videoPlayerController != null &&
-                _videoPlayerController!.value.isInitialized) {
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: Chewie(controller: _chewieController!),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Video title
-                    if (step.title.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          step.title,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-
-                    const SizedBox(height: 16),
-
-                    // Video description
-                    if (step.text?.isNotEmpty == true)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(step.text!, style: TextStyle(fontSize: 16)),
-                      ),
-
-                    const SizedBox(height: 16),
-
-                    // Additional widgets can be added here
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      margin: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[100],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.info, color: Colors.blue),
-                          SizedBox(width: 8),
-                          Text('Additional information'),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Example buttons
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text('Like'),
-                            ),
-                          ),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: OutlinedButton(
-                              onPressed: () {},
-                              child: Text('Share'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.videocam_off, size: 64, color: Colors.grey),
-                    SizedBox(height: 16),
-                    Text('Video not available'),
-                  ],
-                ),
-              );
-            }
-          case 'QUIZ':
-            return SingleChildScrollView(child: Text("Quiz step"));
-          default:
-            return SingleChildScrollView(child: Text(step.title));
-        }
-      }).toList(),
+              if (_chewieController != null &&
+                  _videoPlayerController != null &&
+                  _videoPlayerController!.value.isInitialized) {
+                return LearningPageVideoTab(
+                  step: step,
+                  chewieController: _chewieController,
+                );
+              } else {
+                return const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.videocam_off, size: 64, color: Colors.grey),
+                      SizedBox(height: 16),
+                      Text('Video not available'),
+                    ],
+                  ),
+                );
+              }
+            case 'QUIZ':
+              return SingleChildScrollView(child: Text("Quiz step"));
+            default:
+              return SingleChildScrollView(child: Text(step.title));
+          }
+        },
+      ).toList(),
     );
   }
 }
 
-class AppBarItem extends StatelessWidget {
-  final double? height;
-  final String text;
+class LearningPageVideoTab extends StatelessWidget {
+  final ChewieController? chewieController;
+  final StepModel step;
 
-  const AppBarItem({super.key, required this.text, this.height});
+  const LearningPageVideoTab({
+    super.key,
+    required this.chewieController,
+    required this.step,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 28.h,
-      alignment: Alignment.center,
-      child: AppText.paragraph1(
-        text.length > 15 ? '${text.substring(0, 15)}...' : text,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: Chewie(controller: chewieController!),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Video title
+          if (step.title.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                step.title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+          const SizedBox(height: 16),
+
+          // Video description
+          if (step.text?.isNotEmpty == true)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                step.text!,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+
+          const SizedBox(height: 16),
+
+          // Additional widgets can be added here
+          Container(
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.info, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Additional information'),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Example buttons
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Like'),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    child: Text('Share'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LearningPageTextTab extends StatelessWidget {
+  const LearningPageTextTab({
+    super.key,
+    required this.step,
+  });
+
+  final StepModel step;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Text(step.text ?? ''),
+          Text('data'),
+        ],
       ),
     );
   }
