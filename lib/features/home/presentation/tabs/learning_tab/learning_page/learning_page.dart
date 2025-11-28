@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:leti_mobile/features/home/presentation/tabs/learning_tab/learning_page/bloc/learning_tab_bloc.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
@@ -41,6 +42,7 @@ class _LearningPageState extends State<LearningPage>
             );
           }
 
+          // final steps = state.resumedCourse.chapters.where((e) => e.id == widget.id).first.topics;
           final steps = state.resumedCourse.chapters.first.topics.first.steps;
 
           if (_tabController == null ||
@@ -55,6 +57,7 @@ class _LearningPageState extends State<LearningPage>
               appBar: LearningResumeCourseAppBar(
                 state: state,
                 controller: _tabController!,
+                title: state.resumedCourse.chapters.first.title,
               ),
               bottomNavigationBar: state.isExpanded
                   ? const SizedBox()
@@ -80,6 +83,7 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   VideoPlayerController? _videoPlayerController;
+  ChewieController? _chewieController;
   bool _isVideoLoading = false;
 
   @override
@@ -97,27 +101,53 @@ class _BodyState extends State<_Body> {
     _loadVideo(videoStep.media?.original_url ?? "");
   }
 
-  void _loadVideo(String url) {
+  void _loadVideo(String url) async {
     if (url.isEmpty) return;
 
     setState(() => _isVideoLoading = true);
 
+    // Dispose previous controllers
+    _chewieController?.dispose();
     _videoPlayerController?.dispose();
-    _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url))
-      ..initialize()
-          .then((_) {
-            if (mounted) {
-              setState(() => _isVideoLoading = false);
-              _videoPlayerController?.play();
-            }
-          })
-          .catchError((_) {
-            if (mounted) setState(() => _isVideoLoading = false);
-          });
+
+    try {
+      _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url));
+
+      // Initialize video player
+      await _videoPlayerController!.initialize();
+
+      // Create Chewie controller
+      _chewieController = ChewieController(
+        videoPlayerController: _videoPlayerController!,
+        autoPlay: false,
+        looping: false,
+        allowFullScreen: true,
+        allowMuting: true,
+        showControls: true,
+        materialProgressColors: ChewieProgressColors(
+          playedColor: Colors.blue,
+          handleColor: Colors.blue,
+          backgroundColor: Colors.grey,
+          bufferedColor: Colors.grey.shade400,
+        ),
+        placeholder: Container(color: Colors.black),
+        autoInitialize: true,
+      );
+
+      if (mounted) {
+        setState(() => _isVideoLoading = false);
+      }
+    } catch (error) {
+      if (mounted) {
+        setState(() => _isVideoLoading = false);
+      }
+      print('Error loading video: $error');
+    }
   }
 
   @override
   void dispose() {
+    _chewieController?.dispose();
     _videoPlayerController?.dispose();
     super.dispose();
   }
@@ -139,19 +169,97 @@ class _BodyState extends State<_Body> {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final controller = _videoPlayerController;
-            if (controller != null && controller.value.isInitialized) {
-              return Column(
-                children: [
-                  AspectRatio(
-                    aspectRatio: controller.value.aspectRatio,
-                    child: VideoPlayer(controller),
-                  ),
-                  Text(step.text ?? ''),
-                ],
+            if (_chewieController != null &&
+                _videoPlayerController != null &&
+                _videoPlayerController!.value.isInitialized) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Chewie(controller: _chewieController!),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Video title
+                    if (step.title.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          step.title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                    const SizedBox(height: 16),
+
+                    // Video description
+                    if (step.text?.isNotEmpty == true)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(step.text!, style: TextStyle(fontSize: 16)),
+                      ),
+
+                    const SizedBox(height: 16),
+
+                    // Additional widgets can be added here
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.info, color: Colors.blue),
+                          SizedBox(width: 8),
+                          Text('Additional information'),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Example buttons
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text('Like'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: OutlinedButton(
+                              onPressed: () {},
+                              child: Text('Share'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               );
             } else {
-              return const Center(child: Text('Video not available'));
+              return const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.videocam_off, size: 64, color: Colors.grey),
+                    SizedBox(height: 16),
+                    Text('Video not available'),
+                  ],
+                ),
+              );
             }
           case 'QUIZ':
             return SingleChildScrollView(child: Text("Quiz step"));

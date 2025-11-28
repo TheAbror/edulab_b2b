@@ -60,7 +60,9 @@ class ApiProvider {
       HeadersInterceptor({
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader: token != null ? 'Bearer $token' : '',
+        HttpHeaders.authorizationHeader:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5Iiwic2NvcGVzIjoiUk9MRV9TVFVERU5UIiwiaWF0IjoxNzY0MzE0MjYzLCJleHAiOjE3NjQ5MTkwNjN9.VjffwDIqOHjYDQXLg1-_Bp4v-XwbVxvRDISGoOz_cgs',
+        // HttpHeaders.authorizationHeader: token != null ? 'Bearer $token' : '',
       }),
     );
 

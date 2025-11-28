@@ -7,10 +7,12 @@ class LearningResumeCourseAppBar extends StatelessWidget
     super.key,
     required this.state,
     required this.controller,
+    required this.title,
   });
 
   final LearningPageState state;
   final TabController controller;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
             child: SizedBox(
               width: 256.w,
               child: Text(
-                '1.3 Key Methodologies of UI and UX Design',
+                title,
                 style: TextStyle(
                   fontSize: 15.sp,
                   fontWeight: FontWeight.w500,

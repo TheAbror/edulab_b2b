@@ -83,6 +83,8 @@ dependencies:
 
   video_player: ^2.10.0
 
+  chewie: ^1.13.0
+
 
 
 dev_dependencies:

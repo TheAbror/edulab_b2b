@@ -23,8 +23,11 @@ class CourseContentSliverAppBar extends StatelessWidget {
               final double opacity = percentage.clamp(0.0, 1.0);
 
               return GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, AppRoutes.learningPage),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.learningPage,
+                  arguments: course.id,
+                ),
                 child: Container(
                   color: state.isLightTheme
                       ? context.colors.status03ContainerDefault.withOpacity(0.1)
