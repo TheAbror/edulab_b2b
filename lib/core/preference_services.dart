@@ -1,4 +1,4 @@
-import 'package:leti_mobile/core/local_datasource/model/shared_keys.dart';
+import 'package:leti_mobile/widget_imports.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesServices {
@@ -25,5 +25,22 @@ class PreferencesServices {
 
   static Future<bool> saveToken(String token) async {
     return _getPrefs().setString(ShPrefKeys.token, token);
+  }
+
+  static Future<bool> saveUserInfo(LocalStorageUserInfo userInfo) async {
+    final jsonString = jsonEncode(userInfo.toJson());
+    return _getPrefs().setString(ShPrefKeys.userInfo, jsonString);
+  }
+
+  static LocalStorageUserInfo? getUserInfo() {
+    final jsonString = _getPrefs().getString(ShPrefKeys.userInfo);
+    if (jsonString == null) return null;
+
+    return LocalStorageUserInfo.fromJson(jsonDecode(jsonString));
+  }
+
+  static Future<bool> clearAll() async {
+    final preferences = await SharedPreferences.getInstance();
+    return await preferences.clear();
   }
 }

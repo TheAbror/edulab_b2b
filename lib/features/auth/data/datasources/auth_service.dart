@@ -8,8 +8,15 @@ abstract class AuthService extends ChopperService {
   static AuthService create([ChopperClient? client]) =>
       _$AuthService(client ?? ChopperClient());
 
-  @Post(path: AppStrings.signIn)
-  Future<Response<AuthResponse>> signIn(@Body() SignInRequest body);
+  @Post(path: AppStrings.signInStepOne)
+  Future<Response<MobileResponse>> signInStepOne(
+    @Body() SignInStepOneRequest body,
+  );
+
+  @Post(path: AppStrings.signInStepTwo)
+  Future<Response<AuthResponse>> signInStepTwo(
+    @Body() SignInStepTwoRequest body,
+  );
 
   @Post(path: AppStrings.signUP)
   Future<Response<AuthResponse>> signUP(@Body() SignUpRequest body);

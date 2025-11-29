@@ -22,8 +22,8 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _formKey = GlobalKey<FormState>();
-  final _username = TextEditingController(text: '');
-  final _password = TextEditingController(text: '');
+  final _username = TextEditingController(text: '+998990004444');
+  // final _password = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +63,40 @@ class _BodyState extends State<_Body> {
                   ),
                 ),
                 space16,
-                TextFormField(
-                  controller: _password,
-                  textInputAction: TextInputAction.next,
-                  decoration: authFieldDecoration(
-                    context,
-                    'Password',
-                    suffixicon: true,
-                  ),
+
+                space16,
+                ActionButton(
+                  text: context.localizations.signin,
+                  onTap: () {
+                    if (_formKey.currentState!.validate()) {
+                      final username = _username.text.trim();
+                      // final password = _password.text.trim();
+
+                      // context.read<AuthBloc>().signInStepOne(username);
+                      context.read<AuthBloc>().signInStepTwo(username);
+                    }
+                  },
                 ),
-                SizedBox(height: 12.h),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+ // TextFormField(
+                //   controller: _password,
+                //   textInputAction: TextInputAction.next,
+                //   decoration: authFieldDecoration(
+                //     context,
+                //     'Password',
+                //     suffixicon: true,
+                //   ),
+                // ),
+                // SizedBox(height: 12.h),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.end,
                 //   children: [
@@ -93,23 +117,3 @@ class _BodyState extends State<_Body> {
                 //     ),
                 //   ],
                 // ),
-                space16,
-                ActionButton(
-                  text: context.localizations.signin,
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      final username = _username.text.trim();
-                      final password = _password.text.trim();
-
-                      context.read<AuthBloc>().signIn(username, password);
-                    }
-                  },
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}

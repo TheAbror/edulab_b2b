@@ -19,9 +19,19 @@ final class _$AuthService extends AuthService {
   final Type definitionType = AuthService;
 
   @override
-  Future<Response<AuthResponse>> signIn(SignInRequest body) {
+  Future<Response<MobileResponse>> signInStepOne(SignInStepOneRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin',
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_one',
+    );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<MobileResponse, MobileResponse>($request);
+  }
+
+  @override
+  Future<Response<AuthResponse>> signInStepTwo(SignInStepTwoRequest body) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_two',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);

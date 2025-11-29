@@ -16,6 +16,8 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
         // userBox.clear();
         // settingsBox.clear();
 
+        PreferencesServices.clearAll();
+
         context.read<AuthBloc>().clearAll();
         context.read<HomeBloc>().clearAll();
         context.read<CoursesBloc>().clearAll();

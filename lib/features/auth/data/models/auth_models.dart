@@ -130,18 +130,42 @@ class UserRequiredActions {
 }
 
 @JsonSerializable(includeIfNull: true)
-class SignInRequest {
+class SignInStepOneRequest {
+  @JsonKey(defaultValue: '', name: 'phone_number')
+  final String phoneNumber;
   @JsonKey(defaultValue: '')
-  final String username;
+  final String locale;
+
+  SignInStepOneRequest({
+    required this.phoneNumber,
+    required this.locale,
+  });
+
+  factory SignInStepOneRequest.fromJson(Map<String, dynamic> json) =>
+      _$SignInStepOneRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SignInStepOneRequestToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true)
+class SignInStepTwoRequest {
+  @JsonKey(defaultValue: '', name: 'phone_number')
+  final String phoneNumber;
   @JsonKey(defaultValue: '')
-  final String password;
+  final String locale;
+  @JsonKey(defaultValue: '')
+  final String code;
 
-  SignInRequest({required this.username, required this.password});
+  SignInStepTwoRequest({
+    required this.phoneNumber,
+    required this.locale,
+    required this.code,
+  });
 
-  factory SignInRequest.fromJson(Map<String, dynamic> json) =>
-      _$SignInRequestFromJson(json);
+  factory SignInStepTwoRequest.fromJson(Map<String, dynamic> json) =>
+      _$SignInStepTwoRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SignInRequestToJson(this);
+  Map<String, dynamic> toJson() => _$SignInStepTwoRequestToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)

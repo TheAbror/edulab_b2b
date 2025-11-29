@@ -7,13 +7,62 @@ class AuthBloc extends Cubit<AuthState> {
 
   //!----------------------- Sign IN functions start -------------------------------//
 
-  void signIn(String login, String password) async {
+  void signInStepOne(String phoneNumber) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final request = SignInRequest(username: login, password: password);
+    final request = SignInStepOneRequest(
+      phoneNumber: phoneNumber,
+      locale: 'uz',
+    );
 
     try {
-      final response = await ApiProvider.authService.signIn(request);
+      final response = await ApiProvider.authService.signInStepOne(request);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              // authResponse: data,
+              blocProgress: BlocProgress.IS_SUCCESS,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
+  void signInStepTwo(String phoneNumber) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = SignInStepTwoRequest(
+      phoneNumber: phoneNumber,
+      locale: 'uz',
+      code: '1477',
+    );
+
+    try {
+      final response = await ApiProvider.authService.signInStepTwo(request);
 
       if (response.isSuccessful) {
         final data = response.body;
@@ -21,21 +70,21 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           final user = data.userInfo;
 
-          // await userBox.put(
-          //   ShPrefKeys.currentUser,
-          //   CurrentUser(
-          //     firstName: user.firstname,
-          //     lastName: user.lastname,
-          //     fullName: '${user.firstname} ${user.lastname}',
-          //     token: data.token,
-          //     email: user.email,
-          //     userID: user.id.toString(),
-          //     roles: user.roles,
-          //     photo: user.profilePhoto.original_url,
-          //   ),
-          // );
-
           ApiProvider.create(token: data.token);
+
+          PreferencesServices.saveToken(data.token);
+          PreferencesServices.saveUserInfo(
+            LocalStorageUserInfo(
+              id: user.id,
+              username: user.username,
+              firstName: user.firstname,
+              lastName: user.lastname,
+            ),
+          );
+
+          final fds = PreferencesServices.getUserInfo();
+
+          print(fds);
 
           emit(
             state.copyWith(

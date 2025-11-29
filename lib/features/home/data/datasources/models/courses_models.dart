@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/core/flutter_downloader_utils/downloadable_material_view_model.dart';
 
 part 'courses_models.g.dart';
 

@@ -20,7 +20,6 @@ export 'package:leti_mobile/core/utils/account_type.dart';
 export 'package:leti_mobile/features/splash/domain/enums/splash_auth_status.dart';
 export 'package:leti_mobile/core/localization/bloc/localization_bloc.dart';
 export 'package:leti_mobile/core/utils/constants.dart';
-export 'package:leti_mobile/core/local_datasource/model/box/hive_boxes.dart';
 export 'package:leti_mobile/core/local_datasource/model/shared_keys.dart';
 export 'package:leti_mobile/features/splash/presentation/bloc/splash_bloc.dart';
 export 'package:leti_mobile/features/splash/presentation/language_selection_page.dart';
@@ -31,7 +30,7 @@ export 'package:leti_mobile/core/flutter_downloader_utils/downloadable_material_
 export 'package:leti_mobile/core/api/google_sign_in_api.dart';
 export 'package:leti_mobile/features/home/presentation/bloc/home_bloc.dart';
 export 'package:leti_mobile/core/dialogs/dialog_success_failure.dart';
-export 'package:leti_mobile/core/local_datasource/model/hive_models.dart';
+export 'package:leti_mobile/core/local_datasource/model/local_storage_user_info.dart';
 export 'package:leti_mobile/features/auth/presentation/bloc/auth_bloc.dart';
 export 'package:leti_mobile/features/auth/presentation/sign_up_page/widgets/sign_up_page_appbar.dart';
 export 'package:leti_mobile/core/auth_field_decoration.dart';

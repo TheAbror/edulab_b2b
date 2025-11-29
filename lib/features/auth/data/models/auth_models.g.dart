@@ -97,17 +97,35 @@ Map<String, dynamic> _$UserRequiredActionsToJson(
   'account_type': instance.accountType,
 };
 
-SignInRequest _$SignInRequestFromJson(Map<String, dynamic> json) =>
-    SignInRequest(
-      username: json['username'] as String? ?? '',
-      password: json['password'] as String? ?? '',
-    );
+SignInStepOneRequest _$SignInStepOneRequestFromJson(
+  Map<String, dynamic> json,
+) => SignInStepOneRequest(
+  phoneNumber: json['phone_number'] as String? ?? '',
+  locale: json['locale'] as String? ?? '',
+);
 
-Map<String, dynamic> _$SignInRequestToJson(SignInRequest instance) =>
-    <String, dynamic>{
-      'username': instance.username,
-      'password': instance.password,
-    };
+Map<String, dynamic> _$SignInStepOneRequestToJson(
+  SignInStepOneRequest instance,
+) => <String, dynamic>{
+  'phone_number': instance.phoneNumber,
+  'locale': instance.locale,
+};
+
+SignInStepTwoRequest _$SignInStepTwoRequestFromJson(
+  Map<String, dynamic> json,
+) => SignInStepTwoRequest(
+  phoneNumber: json['phone_number'] as String? ?? '',
+  locale: json['locale'] as String? ?? '',
+  code: json['code'] as String? ?? '',
+);
+
+Map<String, dynamic> _$SignInStepTwoRequestToJson(
+  SignInStepTwoRequest instance,
+) => <String, dynamic>{
+  'phone_number': instance.phoneNumber,
+  'locale': instance.locale,
+  'code': instance.code,
+};
 
 SignUpKeyRequest _$SignUpKeyRequestFromJson(Map<String, dynamic> json) =>
     SignUpKeyRequest(

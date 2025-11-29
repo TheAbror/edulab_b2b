@@ -5,7 +5,9 @@ class AppStrings {
   static const projetName = 'EduLab';
   //auth
   static const signUP = 'signup';
-  static const signIn = 'signin';
+  // static const signIn = 'signin';
+  static const signInStepOne = 'signin/step_one';
+  static const signInStepTwo = 'signin/step_two';
   static const course = 'course';
   static const coursesAll = '$course/all';
   static const categoryAll = 'category/all';

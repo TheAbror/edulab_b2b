@@ -44,11 +44,8 @@ class ApiProvider {
   // static NotAuthorizedInterceptor notAuthorizedInterceptor =
   //     NotAuthorizedInterceptor();
 
-  static List<Interceptor> getInterceptors({String? token, String? language}) {
-    // CurrentUser? userData = userBox.get(ShPrefKeys.currentUser);
-    // final token = userData?.token;
-    final token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEiLCJzY29wZXMiOiJST0xFX1NUVURFTlQiLCJpYXQiOjE3NjMzNjE0OTUsImV4cCI6MTc2Mzk2NjI5NX0.phtJ6mWYPWR1b9V1ZFLusYijOcoxJwL5psYSCe-y5WQ';
+  static List<Interceptor> getInterceptors({String? language}) {
+    final String? token = PreferencesServices.getToken();
 
     List<Interceptor> interceptors = [];
 
@@ -60,9 +57,11 @@ class ApiProvider {
       HeadersInterceptor({
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5Iiwic2NvcGVzIjoiUk9MRV9TVFVERU5UIiwiaWF0IjoxNzY0MzE0MjYzLCJleHAiOjE3NjQ5MTkwNjN9.VjffwDIqOHjYDQXLg1-_Bp4v-XwbVxvRDISGoOz_cgs',
+        HttpHeaders.authorizationHeader: token == null
+            ? 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5Iiwic2NvcGVzIjoiUk9MRV9TVFVERU5UIiwiaWF0IjoxNzY0MzE0MjYzLCJleHAiOjE3NjQ5MTkwNjN9.VjffwDIqOHjYDQXLg1-_Bp4v-XwbVxvRDISGoOz_cgs'
+            : 'Bearer $token',
         // HttpHeaders.authorizationHeader: token != null ? 'Bearer $token' : '',
+        // HttpHeaders.authorizationHeader: 'Bearer $token',
       }),
     );
 

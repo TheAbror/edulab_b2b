@@ -26,6 +26,8 @@ class HomeCourseItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            space10,
+
             Text(
               text,
               style: TextStyle(
@@ -34,16 +36,7 @@ class HomeCourseItem extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            space20,
-            Text(
-              count,
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: context.colors.fgMuted,
-                fontWeight: FontWeight.w400,
-                letterSpacing: -1,
-              ),
-            ),
+            space10,
           ],
         ),
       ),

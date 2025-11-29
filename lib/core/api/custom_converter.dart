@@ -51,8 +51,11 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case AuthResponse:
       return AuthResponse.fromJson(json);
 
-    case SignInRequest:
-      return SignInRequest.fromJson(json);
+    case SignInStepOneRequest:
+      return SignInStepOneRequest.fromJson(json);
+
+    case SignInStepTwoRequest:
+      return SignInStepTwoRequest.fromJson(json);
 
     case MobileResponse:
       return MobileResponse.fromJson(json);

@@ -32,16 +32,6 @@ class CourseTabItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            Spacer(),
-            Text(
-              count,
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: context.colors.fgMuted,
-                fontWeight: FontWeight.w400,
-                letterSpacing: -1,
-              ),
-            ),
           ],
         ),
       ),
