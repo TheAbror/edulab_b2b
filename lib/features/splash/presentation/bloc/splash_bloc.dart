@@ -6,15 +6,15 @@ class SplashBloc extends Cubit<SplashState> {
   SplashBloc() : super(SplashState.initial());
 
   Future setupInitialSettings() async {
-    // CurrentUser? userData = userBox.get(ShPrefKeys.currentUser);
+    final String? token = PreferencesServices.getToken();
 
-    // ApiProvider.create(token: userData?.token ?? '');
+    ApiProvider.create(token: token ?? '');
 
-    // if (userData?.token != null && userData?.token?.isNotEmpty == true) {
-    //   emit(state.copyWith(authStatus: SplashAuthStatus.authorized));
-    // } else {
-    //   emit(state.copyWith(authStatus: SplashAuthStatus.notAuthorized));
-    // }
+    if (token != null && token.isNotEmpty == true) {
+      emit(state.copyWith(authStatus: SplashAuthStatus.authorized));
+    } else {
+      emit(state.copyWith(authStatus: SplashAuthStatus.notAuthorized));
+    }
   }
 
   void clearAll() {

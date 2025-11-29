@@ -169,3 +169,4 @@ export 'package:leti_mobile/features/learning_page/bloc/learning_tab_bloc.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_text_tab.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_video_tab.dart';
 export 'package:video_player/video_player.dart';
+export 'package:leti_mobile/core/preference_services.dart';

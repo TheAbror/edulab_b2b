@@ -27,17 +27,11 @@ dependencies:
 
   http: ^1.1.0
 
-  # hive: 2.0.6
-
-  # hive_flutter: 1.0.0
-
   json_annotation: ^4.9.0
 
   logging: ^1.2.0
 
   shimmer: ^3.0.0
-
-  # better_player: ^0.0.83
 
   #downloader feature starts here
   flutter_downloader: ^1.11.7
@@ -67,11 +61,7 @@ dependencies:
 
   google_sign_in: ^6.1.6
 
-  # connectivity_plus: ^2.0.2
-
   flutter_otp_text_field: ^1.1.3+2
-
-  # get_it: ^7.6.7
 
   webview_flutter: ^4.8.0
 
@@ -81,9 +71,12 @@ dependencies:
 
   flutter_widget_from_html_core: 0.16.0
 
+  #video player
   video_player: ^2.10.0
-
   chewie: ^1.13.0
+
+  #localStorage
+  shared_preferences: ^2.5.3
 
 
 
@@ -98,8 +91,6 @@ dev_dependencies:
   chopper_generator: 8.4.0
 
   json_serializable: ^6.7.1
-
-  # hive_generator:  1.1.3
 
   flutter_gen_runner: ^5.11.0
 

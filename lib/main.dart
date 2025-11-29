@@ -1,16 +1,9 @@
-import 'package:leti_mobile/features/learning_page/bloc/learning_tab_bloc.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Hive.initFlutter();
-
-  // Hive.registerAdapter(CurrentUserAdapter());
-  // Hive.registerAdapter(ProjectSettingsAdapter());
-
-  // userBox = await Hive.openBox<CurrentUser>(ShPrefKeys.currentUser);
-  // settingsBox = await Hive.openBox<ProjectSettings>(ShPrefKeys.projectSettings);
+  await PreferencesServices.init();
 
   ApiProvider.create();
 
@@ -54,7 +47,8 @@ class MyApp extends StatelessWidget {
                 splitScreenMode: true,
                 builder: (sizesContext, child) {
                   return MaterialApp(
-                    theme: state.isLightTheme ? lightTheme() : darkTheme(),
+                    // theme: state.isLightTheme ? lightTheme() : darkTheme(),
+                    theme: darkTheme(),
                     themeMode: ThemeMode.system,
                     debugShowCheckedModeBanner: false,
                     onGenerateRoute: MainRouteGenerator().generateRoute,

@@ -5,7 +5,7 @@ class MainRouteGenerator {
     switch (settings.name) {
       case AppRoutes.splashPage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const RootPage(),
+          builder: (_) => const SplashPage(),
         );
 
       case AppRoutes.welcomePage:
@@ -152,7 +152,7 @@ class MainRouteGenerator {
 
       default:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const RootPage(),
+          builder: (_) => const SplashPage(),
         );
     }
   }
