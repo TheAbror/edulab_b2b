@@ -24,7 +24,7 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           emit(
             state.copyWith(
-              // authResponse: data,
+              phoneNumber: phoneNumber,
               blocProgress: BlocProgress.IS_SUCCESS,
             ),
           );
@@ -52,13 +52,13 @@ class AuthBloc extends Cubit<AuthState> {
     }
   }
 
-  void signInStepTwo(String phoneNumber) async {
+  void signInStepTwo(String code) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = SignInStepTwoRequest(
-      phoneNumber: phoneNumber,
+      phoneNumber: state.phoneNumber,
       locale: 'uz',
-      code: '1477',
+      code: code,
     );
 
     try {
@@ -138,11 +138,15 @@ class AuthBloc extends Cubit<AuthState> {
       state.copyWith(
         isReponseSuccess: false,
         blocProgress: BlocProgress.NOT_STARTED,
-        timerSeconds: 5,
+        timerSeconds: 10,
         isCountDownFinished: false,
         isVerificationSuccess: false,
       ),
     );
+  }
+
+  void setPhoneNumber(String phoneNumber) {
+    emit(state.copyWith(phoneNumber: phoneNumber));
   }
 
   void verificationSuccess(bool value) {
@@ -181,7 +185,7 @@ class AuthBloc extends Cubit<AuthState> {
           emit(
             state.copyWith(
               // isRequestSent: true,
-              isReponseSuccess: data.success,
+              isReponseSuccess: data.deleted,
               blocProgress: BlocProgress.IS_SUCCESS,
             ),
           );

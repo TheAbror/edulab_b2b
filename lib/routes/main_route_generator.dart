@@ -23,9 +23,11 @@ class MainRouteGenerator {
           builder: (_) => const SignUpPage(),
         );
 
-      case AppRoutes.codeVerificationPage:
+      case AppRoutes.signInPageStepTwo:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const CodeVerificationPage(isForgorPassword: false),
+          builder: (_) {
+            return const SignInPageStepTwo();
+          },
         );
 
       case AppRoutes.singUpEnterDetailsPage:
@@ -33,9 +35,9 @@ class MainRouteGenerator {
           builder: (_) => const SignUpEnterDetailsPage(),
         );
 
-      case AppRoutes.signInPage:
+      case AppRoutes.signInPageStepOne:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const SignInPage(),
+          builder: (_) => const SignInPageStepOne(),
         );
 
       case AppRoutes.forgotPasswordPage:

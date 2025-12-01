@@ -12,6 +12,7 @@ class AuthState extends Equatable {
   final AccountType accountType;
   final BlocProgress blocProgress;
   final String failureMessage;
+  final String phoneNumber;
 
   const AuthState({
     required this.request,
@@ -25,6 +26,7 @@ class AuthState extends Equatable {
     required this.accountType,
     required this.blocProgress,
     required this.failureMessage,
+    required this.phoneNumber,
   });
 
   factory AuthState.initial() {
@@ -75,6 +77,7 @@ class AuthState extends Equatable {
       emailOrPhone: '',
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
+      phoneNumber: '',
     );
   }
 
@@ -90,6 +93,7 @@ class AuthState extends Equatable {
     AccountType? accountType,
     BlocProgress? blocProgress,
     String? failureMessage,
+    String? phoneNumber,
   }) {
     return AuthState(
       request: request ?? this.request,
@@ -104,21 +108,23 @@ class AuthState extends Equatable {
       accountType: accountType ?? this.accountType,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
     );
   }
 
   @override
   List<Object?> get props => [
-        request,
-        authResponse,
-        isPasswordHidden,
-        isCountDownFinished,
-        timerSeconds,
-        isVerificationSuccess,
-        isReponseSuccess,
-        emailOrPhone,
-        accountType,
-        blocProgress,
-        failureMessage,
-      ];
+    request,
+    authResponse,
+    isPasswordHidden,
+    isCountDownFinished,
+    timerSeconds,
+    isVerificationSuccess,
+    isReponseSuccess,
+    emailOrPhone,
+    accountType,
+    blocProgress,
+    failureMessage,
+    phoneNumber,
+  ];
 }

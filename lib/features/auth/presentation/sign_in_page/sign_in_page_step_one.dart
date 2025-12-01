@@ -2,8 +2,8 @@
 
 import 'package:leti_mobile/widget_imports.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignInPageStepOne extends StatelessWidget {
+  const SignInPageStepOne({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _formKey = GlobalKey<FormState>();
-  final _username = TextEditingController(text: '+998990004444');
-  // final _password = TextEditingController(text: '');
+  final _phoneNumber = TextEditingController(text: '+998990004444');
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +31,13 @@ class _BodyState extends State<_Body> {
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            Navigator.pushNamed(context, AppRoutes.rootPage);
+            Navigator.pushNamed(
+              context,
+              AppRoutes.signInPageStepTwo,
+            );
 
-            // context.read<AuthBloc>().setInitialValue();
+            context.read<AuthBloc>().setInitialValue();
+            context.read<AuthBloc>().setPhoneNumber(_phoneNumber.text.trim());
           } else if (state.blocProgress == BlocProgress.FAILED) {
             showMessage(state.failureMessage, context, isError: true);
           }
@@ -55,7 +58,7 @@ class _BodyState extends State<_Body> {
                 ),
                 space32,
                 TextFormField(
-                  controller: _username,
+                  controller: _phoneNumber,
                   textInputAction: TextInputAction.next,
                   decoration: authFieldDecoration(
                     context,
@@ -69,11 +72,9 @@ class _BodyState extends State<_Body> {
                   text: context.localizations.signin,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      final username = _username.text.trim();
-                      // final password = _password.text.trim();
+                      final username = _phoneNumber.text.trim();
 
-                      // context.read<AuthBloc>().signInStepOne(username);
-                      context.read<AuthBloc>().signInStepTwo(username);
+                      context.read<AuthBloc>().signInStepOne(username);
                     }
                   },
                 ),
@@ -85,35 +86,3 @@ class _BodyState extends State<_Body> {
     );
   }
 }
-
-
- // TextFormField(
-                //   controller: _password,
-                //   textInputAction: TextInputAction.next,
-                //   decoration: authFieldDecoration(
-                //     context,
-                //     'Password',
-                //     suffixicon: true,
-                //   ),
-                // ),
-                // SizedBox(height: 12.h),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: [
-                //     GestureDetector(
-                //       behavior: HitTestBehavior.opaque,
-                //       onTap: () {
-
-                // Navigator.pushNamed(context, AppRoutes.forgotPasswordPage);
-
-                //       },
-                //       child: Text(
-                //         context.localizations.forgotpassword,
-                //         style: TextStyle(
-                //           fontSize: 14.sp,
-                //           color: Theme.of(context).colorScheme.primary,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),

@@ -1,16 +1,14 @@
 import 'dart:async';
 import 'package:leti_mobile/widget_imports.dart';
 
-class CodeVerificationPage extends StatefulWidget {
-  final bool isForgorPassword;
-
-  const CodeVerificationPage({super.key, required this.isForgorPassword});
+class SignInPageStepTwo extends StatefulWidget {
+  const SignInPageStepTwo({super.key});
 
   @override
-  State<CodeVerificationPage> createState() => _CodeVerificationPageState();
+  State<SignInPageStepTwo> createState() => _SignInPageStepTwoState();
 }
 
-class _CodeVerificationPageState extends State<CodeVerificationPage> {
+class _SignInPageStepTwoState extends State<SignInPageStepTwo> {
   late Timer _timer;
 
   @override
@@ -46,21 +44,13 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state.isVerificationSuccess) {
-            Timer(Duration(seconds: 1), () {
-              if (!mounted) return;
-              context.read<AuthBloc>().setInitialValue();
+          if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.rootPage,
+            );
 
-              widget.isForgorPassword
-                  ? Navigator.pushReplacementNamed(
-                      context,
-                      AppRoutes.forgotPasswordSetNewPassword,
-                    )
-                  : Navigator.pushReplacementNamed(
-                      context,
-                      AppRoutes.singUpEnterDetailsPage,
-                    );
-            });
+            context.read<AuthBloc>().setInitialValue();
           }
         },
         builder: (context, state) {
@@ -90,14 +80,15 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                 ),
                 space40,
                 OtpTextField(
+                  autoFocus: true,
                   fieldWidth: 44.w,
                   contentPadding: EdgeInsets.all(11.w),
                   numberOfFields: 4,
                   borderColor: Theme.of(context).colorScheme.primary,
                   showFieldAsBox: true,
                   onCodeChanged: (String code) {},
-                  onSubmit: (String verificationCode) {
-                    context.read<AuthBloc>().verificationSuccess(true);
+                  onSubmit: (String code) {
+                    context.read<AuthBloc>().signInStepTwo(code);
                   }, // end onSubmit
                 ),
                 space32,
