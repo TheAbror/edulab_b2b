@@ -21,10 +21,12 @@ class _LearningPageTextTabState extends State<LearningPageTextTab> {
         builder: (context, state) {
           return Column(
             children: [
-              Text(widget.step.text ?? ''),
+              HtmlWidget(widget.step.text ?? ''),
 
-              // TwoTabSelector(),
-              state.materialsTabIndex == 0 ? CoursesDownloadsTab() : SizedBox(),
+              if (widget.step.materials.isNotEmpty)
+                state.materialsTabIndex == 0
+                    ? CoursesDownloadsTab()
+                    : SizedBox(),
             ],
           );
         },

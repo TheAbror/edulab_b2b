@@ -84,6 +84,15 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case TopicModel:
       return TopicModel.fromJson(json);
 
+    case StepModel:
+      return StepModel.fromJson(json);
+
+    case QuizRequest:
+      return QuizRequest.fromJson(json);
+
+    case QuizResponse:
+      return QuizResponse.fromJson(json);
+
     default:
       return null;
   }

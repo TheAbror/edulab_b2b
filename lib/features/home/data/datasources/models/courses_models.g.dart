@@ -105,48 +105,6 @@ Map<String, dynamic> _$StatusToJson(Status instance) => <String, dynamic>{
   'label': instance.label,
 };
 
-StepModel _$StepModelFromJson(Map<String, dynamic> json) => StepModel(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  title: json['title'] as String? ?? '',
-  description: json['description'] as String? ?? '',
-  type: json['type'] as String? ?? '',
-  priority: (json['priority'] as num?)?.toInt() ?? 0,
-  status: json['status'] as String? ?? '',
-  media: json['media'] == null
-      ? null
-      : MediaDTO.fromJson(json['media'] as Map<String, dynamic>),
-  text: json['text'] as String?,
-  courseId: (json['course_id'] as num?)?.toInt(),
-  chapterId: (json['chapter_id'] as num?)?.toInt(),
-  topicId: (json['topic_id'] as num?)?.toInt(),
-  materials:
-      (json['materials'] as List<dynamic>?)
-          ?.map((e) => MediaDTO.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      [],
-  questions: json['questions'] as List<dynamic>? ?? [],
-  answers: json['answers'],
-  url: json['url'] as String?,
-);
-
-Map<String, dynamic> _$StepModelToJson(StepModel instance) => <String, dynamic>{
-  'id': instance.id,
-  'title': instance.title,
-  'description': instance.description,
-  'type': instance.type,
-  'priority': instance.priority,
-  'status': instance.status,
-  'media': instance.media,
-  'text': instance.text,
-  'course_id': instance.courseId,
-  'chapter_id': instance.chapterId,
-  'topic_id': instance.topicId,
-  'materials': instance.materials,
-  'questions': instance.questions,
-  'answers': instance.answers,
-  'url': instance.url,
-};
-
 TopicModel _$TopicModelFromJson(Map<String, dynamic> json) => TopicModel(
   id: (json['id'] as num?)?.toInt() ?? 0,
   title: json['title'] as String? ?? '',

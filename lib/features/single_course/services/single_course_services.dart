@@ -22,6 +22,9 @@ abstract class SingleCourseServices extends ChopperService {
   @Get(path: '${AppStrings.learningWithID}/{id}')
   Future<Response<SingleCourseInfo>> resumeCourseById(@Path('id') int id);
 
+  @Post(path: AppStrings.submitQuiz)
+  Future<Response<QuizResponse>> submitQuiz(@Body() QuizRequest body);
+
   @Post(path: AppStrings.addToFavorite)
   Future<Response<MobileResponse>> postCourseAsFavorite(
     @Body() MakeCourseFavoriteRequest body,

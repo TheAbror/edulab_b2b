@@ -18,6 +18,7 @@ class AppStrings {
   static const statistics = 'statistics/';
   static const addToFavorite = '$course/add-to-favorites';
   static const learningWithID = 'learning/';
+  static const submitQuiz = 'learning/submit';
 
   //
   static const sendVerification = 'verify_code/send';

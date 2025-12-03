@@ -169,3 +169,5 @@ export 'package:leti_mobile/features/learning_page/tabs/learning_text_tab.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_video_tab.dart';
 export 'package:video_player/video_player.dart';
 export 'package:leti_mobile/core/preference_services.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/step_model.dart';
+export 'package:leti_mobile/features/learning_page/bloc/quiz_bloc.dart';

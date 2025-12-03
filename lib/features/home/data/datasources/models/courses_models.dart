@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:leti_mobile/features/home/data/datasources/models/step_model.dart';
 
 part 'courses_models.g.dart';
 
@@ -148,58 +149,6 @@ class Status {
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
   Map<String, dynamic> toJson() => _$StatusToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true)
-class StepModel {
-  @JsonKey(defaultValue: 0)
-  final int id;
-  @JsonKey(defaultValue: '')
-  final String title;
-  @JsonKey(defaultValue: '')
-  final String? description;
-  @JsonKey(defaultValue: '')
-  final String type;
-  @JsonKey(defaultValue: 0)
-  final int priority;
-  @JsonKey(defaultValue: '')
-  final String status;
-  final MediaDTO? media;
-  final String? text;
-  @JsonKey(name: 'course_id')
-  final int? courseId;
-  @JsonKey(name: 'chapter_id')
-  final int? chapterId;
-  @JsonKey(name: 'topic_id')
-  final int? topicId;
-  @JsonKey(defaultValue: [])
-  final List<MediaDTO> materials;
-  @JsonKey(defaultValue: [])
-  final List<dynamic> questions;
-  final dynamic answers;
-  final String? url;
-
-  StepModel({
-    required this.id,
-    required this.title,
-    this.description,
-    required this.type,
-    required this.priority,
-    required this.status,
-    this.media,
-    this.text,
-    this.courseId,
-    this.chapterId,
-    this.topicId,
-    required this.materials,
-    required this.questions,
-    this.answers,
-    this.url,
-  });
-
-  factory StepModel.fromJson(Map<String, dynamic> json) =>
-      _$StepModelFromJson(json);
-  Map<String, dynamic> toJson() => _$StepModelToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)

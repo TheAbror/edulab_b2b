@@ -54,9 +54,9 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) => UserInfo(
   username: json['username'] as String? ?? '',
   firstname: json['firstname'] as String? ?? '',
   lastname: json['lastname'] as String? ?? '',
-  profilePhoto: MediaDTO.fromJson(
-    json['profile_photo'] as Map<String, dynamic>,
-  ),
+  profilePhoto: json['profile_photo'] == null
+      ? null
+      : MediaDTO.fromJson(json['profile_photo'] as Map<String, dynamic>),
   roles:
       (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
   requiredActions:

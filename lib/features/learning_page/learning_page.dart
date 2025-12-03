@@ -1,3 +1,4 @@
+import 'package:leti_mobile/features/learning_page/tabs/learning_quiz_tab.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class LearningPage extends StatefulWidget {
@@ -182,7 +183,7 @@ class _BodyState extends State<_Body> {
                 );
               }
             case 'QUIZ':
-              return SingleChildScrollView(child: Text("Quiz step"));
+              return LearningPageQuizTab(step: step);
             default:
               return SingleChildScrollView(child: Text(step.title));
           }

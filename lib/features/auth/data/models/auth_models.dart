@@ -79,7 +79,7 @@ class UserInfo {
   @JsonKey(defaultValue: '')
   final String lastname;
   @JsonKey(name: 'profile_photo')
-  final MediaDTO profilePhoto;
+  final MediaDTO? profilePhoto;
   @JsonKey(defaultValue: [])
   final List<String> roles;
   // final String roles_map: HashMap<String, String>? = null

@@ -62,6 +62,16 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
+  Future<Response<QuizResponse>> submitQuiz(QuizRequest body) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/submit',
+    );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<QuizResponse, QuizResponse>($request);
+  }
+
+  @override
   Future<Response<MobileResponse>> postCourseAsFavorite(
     MakeCourseFavoriteRequest body,
   ) {
