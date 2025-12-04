@@ -18,15 +18,59 @@ class LearningPageQuizTab extends StatelessWidget {
             horizontal: 16.w,
             vertical: 10.h,
           ),
-          child: BlocConsumer<QuizBloc, QuizState>(
-            listener: (context, state) {
-              // if (state.blocProgress == BlocProgress.IS_LOADING) {
-              //   return PrimaryLoader();
-              // }
-            },
+          child: BlocBuilder<QuizBloc, QuizState>(
             builder: (context, state) {
+              if (state.blocProgress == BlocProgress.IS_LOADING) {
+                return Center(child: PrimaryLoader());
+              }
+
               return Column(
                 children: [
+                  if (state.correctnessPercentage != 0)
+                    state.correctnessPercentage > 66
+                        ? Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.only(bottom: 8.h),
+                            padding: EdgeInsets.all(16.w),
+                            decoration: BoxDecoration(
+                              color: context.colors.successContainerDefault
+                                  .withOpacity(0.6),
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Column(
+                              children: [
+                                AppText.title2('Congratulations! 🎉'),
+                                AppText.baseText(
+                                  'You’ve successfully completed the quiz and scored '
+                                  '${state.correctAnswersCount}/${state.overallAnswersCount} '
+                                  '(${((state.correctAnswersCount / state.overallAnswersCount) * 100).toStringAsFixed(0)}%)',
+                                  maxLines: 3,
+                                ),
+                              ],
+                            ),
+                          )
+                        : Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.only(bottom: 8.h),
+                            padding: EdgeInsets.all(16.w),
+                            decoration: BoxDecoration(
+                              color: context.colors.errorContainerDefault
+                                  .withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Column(
+                              children: [
+                                AppText.title2('Try Again 💪'),
+                                AppText.baseText(
+                                  'You scored '
+                                  '${state.correctAnswersCount}/${state.overallAnswersCount} '
+                                  '(${((state.correctAnswersCount / state.overallAnswersCount) * 100).toStringAsFixed(0)}%)'
+                                  'points and didn’t pass the quiz this time.',
+                                  maxLines: 3,
+                                ),
+                              ],
+                            ),
+                          ),
                   ListView.builder(
                     itemCount: step.questions.length,
                     shrinkWrap: true,
@@ -45,6 +89,7 @@ class LearningPageQuizTab extends StatelessWidget {
                           );
 
                       Color? bgColor;
+                      IconData? icon;
 
                       QuizResponse? quizResponse;
 
@@ -62,8 +107,10 @@ class LearningPageQuizTab extends StatelessWidget {
                       if (quizResponse != null) {
                         if (quizResponse.status == "CORRECT") {
                           bgColor = Colors.green.withOpacity(0.15);
+                          icon = Icons.done;
                         } else if (quizResponse.status == "INCORRECT") {
                           bgColor = Colors.red.withOpacity(0.15);
+                          icon = Icons.close;
                         }
                       }
 
@@ -160,7 +207,11 @@ class LearningPageQuizTab extends StatelessWidget {
                                               ),
                                             ),
                                             child: isSelected
-                                                ? Icon(Icons.done)
+                                                ? Icon(
+                                                    isSelected
+                                                        ? icon
+                                                        : Icons.done,
+                                                  )
                                                 : SizedBox(),
                                           ),
                                           SizedBox(width: 10.w),

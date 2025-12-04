@@ -37,6 +37,8 @@ class QuizBloc extends Cubit<QuizState> {
     try {
       final List<QuizResponse> collectedResponses = [];
 
+      var _correctAnswersCount = 0;
+
       // Submit each quiz individually
       for (final quiz in state.quizRequests) {
         final response = await ApiProvider.singleCourseServices.submitQuiz(
@@ -48,6 +50,10 @@ class QuizBloc extends Cubit<QuizState> {
 
           if (data != null) {
             collectedResponses.add(data);
+
+            if (data.status == "CORRECT") {
+              _correctAnswersCount = _correctAnswersCount + 1;
+            }
           }
         } else {
           final error = ErrorResponse.fromJson(
@@ -64,9 +70,18 @@ class QuizBloc extends Cubit<QuizState> {
         }
       }
 
-      // If all submissions succeeded
+      final correct = _correctAnswersCount;
+      final total = collectedResponses.length;
+
+      final correctnessPercentage = total == 0
+          ? 0
+          : ((correct / total) * 100).round();
+
       emit(
         state.copyWith(
+          correctAnswersCount: correct,
+          overallAnswersCount: total,
+          correctnessPercentage: correctnessPercentage,
           response: collectedResponses,
           blocProgress: BlocProgress.IS_SUCCESS,
         ),

@@ -39,6 +39,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color containerDefault;
   final Color accentOnAccent;
   final Color staticTransparent;
+  final Color successContainerDefault;
+  final Color errorContainerDefault;
 
   const CustomColors({
     required this.float,
@@ -68,6 +70,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.containerDefault,
     required this.accentOnAccent,
     required this.staticTransparent,
+    required this.successContainerDefault,
+    required this.errorContainerDefault,
   });
 
   @override
@@ -99,6 +103,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? containerDefault,
     Color? accentOnAccent,
     Color? staticTransparent,
+    Color? successContainerDefault,
+    Color? errorContainerDefault,
   }) {
     return CustomColors(
       float: float ?? this.float,
@@ -134,6 +140,10 @@ class CustomColors extends ThemeExtension<CustomColors> {
       containerDefault: containerDefault ?? this.containerDefault,
       accentOnAccent: accentOnAccent ?? this.accentOnAccent,
       staticTransparent: staticTransparent ?? this.staticTransparent,
+      successContainerDefault:
+          successContainerDefault ?? this.successContainerDefault,
+      errorContainerDefault:
+          errorContainerDefault ?? this.errorContainerDefault,
     );
   }
 
@@ -214,6 +224,17 @@ class CustomColors extends ThemeExtension<CustomColors> {
       staticTransparent: Color.lerp(
         staticTransparent,
         other.staticTransparent,
+        t,
+      )!,
+
+      successContainerDefault: Color.lerp(
+        successContainerDefault,
+        other.successContainerDefault,
+        t,
+      )!,
+      errorContainerDefault: Color.lerp(
+        errorContainerDefault,
+        other.errorContainerDefault,
         t,
       )!,
     );

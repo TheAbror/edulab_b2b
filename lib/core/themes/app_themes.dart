@@ -48,6 +48,8 @@ ThemeData lightTheme() {
         containerDefault: NewColorsLight.infoContainerDefault,
         accentOnAccent: NewColorsLight.accentOnAccent,
         staticTransparent: NewColorsLight.staticTransparent,
+        successContainerDefault: NewColorsLight.successContainerDefault,
+        errorContainerDefault: NewColorsLight.errorContainerDefault,
       ),
     ],
   );
@@ -100,6 +102,8 @@ ThemeData darkTheme() {
         containerDefault: NewColorsDark.infoContainerDefault,
         accentOnAccent: NewColorsDark.accentOnAccent,
         staticTransparent: NewColorsDark.staticTransparent,
+        successContainerDefault: NewColorsDark.successContainerDefault,
+        errorContainerDefault: NewColorsDark.errorContainerDefault,
       ),
     ],
   );
