@@ -1,7 +1,8 @@
 part of 'single_course_bloc.dart';
 
 class SingleCourseState extends Equatable {
-  final SingleCourseInfo fullCourseInfo;
+  final SingleCourseInfo singleCourse;
+  final List<ChapterModel> singleCourseChapters;
   final bool courseMaterialsAreHidden;
   //when Show all button pressed, will show Hide button
   final bool materialsMoreThan3;
@@ -11,7 +12,8 @@ class SingleCourseState extends Equatable {
   final String failureMessage;
 
   const SingleCourseState({
-    required this.fullCourseInfo,
+    required this.singleCourse,
+    required this.singleCourseChapters,
     required this.courseMaterialsAreHidden,
     required this.materialsMoreThan3,
     required this.isDescriptionHidden,
@@ -22,7 +24,7 @@ class SingleCourseState extends Equatable {
 
   factory SingleCourseState.initial() {
     return SingleCourseState(
-      fullCourseInfo: SingleCourseInfo(
+      singleCourse: SingleCourseInfo(
         id: 0,
         title: '',
         description: [],
@@ -36,6 +38,7 @@ class SingleCourseState extends Equatable {
           id: 0,
           title: '',
         ),
+
         learnersCount: 0,
         willLearn: [],
         syllabus: SyllabusResponse(studyGoals: []),
@@ -60,6 +63,8 @@ class SingleCourseState extends Equatable {
           ),
         ],
       ),
+
+      singleCourseChapters: [],
       courseMaterialsAreHidden: false,
       materialsMoreThan3: true,
       isDescriptionHidden: true,
@@ -70,7 +75,8 @@ class SingleCourseState extends Equatable {
   }
 
   SingleCourseState copyWith({
-    SingleCourseInfo? fullCourseInfo,
+    SingleCourseInfo? singleCourse,
+    List<ChapterModel>? singleCourseChapters,
     bool? courseMaterialsAreHidden,
     bool? materialsMoreThan3,
     bool? isDescriptionHidden,
@@ -79,9 +85,10 @@ class SingleCourseState extends Equatable {
     String? failureMessage,
   }) {
     return SingleCourseState(
-      fullCourseInfo: fullCourseInfo ?? this.fullCourseInfo,
+      singleCourse: singleCourse ?? this.singleCourse,
       courseMaterialsAreHidden:
           courseMaterialsAreHidden ?? this.courseMaterialsAreHidden,
+      singleCourseChapters: singleCourseChapters ?? this.singleCourseChapters,
       materialsMoreThan3: materialsMoreThan3 ?? this.materialsMoreThan3,
       isDescriptionHidden: isDescriptionHidden ?? this.isDescriptionHidden,
       isFavorite: isFavorite ?? this.isFavorite,
@@ -92,12 +99,13 @@ class SingleCourseState extends Equatable {
 
   @override
   List<Object?> get props => [
-        fullCourseInfo,
-        courseMaterialsAreHidden,
-        materialsMoreThan3,
-        isDescriptionHidden,
-        isFavorite,
-        blocProgress,
-        failureMessage,
-      ];
+    singleCourse,
+    singleCourseChapters,
+    courseMaterialsAreHidden,
+    materialsMoreThan3,
+    isDescriptionHidden,
+    isFavorite,
+    blocProgress,
+    failureMessage,
+  ];
 }

@@ -19,7 +19,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   final Type definitionType = SingleCourseServices;
 
   @override
-  Future<Response<SingleCourseInfo>> getSingleCourseByItsId(int id) {
+  Future<Response<SingleCourseInfo>> getSingleCourse(int id) {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/${id}',
     );

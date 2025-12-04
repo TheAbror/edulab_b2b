@@ -8,7 +8,7 @@ class SingleCoursePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SingleCourseBloc()..getSingleCourseByItsId(id),
+      create: (context) => SingleCourseBloc()..getSingleCourse(id),
       child: Scaffold(
         appBar: CourseInfoAppBar(id: id),
         body: SingleCourseBody(isContent: false),
@@ -57,7 +57,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                     CourseInfoDivider(),
 
                     //studyGoals
-                    if (state.fullCourseInfo.syllabus?.studyGoals?.isNotEmpty ==
+                    if (state.singleCourse.syllabus?.studyGoals?.isNotEmpty ==
                         true) ...[
                       space24,
                       CourseInfoBlocsTitle(
@@ -67,14 +67,14 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                       ListView.builder(
                         padding: EdgeInsets.zero,
                         itemCount:
-                            state.fullCourseInfo.syllabus?.studyGoals?.length,
+                            state.singleCourse.syllabus?.studyGoals?.length,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return CourseInfoWhatYouWillLearnItems(
                             text:
                                 state
-                                    .fullCourseInfo
+                                    .singleCourse
                                     .syllabus
                                     ?.studyGoals?[index] ??
                                 '',
@@ -87,7 +87,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                     // Course materials
                     if (!widget.isContent)
                       if (state
-                              .fullCourseInfo
+                              .singleCourse
                               .syllabus
                               ?.courseContent
                               ?.isNotEmpty ==
@@ -109,7 +109,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                       ],
 
                     // skills
-                    if (state.fullCourseInfo.syllabus?.studyGoals?.isNotEmpty ==
+                    if (state.singleCourse.syllabus?.studyGoals?.isNotEmpty ==
                         true) ...[
                       SizedBox(height: 16.h),
                       CourseInfoBlocsTitle(
@@ -118,8 +118,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                       SizedBox(height: 16.h),
                       Wrap(
                         children: List.generate(
-                          state.fullCourseInfo.syllabus?.studyGoals?.length ??
-                              0,
+                          state.singleCourse.syllabus?.studyGoals?.length ?? 0,
                           (index) {
                             return Container(
                               margin: EdgeInsets.only(right: 8.w, bottom: 8.h),
@@ -136,7 +135,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                               ),
                               child: Text(
                                 state
-                                        .fullCourseInfo
+                                        .singleCourse
                                         .syllabus
                                         ?.studyGoals?[index] ??
                                     '',
@@ -149,14 +148,14 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                       space24,
                     ],
 
-                    if (state.fullCourseInfo.description.isNotEmpty) ...[
+                    if (state.singleCourse.description.isNotEmpty) ...[
                       CourseInfoBlocsTitle(
                         text: context.localizations.description,
                       ),
                       space8,
                       ExpandableHtml(
                         state: state,
-                        html: state.fullCourseInfo.description.first,
+                        html: state.singleCourse.description.first,
                       ),
                       space10,
                       ShowMoreTextWithOpacity(
@@ -167,16 +166,16 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                     ],
 
                     //AUTHORS
-                    if (state.fullCourseInfo.authors.isNotEmpty) ...[
+                    if (state.singleCourse.authors.isNotEmpty) ...[
                       CourseInfoBlocsTitle(text: context.localizations.authors),
                       space16,
                       ListView.builder(
                         shrinkWrap: true,
                         padding: EdgeInsets.symmetric(vertical: 8.h),
-                        itemCount: state.fullCourseInfo.authors.length,
+                        itemCount: state.singleCourse.authors.length,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          final item = state.fullCourseInfo.authors[index];
+                          final item = state.singleCourse.authors[index];
 
                           return CourseInfoAuthorDetails(
                             onTap: () {},

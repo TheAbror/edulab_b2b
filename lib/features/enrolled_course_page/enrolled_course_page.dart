@@ -1,4 +1,4 @@
-import 'package:leti_mobile/features/main_course_page/appbar/course_content_sliver_appbar.dart';
+import 'package:leti_mobile/features/enrolled_course_page/appbar/enrolled_course_sliver_appbar.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class EnrolledCoursePage extends StatefulWidget {
@@ -14,8 +14,7 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          SingleCourseBloc()..getSingleCourseByItsId(widget.id),
+      create: (context) => SingleCourseBloc()..getSingleCourse(widget.id),
       child: Scaffold(
         body: BlocBuilder<SingleCourseBloc, SingleCourseState>(
           builder: (context, state) {
@@ -29,7 +28,7 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
                 headerSliverBuilder:
                     (BuildContext context, bool innerBoxIsScrolled) {
                       return <Widget>[
-                        CourseContentSliverAppBar(course: state.fullCourseInfo),
+                        EnrolledCourseSliverAppBar(course: state.singleCourse),
                         SliverPersistentHeader(
                           delegate: SliverAppBarDelegate(
                             TabBar(

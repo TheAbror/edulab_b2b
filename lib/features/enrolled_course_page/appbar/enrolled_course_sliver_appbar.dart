@@ -1,9 +1,9 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class CourseContentSliverAppBar extends StatelessWidget {
+class EnrolledCourseSliverAppBar extends StatelessWidget {
   final SingleCourseInfo course;
 
-  const CourseContentSliverAppBar({super.key, required this.course});
+  const EnrolledCourseSliverAppBar({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {

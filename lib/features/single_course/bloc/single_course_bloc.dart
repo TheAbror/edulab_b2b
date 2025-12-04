@@ -69,12 +69,13 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
     }
   }
 
-  void getSingleCourseByItsId(int id) async {
+  void getSingleCourse(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.singleCourseServices
-          .getSingleCourseByItsId(id);
+      final response = await ApiProvider.singleCourseServices.getSingleCourse(
+        id,
+      );
 
       if (response.isSuccessful) {
         final data = response.body;
@@ -83,7 +84,8 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
           final content = data.syllabus?.courseContent;
           emit(
             state.copyWith(
-              fullCourseInfo: data,
+              singleCourse: data,
+              singleCourseChapters: data.chapters,
               courseMaterialsAreHidden: (content?.isNotEmpty == true)
                   ? ((content?.length ?? 0) > 3 ? true : false)
                   : false,

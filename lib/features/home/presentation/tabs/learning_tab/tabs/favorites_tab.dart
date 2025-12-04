@@ -24,7 +24,7 @@ class FavoritesTab extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(
               context,
-              AppRoutes.enrolledCoursePage, //TODO
+              AppRoutes.enrolledCoursePage,
               arguments: item[index].id,
             );
           },

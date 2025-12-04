@@ -138,7 +138,7 @@ export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_page
 export 'package:leti_mobile/features/home/presentation/root_page.dart';
 export 'package:leti_mobile/features/all_courses/all_courses_page.dart';
 export 'package:leti_mobile/features/all_categories/all_categories_page.dart';
-export 'package:leti_mobile/features/main_course_page/main_course_page.dart';
+export 'package:leti_mobile/features/enrolled_course_page/enrolled_course_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/author_profile_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/student_profile_page.dart';
 export 'package:leti_mobile/features/learning_page/learning_page.dart';

@@ -16,7 +16,7 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
           children: [
             CourseTopLevelHeaderAndSubHeader(
               headlineLeft: context.localizations.skillLevel,
-              textLeft: state.fullCourseInfo.level?.label ?? '',
+              textLeft: state.singleCourse.level?.label ?? '',
               isLeft: true,
             ),
             SizedBox(height: 20.h),
@@ -131,10 +131,10 @@ class ExpandableCourseMaterials extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 8.h),
           itemCount: state.courseMaterialsAreHidden
               ? 3
-              : state.fullCourseInfo.syllabus?.courseContent?.length,
+              : state.singleCourse.syllabus?.courseContent?.length,
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            final title = state.fullCourseInfo.syllabus?.courseContent?[index];
+            final title = state.singleCourse.syllabus?.courseContent?[index];
 
             return CourseInfoMaterialExpansionItem(
               title: title?.title ?? '',
@@ -149,10 +149,10 @@ class ExpandableCourseMaterials extends StatelessWidget {
       secondChild: ListView.builder(
         shrinkWrap: true,
         padding: EdgeInsets.symmetric(vertical: 8.h),
-        itemCount: state.fullCourseInfo.syllabus?.courseContent?.length,
+        itemCount: state.singleCourse.syllabus?.courseContent?.length,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          final title = state.fullCourseInfo.syllabus?.courseContent?[index];
+          final title = state.singleCourse.syllabus?.courseContent?[index];
 
           return CourseInfoMaterialExpansionItem(
             title: title?.title ?? '',
@@ -586,7 +586,7 @@ class CourseInfoHeader extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: BlocBuilder<SingleCourseBloc, SingleCourseState>(
             builder: (context, state) {
-              final item = state.fullCourseInfo;
+              final item = state.singleCourse;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
