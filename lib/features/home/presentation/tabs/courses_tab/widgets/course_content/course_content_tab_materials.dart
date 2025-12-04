@@ -7,23 +7,29 @@ class SingleCourseContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
-      itemCount: state.fullCourseInfo.syllabus?.courseContent?.length,
-      physics: NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final title = state.fullCourseInfo.syllabus?.courseContent?[index];
+    return state.fullCourseInfo.syllabus?.courseContent?.isNotEmpty == true
+        ? ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
+            itemCount: state.fullCourseInfo.syllabus?.courseContent?.length,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              final title =
+                  state.fullCourseInfo.syllabus?.courseContent?[index];
 
-        return CourseInfoMaterialExpansionItem(
-          title: title?.title ?? '',
-          subTitle: title?.description ?? '',
-          chapterInfoText: title?.topics.map((e) => e.title).toList() ?? [],
-          lessonsLength: title?.topics.length ?? 0,
-          topics: title?.topics ?? [],
-        );
-      },
-    );
+              return CourseInfoMaterialExpansionItem(
+                title: title?.title ?? '',
+                subTitle: title?.description ?? '',
+                chapterInfoText:
+                    title?.topics.map((e) => e.title).toList() ?? [],
+                lessonsLength: title?.topics.length ?? 0,
+                topics: title?.topics ?? [],
+              );
+            },
+          )
+        : Center(
+            child: AppText.paragraph1('No results'),
+          );
   }
 }
 

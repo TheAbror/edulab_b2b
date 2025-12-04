@@ -1,16 +1,16 @@
 import 'package:leti_mobile/features/main_course_page/appbar/course_content_sliver_appbar.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
-class MainCoursePage extends StatefulWidget {
+class EnrolledCoursePage extends StatefulWidget {
   final int id;
 
-  const MainCoursePage({super.key, required this.id});
+  const EnrolledCoursePage({super.key, required this.id});
 
   @override
-  State<MainCoursePage> createState() => _MainCoursePageState();
+  State<EnrolledCoursePage> createState() => _EnrolledCoursePageState();
 }
 
-class _MainCoursePageState extends State<MainCoursePage> {
+class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

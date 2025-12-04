@@ -172,3 +172,5 @@ export 'package:leti_mobile/core/preference_services.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/step_model.dart';
 export 'package:leti_mobile/features/learning_page/bloc/quiz_bloc.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/tabs/favorites_tab.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/chapter_model.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/topic_model.dart';

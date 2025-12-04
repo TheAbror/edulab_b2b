@@ -105,57 +105,6 @@ Map<String, dynamic> _$StatusToJson(Status instance) => <String, dynamic>{
   'label': instance.label,
 };
 
-TopicModel _$TopicModelFromJson(Map<String, dynamic> json) => TopicModel(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  title: json['title'] as String? ?? '',
-  description: json['description'] as String? ?? '',
-  priority: (json['priority'] as num?)?.toInt() ?? 0,
-  courseId: (json['course_id'] as num?)?.toInt(),
-  chapterId: (json['chapter_id'] as num?)?.toInt(),
-  status: json['status'] as String? ?? '',
-  stepsInfo: json['steps_info'],
-  steps:
-      (json['steps'] as List<dynamic>?)
-          ?.map((e) => StepModel.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      [],
-);
-
-Map<String, dynamic> _$TopicModelToJson(TopicModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'priority': instance.priority,
-      'course_id': instance.courseId,
-      'chapter_id': instance.chapterId,
-      'status': instance.status,
-      'steps_info': instance.stepsInfo,
-      'steps': instance.steps,
-    };
-
-CourseContent _$CourseContentFromJson(Map<String, dynamic> json) =>
-    CourseContent(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      title: json['title'] as String? ?? '',
-      description: json['description'] as String? ?? '',
-      priority: (json['priority'] as num?)?.toInt() ?? 0,
-      topics:
-          (json['topics'] as List<dynamic>?)
-              ?.map((e) => TopicModel.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-    );
-
-Map<String, dynamic> _$CourseContentToJson(CourseContent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'priority': instance.priority,
-      'topics': instance.topics,
-    };
-
 SyllabusResponse _$SyllabusResponseFromJson(Map<String, dynamic> json) =>
     SyllabusResponse(
       studyGoals:
@@ -165,7 +114,7 @@ SyllabusResponse _$SyllabusResponseFromJson(Map<String, dynamic> json) =>
           [],
       courseContent:
           (json['course_content'] as List<dynamic>?)
-              ?.map((e) => CourseContent.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -261,7 +210,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       structure: json['structure'] as Map<String, dynamic>?,
       chapters:
           (json['chapters'] as List<dynamic>?)
-              ?.map((e) => CourseContent.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );

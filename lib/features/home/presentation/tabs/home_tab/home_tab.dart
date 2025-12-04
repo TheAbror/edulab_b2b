@@ -56,10 +56,6 @@ class _HomeTabState extends State<HomeTab> {
                   Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                 },
                 openThisCourse: (int id) async {
-                  //if(enrolled) go to mainCoursePage
-                  //otherwise go to singleCoursePage
-                  // AppRoutes.singleCoursePage,
-                  // checkEnrollment
                   final bool? result = await context
                       .read<CoursesBloc>()
                       .checkEnrollment(id);
@@ -70,8 +66,8 @@ class _HomeTabState extends State<HomeTab> {
                     Navigator.pushNamed(
                       context,
 
-                      state.isEnrolled
-                          ? AppRoutes.mainCoursePage
+                      result
+                          ? AppRoutes.enrolledCoursePage
                           : AppRoutes.singleCoursePage,
                       arguments: id,
                     );

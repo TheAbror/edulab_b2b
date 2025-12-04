@@ -30,7 +30,7 @@ abstract class AppRoutes {
   static const singleCoursePageForRecommended =
       'singleCoursePagePageForRecommended';
   static const webView = 'webView';
-  static const mainCoursePage = 'mainCoursePage';
+  static const enrolledCoursePage = 'enrolledCoursePage';
   static const allCategoriesPage = 'allCategoriesPage';
 
   // my learning

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/step_model.dart';
+import 'package:leti_mobile/features/home/data/datasources/models/chapter_model.dart';
 
 part 'courses_models.g.dart';
 
@@ -152,75 +152,11 @@ class Status {
 }
 
 @JsonSerializable(includeIfNull: true)
-class TopicModel {
-  @JsonKey(defaultValue: 0)
-  final int id;
-  @JsonKey(defaultValue: '')
-  final String title;
-  @JsonKey(defaultValue: '')
-  final String? description;
-  @JsonKey(defaultValue: 0)
-  final int priority;
-  @JsonKey(name: 'course_id')
-  final int? courseId;
-  @JsonKey(name: 'chapter_id')
-  final int? chapterId;
-  @JsonKey(defaultValue: '')
-  final String status;
-  @JsonKey(name: 'steps_info')
-  final dynamic stepsInfo;
-  @JsonKey(defaultValue: [])
-  final List<StepModel> steps;
-
-  TopicModel({
-    required this.id,
-    required this.title,
-    this.description,
-    required this.priority,
-    this.courseId,
-    this.chapterId,
-    required this.status,
-    this.stepsInfo,
-    required this.steps,
-  });
-
-  factory TopicModel.fromJson(Map<String, dynamic> json) =>
-      _$TopicModelFromJson(json);
-  Map<String, dynamic> toJson() => _$TopicModelToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true)
-class CourseContent {
-  @JsonKey(defaultValue: 0)
-  final int id;
-  @JsonKey(defaultValue: '')
-  final String title;
-  @JsonKey(defaultValue: '')
-  final String description;
-  @JsonKey(defaultValue: 0)
-  final int priority;
-  @JsonKey(defaultValue: [])
-  final List<TopicModel> topics;
-
-  CourseContent({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.priority,
-    required this.topics,
-  });
-
-  factory CourseContent.fromJson(Map<String, dynamic> json) =>
-      _$CourseContentFromJson(json);
-  Map<String, dynamic> toJson() => _$CourseContentToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true)
 class SyllabusResponse {
   @JsonKey(defaultValue: [], name: 'study_goals')
   final List<String>? studyGoals;
   @JsonKey(defaultValue: [], name: 'course_content')
-  final List<CourseContent>? courseContent;
+  final List<ChapterModel>? courseContent;
 
   SyllabusResponse({required this.studyGoals, this.courseContent});
 
@@ -284,7 +220,7 @@ class SingleCourseInfo {
   final dynamic completionTime;
   final Map<String, dynamic>? structure;
   @JsonKey(defaultValue: [])
-  final List<CourseContent> chapters;
+  final List<ChapterModel> chapters;
 
   SingleCourseInfo({
     required this.id,

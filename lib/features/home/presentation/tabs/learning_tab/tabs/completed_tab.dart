@@ -22,7 +22,7 @@ class CompletedTab extends StatelessWidget {
           progress: progress.toDouble(),
           buttonText: context.localizations.continueButton,
           onPressed: () {
-            Navigator.pushNamed(context, AppRoutes.mainCoursePage);
+            Navigator.pushNamed(context, AppRoutes.enrolledCoursePage);
           },
         );
       },
