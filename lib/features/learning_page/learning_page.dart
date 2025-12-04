@@ -82,6 +82,7 @@ class _LearningPageState extends State<LearningPage>
               state: state,
               controller: _tabController!,
               title: steps.firstWhere((e) => e.id == stepID).title,
+              steps: steps,
             ),
 
             body: _Body(steps: steps, controller: _tabController!),

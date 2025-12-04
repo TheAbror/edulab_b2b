@@ -7,11 +7,13 @@ class LearningResumeCourseAppBar extends StatelessWidget
     required this.state,
     required this.controller,
     required this.title,
+    required this.steps,
   });
 
   final LearningPageState state;
   final TabController controller;
   final String title;
+  final List<StepModel> steps;
 
   @override
   Widget build(BuildContext context) {
@@ -82,9 +84,6 @@ class LearningResumeCourseAppBar extends StatelessWidget
             ),
             child: BlocBuilder<LearningPageBloc, LearningPageState>(
               builder: (context, innerState) {
-                final steps =
-                    innerState.resumedCourse.chapters.first.topics.first.steps;
-
                 return TabBar(
                   tabAlignment: TabAlignment.start,
                   onTap: (index) {
