@@ -61,6 +61,7 @@ class _Body extends StatelessWidget {
               color: context.colors.borderMuted.withOpacity(0.15),
               height: 1.h,
             ),
+            if (state.allCourses.isEmpty) Center(child: Text('No results')),
             ListView.separated(
               itemCount: (categoryID != null)
                   ? state.coursesByCategory.length
@@ -82,10 +83,11 @@ class _Body extends StatelessWidget {
                 );
               },
             ),
-            Divider(
-              color: context.colors.borderMuted.withOpacity(0.15),
-              height: 1.h,
-            ),
+            if (state.allCourses.isNotEmpty)
+              Divider(
+                color: context.colors.borderMuted.withOpacity(0.15),
+                height: 1.h,
+              ),
           ],
         );
       },

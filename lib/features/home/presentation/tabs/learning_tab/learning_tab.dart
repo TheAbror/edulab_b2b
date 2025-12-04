@@ -1,4 +1,3 @@
-import 'package:leti_mobile/features/home/presentation/tabs/learning_tab/tabs/favorites_tab.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class LearningTab extends StatelessWidget {

@@ -10,6 +10,7 @@ class CoursesState extends Equatable {
   final List<int> expandedSubcategoryIndexes;
   final BlocProgress blocProgress;
   final String failureMessage;
+  final bool isEnrolled;
 
   const CoursesState({
     required this.fullCourseInfo,
@@ -20,6 +21,7 @@ class CoursesState extends Equatable {
     required this.expandedSubcategoryIndexes,
     required this.blocProgress,
     required this.failureMessage,
+    required this.isEnrolled,
   });
 
   factory CoursesState.initial() {
@@ -72,6 +74,7 @@ class CoursesState extends Equatable {
       expandedSubcategoryIndexes: const [],
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
+      isEnrolled: false,
     );
   }
 
@@ -85,6 +88,7 @@ class CoursesState extends Equatable {
     List<int>? expandedSubcategoryIndexes,
     BlocProgress? blocProgress,
     String? failureMessage,
+    bool? isEnrolled,
   }) {
     return CoursesState(
       fullCourseInfo: fullCourseInfo ?? this.fullCourseInfo,
@@ -96,18 +100,20 @@ class CoursesState extends Equatable {
           expandedSubcategoryIndexes ?? this.expandedSubcategoryIndexes,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
+      isEnrolled: isEnrolled ?? this.isEnrolled,
     );
   }
 
   @override
   List<Object?> get props => [
-        fullCourseInfo,
-        coursesAll,
-        currentCourse,
-        courseByCategory,
-        categories,
-        expandedSubcategoryIndexes,
-        blocProgress,
-        failureMessage,
-      ];
+    fullCourseInfo,
+    coursesAll,
+    currentCourse,
+    courseByCategory,
+    categories,
+    expandedSubcategoryIndexes,
+    blocProgress,
+    failureMessage,
+    isEnrolled,
+  ];
 }

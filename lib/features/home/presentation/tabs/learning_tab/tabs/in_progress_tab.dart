@@ -34,7 +34,7 @@ class InProgressTab extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    AppRoutes.mainCoursePage,
+                    AppRoutes.learningPage,
                     arguments: item[index].id,
                   );
                 },

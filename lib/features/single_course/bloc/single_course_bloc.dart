@@ -110,13 +110,15 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
         );
       }
     } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
+      if (!isClosed) {
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: AppStrings.internalErrorMessage,
+          ),
+        );
+        debugPrint('$e');
+      }
     }
   }
 

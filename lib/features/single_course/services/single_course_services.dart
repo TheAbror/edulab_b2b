@@ -11,6 +11,9 @@ abstract class SingleCourseServices extends ChopperService {
   @Get(path: '${AppStrings.course}/{id}')
   Future<Response<SingleCourseInfo>> getSingleCourseByItsId(@Path('id') int id);
 
+  @Get(path: '${AppStrings.checkEnrollment}/?course_id={id}')
+  Future<Response<MobileResponse>> checkEnrollment(@Path('id') int id);
+
   @Get(path: AppStrings.course)
   Future<Response<SingleCourseInfo>> getSingleStepByID({
     @Query('chapter_id') required int chapterId,

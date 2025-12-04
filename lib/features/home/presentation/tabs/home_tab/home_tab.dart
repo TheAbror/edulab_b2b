@@ -9,32 +9,6 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   final homeState = context.read<HomeBloc>().state;
-  //   if (homeState.isDialogShownFirstTime) {
-  //     Future.delayed(Duration(seconds: 1), () {
-  //       if (!mounted) return;
-  //       LearningStreakPopUp(
-  //         context,
-  //         AppStrings.weekDaysList,
-  //         AppStrings.weekDaysListisSuccess,
-  //       );
-  //     });
-  //     context.read<HomeBloc>().isDialogShownFirstTime();
-  //   }
-  // _connectivity.initialise();
-  // _connectivity.myStream.listen((source) {
-  //   setState(() => _source = source);
-  // });
-  // }
-  @override
-  void dispose() {
-    // _connectivity.disposeStream();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<CoursesBloc, CoursesState>(
       builder: (context, state) {
@@ -81,12 +55,27 @@ class _HomeTabState extends State<HomeTab> {
                 onTapViewAll: () {
                   Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                 },
-                openThisCourse: (int id) {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.singleCoursePage,
-                    arguments: id,
-                  );
+                openThisCourse: (int id) async {
+                  //if(enrolled) go to mainCoursePage
+                  //otherwise go to singleCoursePage
+                  // AppRoutes.singleCoursePage,
+                  // checkEnrollment
+                  final bool? result = await context
+                      .read<CoursesBloc>()
+                      .checkEnrollment(id);
+
+                  if (!context.mounted) return;
+
+                  if (result != null) {
+                    Navigator.pushNamed(
+                      context,
+
+                      state.isEnrolled
+                          ? AppRoutes.mainCoursePage
+                          : AppRoutes.singleCoursePage,
+                      arguments: id,
+                    );
+                  }
                 },
                 imageUrl: item
                     .map((e) => e.thumbnail?.original_url ?? '')
