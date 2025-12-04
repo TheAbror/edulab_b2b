@@ -143,7 +143,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
     final Color inactiveColor = context.colors.containerDefault;
 
     if (step.type == 'TEXT' || step.type == 'text') {
-      return Assets.icons.learning.questionMarkIcon.svg(
+      return Assets.icons.learning.text.svg(
         colorFilter: ColorFilter.mode(
           isActive ? activeColor : inactiveColor,
           BlendMode.srcIn,

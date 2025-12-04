@@ -441,6 +441,9 @@ class $AssetsIconsLearningGen {
   /// File path: assets/icons/learning/right.svg
   SvgGenImage get right => const SvgGenImage('assets/icons/learning/right.svg');
 
+  /// File path: assets/icons/learning/text.svg
+  SvgGenImage get text => const SvgGenImage('assets/icons/learning/text.svg');
+
   /// File path: assets/icons/learning/writeIcon.svg
   SvgGenImage get writeIcon =>
       const SvgGenImage('assets/icons/learning/writeIcon.svg');
@@ -458,6 +461,7 @@ class $AssetsIconsLearningGen {
     leftI,
     questionMarkIcon,
     right,
+    text,
     writeIcon,
   ];
 }
