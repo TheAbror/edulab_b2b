@@ -48,6 +48,20 @@ class StepModel {
     required this.answers,
   });
 
+  factory StepModel.initial() {
+    return StepModel(
+      id: 0,
+      title: '',
+      description: '',
+      priority: 0,
+      type: '',
+      status: '',
+      materials: [],
+      answers: [],
+      questions: [],
+    );
+  }
+
   factory StepModel.fromJson(Map<String, dynamic> json) =>
       _$StepModelFromJson(json);
   Map<String, dynamic> toJson() => _$StepModelToJson(this);

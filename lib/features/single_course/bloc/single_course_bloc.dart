@@ -86,6 +86,7 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
             state.copyWith(
               singleCourse: data,
               singleCourseChapters: data.chapters,
+              lastStoppedStep: data.currentlyActive, //TODO work in here
               courseMaterialsAreHidden: (content?.isNotEmpty == true)
                   ? ((content?.length ?? 0) > 3 ? true : false)
                   : false,

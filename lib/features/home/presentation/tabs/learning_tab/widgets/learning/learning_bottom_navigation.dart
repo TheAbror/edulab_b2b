@@ -1,7 +1,14 @@
 import 'package:leti_mobile/widget_imports.dart';
 
 class LearningBottomNavigation extends StatelessWidget {
-  const LearningBottomNavigation({super.key});
+  const LearningBottomNavigation({
+    super.key,
+    required this.controller,
+    required this.stepsLength,
+  });
+
+  final TabController controller;
+  final int stepsLength;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +23,25 @@ class LearningBottomNavigation extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          LearningBottomNavButtonLeft(onTap: () {}, text: 'Prev.'),
-          LearningBottomNavButtonRight(onTap: () {}, text: 'Next'),
+          // PREV
+          LearningBottomNavButtonLeft(
+            onTap: () {
+              if (controller.index > 0) {
+                controller.animateTo(controller.index - 1);
+              }
+            },
+            text: 'Prev',
+          ),
+
+          // NEXT
+          LearningBottomNavButtonRight(
+            onTap: () {
+              if (controller.index < stepsLength - 1) {
+                controller.animateTo(controller.index + 1);
+              }
+            },
+            text: 'Next',
+          ),
         ],
       ),
     );

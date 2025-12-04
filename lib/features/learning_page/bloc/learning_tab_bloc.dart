@@ -32,6 +32,7 @@ class LearningPageBloc extends Cubit<LearningPageState> {
           emit(
             state.copyWith(
               resumedCourse: data,
+              lastStoppedStep: data.currentlyActive,
               blocProgress: BlocProgress.LOADED,
             ),
           );

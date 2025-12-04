@@ -29,6 +29,7 @@ class CoursesState extends Equatable {
       fullCourseInfo: CourseShortInfo(
         id: 0,
         title: '',
+        progess: 0,
         description: [],
         short_description: '',
         category: CategoryModel(

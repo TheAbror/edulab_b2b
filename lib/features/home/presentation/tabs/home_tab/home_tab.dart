@@ -27,8 +27,8 @@ class _HomeTabState extends State<HomeTab> {
               HomeMyStudyWidget(
                 title: currentCourse.first.title,
                 image: currentCourse.first.thumbnail?.original_url ?? '',
-                // progress: currentCourse.first.overallProgress ?? 0,
-                progress: 0,
+                progress: currentCourse.first.progess,
+                // progress: 0,
                 buttonText: context.localizations.continueButton,
                 continueCourse: () {
                   Navigator.pushNamed(

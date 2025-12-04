@@ -97,4 +97,11 @@ class QuizBloc extends Cubit<QuizState> {
       );
     }
   }
+
+  void clearAll() {
+    final count = state.quizzesCount;
+    emit(QuizState.initial());
+
+    emit(state.copyWith(quizzesCount: count));
+  }
 }

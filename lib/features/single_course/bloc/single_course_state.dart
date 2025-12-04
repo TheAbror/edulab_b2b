@@ -10,6 +10,7 @@ class SingleCourseState extends Equatable {
   final bool isFavorite;
   final BlocProgress blocProgress;
   final String failureMessage;
+  final CurrentlyActive? lastStoppedStep;
 
   const SingleCourseState({
     required this.singleCourse,
@@ -20,6 +21,7 @@ class SingleCourseState extends Equatable {
     required this.isFavorite,
     required this.blocProgress,
     required this.failureMessage,
+    required this.lastStoppedStep,
   });
 
   factory SingleCourseState.initial() {
@@ -71,6 +73,7 @@ class SingleCourseState extends Equatable {
       isFavorite: false,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
+      lastStoppedStep: CurrentlyActive(chapterID: 0, topicID: 0, stepID: 0),
     );
   }
 
@@ -83,6 +86,7 @@ class SingleCourseState extends Equatable {
     bool? isFavorite,
     BlocProgress? blocProgress,
     String? failureMessage,
+    CurrentlyActive? lastStoppedStep,
   }) {
     return SingleCourseState(
       singleCourse: singleCourse ?? this.singleCourse,
@@ -94,6 +98,7 @@ class SingleCourseState extends Equatable {
       isFavorite: isFavorite ?? this.isFavorite,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
+      lastStoppedStep: lastStoppedStep ?? this.lastStoppedStep,
     );
   }
 
@@ -107,5 +112,6 @@ class SingleCourseState extends Equatable {
     isFavorite,
     blocProgress,
     failureMessage,
+    lastStoppedStep,
   ];
 }

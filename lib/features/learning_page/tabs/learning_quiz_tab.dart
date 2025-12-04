@@ -27,7 +27,7 @@ class LearningPageQuizTab extends StatelessWidget {
               return Column(
                 children: [
                   if (state.correctnessPercentage != 0)
-                    state.correctnessPercentage > 66
+                    state.correctnessPercentage > 90
                         ? Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(bottom: 8.h),
@@ -65,7 +65,7 @@ class LearningPageQuizTab extends StatelessWidget {
                                   'You scored '
                                   '${state.correctAnswersCount}/${state.overallAnswersCount} '
                                   '(${((state.correctAnswersCount / state.overallAnswersCount) * 100).toStringAsFixed(0)}%)'
-                                  'points and didn’t pass the quiz this time.',
+                                  ' points and didn’t pass the quiz this time.',
                                   maxLines: 3,
                                 ),
                               ],
@@ -141,94 +141,13 @@ class LearningPageQuizTab extends StatelessWidget {
 
                             SizedBox(height: 12.h),
 
-                            ListView.builder(
-                              itemCount: question.options.length,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, innerIndex) {
-                                final option = question.options[innerIndex];
-
-                                final request = QuizRequest(
-                                  questionId: question.id,
-                                  stepId: step.id,
-                                  selectedOptionIds: [option.id.toString()],
-                                );
-
-                                final isSelected = currentQuestionRequest
-                                    .selectedOptionIds
-                                    .contains(option.id.toString());
-
-                                return Ink(
-                                  child: InkWell(
-                                    onTap: () {
-                                      context.read<QuizBloc>().addQuizAnswer(
-                                        request,
-                                      );
-                                    },
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Container(
-                                      padding: EdgeInsets.all(8),
-                                      margin: EdgeInsets.only(bottom: 2.h),
-                                      decoration: BoxDecoration(
-                                        color: isSelected
-                                            ? bgColor
-                                            : Colors.transparent,
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: context.colors.borderMuted
-                                              .withOpacity(0.15),
-                                          width: 1.w,
-                                        ),
-                                      ),
-
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 24.w,
-                                            width: 24.w,
-                                            decoration: BoxDecoration(
-                                              color: isSelected
-                                                  ? Theme.of(
-                                                      context,
-                                                    ).colorScheme.primary
-                                                  : Colors.transparent,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                    4,
-                                                  ),
-                                              border: Border.all(
-                                                color: context
-                                                    .colors
-                                                    .borderMuted
-                                                    .withOpacity(
-                                                      0.25,
-                                                    ),
-                                                width: 2.w,
-                                              ),
-                                            ),
-                                            child: isSelected
-                                                ? Icon(
-                                                    isSelected
-                                                        ? icon
-                                                        : Icons.done,
-                                                  )
-                                                : SizedBox(),
-                                          ),
-                                          SizedBox(width: 10.w),
-                                          Flexible(
-                                            child: HtmlWidget(
-                                              option.text,
-                                              textStyle: TextStyle(
-                                                fontSize: 16.sp,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
+                            QuizOptionsWidget(
+                              question: question,
+                              step: step,
+                              currentQuestionRequest: currentQuestionRequest,
+                              bgColor: bgColor,
+                              icon: icon,
+                              state: state,
                             ),
                             SizedBox(height: 10.h),
                           ],
@@ -238,22 +157,140 @@ class LearningPageQuizTab extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
 
-                  ActionButton(
-                    isDisabled: !state.isAllSelected,
-                    text: 'Submit',
-                    onTap: () {
-                      if (state.isAllSelected &&
-                          state.blocProgress != BlocProgress.IS_LOADING) {
-                        context.read<QuizBloc>().submitAllQuizzes();
-                      }
-                    },
-                  ),
+                  if (state.correctnessPercentage > 90)
+                    ActionButton(text: 'Completed', onTap: () {}),
+
+                  if (state.correctnessPercentage != 0 &&
+                      state.correctnessPercentage < 90)
+                    ActionButton(
+                      text: 'Retake quiz',
+                      onTap: () {
+                        context.read<QuizBloc>().clearAll();
+                      },
+                    ),
+
+                  if (state.correctnessPercentage == 0)
+                    ActionButton(
+                      isDisabled: !state.isAllSelected,
+                      text: 'Submit',
+                      onTap: () {
+                        if (state.isAllSelected &&
+                            state.blocProgress != BlocProgress.IS_LOADING) {
+                          context.read<QuizBloc>().submitAllQuizzes();
+                        }
+                      },
+                    ),
                 ],
               );
             },
           ),
         ),
       ),
+    );
+  }
+}
+
+class QuizOptionsWidget extends StatelessWidget {
+  const QuizOptionsWidget({
+    super.key,
+    required this.question,
+    required this.step,
+    required this.currentQuestionRequest,
+    required this.bgColor,
+    required this.icon,
+    required this.state,
+  });
+
+  final QuestionModel question;
+  final StepModel step;
+  final QuizRequest currentQuestionRequest;
+  final Color? bgColor;
+  final IconData? icon;
+  final QuizState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: question.options.length,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, innerIndex) {
+        final option = question.options[innerIndex];
+
+        final request = QuizRequest(
+          questionId: question.id,
+          stepId: step.id,
+          selectedOptionIds: [option.id.toString()],
+        );
+
+        final isSelected = currentQuestionRequest.selectedOptionIds.contains(
+          option.id.toString(),
+        );
+
+        return Ink(
+          child: InkWell(
+            onTap: () {
+              if (state.response?.isEmpty == true) {
+                context.read<QuizBloc>().addQuizAnswer(
+                  request,
+                );
+              }
+            },
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              padding: EdgeInsets.all(8),
+              margin: EdgeInsets.only(bottom: 2.h),
+              decoration: BoxDecoration(
+                color: isSelected ? bgColor : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: context.colors.borderMuted.withOpacity(0.15),
+                  width: 1.w,
+                ),
+              ),
+
+              child: Row(
+                children: [
+                  Container(
+                    height: 24.w,
+                    width: 24.w,
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? Theme.of(
+                              context,
+                            ).colorScheme.primary
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(
+                        4,
+                      ),
+                      border: Border.all(
+                        color: context.colors.borderMuted.withOpacity(
+                          0.25,
+                        ),
+                        width: 2.w,
+                      ),
+                    ),
+                    child: isSelected
+                        ? Icon(
+                            isSelected ? icon : Icons.done,
+                          )
+                        : SizedBox(),
+                  ),
+                  SizedBox(width: 10.w),
+                  Flexible(
+                    child: HtmlWidget(
+                      option.text,
+                      textStyle: TextStyle(
+                        fontSize: 16.sp,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

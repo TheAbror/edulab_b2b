@@ -50,6 +50,7 @@ ThemeData lightTheme() {
         staticTransparent: NewColorsLight.staticTransparent,
         successContainerDefault: NewColorsLight.successContainerDefault,
         errorContainerDefault: NewColorsLight.errorContainerDefault,
+        accentDefault: NewColorsLight.accentDefault,
       ),
     ],
   );
@@ -104,6 +105,7 @@ ThemeData darkTheme() {
         staticTransparent: NewColorsDark.staticTransparent,
         successContainerDefault: NewColorsDark.successContainerDefault,
         errorContainerDefault: NewColorsDark.errorContainerDefault,
+        accentDefault: NewColorsDark.accentDefault,
       ),
     ],
   );

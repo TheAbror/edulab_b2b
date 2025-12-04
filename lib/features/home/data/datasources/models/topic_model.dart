@@ -36,6 +36,17 @@ class TopicModel {
     required this.steps,
   });
 
+  factory TopicModel.initial() {
+    return TopicModel(
+      id: 0,
+      title: '',
+      description: '',
+      priority: 0,
+      status: '',
+      steps: [],
+    );
+  }
+
   factory TopicModel.fromJson(Map<String, dynamic> json) =>
       _$TopicModelFromJson(json);
   Map<String, dynamic> toJson() => _$TopicModelToJson(this);

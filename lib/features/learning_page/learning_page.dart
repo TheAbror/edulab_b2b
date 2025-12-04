@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:leti_mobile/features/learning_page/tabs/learning_quiz_tab.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
@@ -18,6 +20,7 @@ class _LearningPageState extends State<LearningPage>
     _tabController?.dispose();
     _tabController = TabController(length: steps.length, vsync: this);
 
+    /// Sync UI → BLoC
     _tabController!.addListener(() {
       if (!_tabController!.indexIsChanging) {
         context.read<LearningPageBloc>().changeTabIndex(_tabController!.index);
@@ -38,28 +41,57 @@ class _LearningPageState extends State<LearningPage>
             );
           }
 
-          // final steps = state.resumedCourse.chapters.where((e) => e.id == widget.id).first.topics;
-          final steps = state.resumedCourse.chapters.first.topics.first.steps;
+          final chapterID = state.lastStoppedStep?.chapterID;
+          final topicID = state.lastStoppedStep?.topicID;
+          final stepID = state.lastStoppedStep?.stepID;
 
+          // Find the chapter safely
+          final chapter = state.resumedCourse.chapters.firstWhere(
+            (c) => c.id == chapterID,
+            orElse: () => ChapterModel.initial(),
+          );
+
+          // Find the topic safely
+          final topic = chapter.topics.firstWhere(
+            (t) => t.id == topicID,
+            orElse: () => TopicModel.initial(),
+          );
+
+          // Always use **all steps** in the topic for the TabController
+          final steps = topic.steps.isNotEmpty
+              ? topic.steps
+              : [StepModel.initial()];
+
+          // Initialize tab controller
           if (_tabController == null ||
               _tabController!.length != steps.length) {
             _initTabController(steps);
           }
 
-          return DefaultTabController(
-            length: steps.length,
-            child: Scaffold(
-              backgroundColor: context.colors.bgPage1,
-              appBar: LearningResumeCourseAppBar(
-                state: state,
-                controller: _tabController!,
-                title: state.resumedCourse.chapters.first.title,
-              ),
-              bottomNavigationBar: state.isExpanded
-                  ? const SizedBox()
-                  : LearningBottomNavigation(),
-              body: _Body(steps: steps, controller: _tabController!),
+          // Optional: set initial index to last stopped step
+          if (stepID != null) {
+            final initialIndex = steps
+                .indexWhere((s) => s.id == stepID)
+                .clamp(0, steps.length - 1);
+            _tabController!.index = initialIndex;
+          }
+
+          return Scaffold(
+            backgroundColor: context.colors.bgPage1,
+            appBar: LearningResumeCourseAppBar(
+              state: state,
+              controller: _tabController!,
+              title: steps.firstWhere((e) => e.id == stepID).title,
             ),
+
+            body: _Body(steps: steps, controller: _tabController!),
+
+            bottomNavigationBar: state.isExpanded
+                ? const SizedBox()
+                : LearningBottomNavigation(
+                    controller: _tabController!,
+                    stepsLength: steps.length,
+                  ),
           );
         },
       ),

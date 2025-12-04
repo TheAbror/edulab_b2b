@@ -24,6 +24,16 @@ class ChapterModel {
     required this.topics,
   });
 
+  factory ChapterModel.initial() {
+    return ChapterModel(
+      id: 0,
+      title: '',
+      description: '',
+      priority: 0,
+      topics: [],
+    );
+  }
+
   factory ChapterModel.fromJson(Map<String, dynamic> json) =>
       _$ChapterModelFromJson(json);
   Map<String, dynamic> toJson() => _$ChapterModelToJson(this);

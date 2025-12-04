@@ -213,6 +213,11 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      currentlyActive: json['current_active'] == null
+          ? null
+          : CurrentlyActive.fromJson(
+              json['current_active'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
@@ -249,6 +254,7 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'completion_time': instance.completionTime,
       'structure': instance.structure,
       'chapters': instance.chapters,
+      'current_active': instance.currentlyActive,
     };
 
 CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
@@ -305,6 +311,7 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
           ?.map((e) => (e as num).toInt())
           .toList(),
       status: json['status'] as String? ?? '',
+      progess: (json['overall_progress'] as num?)?.toInt() ?? 0,
       learnersCount: (json['learners_count'] as num?)?.toInt() ?? 0,
     );
 
@@ -332,5 +339,20 @@ Map<String, dynamic> _$CourseShortInfoToJson(CourseShortInfo instance) =>
       'will_learn': instance.willLearn,
       'co_author_ids': instance.coAuthorIds,
       'status': instance.status,
+      'overall_progress': instance.progess,
       'learners_count': instance.learnersCount,
+    };
+
+CurrentlyActive _$CurrentlyActiveFromJson(Map<String, dynamic> json) =>
+    CurrentlyActive(
+      chapterID: (json['chapter_id'] as num?)?.toInt() ?? 0,
+      topicID: (json['topic_id'] as num?)?.toInt() ?? 0,
+      stepID: (json['step_id'] as num?)?.toInt() ?? 0,
+    );
+
+Map<String, dynamic> _$CurrentlyActiveToJson(CurrentlyActive instance) =>
+    <String, dynamic>{
+      'chapter_id': instance.chapterID,
+      'topic_id': instance.topicID,
+      'step_id': instance.stepID,
     };

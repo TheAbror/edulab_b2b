@@ -87,7 +87,7 @@ class HomeCourseResumeCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '${progress * 100}%'.replaceAll('.0', ''),
+                '$progress%',
                 style: TextStyle(
                   color: context.colors.fgMuted,
                   fontSize: 12.sp,
@@ -98,7 +98,7 @@ class HomeCourseResumeCard extends StatelessWidget {
           SizedBox(height: 6.h),
           LinearProgressIndicator(
             minHeight: 8.h,
-            value: progress.toDouble(),
+            value: progress.toDouble() / 100,
             color: Theme.of(context).colorScheme.primary,
             backgroundColor: context.colors.bgSurface3,
             borderRadius: BorderRadius.circular(10.r),

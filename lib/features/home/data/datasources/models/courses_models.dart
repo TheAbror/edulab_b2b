@@ -221,6 +221,8 @@ class SingleCourseInfo {
   final Map<String, dynamic>? structure;
   @JsonKey(defaultValue: [])
   final List<ChapterModel> chapters;
+  @JsonKey(name: 'current_active')
+  final CurrentlyActive? currentlyActive;
 
   SingleCourseInfo({
     required this.id,
@@ -255,6 +257,7 @@ class SingleCourseInfo {
     this.completionTime,
     this.structure,
     required this.chapters,
+    this.currentlyActive,
   });
 
   factory SingleCourseInfo.fromJson(Map<String, dynamic> json) =>
@@ -329,6 +332,9 @@ class CourseShortInfo {
   @JsonKey(defaultValue: "")
   final String? status;
 
+  @JsonKey(defaultValue: 0, name: 'overall_progress')
+  final int progess;
+
   @JsonKey(name: "learners_count", defaultValue: 0)
   final int learnersCount;
 
@@ -355,6 +361,7 @@ class CourseShortInfo {
     this.willLearn,
     this.coAuthorIds,
     this.status,
+    required this.progess,
     required this.learnersCount,
   });
 
@@ -362,4 +369,30 @@ class CourseShortInfo {
       _$CourseShortInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$CourseShortInfoToJson(this);
+}
+
+//  "current_active": {
+//         "chapter_id": 6738,
+//         "topic_id": 6757,
+//         "step_id": 6773
+//     }
+
+@JsonSerializable()
+class CurrentlyActive {
+  @JsonKey(defaultValue: 0, name: 'chapter_id')
+  final int chapterID;
+  @JsonKey(defaultValue: 0, name: 'topic_id')
+  final int topicID;
+  @JsonKey(defaultValue: 0, name: 'step_id')
+  final int stepID;
+
+  CurrentlyActive({
+    required this.chapterID,
+    required this.topicID,
+    required this.stepID,
+  });
+
+  factory CurrentlyActive.fromJson(Map<String, dynamic> json) =>
+      _$CurrentlyActiveFromJson(json);
+  Map<String, dynamic> toJson() => _$CurrentlyActiveToJson(this);
 }
