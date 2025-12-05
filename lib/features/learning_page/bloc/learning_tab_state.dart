@@ -7,7 +7,9 @@ class LearningPageState extends Equatable {
   final SingleCourseInfo resumedCourse;
   final BlocProgress blocProgress;
   final String failureMessage;
-  final CurrentlyActive? lastStoppedStep;
+  final int chapterID;
+  final int topicID;
+  final int stepID;
 
   const LearningPageState({
     required this.isExpanded,
@@ -16,7 +18,9 @@ class LearningPageState extends Equatable {
     required this.resumedCourse,
     required this.blocProgress,
     required this.failureMessage,
-    required this.lastStoppedStep,
+    required this.chapterID,
+    required this.topicID,
+    required this.stepID,
   });
 
   factory LearningPageState.initial() {
@@ -28,7 +32,6 @@ class LearningPageState extends Equatable {
         description: [],
         shortDescription: '',
         co_authors: [],
-        prerequisites: [],
         skills: [],
         coAuthorIds: [],
         chapters: [],
@@ -37,7 +40,6 @@ class LearningPageState extends Equatable {
           title: '',
         ),
         learnersCount: 0,
-        willLearn: [],
         syllabus: SyllabusResponse(studyGoals: []),
         authors: [
           Authors(
@@ -64,11 +66,10 @@ class LearningPageState extends Equatable {
       materialsTabIndex: 0,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
-      lastStoppedStep: CurrentlyActive(
-        chapterID: 0,
-        topicID: 0,
-        stepID: 0,
-      ),
+
+      chapterID: 0,
+      topicID: 0,
+      stepID: 0,
     );
   }
 
@@ -79,7 +80,9 @@ class LearningPageState extends Equatable {
     SingleCourseInfo? resumedCourse,
     BlocProgress? blocProgress,
     String? failureMessage,
-    CurrentlyActive? lastStoppedStep,
+    int? chapterID,
+    int? topicID,
+    int? stepID,
   }) {
     return LearningPageState(
       isExpanded: isExpanded ?? this.isExpanded,
@@ -88,7 +91,9 @@ class LearningPageState extends Equatable {
       resumedCourse: resumedCourse ?? this.resumedCourse,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
-      lastStoppedStep: lastStoppedStep ?? this.lastStoppedStep,
+      chapterID: chapterID ?? this.chapterID,
+      topicID: topicID ?? this.topicID,
+      stepID: stepID ?? this.stepID,
     );
   }
 
@@ -100,6 +105,8 @@ class LearningPageState extends Equatable {
     resumedCourse,
     blocProgress,
     failureMessage,
-    lastStoppedStep,
+    chapterID,
+    topicID,
+    stepID,
   ];
 }

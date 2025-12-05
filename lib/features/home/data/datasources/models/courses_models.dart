@@ -196,17 +196,13 @@ class SingleCourseInfo {
   final int? updatedDate;
   @JsonKey(name: "course_status")
   final LabelValueResponse? courseStatus;
-  @JsonKey(name: "xapi_course_url")
-  final String? xapiCourseUrl;
+  // @JsonKey(name: "xapi_course_url")
+  // final String? xapiCourseUrl;
   final MediaDTO? file;
   final LanguageLevel? language;
   final LanguageLevel? level;
-  @JsonKey(name: "will_learn", defaultValue: [])
-  final List<String> willLearn;
   @JsonKey(defaultValue: [])
-  final List<String> prerequisites;
-  @JsonKey(defaultValue: [])
-  final List<String> skills;
+  final List<LabelValueResponse> skills;
   @JsonKey(name: "co_author_ids", defaultValue: [])
   final List<int> coAuthorIds;
   final Status? status;
@@ -216,9 +212,9 @@ class SingleCourseInfo {
   final int? progress;
   final bool? published;
   final bool? canPublish;
-  @JsonKey(name: "completion_time")
-  final dynamic completionTime;
-  final Map<String, dynamic>? structure;
+  // @JsonKey(name: "completion_time")
+  // final String? completionTime;
+  // final Map<String, dynamic>? structure;
   @JsonKey(defaultValue: [])
   final List<ChapterModel> chapters;
   @JsonKey(name: 'current_active')
@@ -240,12 +236,10 @@ class SingleCourseInfo {
     this.createdDate,
     this.updatedDate,
     this.courseStatus,
-    this.xapiCourseUrl,
+    // this.xapiCourseUrl,
     this.file,
     this.language,
     this.level,
-    required this.willLearn,
-    required this.prerequisites,
     required this.skills,
     required this.coAuthorIds,
     this.status,
@@ -254,8 +248,8 @@ class SingleCourseInfo {
     this.progress,
     this.published,
     this.canPublish,
-    this.completionTime,
-    this.structure,
+    // this.completionTime,
+    // this.structure,
     required this.chapters,
     this.currentlyActive,
   });

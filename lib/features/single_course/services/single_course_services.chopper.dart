@@ -62,6 +62,16 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
+  Future<Response<CourseProgressModel>> completeStep(CompleteStepRequest body) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/complete',
+    );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<CourseProgressModel, CourseProgressModel>($request);
+  }
+
+  @override
   Future<Response<SingleCourseInfo>> resumeCourseById(int id) {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/${id}',

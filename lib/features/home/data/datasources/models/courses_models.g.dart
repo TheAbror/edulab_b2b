@@ -166,7 +166,6 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
           : LabelValueResponse.fromJson(
               json['course_status'] as Map<String, dynamic>,
             ),
-      xapiCourseUrl: json['xapi_course_url'] as String?,
       file: json['file'] == null
           ? null
           : MediaDTO.fromJson(json['file'] as Map<String, dynamic>),
@@ -176,19 +175,11 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       level: json['level'] == null
           ? null
           : LanguageLevel.fromJson(json['level'] as Map<String, dynamic>),
-      willLearn:
-          (json['will_learn'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
-      prerequisites:
-          (json['prerequisites'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
       skills:
           (json['skills'] as List<dynamic>?)
-              ?.map((e) => e as String)
+              ?.map(
+                (e) => LabelValueResponse.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       coAuthorIds:
@@ -206,8 +197,6 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       progress: (json['progress'] as num?)?.toInt(),
       published: json['published'] as bool?,
       canPublish: json['canPublish'] as bool?,
-      completionTime: json['completion_time'],
-      structure: json['structure'] as Map<String, dynamic>?,
       chapters:
           (json['chapters'] as List<dynamic>?)
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
@@ -237,12 +226,9 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'created_date': instance.createdDate,
       'updated_date': instance.updatedDate,
       'course_status': instance.courseStatus,
-      'xapi_course_url': instance.xapiCourseUrl,
       'file': instance.file,
       'language': instance.language,
       'level': instance.level,
-      'will_learn': instance.willLearn,
-      'prerequisites': instance.prerequisites,
       'skills': instance.skills,
       'co_author_ids': instance.coAuthorIds,
       'status': instance.status,
@@ -251,8 +237,6 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'progress': instance.progress,
       'published': instance.published,
       'canPublish': instance.canPublish,
-      'completion_time': instance.completionTime,
-      'structure': instance.structure,
       'chapters': instance.chapters,
       'current_active': instance.currentlyActive,
     };

@@ -32,7 +32,6 @@ class SingleCourseState extends Equatable {
         description: [],
         shortDescription: '',
         co_authors: [],
-        prerequisites: [],
         skills: [],
         coAuthorIds: [],
         chapters: [],
@@ -42,7 +41,6 @@ class SingleCourseState extends Equatable {
         ),
 
         learnersCount: 0,
-        willLearn: [],
         syllabus: SyllabusResponse(studyGoals: []),
         authors: [
           Authors(

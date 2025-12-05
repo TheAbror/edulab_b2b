@@ -4,9 +4,11 @@ class LearningPageTextTab extends StatefulWidget {
   const LearningPageTextTab({
     super.key,
     required this.step,
+    required this.markAsComplete,
   });
 
   final StepModel step;
+  final VoidCallback markAsComplete;
 
   @override
   State<LearningPageTextTab> createState() => _LearningPageTextTabState();
@@ -24,17 +26,7 @@ class _LearningPageTextTabState extends State<LearningPageTextTab> {
             children: [
               HtmlWidget(widget.step.text ?? ''),
 
-              Container(
-                height: 48.h,
-                width: 163.w,
-                margin: EdgeInsets.only(top: 24.h),
-
-                decoration: BoxDecoration(
-                  color: context.colors.accentDefault,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(child: AppText.headline1('Mark as complete')),
-              ),
+              MarkAsCompleteButton(markAsComplete: widget.markAsComplete),
 
               if (widget.step.materials.isNotEmpty)
                 state.materialsTabIndex == 0
@@ -43,6 +35,32 @@ class _LearningPageTextTabState extends State<LearningPageTextTab> {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+class MarkAsCompleteButton extends StatelessWidget {
+  const MarkAsCompleteButton({
+    super.key,
+    required this.markAsComplete,
+  });
+
+  final VoidCallback markAsComplete;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: markAsComplete,
+      child: Container(
+        height: 48.h,
+        width: 163.w,
+        margin: EdgeInsets.only(top: 24.h),
+        decoration: BoxDecoration(
+          color: context.colors.accentDefault,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(child: AppText.headline1('Mark as complete')),
       ),
     );
   }

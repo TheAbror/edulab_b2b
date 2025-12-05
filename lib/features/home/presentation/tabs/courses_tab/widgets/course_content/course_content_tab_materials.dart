@@ -88,6 +88,7 @@ class CourseInfoMaterialExpansionItem extends StatelessWidget {
                   courseId: courseID ?? 0,
                   topicId: topic.id,
                 );
+                //TODO add complicated logic here
               },
               text: chapterInfoText[index],
               status: topic.status,

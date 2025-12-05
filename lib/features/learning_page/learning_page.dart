@@ -41,52 +41,53 @@ class _LearningPageState extends State<LearningPage>
             );
           }
 
-          final chapterID = state.lastStoppedStep?.chapterID;
-          final topicID = state.lastStoppedStep?.topicID;
-          final stepID = state.lastStoppedStep?.stepID;
+          final chapterID = state.chapterID;
+          final topicID = state.topicID;
+          final stepID = state.stepID;
 
-          // Find the chapter safely
+          // --- Find the chapter safely ---
           final chapter = state.resumedCourse.chapters.firstWhere(
             (c) => c.id == chapterID,
             orElse: () => ChapterModel.initial(),
           );
 
-          // Find the topic safely
+          // --- Find the topic safely ---
           final topic = chapter.topics.firstWhere(
             (t) => t.id == topicID,
             orElse: () => TopicModel.initial(),
           );
 
-          // Always use **all steps** in the topic for the TabController
+          // --- Steps for the tab controller ---
           final steps = topic.steps.isNotEmpty
               ? topic.steps
               : [StepModel.initial()];
 
-          // Initialize tab controller
+          // --- Initialize TabController when needed ---
           if (_tabController == null ||
               _tabController!.length != steps.length) {
             _initTabController(steps);
           }
 
-          // Optional: set initial index to last stopped step
-          if (stepID != null) {
-            final initialIndex = steps
-                .indexWhere((s) => s.id == stepID)
-                .clamp(0, steps.length - 1);
-            _tabController!.index = initialIndex;
-          }
+          // --- Move to the correct step index ---
+          final initialIndex = steps.indexWhere((s) => s.id == stepID);
+          _tabController!.index = initialIndex == -1 ? 0 : initialIndex;
 
+          // --- Build UI ---
           return Scaffold(
             backgroundColor: context.colors.bgPage1,
             appBar: LearningResumeCourseAppBar(
               state: state,
               controller: _tabController!,
-              title: steps.firstWhere((e) => e.id == stepID).title,
+              title: topic.title,
               steps: steps,
             ),
-
-            body: _Body(steps: steps, controller: _tabController!),
-
+            body: _Body(
+              steps: steps,
+              controller: _tabController!,
+              chapterID: chapter.id,
+              stepID: stepID,
+              topicID: topic.id,
+            ),
             bottomNavigationBar: state.isExpanded
                 ? const SizedBox()
                 : LearningBottomNavigation(
@@ -103,8 +104,17 @@ class _LearningPageState extends State<LearningPage>
 class _Body extends StatefulWidget {
   final List<StepModel> steps;
   final TabController controller;
+  final int chapterID;
+  final int topicID;
+  final int stepID;
 
-  const _Body({required this.steps, required this.controller});
+  const _Body({
+    required this.steps,
+    required this.controller,
+    required this.chapterID,
+    required this.topicID,
+    required this.stepID,
+  });
 
   @override
   State<_Body> createState() => _BodyState();
@@ -190,7 +200,15 @@ class _BodyState extends State<_Body> {
         (step) {
           switch (step.type) {
             case 'TEXT':
-              return LearningPageTextTab(step: step);
+              return LearningPageTextTab(
+                step: step,
+                markAsComplete: () =>
+                    context.read<LearningPageBloc>().completeStep(
+                      chapterID: widget.chapterID,
+                      topicID: widget.topicID,
+                      stepID: widget.stepID,
+                    ),
+              );
             case 'VIDEO':
               if (_isVideoLoading) {
                 return const Center(child: CircularProgressIndicator());
@@ -204,13 +222,21 @@ class _BodyState extends State<_Body> {
                   chewieController: _chewieController,
                 );
               } else {
-                return const Center(
+                return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.videocam_off, size: 64, color: Colors.grey),
                       SizedBox(height: 16),
                       Text('Video not available'),
+                      MarkAsCompleteButton(
+                        markAsComplete: () =>
+                            context.read<LearningPageBloc>().completeStep(
+                              chapterID: widget.chapterID,
+                              topicID: widget.topicID,
+                              stepID: widget.stepID,
+                            ),
+                      ),
                     ],
                   ),
                 );

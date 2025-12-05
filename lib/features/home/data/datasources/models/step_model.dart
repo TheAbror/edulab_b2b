@@ -295,3 +295,25 @@ class QuizResponseAnswerOption {
       _$QuizResponseAnswerOptionFromJson(json);
   Map<String, dynamic> toJson() => _$QuizResponseAnswerOptionToJson(this);
 }
+
+// chapter_id, topic_id, step_id
+
+@JsonSerializable()
+class CompleteStepRequest {
+  @JsonKey(defaultValue: 0, name: 'chapter_id')
+  final int chapterID;
+  @JsonKey(defaultValue: 0, name: 'topic_id')
+  final int topicID;
+  @JsonKey(defaultValue: 0, name: 'step_id')
+  final int stepID;
+
+  CompleteStepRequest({
+    required this.chapterID,
+    required this.topicID,
+    required this.stepID,
+  });
+
+  factory CompleteStepRequest.fromJson(Map<String, dynamic> json) =>
+      _$CompleteStepRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$CompleteStepRequestToJson(this);
+}

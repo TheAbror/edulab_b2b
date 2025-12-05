@@ -37,6 +37,7 @@ class QuizBloc extends Cubit<QuizState> {
     try {
       final List<QuizResponse> collectedResponses = [];
 
+      // ignore: no_leading_underscores_for_local_identifiers
       var _correctAnswersCount = 0;
 
       // Submit each quiz individually

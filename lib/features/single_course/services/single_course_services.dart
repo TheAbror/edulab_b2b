@@ -1,4 +1,5 @@
 import 'package:chopper/chopper.dart';
+import 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 part 'single_course_services.chopper.dart';
@@ -21,6 +22,14 @@ abstract class SingleCourseServices extends ChopperService {
     @Query('step_id') required int stepId,
     @Query('topic_id') required int topicId,
   });
+
+  // API: /learning/complete
+  // Body: chapter_id, topic_id, step_id
+
+  @Post(path: AppStrings.completeStep)
+  Future<Response<CourseProgressModel>> completeStep(
+    @Body() CompleteStepRequest body,
+  );
 
   @Get(path: '${AppStrings.learningWithID}/{id}')
   Future<Response<SingleCourseInfo>> resumeCourseById(@Path('id') int id);
