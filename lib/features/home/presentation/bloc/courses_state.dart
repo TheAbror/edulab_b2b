@@ -9,8 +9,10 @@ class CoursesState extends Equatable {
   //
   final List<int> expandedSubcategoryIndexes;
   final BlocProgress blocProgress;
+  final BlocProgress singleCourseBlocProgress;
   final String failureMessage;
   final bool isEnrolled;
+  final int selectedCourseID;
 
   const CoursesState({
     required this.fullCourseInfo,
@@ -20,8 +22,10 @@ class CoursesState extends Equatable {
     required this.categories,
     required this.expandedSubcategoryIndexes,
     required this.blocProgress,
+    required this.singleCourseBlocProgress,
     required this.failureMessage,
     required this.isEnrolled,
+    required this.selectedCourseID,
   });
 
   factory CoursesState.initial() {
@@ -74,8 +78,10 @@ class CoursesState extends Equatable {
       categories: const [],
       expandedSubcategoryIndexes: const [],
       blocProgress: BlocProgress.NOT_STARTED,
+      singleCourseBlocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
       isEnrolled: false,
+      selectedCourseID: 0,
     );
   }
 
@@ -88,8 +94,10 @@ class CoursesState extends Equatable {
     List<CategoryModel>? categories,
     List<int>? expandedSubcategoryIndexes,
     BlocProgress? blocProgress,
+    BlocProgress? singleCourseBlocProgress,
     String? failureMessage,
     bool? isEnrolled,
+    int? selectedCourseID,
   }) {
     return CoursesState(
       fullCourseInfo: fullCourseInfo ?? this.fullCourseInfo,
@@ -100,8 +108,11 @@ class CoursesState extends Equatable {
       expandedSubcategoryIndexes:
           expandedSubcategoryIndexes ?? this.expandedSubcategoryIndexes,
       blocProgress: blocProgress ?? this.blocProgress,
+      singleCourseBlocProgress:
+          singleCourseBlocProgress ?? this.singleCourseBlocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
       isEnrolled: isEnrolled ?? this.isEnrolled,
+      selectedCourseID: selectedCourseID ?? this.selectedCourseID,
     );
   }
 
@@ -114,7 +125,9 @@ class CoursesState extends Equatable {
     categories,
     expandedSubcategoryIndexes,
     blocProgress,
+    singleCourseBlocProgress,
     failureMessage,
     isEnrolled,
+    selectedCourseID,
   ];
 }

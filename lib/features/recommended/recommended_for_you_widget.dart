@@ -15,6 +15,9 @@ class RecommendedForYou extends StatefulWidget {
   final double? rating;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
+  final BlocProgress singleCourseBlocProgress;
+  // final int selectedCourseID;
+  // final CourseShortInfo id;
 
   const RecommendedForYou({
     super.key,
@@ -32,6 +35,9 @@ class RecommendedForYou extends StatefulWidget {
     this.rating = 0,
     this.courseDuration = 0,
     this.isCertificateAvailble,
+    required this.singleCourseBlocProgress,
+    // required this.selectedCourseID,
+    // required this.id,
   });
 
   @override
@@ -92,34 +98,50 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.r),
-                        child: CachedNetworkImage(
-                          imageUrl: widget.imageUrl[index],
-                          height: 120.h,
-                          width: 188.w,
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) => Container(
-                            height: 120.h,
-                            width: 188.w,
-                            color: Colors.grey[200],
-                            child: Center(child: CircularProgressIndicator()),
-                          ),
-                          errorWidget: (context, url, error) => Container(
-                            height: 120.h,
-                            width: 188.w,
-                            decoration: BoxDecoration(
-                              color: context.colors.neutralContainerDefault
-                                  .withOpacity(0.1),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'assets/images/network_image_error_case.png',
+                      widget.singleCourseBlocProgress == BlocProgress.IS_LOADING
+                          ? Container(
+                              height: 120.h,
+                              width: 188.w,
+
+                              decoration: BoxDecoration(
+                                color: context.colors.neutralContainerDefault
+                                    .withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                              child: Center(child: CircularProgressIndicator()),
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(8.r),
+                              child: CachedNetworkImage(
+                                imageUrl: widget.imageUrl[index],
+                                height: 120.h,
+                                width: 188.w,
+                                fit: BoxFit.fill,
+                                placeholder: (context, url) => Container(
+                                  height: 120.h,
+                                  width: 188.w,
+                                  color: Colors.grey[200],
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) => Container(
+                                  height: 120.h,
+                                  width: 188.w,
+                                  decoration: BoxDecoration(
+                                    color: context
+                                        .colors
+                                        .neutralContainerDefault
+                                        .withOpacity(0.1),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/network_image_error_case.png',
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                      ),
                       SizedBox(
                         height: 156.h,
                         width: 188.w,

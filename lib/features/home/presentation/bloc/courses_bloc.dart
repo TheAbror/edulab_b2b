@@ -6,7 +6,7 @@ class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
   Future<bool?> checkEnrollment(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+    emit(state.copyWith(singleCourseBlocProgress: BlocProgress.IS_LOADING));
 
     var isEnrolled = false;
 
@@ -22,8 +22,9 @@ class CoursesBloc extends Cubit<CoursesState> {
           isEnrolled = data.deleted;
           emit(
             state.copyWith(
+              selectedCourseID: id,
               isEnrolled: data.deleted,
-              blocProgress: BlocProgress.LOADED,
+              singleCourseBlocProgress: BlocProgress.LOADED,
             ),
           );
         }
@@ -34,7 +35,7 @@ class CoursesBloc extends Cubit<CoursesState> {
 
         emit(
           state.copyWith(
-            blocProgress: BlocProgress.FAILED,
+            singleCourseBlocProgress: BlocProgress.FAILED,
             failureMessage: error.message,
           ),
         );
@@ -43,7 +44,7 @@ class CoursesBloc extends Cubit<CoursesState> {
       if (!isClosed) {
         emit(
           state.copyWith(
-            blocProgress: BlocProgress.FAILED,
+            singleCourseBlocProgress: BlocProgress.FAILED,
             failureMessage: AppStrings.internalErrorMessage,
           ),
         );

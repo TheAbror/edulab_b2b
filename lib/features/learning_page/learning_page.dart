@@ -242,7 +242,16 @@ class _BodyState extends State<_Body> {
                 );
               }
             case 'QUIZ':
-              return LearningPageQuizTab(step: step);
+              return LearningPageQuizTab(
+                step: step,
+
+                markAsComplete: () =>
+                    context.read<LearningPageBloc>().completeStep(
+                      chapterID: widget.chapterID,
+                      topicID: widget.topicID,
+                      stepID: widget.stepID,
+                    ),
+              );
             default:
               return SingleChildScrollView(child: Text(step.title));
           }

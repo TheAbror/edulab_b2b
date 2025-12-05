@@ -10,6 +10,7 @@ class LearningPageState extends Equatable {
   final int chapterID;
   final int topicID;
   final int stepID;
+  final int courseID;
 
   const LearningPageState({
     required this.isExpanded,
@@ -21,6 +22,7 @@ class LearningPageState extends Equatable {
     required this.chapterID,
     required this.topicID,
     required this.stepID,
+    required this.courseID,
   });
 
   factory LearningPageState.initial() {
@@ -70,6 +72,7 @@ class LearningPageState extends Equatable {
       chapterID: 0,
       topicID: 0,
       stepID: 0,
+      courseID: 0,
     );
   }
 
@@ -83,6 +86,7 @@ class LearningPageState extends Equatable {
     int? chapterID,
     int? topicID,
     int? stepID,
+    int? courseID,
   }) {
     return LearningPageState(
       isExpanded: isExpanded ?? this.isExpanded,
@@ -94,6 +98,7 @@ class LearningPageState extends Equatable {
       chapterID: chapterID ?? this.chapterID,
       topicID: topicID ?? this.topicID,
       stepID: stepID ?? this.stepID,
+      courseID: courseID ?? this.courseID,
     );
   }
 
@@ -108,5 +113,6 @@ class LearningPageState extends Equatable {
     chapterID,
     topicID,
     stepID,
+    courseID,
   ];
 }

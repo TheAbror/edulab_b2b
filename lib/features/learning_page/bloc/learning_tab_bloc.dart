@@ -36,6 +36,54 @@ class LearningPageBloc extends Cubit<LearningPageState> {
             ),
           );
         }
+
+        resumeCourseById(state.courseID);
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
+  void resumeCourseById(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.singleCourseServices.resumeCourseById(
+        id,
+      );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              resumedCourse: data,
+              courseID: id,
+              chapterID: data.currentlyActive?.chapterID ?? 0,
+              topicID: data.currentlyActive?.topicID ?? 0,
+              stepID: data.currentlyActive?.stepID ?? 0,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
       } else {
         final error = ErrorResponse.fromJson(
           json.decode(response.error.toString()),
@@ -69,50 +117,5 @@ class LearningPageBloc extends Cubit<LearningPageState> {
 
   void changeMaterialsTabIndex(int index) {
     emit(state.copyWith(materialsTabIndex: index));
-  }
-
-  void resumeCourseById(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.singleCourseServices.resumeCourseById(
-        id,
-      );
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              resumedCourse: data,
-              chapterID: data.currentlyActive?.chapterID ?? 0,
-              topicID: data.currentlyActive?.topicID ?? 0,
-              stepID: data.currentlyActive?.stepID ?? 0,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
   }
 }

@@ -34,6 +34,7 @@ class _BodyState extends State<_Body> {
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                   },
+                  singleCourseBlocProgress: state.singleCourseBlocProgress,
                   openThisCourse: (int id) {
                     Navigator.pushNamed(
                       context,

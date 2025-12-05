@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
+import 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class CustomDataConverter extends JsonConverter {
@@ -92,6 +93,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case QuizResponse:
       return QuizResponse.fromJson(json);
+
+    case CourseProgressModel:
+      return CourseProgressModel.fromJson(json);
 
     default:
       return null;

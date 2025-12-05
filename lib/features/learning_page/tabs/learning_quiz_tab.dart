@@ -4,9 +4,11 @@ class LearningPageQuizTab extends StatelessWidget {
   const LearningPageQuizTab({
     super.key,
     required this.step,
+    required this.markAsComplete,
   });
 
   final StepModel step;
+  final VoidCallback markAsComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -180,6 +182,8 @@ class LearningPageQuizTab extends StatelessWidget {
                         }
                       },
                     ),
+
+                  MarkAsCompleteButton(markAsComplete: markAsComplete),
                 ],
               );
             },
