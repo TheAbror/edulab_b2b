@@ -22,33 +22,21 @@ class _BodyState extends State<_Body> {
         padding: EdgeInsets.symmetric(vertical: 20.h),
         child: BlocBuilder<CoursesBloc, CoursesState>(
           builder: (context, state) {
-            final item = state.coursesAll;
-
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CourseTabBanner(),
                 space40,
-                RecommendedForYou(
-                  length: item.length,
+
+                RecommendedCourses(
+                  courses: state.coursesAll,
+                  selectedCourseID: state.selectedCourseID,
+                  singleCourseBlocProgress: state.singleCourseBlocProgress,
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                   },
-                  singleCourseBlocProgress: state.singleCourseBlocProgress,
-                  openThisCourse: (int id) {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.singleCoursePage,
-                      arguments: id,
-                    );
-                  },
-                  imageUrl: item
-                      .map((e) => e.thumbnail?.original_url ?? '')
-                      .toList(),
-                  title: item.map((e) => e.title).toList(),
-                  subTitle: item.map((e) => e.short_description).toList(),
-                  indexes: item.map((e) => e.id).toList(),
                 ),
+
                 space40,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),

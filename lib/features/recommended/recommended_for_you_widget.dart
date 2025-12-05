@@ -1,51 +1,39 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class RecommendedForYou extends StatefulWidget {
+class RecommendedCourses extends StatefulWidget {
   final String? headline;
   final String? coursesCount;
   final VoidCallback onTapViewAll;
-  final int length;
-  final List<String> imageUrl;
-  final List<int>? indexes;
-  final List<String>? title;
-  final List<String>? subTitle;
   final List<double>? price;
-  final void Function(int courseId) openThisCourse;
   final String? learners;
   final double? rating;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final BlocProgress singleCourseBlocProgress;
-  // final int selectedCourseID;
-  // final CourseShortInfo id;
+  final List<CourseShortInfo> courses;
+  final int selectedCourseID;
 
-  const RecommendedForYou({
+  const RecommendedCourses({
     super.key,
-    required this.imageUrl,
-    required this.title,
-    this.subTitle,
-    this.indexes,
     this.headline,
     this.coursesCount,
     this.price = const [],
-    required this.length,
     required this.onTapViewAll,
-    required this.openThisCourse,
     this.learners = '0',
     this.rating = 0,
     this.courseDuration = 0,
     this.isCertificateAvailble,
     required this.singleCourseBlocProgress,
-    // required this.selectedCourseID,
-    // required this.id,
+    required this.courses,
+    required this.selectedCourseID,
   });
 
   @override
   // ignore: library_private_types_in_public_api
-  _RecommendedForYouState createState() => _RecommendedForYouState();
+  _RecommendedCoursesState createState() => _RecommendedCoursesState();
 }
 
-class _RecommendedForYouState extends State<RecommendedForYou> {
+class _RecommendedCoursesState extends State<RecommendedCourses> {
   final ScrollController _scrollController = ScrollController();
   double _leftPadding = 16.0;
 
@@ -87,18 +75,39 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
             controller: _scrollController,
             padding: EdgeInsets.only(left: _leftPadding),
             shrinkWrap: true,
-            itemCount: widget.length,
+            itemCount: widget.courses.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              final singleCourseItem = widget.courses[index];
+
               return GestureDetector(
-                onTap: () => widget.openThisCourse(widget.indexes?[index] ?? 0),
+                onTap: () async {
+                  final bool? result = await context
+                      .read<CoursesBloc>()
+                      .checkEnrollment(singleCourseItem.id);
+
+                  if (!context.mounted) return;
+
+                  if (result != null) {
+                    Navigator.pushNamed(
+                      context,
+                      result
+                          ? AppRoutes.enrolledCoursePage
+                          : AppRoutes.singleCoursePage,
+                      arguments: singleCourseItem.id,
+                    );
+                  }
+                },
+
                 behavior: HitTestBehavior.opaque,
                 child: Padding(
                   padding: EdgeInsets.only(right: 16.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      widget.singleCourseBlocProgress == BlocProgress.IS_LOADING
+                      singleCourseItem.id == widget.selectedCourseID &&
+                              widget.singleCourseBlocProgress ==
+                                  BlocProgress.IS_LOADING
                           ? Container(
                               height: 120.h,
                               width: 188.w,
@@ -113,7 +122,9 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
                           : ClipRRect(
                               borderRadius: BorderRadius.circular(8.r),
                               child: CachedNetworkImage(
-                                imageUrl: widget.imageUrl[index],
+                                imageUrl:
+                                    singleCourseItem.thumbnail?.original_url ??
+                                    '',
                                 height: 120.h,
                                 width: 188.w,
                                 fit: BoxFit.fill,
@@ -151,8 +162,7 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
                           children: [
                             space16,
                             Text(
-                              widget.title?[index] ??
-                                  'Photoshop Master Course: From Beginner to Photoshop Pro',
+                              singleCourseItem.title,
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
@@ -162,7 +172,8 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
                             ),
                             space8,
                             Text(
-                              widget.subTitle?[index] ?? '',
+                              singleCourseItem.short_description,
+
                               style: TextStyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
@@ -187,7 +198,7 @@ class _RecommendedForYouState extends State<RecommendedForYou> {
                                   ? true
                                   : false,
                             ),
-                            widget.subTitle![index].length < 25
+                            singleCourseItem.short_description.length < 25
                                 ? Spacer()
                                 : space20,
                             Text(
