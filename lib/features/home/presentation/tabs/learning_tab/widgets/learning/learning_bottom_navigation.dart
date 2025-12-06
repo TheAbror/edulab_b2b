@@ -29,7 +29,9 @@ class LearningBottomNavigation extends StatelessWidget {
           LearningBottomNavButtonLeft(
             onTap: () {
               if (controller.index > 0) {
-                controller.animateTo(controller.index - 1);
+                final index = controller.index - 1;
+                controller.animateTo(index);
+                context.read<LearningBloc>().changeAppbarTabIndex(index);
               }
             },
             isEnabled: true,
@@ -40,7 +42,9 @@ class LearningBottomNavigation extends StatelessWidget {
           LearningBottomNavButtonRight(
             onTap: () {
               if (controller.index < stepsLength - 1) {
-                controller.animateTo(controller.index + 1);
+                final index = controller.index + 1;
+                controller.animateTo(index);
+                context.read<LearningBloc>().changeAppbarTabIndex(index);
               }
             },
             isEnabled: status == "COMPLETED" ? true : false,

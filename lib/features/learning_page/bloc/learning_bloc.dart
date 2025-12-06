@@ -133,14 +133,10 @@ class LearningBloc extends Cubit<LearningState> {
     emit(state.copyWith(isExpanded: value));
   }
 
-  void manageSteps(StepModel step, int index) {
+  void moveToNextStep() {
     final newList = List<StepModel>.from(state.allSteps);
 
-    emit(
-      state.copyWith(
-        allSteps: newList,
-      ),
-    );
+    emit(state.copyWith(step: newList[state.appbarTabIndex + 1]));
   }
 
   void changeMaterialsTabIndex(int index) {

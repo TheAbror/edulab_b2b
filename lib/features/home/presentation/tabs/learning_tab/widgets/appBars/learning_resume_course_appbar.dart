@@ -136,12 +136,11 @@ class LearningResumeCourseAppBar extends StatelessWidget
     BuildContext context,
   ) {
     final bool isActive = index == currentTabIndex;
-    // final Color activeColor = context.colors.fgDisabled.withOpacity(0.4);
-    // final Color inactiveColor = context.colors.fgDefault;
-    final Color activeColor = context.colors.fgDefault; // active = prominent
+
+    final Color activeColor = context.colors.fgDefault;
     final Color inactiveColor = context.colors.fgDisabled.withOpacity(
       0.4,
-    ); // inactive = lighter
+    );
 
     if (step.type == 'TEXT' || step.type == 'text') {
       return Assets.icons.learning.text.svg(
