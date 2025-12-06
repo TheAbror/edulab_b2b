@@ -183,7 +183,10 @@ class LearningPageQuizTab extends StatelessWidget {
                       },
                     ),
 
-                  MarkAsCompleteButton(markAsComplete: markAsComplete),
+                  MarkAsCompleteButton(
+                    status: step.status,
+                    markAsComplete: markAsComplete,
+                  ),
                 ],
               );
             },

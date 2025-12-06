@@ -164,7 +164,7 @@ export 'package:leti_mobile/features/single_course/widgets/single_course_page_wi
 export 'package:leti_mobile/features/all_courses/bloc/all_courses_bloc.dart';
 export 'package:leti_mobile/features/home/presentation/widgets/id_and_title.dart';
 export 'package:chewie/chewie.dart';
-export 'package:leti_mobile/features/learning_page/bloc/learning_tab_bloc.dart';
+export 'package:leti_mobile/features/learning_page/bloc/learning_bloc.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_text_tab.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_video_tab.dart';
 export 'package:video_player/video_player.dart';
@@ -174,3 +174,4 @@ export 'package:leti_mobile/features/learning_page/bloc/quiz_bloc.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/tabs/favorites_tab.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/chapter_model.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/topic_model.dart';
+export 'package:leti_mobile/features/learning_page/widgets/mark_as_completed_button.dart';

@@ -1,6 +1,6 @@
-part of 'learning_tab_bloc.dart';
+part of 'learning_bloc.dart';
 
-class LearningPageState extends Equatable {
+class LearningState extends Equatable {
   final bool isExpanded;
   final int currentTabIndex;
   final int materialsTabIndex;
@@ -11,8 +11,12 @@ class LearningPageState extends Equatable {
   final int topicID;
   final int stepID;
   final int courseID;
+  final ChapterModel chapter;
+  final TopicModel topic;
+  final StepModel step;
+  final List<StepModel> allSteps;
 
-  const LearningPageState({
+  const LearningState({
     required this.isExpanded,
     required this.currentTabIndex,
     required this.materialsTabIndex,
@@ -23,10 +27,14 @@ class LearningPageState extends Equatable {
     required this.topicID,
     required this.stepID,
     required this.courseID,
+    required this.chapter,
+    required this.topic,
+    required this.step,
+    required this.allSteps,
   });
 
-  factory LearningPageState.initial() {
-    return LearningPageState(
+  factory LearningState.initial() {
+    return LearningState(
       isExpanded: false,
       resumedCourse: SingleCourseInfo(
         id: 0,
@@ -68,15 +76,18 @@ class LearningPageState extends Equatable {
       materialsTabIndex: 0,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
-
       chapterID: 0,
       topicID: 0,
       stepID: 0,
       courseID: 0,
+      chapter: ChapterModel.initial(),
+      topic: TopicModel.initial(),
+      step: StepModel.initial(),
+      allSteps: [],
     );
   }
 
-  LearningPageState copyWith({
+  LearningState copyWith({
     bool? isExpanded,
     int? currentTabIndex,
     int? materialsTabIndex,
@@ -87,8 +98,12 @@ class LearningPageState extends Equatable {
     int? topicID,
     int? stepID,
     int? courseID,
+    ChapterModel? chapter,
+    TopicModel? topic,
+    StepModel? step,
+    List<StepModel>? allSteps,
   }) {
-    return LearningPageState(
+    return LearningState(
       isExpanded: isExpanded ?? this.isExpanded,
       currentTabIndex: currentTabIndex ?? this.currentTabIndex,
       materialsTabIndex: materialsTabIndex ?? this.materialsTabIndex,
@@ -99,6 +114,10 @@ class LearningPageState extends Equatable {
       topicID: topicID ?? this.topicID,
       stepID: stepID ?? this.stepID,
       courseID: courseID ?? this.courseID,
+      chapter: chapter ?? this.chapter,
+      topic: topic ?? this.topic,
+      step: step ?? this.step,
+      allSteps: allSteps ?? this.allSteps,
     );
   }
 
@@ -114,5 +133,9 @@ class LearningPageState extends Equatable {
     topicID,
     stepID,
     courseID,
+    chapter,
+    topic,
+    step,
+    allSteps,
   ];
 }

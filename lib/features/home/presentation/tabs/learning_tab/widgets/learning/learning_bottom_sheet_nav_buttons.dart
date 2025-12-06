@@ -3,11 +3,13 @@ import 'package:leti_mobile/widget_imports.dart';
 class LearningBottomNavButtonLeft extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
+  final bool isEnabled;
 
   const LearningBottomNavButtonLeft({
     super.key,
     required this.onTap,
     required this.text,
+    required this.isEnabled,
   });
 
   @override
@@ -20,14 +22,21 @@ class LearningBottomNavButtonLeft extends StatelessWidget {
         width: 105,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(defaultRadius.r)),
-          border: Border.all(color: context.colors.accentMuted, width: 2.w),
+          border: Border.all(
+            color: isEnabled
+                ? context.colors.accentMuted
+                : context.colors.borderMuted.withOpacity(0.15),
+            width: 2.w,
+          ),
         ),
         child: Row(
           children: [
             Spacer(),
             Assets.icons.learning.left.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                isEnabled
+                    ? Theme.of(context).colorScheme.primary
+                    : context.colors.borderMuted.withOpacity(0.15),
                 BlendMode.srcIn,
               ),
             ),
@@ -36,7 +45,9 @@ class LearningBottomNavButtonLeft extends StatelessWidget {
               text,
               style: TextStyle(
                 fontSize: 15.sp,
-                color: Theme.of(context).colorScheme.primary,
+                color: isEnabled
+                    ? Theme.of(context).colorScheme.primary
+                    : context.colors.borderMuted.withOpacity(0.15),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -51,13 +62,13 @@ class LearningBottomNavButtonLeft extends StatelessWidget {
 class LearningBottomNavButtonRight extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
-  // final Widget widget;
+  final bool isEnabled;
 
   const LearningBottomNavButtonRight({
     super.key,
     required this.onTap,
     required this.text,
-    // required this.widget,
+    required this.isEnabled,
   });
 
   @override
@@ -70,7 +81,13 @@ class LearningBottomNavButtonRight extends StatelessWidget {
         width: 105,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(defaultRadius.r)),
-          border: Border.all(color: context.colors.accentMuted, width: 2.w),
+          border: Border.all(
+            color: isEnabled
+                ? context.colors.accentMuted
+                : context.colors.borderMuted.withOpacity(0.15),
+
+            width: 2.w,
+          ),
         ),
         child: Row(
           children: [
@@ -79,14 +96,18 @@ class LearningBottomNavButtonRight extends StatelessWidget {
               text,
               style: TextStyle(
                 fontSize: 15.sp,
-                color: Theme.of(context).colorScheme.primary,
+                color: isEnabled
+                    ? Theme.of(context).colorScheme.primary
+                    : context.colors.borderMuted.withOpacity(0.15),
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(width: 8.w),
             Assets.icons.learning.right.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                isEnabled
+                    ? Theme.of(context).colorScheme.primary
+                    : context.colors.borderMuted.withOpacity(0.15),
                 BlendMode.srcIn,
               ),
             ),

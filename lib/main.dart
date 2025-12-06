@@ -20,7 +20,7 @@ void main() async {
           BlocProvider(create: (_) => SplashBloc()),
           BlocProvider(create: (_) => CoursesBloc()),
           BlocProvider(create: (_) => LearningTabBloc()),
-          BlocProvider(create: (_) => LearningPageBloc()),
+          BlocProvider(create: (_) => LearningBloc()),
           BlocProvider(create: (_) => HomeBloc()..initialTheme()),
           BlocProvider(create: (_) => LocalizationBloc()..initLocalization()),
         ],

@@ -16,23 +16,43 @@ class _LearningPageState extends State<LearningPage>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
-  void _initTabController(List<StepModel> steps) {
+  void _initTabController(
+    StepModel step,
+    List<StepModel> allSteps,
+  ) {
+    final initialIndex = allSteps.indexWhere((s) => s.id == step.id);
     _tabController?.dispose();
-    _tabController = TabController(length: steps.length, vsync: this);
 
-    /// Sync UI → BLoC
+    _tabController = TabController(
+      length: allSteps.length,
+      vsync: this,
+      initialIndex: initialIndex != -1 ? initialIndex : 0,
+    );
+
     _tabController!.addListener(() {
       if (!_tabController!.indexIsChanging) {
-        context.read<LearningPageBloc>().changeTabIndex(_tabController!.index);
+        final newIndex = _tabController!.index;
+        final stepID = allSteps[newIndex].id;
+        context.read<LearningBloc>().manageSteps(
+          stepID,
+          allSteps[newIndex],
+        );
+        context.read<LearningBloc>().appBarTabIndex(newIndex);
       }
     });
   }
 
   @override
+  void dispose() {
+    _tabController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LearningPageBloc()..resumeCourseById(widget.id),
-      child: BlocBuilder<LearningPageBloc, LearningPageState>(
+      create: (_) => LearningBloc()..resumeCourseById(widget.id),
+      child: BlocBuilder<LearningBloc, LearningState>(
         builder: (context, state) {
           if (state.blocProgress == BlocProgress.IS_LOADING) {
             return Scaffold(
@@ -41,58 +61,36 @@ class _LearningPageState extends State<LearningPage>
             );
           }
 
-          final chapterID = state.chapterID;
-          final topicID = state.topicID;
-          final stepID = state.stepID;
-
-          // --- Find the chapter safely ---
-          final chapter = state.resumedCourse.chapters.firstWhere(
-            (c) => c.id == chapterID,
-            orElse: () => ChapterModel.initial(),
-          );
-
-          // --- Find the topic safely ---
-          final topic = chapter.topics.firstWhere(
-            (t) => t.id == topicID,
-            orElse: () => TopicModel.initial(),
-          );
-
-          // --- Steps for the tab controller ---
-          final steps = topic.steps.isNotEmpty
-              ? topic.steps
-              : [StepModel.initial()];
-
-          // --- Initialize TabController when needed ---
           if (_tabController == null ||
-              _tabController!.length != steps.length) {
-            _initTabController(steps);
+              _tabController!.length != state.allSteps.length) {
+            _initTabController(
+              state.step,
+              state.allSteps,
+            );
           }
 
-          // --- Move to the correct step index ---
-          final initialIndex = steps.indexWhere((s) => s.id == stepID);
-          _tabController!.index = initialIndex == -1 ? 0 : initialIndex;
+          final currentStep = state
+              .allSteps[_tabController?.index ?? state.currentTabIndex]
+              .status;
 
-          // --- Build UI ---
           return Scaffold(
             backgroundColor: context.colors.bgPage1,
             appBar: LearningResumeCourseAppBar(
               state: state,
               controller: _tabController!,
-              title: topic.title,
-              steps: steps,
+              title: state.topic.title,
+              steps: state.allSteps,
             ),
             body: _Body(
-              steps: steps,
+              steps: state.allSteps,
               controller: _tabController!,
-              chapterID: chapter.id,
-              stepID: stepID,
-              topicID: topic.id,
             ),
             bottomNavigationBar: state.isExpanded
                 ? const SizedBox()
                 : LearningBottomNavigation(
                     controller: _tabController!,
-                    stepsLength: steps.length,
+                    stepsLength: state.allSteps.length,
+                    status: currentStep,
                   ),
           );
         },
@@ -102,18 +100,12 @@ class _LearningPageState extends State<LearningPage>
 }
 
 class _Body extends StatefulWidget {
-  final List<StepModel> steps;
   final TabController controller;
-  final int chapterID;
-  final int topicID;
-  final int stepID;
+  final List<StepModel> steps;
 
   const _Body({
-    required this.steps,
     required this.controller,
-    required this.chapterID,
-    required this.topicID,
-    required this.stepID,
+    required this.steps,
   });
 
   @override
@@ -191,72 +183,102 @@ class _BodyState extends State<_Body> {
     super.dispose();
   }
 
+  void completeStep(
+    int chapterID,
+    int topicID,
+    int stepID,
+  ) {
+    context.read<LearningBloc>().completeStep(
+      chapterID: chapterID,
+      topicID: topicID,
+      stepID: stepID,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
-      controller: widget.controller,
-      physics: const BouncingScrollPhysics(),
-      children: widget.steps.map(
-        (step) {
-          switch (step.type) {
-            case 'TEXT':
-              return LearningPageTextTab(
-                step: step,
-                markAsComplete: () =>
-                    context.read<LearningPageBloc>().completeStep(
-                      chapterID: widget.chapterID,
-                      topicID: widget.topicID,
-                      stepID: widget.stepID,
-                    ),
-              );
-            case 'VIDEO':
-              if (_isVideoLoading) {
-                return const Center(child: CircularProgressIndicator());
-              }
+    return BlocBuilder<LearningBloc, LearningState>(
+      builder: (context, state) {
+        return TabBarView(
+          controller: widget.controller,
+          physics: const BouncingScrollPhysics(),
+          children: widget.steps.map(
+            (step) {
+              switch (step.type) {
+                case 'TEXT':
+                  return LearningPageTextTab(
+                    step: step,
+                    markAsComplete: () {
+                      step.status == "COMPLETED"
+                          ? () {}
+                          : completeStep(
+                              state.chapterID,
+                              state.topicID,
+                              state.stepID,
+                            );
+                    },
+                  );
+                case 'VIDEO':
+                  if (_isVideoLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
 
-              if (_chewieController != null &&
-                  _videoPlayerController != null &&
-                  _videoPlayerController!.value.isInitialized) {
-                return LearningPageVideoTab(
-                  step: step,
-                  chewieController: _chewieController,
-                );
-              } else {
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.videocam_off, size: 64, color: Colors.grey),
-                      SizedBox(height: 16),
-                      Text('Video not available'),
-                      MarkAsCompleteButton(
-                        markAsComplete: () =>
-                            context.read<LearningPageBloc>().completeStep(
-                              chapterID: widget.chapterID,
-                              topicID: widget.topicID,
-                              stepID: widget.stepID,
-                            ),
+                  if (_chewieController != null &&
+                      _videoPlayerController != null &&
+                      _videoPlayerController!.value.isInitialized) {
+                    return LearningPageVideoTab(
+                      step: step,
+                      chewieController: _chewieController,
+                    );
+                  } else {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.videocam_off,
+                            size: 64,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(height: 16),
+                          Text('Video not available'),
+                          MarkAsCompleteButton(
+                            status: step.status,
+                            markAsComplete: () {
+                              step.status == "COMPLETED"
+                                  ? () {}
+                                  : completeStep(
+                                      state.chapterID,
+                                      state.topicID,
+                                      state.stepID,
+                                    );
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                );
-              }
-            case 'QUIZ':
-              return LearningPageQuizTab(
-                step: step,
+                    );
+                  }
+                case 'QUIZ':
+                  return LearningPageQuizTab(
+                    step: step,
 
-                markAsComplete: () =>
-                    context.read<LearningPageBloc>().completeStep(
-                      chapterID: widget.chapterID,
-                      topicID: widget.topicID,
-                      stepID: widget.stepID,
-                    ),
-              );
-            default:
-              return SingleChildScrollView(child: Text(step.title));
-          }
-        },
-      ).toList(),
+                    markAsComplete: () {
+                      step.status == "COMPLETED"
+                          ? () {}
+                          : completeStep(
+                              state.chapterID,
+                              state.topicID,
+                              state.stepID,
+                            );
+                    },
+                  );
+                default:
+                  return SingleChildScrollView(child: Text(step.title));
+              }
+            },
+          ).toList(),
+        );
+      },
     );
   }
 }

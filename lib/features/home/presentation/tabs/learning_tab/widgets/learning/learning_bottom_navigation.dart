@@ -5,10 +5,12 @@ class LearningBottomNavigation extends StatelessWidget {
     super.key,
     required this.controller,
     required this.stepsLength,
+    required this.status,
   });
 
   final TabController controller;
   final int stepsLength;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class LearningBottomNavigation extends StatelessWidget {
                 controller.animateTo(controller.index - 1);
               }
             },
+            isEnabled: true,
             text: 'Prev',
           ),
 
@@ -40,6 +43,8 @@ class LearningBottomNavigation extends StatelessWidget {
                 controller.animateTo(controller.index + 1);
               }
             },
+            isEnabled: status == "COMPLETED" ? true : false,
+
             text: 'Next',
           ),
         ],

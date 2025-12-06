@@ -10,7 +10,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
     required this.steps,
   });
 
-  final LearningPageState state;
+  final LearningState state;
   final TabController controller;
   final String title;
   final List<StepModel> steps;
@@ -82,16 +82,11 @@ class LearningResumeCourseAppBar extends StatelessWidget
                 ),
               ),
             ),
-            child: BlocBuilder<LearningPageBloc, LearningPageState>(
+            child: BlocBuilder<LearningBloc, LearningState>(
               builder: (context, innerState) {
                 return TabBar(
                   tabAlignment: TabAlignment.start,
-                  onTap: (index) {
-                    context.read<LearningPageBloc>().changeTabIndex(index);
-                  },
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
-                  labelColor: context.colors.fgDefault,
-                  unselectedLabelColor: context.colors.accentContainerDefault,
                   indicatorColor: Colors.transparent,
                   labelPadding: EdgeInsets.only(left: 4.w),
                   dividerColor: Colors.transparent,
@@ -116,7 +111,8 @@ class LearningResumeCourseAppBar extends StatelessWidget
                       _getStepIcon(
                         step,
                         index,
-                        innerState.currentTabIndex,
+                        // innerState.currentTabIndex,
+                        controller.index,
                         context,
                       ),
                       context,
@@ -138,8 +134,12 @@ class LearningResumeCourseAppBar extends StatelessWidget
     BuildContext context,
   ) {
     final bool isActive = index == currentTabIndex;
-    final Color activeColor = Theme.of(context).colorScheme.primary;
-    final Color inactiveColor = context.colors.containerDefault;
+    // final Color activeColor = context.colors.fgDisabled.withOpacity(0.4);
+    // final Color inactiveColor = context.colors.fgDefault;
+    final Color activeColor = context.colors.fgDefault; // active = prominent
+    final Color inactiveColor = context.colors.fgDisabled.withOpacity(
+      0.4,
+    ); // inactive = lighter
 
     if (step.type == 'TEXT' || step.type == 'text') {
       return Assets.icons.learning.text.svg(

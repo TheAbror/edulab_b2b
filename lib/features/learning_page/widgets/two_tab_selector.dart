@@ -5,7 +5,7 @@ class TwoTabSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LearningPageBloc, LearningPageState>(
+    return BlocBuilder<LearningBloc, LearningState>(
       builder: (context, state) {
         return Container(
           height: 32.h,
@@ -40,14 +40,14 @@ class TwoTabSelector extends StatelessWidget {
     BuildContext context, {
     required int index,
     required String text,
-    required LearningPageState state,
+    required LearningState state,
   }) {
     final bool isSelected = state.materialsTabIndex == index;
 
     return Expanded(
       child: GestureDetector(
         onTap: () =>
-            context.read<LearningPageBloc>().changeMaterialsTabIndex(index),
+            context.read<LearningBloc>().changeMaterialsTabIndex(index),
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
