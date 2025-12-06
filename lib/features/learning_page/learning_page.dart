@@ -30,6 +30,7 @@ class _LearningPageState extends State<LearningPage>
     );
 
     _tabController!.addListener(() {
+      print(!_tabController!.indexIsChanging);
       if (!_tabController!.indexIsChanging) {
         final newIndex = _tabController!.index;
         final stepID = allSteps[newIndex].id;
@@ -202,7 +203,7 @@ class _BodyState extends State<_Body> {
         return TabBarView(
           controller: widget.controller,
           physics: const BouncingScrollPhysics(),
-          children: widget.steps.map(
+          children: state.allSteps.map(
             (step) {
               switch (step.type) {
                 case 'TEXT':
