@@ -54,14 +54,7 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                 ),
               ),
             ),
-            //   // Image.network(
-            //   //   // googleAccountUser.gPhotoUrl ??
-            //   //   'https://t3.ftcdn.net/jpg/06/07/84/82/360_F_607848231_w5iFN4tMmtI2woJjMh7Q8mGvgARnzHgQ.jpg',
-            //   //   width: 48.w,
-            //   //   height: 48.w,
-            //   //   fit: BoxFit.cover,
-            //   // ),
-            // ),
+
             SizedBox(width: 8.w),
             SizedBox(
               width: 220.w,
@@ -78,7 +71,6 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 4.h),
-                  // if (user?.roles?.isNotEmpty == true)
                   Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 4.w,
@@ -90,7 +82,6 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                     ),
                     child: Text(
                       db?.account_type_str?.makeFirstCapital() ?? 'Role',
-                      // 'Role',
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,

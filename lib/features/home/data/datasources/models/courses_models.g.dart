@@ -178,7 +178,8 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       skills:
           (json['skills'] as List<dynamic>?)
               ?.map(
-                (e) => LabelValueResponse.fromJson(e as Map<String, dynamic>),
+                (e) =>
+                    LabelValueAsIntResponse.fromJson(e as Map<String, dynamic>),
               )
               .toList() ??
           [],
@@ -197,6 +198,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       progress: (json['progress'] as num?)?.toInt(),
       published: json['published'] as bool?,
       canPublish: json['canPublish'] as bool?,
+      completionTime: json['completion_time'] as String?,
       chapters:
           (json['chapters'] as List<dynamic>?)
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
@@ -237,9 +239,21 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'progress': instance.progress,
       'published': instance.published,
       'canPublish': instance.canPublish,
+      'completion_time': instance.completionTime,
       'chapters': instance.chapters,
       'current_active': instance.currentlyActive,
     };
+
+LabelValueAsIntResponse _$LabelValueAsIntResponseFromJson(
+  Map<String, dynamic> json,
+) => LabelValueAsIntResponse(
+  label: json['label'] as String? ?? '',
+  value: (json['value'] as num?)?.toInt() ?? 0,
+);
+
+Map<String, dynamic> _$LabelValueAsIntResponseToJson(
+  LabelValueAsIntResponse instance,
+) => <String, dynamic>{'label': instance.label, 'value': instance.value};
 
 CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
     CourseShortInfo(

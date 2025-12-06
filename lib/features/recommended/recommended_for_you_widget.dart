@@ -4,7 +4,6 @@ class RecommendedCourses extends StatefulWidget {
   final String? headline;
   final String? coursesCount;
   final VoidCallback onTapViewAll;
-  final List<double>? price;
   final String? learners;
   final double? rating;
   final int? courseDuration;
@@ -17,7 +16,6 @@ class RecommendedCourses extends StatefulWidget {
     super.key,
     this.headline,
     this.coursesCount,
-    this.price = const [],
     required this.onTapViewAll,
     this.learners = '0',
     this.rating = 0,
@@ -36,6 +34,7 @@ class RecommendedCourses extends StatefulWidget {
 class _RecommendedCoursesState extends State<RecommendedCourses> {
   final ScrollController _scrollController = ScrollController();
   double _leftPadding = 16.0;
+  int? selectedCourseId;
 
   @override
   void initState() {
@@ -79,13 +78,15 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               final singleCourseItem = widget.courses[index];
-              final isSelected = singleCourseItem.id;
+              final isSelected = selectedCourseId == singleCourseItem.id;
 
               return GestureDetector(
                 onTap: () async {
                   final bool? result = await context
                       .read<CoursesBloc>()
                       .checkEnrollment(singleCourseItem.id);
+
+                  selectedCourseId = singleCourseItem.id;
 
                   if (!context.mounted) return;
 
@@ -106,7 +107,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      singleCourseItem.id == isSelected &&
+                      isSelected &&
                               widget.singleCourseBlocProgress ==
                                   BlocProgress.IS_LOADING
                           ? Container(

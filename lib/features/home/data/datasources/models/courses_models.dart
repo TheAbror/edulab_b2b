@@ -202,7 +202,7 @@ class SingleCourseInfo {
   final LanguageLevel? language;
   final LanguageLevel? level;
   @JsonKey(defaultValue: [])
-  final List<LabelValueResponse> skills;
+  final List<LabelValueAsIntResponse> skills;
   @JsonKey(name: "co_author_ids", defaultValue: [])
   final List<int> coAuthorIds;
   final Status? status;
@@ -212,8 +212,8 @@ class SingleCourseInfo {
   final int? progress;
   final bool? published;
   final bool? canPublish;
-  // @JsonKey(name: "completion_time")
-  // final String? completionTime;
+  @JsonKey(name: "completion_time")
+  final String? completionTime;
   // final Map<String, dynamic>? structure;
   @JsonKey(defaultValue: [])
   final List<ChapterModel> chapters;
@@ -248,7 +248,7 @@ class SingleCourseInfo {
     this.progress,
     this.published,
     this.canPublish,
-    // this.completionTime,
+    this.completionTime,
     // this.structure,
     required this.chapters,
     this.currentlyActive,
@@ -257,6 +257,20 @@ class SingleCourseInfo {
   factory SingleCourseInfo.fromJson(Map<String, dynamic> json) =>
       _$SingleCourseInfoFromJson(json);
   Map<String, dynamic> toJson() => _$SingleCourseInfoToJson(this);
+}
+
+@JsonSerializable()
+class LabelValueAsIntResponse {
+  @JsonKey(defaultValue: "")
+  final String label;
+  @JsonKey(defaultValue: 0)
+  final int value;
+
+  LabelValueAsIntResponse({required this.label, required this.value});
+
+  factory LabelValueAsIntResponse.fromJson(Map<String, dynamic> json) =>
+      _$LabelValueAsIntResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$LabelValueAsIntResponseToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)

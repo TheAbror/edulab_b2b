@@ -5,13 +5,8 @@ class CourseContentTabNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 53,
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return Text('News ${index + 1}');
-      },
+    return Center(
+      child: AppText.paragraph1('News will appear here'),
     );
   }
 }
