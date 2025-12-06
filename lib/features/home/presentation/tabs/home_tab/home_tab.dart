@@ -55,7 +55,6 @@ class _HomeTabState extends State<HomeTab> {
               if (state.coursesAll.isNotEmpty)
                 RecommendedCourses(
                   courses: state.coursesAll,
-                  singleCourseBlocProgress: state.singleCourseBlocProgress,
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                   },

@@ -8,9 +8,7 @@ class RecommendedCourses extends StatefulWidget {
   final double? rating;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
-  final BlocProgress singleCourseBlocProgress;
   final List<CourseShortInfo> courses;
-  final int? selectedCourseIndex;
 
   const RecommendedCourses({
     super.key,
@@ -21,9 +19,7 @@ class RecommendedCourses extends StatefulWidget {
     this.rating = 0,
     this.courseDuration = 0,
     this.isCertificateAvailble,
-    required this.singleCourseBlocProgress,
     required this.courses,
-    this.selectedCourseIndex,
   });
 
   @override
@@ -35,6 +31,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
   final ScrollController _scrollController = ScrollController();
   double _leftPadding = 16.0;
   int? selectedCourseId;
+  bool isLoadingSelected = false;
 
   @override
   void initState() {
@@ -82,11 +79,15 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
 
               return GestureDetector(
                 onTap: () async {
+                  setState(() {
+                    selectedCourseId = singleCourseItem.id;
+                    isLoadingSelected = true;
+                  });
                   final bool? result = await context
                       .read<CoursesBloc>()
                       .checkEnrollment(singleCourseItem.id);
 
-                  selectedCourseId = singleCourseItem.id;
+                  setState(() => isLoadingSelected = false);
 
                   if (!context.mounted) return;
 
@@ -107,13 +108,10 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      isSelected &&
-                              widget.singleCourseBlocProgress ==
-                                  BlocProgress.IS_LOADING
+                      isSelected && isLoadingSelected
                           ? Container(
                               height: 120.h,
                               width: 188.w,
-
                               decoration: BoxDecoration(
                                 color: context.colors.neutralContainerDefault
                                     .withOpacity(0.1),

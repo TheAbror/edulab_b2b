@@ -30,7 +30,6 @@ class _BodyState extends State<_Body> {
 
                 RecommendedCourses(
                   courses: state.coursesAll,
-                  singleCourseBlocProgress: state.singleCourseBlocProgress,
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                   },

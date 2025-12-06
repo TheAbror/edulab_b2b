@@ -11,8 +11,11 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             CourseTopLevelHeaderAndSubHeader(
               headlineLeft: context.localizations.skillLevel,
@@ -22,7 +25,7 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
             SizedBox(height: 20.h),
             CourseTopLevelHeaderAndSubHeader(
               headlineLeft: context.localizations.certificateOfCompletion,
-              textLeft: 'fsdf',
+              textLeft: 'None',
               isLeft: true,
             ),
           ],
@@ -32,17 +35,17 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // CourseTopLevelHeaderAndSubHeader(
-              //   headlineLeft: context.localizations.timeToComplete,
-              //   textLeft: state.fullCourseInfo.completionTime ?? '',
-              //   isLeft: false,
-              // ),
+              CourseTopLevelHeaderAndSubHeader(
+                headlineLeft: context.localizations.timeToComplete,
+                textLeft: state.singleCourse.completionTime ?? '',
+                isLeft: false,
+              ),
               SizedBox(height: 20.h),
-              // CourseTopLevelHeaderAndSubHeader(
-              //   headlineLeft: context.localizations.prerequisities,
-              //   textLeft: state.fullCourseInfo.prerequisites ?? '',
-              //   isLeft: false,
-              // ),
+              CourseTopLevelHeaderAndSubHeader(
+                headlineLeft: context.localizations.prerequisities,
+                textLeft: 'None',
+                isLeft: false,
+              ),
             ],
           ),
         ),
@@ -101,7 +104,7 @@ class ExpandableHtml extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
       firstChild: SizedBox(
-        height: 150.h,
+        height: html.length > 50 ? 150.h : 30.h,
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: HtmlWidget(html),
@@ -487,22 +490,16 @@ class CourseInfoBottomNavigator extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 12.w,
         right: 12.w,
-        // top: 12.h,
       ),
-      // height: 100,
-      height: 120.h,
+      height: 60.h,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ActionButton(text: context.localizations.buy, onTap: () {}),
-          space8,
           ActionButton(
-            text: context.localizations.tryForFree,
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.webView);
-            },
-            isFilled: false,
+            text: 'Enroll',
+            onTap: () {},
           ),
+          space8,
         ],
       ),
     );
