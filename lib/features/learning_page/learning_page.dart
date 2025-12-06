@@ -28,19 +28,6 @@ class _LearningPageState extends State<LearningPage>
       vsync: this,
       initialIndex: initialIndex != -1 ? initialIndex : 0,
     );
-
-    _tabController!.addListener(() {
-      print(!_tabController!.indexIsChanging);
-      if (!_tabController!.indexIsChanging) {
-        final newIndex = _tabController!.index;
-        final stepID = allSteps[newIndex].id;
-        context.read<LearningBloc>().manageSteps(
-          stepID,
-          allSteps[newIndex],
-        );
-        context.read<LearningBloc>().appBarTabIndex(newIndex);
-      }
-    });
   }
 
   @override
@@ -70,9 +57,7 @@ class _LearningPageState extends State<LearningPage>
             );
           }
 
-          final currentStep = state
-              .allSteps[_tabController?.index ?? state.currentTabIndex]
-              .status;
+          final currentStep = state.allSteps[state.appbarTabIndex].status;
 
           return Scaffold(
             backgroundColor: context.colors.bgPage1,

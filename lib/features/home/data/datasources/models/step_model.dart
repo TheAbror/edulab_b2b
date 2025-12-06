@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:leti_mobile/features/home/data/datasources/models/courses_models.dart';
 
 part 'step_model.g.dart';
 
 @JsonSerializable(includeIfNull: true)
-class StepModel {
+class StepModel extends Equatable {
   @JsonKey(defaultValue: 0)
   final int id;
   @JsonKey(defaultValue: '')
@@ -31,7 +32,7 @@ class StepModel {
   @JsonKey(defaultValue: [], name: 'questions_answers')
   final List<QuestionAnswerModel> answers;
 
-  StepModel({
+  const StepModel({
     required this.id,
     required this.title,
     this.description,
@@ -65,6 +66,9 @@ class StepModel {
   factory StepModel.fromJson(Map<String, dynamic> json) =>
       _$StepModelFromJson(json);
   Map<String, dynamic> toJson() => _$StepModelToJson(this);
+
+  @override
+  List<Object?> get props => [id, type, status];
 }
 
 @JsonSerializable(includeIfNull: true)

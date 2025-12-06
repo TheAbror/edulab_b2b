@@ -1,8 +1,8 @@
 part of 'learning_bloc.dart';
 
 class LearningState extends Equatable {
+  final int appbarTabIndex;
   final bool isExpanded;
-  final int currentTabIndex;
   final int materialsTabIndex;
   final SingleCourseInfo resumedCourse;
   final BlocProgress blocProgress;
@@ -17,8 +17,8 @@ class LearningState extends Equatable {
   final List<StepModel> allSteps;
 
   const LearningState({
+    required this.appbarTabIndex,
     required this.isExpanded,
-    required this.currentTabIndex,
     required this.materialsTabIndex,
     required this.resumedCourse,
     required this.blocProgress,
@@ -35,6 +35,7 @@ class LearningState extends Equatable {
 
   factory LearningState.initial() {
     return LearningState(
+      appbarTabIndex: 0,
       isExpanded: false,
       resumedCourse: SingleCourseInfo(
         id: 0,
@@ -72,7 +73,6 @@ class LearningState extends Equatable {
           ),
         ],
       ),
-      currentTabIndex: 0,
       materialsTabIndex: 0,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
@@ -88,8 +88,8 @@ class LearningState extends Equatable {
   }
 
   LearningState copyWith({
+    int? appbarTabIndex,
     bool? isExpanded,
-    int? currentTabIndex,
     int? materialsTabIndex,
     SingleCourseInfo? resumedCourse,
     BlocProgress? blocProgress,
@@ -104,8 +104,8 @@ class LearningState extends Equatable {
     List<StepModel>? allSteps,
   }) {
     return LearningState(
+      appbarTabIndex: appbarTabIndex ?? this.appbarTabIndex,
       isExpanded: isExpanded ?? this.isExpanded,
-      currentTabIndex: currentTabIndex ?? this.currentTabIndex,
       materialsTabIndex: materialsTabIndex ?? this.materialsTabIndex,
       resumedCourse: resumedCourse ?? this.resumedCourse,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -123,8 +123,8 @@ class LearningState extends Equatable {
 
   @override
   List<Object?> get props => [
+    appbarTabIndex,
     isExpanded,
-    currentTabIndex,
     materialsTabIndex,
     resumedCourse,
     blocProgress,

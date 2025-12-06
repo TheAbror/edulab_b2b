@@ -85,6 +85,9 @@ class LearningResumeCourseAppBar extends StatelessWidget
             child: BlocBuilder<LearningBloc, LearningState>(
               builder: (context, innerState) {
                 return TabBar(
+                  onTap: (value) {
+                    context.read<LearningBloc>().changeAppbarTabIndex(value);
+                  },
                   tabAlignment: TabAlignment.start,
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
                   indicatorColor: Colors.transparent,
@@ -111,8 +114,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
                       _getStepIcon(
                         step,
                         index,
-                        // innerState.currentTabIndex,
-                        controller.index,
+                        state.appbarTabIndex,
                         context,
                       ),
                       context,
