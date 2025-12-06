@@ -67,6 +67,40 @@ class StepModel extends Equatable {
       _$StepModelFromJson(json);
   Map<String, dynamic> toJson() => _$StepModelToJson(this);
 
+  StepModel copyWith({
+    int? id,
+    String? title,
+    String? description,
+    String? type,
+    int? priority,
+    String? status,
+    MediaDTO? media,
+    String? text,
+    int? courseId,
+    int? chapterId,
+    int? topicId,
+    List<MediaDTO>? materials,
+    List<QuestionModel>? questions,
+    List<QuestionAnswerModel>? answers,
+  }) {
+    return StepModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      type: type ?? this.type,
+      priority: priority ?? this.priority,
+      status: status ?? this.status,
+      media: media ?? this.media,
+      text: text ?? this.text,
+      courseId: courseId ?? this.courseId,
+      chapterId: chapterId ?? this.chapterId,
+      topicId: topicId ?? this.topicId,
+      materials: materials ?? this.materials,
+      questions: questions ?? this.questions,
+      answers: answers ?? this.answers,
+    );
+  }
+
   @override
   List<Object?> get props => [id, type, status];
 }

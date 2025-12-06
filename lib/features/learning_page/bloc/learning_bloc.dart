@@ -78,6 +78,8 @@ class LearningBloc extends Cubit<LearningState> {
     required topicID,
     required stepID,
   }) async {
+    // emit(LearningState.initial());
+
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = CompleteStepRequest(
@@ -95,17 +97,41 @@ class LearningBloc extends Cubit<LearningState> {
         final data = response.body;
 
         if (data != null) {
+          // final receivedStepIndex = state.allSteps.indexWhere(
+          //   (element) => element.id == stepID,
+          // );
+
+          // final length = state.allSteps.length - 1;
+
+          // if (receivedStepIndex != length) {
+          final completedStep = state.step.copyWith(
+            status: 'COMPLETED',
+          );
+
+          final updatedSteps = List<StepModel>.from(state.allSteps);
+          final stepIndex = updatedSteps.indexWhere(
+            (step) => step.id == stepID,
+          );
+
+          if (stepIndex != -1) {
+            updatedSteps[stepIndex] = updatedSteps[stepIndex].copyWith(
+              status: 'COMPLETED',
+            );
+          }
           emit(
             state.copyWith(
-              chapterID: data.nextChapterId,
-              topicID: data.nextTopicId,
-              stepID: data.nextStepId,
+              // chapterID: data.nextChapterId,
+              // topicID: data.nextTopicId,
+              // stepID: data.nextStepId,
+              step: completedStep,
+              allSteps: updatedSteps,
               blocProgress: BlocProgress.LOADED,
             ),
           );
         }
+        // }
 
-        resumeCourseById(state.courseID);
+        // resumeCourseById(state.courseID);
       } else {
         final error = ErrorResponse.fromJson(
           json.decode(response.error.toString()),
