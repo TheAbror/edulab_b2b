@@ -22,7 +22,6 @@ class CoursesBloc extends Cubit<CoursesState> {
           isEnrolled = data.deleted;
           emit(
             state.copyWith(
-              selectedCourseID: id,
               isEnrolled: data.deleted,
               singleCourseBlocProgress: BlocProgress.LOADED,
             ),

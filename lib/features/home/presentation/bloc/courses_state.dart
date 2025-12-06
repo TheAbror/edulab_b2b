@@ -12,7 +12,6 @@ class CoursesState extends Equatable {
   final BlocProgress singleCourseBlocProgress;
   final String failureMessage;
   final bool isEnrolled;
-  final int selectedCourseID;
 
   const CoursesState({
     required this.fullCourseInfo,
@@ -25,7 +24,6 @@ class CoursesState extends Equatable {
     required this.singleCourseBlocProgress,
     required this.failureMessage,
     required this.isEnrolled,
-    required this.selectedCourseID,
   });
 
   factory CoursesState.initial() {
@@ -81,7 +79,6 @@ class CoursesState extends Equatable {
       singleCourseBlocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
       isEnrolled: false,
-      selectedCourseID: 0,
     );
   }
 
@@ -97,7 +94,6 @@ class CoursesState extends Equatable {
     BlocProgress? singleCourseBlocProgress,
     String? failureMessage,
     bool? isEnrolled,
-    int? selectedCourseID,
   }) {
     return CoursesState(
       fullCourseInfo: fullCourseInfo ?? this.fullCourseInfo,
@@ -112,7 +108,6 @@ class CoursesState extends Equatable {
           singleCourseBlocProgress ?? this.singleCourseBlocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
       isEnrolled: isEnrolled ?? this.isEnrolled,
-      selectedCourseID: selectedCourseID ?? this.selectedCourseID,
     );
   }
 
@@ -128,6 +123,5 @@ class CoursesState extends Equatable {
     singleCourseBlocProgress,
     failureMessage,
     isEnrolled,
-    selectedCourseID,
   ];
 }

@@ -8,7 +8,7 @@ class ProfileTabAppBar extends StatefulWidget {
 }
 
 class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
-  // final CurrentUser? user = userBox.get(ShPrefKeys.currentUser);
+  final db = PreferencesServices.getUserInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -26,34 +26,34 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
         ),
         child: Row(
           children: [
-            // ClipOval(
-            //   child: CachedNetworkImage(
-            //     imageUrl: user?.photo ?? '',
-            //     width: 48.w,
-            //     height: 48.w,
-            //     fit: BoxFit.cover,
-            //     placeholder: (context, url) => Container(
-            //       width: 48.w,
-            //       height: 48.w,
-            //       color: Colors.grey[200],
-            //       child: Center(child: CircularProgressIndicator()),
-            //     ),
-            //     errorWidget: (context, url, error) => Container(
-            //       width: 48.w,
-            //       height: 48.w,
-            //       decoration: BoxDecoration(
-            //         color: context.colors.neutralContainerDefault.withOpacity(
-            //           0.1,
-            //         ),
-            //         image: DecorationImage(
-            //           image: AssetImage(
-            //             'assets/images/network_image_error_case.png',
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-
+            ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: db?.profile_photo?.original_url ?? '',
+                width: 48.w,
+                height: 48.w,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Container(
+                  width: 48.w,
+                  height: 48.w,
+                  color: Colors.grey[200],
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  width: 48.w,
+                  height: 48.w,
+                  decoration: BoxDecoration(
+                    color: context.colors.neutralContainerDefault.withOpacity(
+                      0.1,
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/network_image_error_case.png',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             //   // Image.network(
             //   //   // googleAccountUser.gPhotoUrl ??
             //   //   'https://t3.ftcdn.net/jpg/06/07/84/82/360_F_607848231_w5iFN4tMmtI2woJjMh7Q8mGvgARnzHgQ.jpg',
@@ -69,8 +69,7 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'User',
-                    // user?.fullName ?? 'User',
+                    "${db?.firstName ?? ''} ${db?.lastName ?? ''}",
                     style: TextStyle(
                       fontSize: 17.sp,
                       fontWeight: FontWeight.w500,
@@ -90,8 +89,8 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                       borderRadius: BorderRadius.circular(4.r),
                     ),
                     child: Text(
-                      // user?.roles?.first.makeFirstCapital() ?? 'Role',
-                      'Role',
+                      db?.account_type_str?.makeFirstCapital() ?? 'Role',
+                      // 'Role',
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,

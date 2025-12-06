@@ -11,7 +11,7 @@ class RecommendedCourses extends StatefulWidget {
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final BlocProgress singleCourseBlocProgress;
   final List<CourseShortInfo> courses;
-  final int selectedCourseID;
+  final int? selectedCourseIndex;
 
   const RecommendedCourses({
     super.key,
@@ -25,7 +25,7 @@ class RecommendedCourses extends StatefulWidget {
     this.isCertificateAvailble,
     required this.singleCourseBlocProgress,
     required this.courses,
-    required this.selectedCourseID,
+    this.selectedCourseIndex,
   });
 
   @override
@@ -79,6 +79,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               final singleCourseItem = widget.courses[index];
+              final isSelected = singleCourseItem.id;
 
               return GestureDetector(
                 onTap: () async {
@@ -105,7 +106,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      singleCourseItem.id == widget.selectedCourseID &&
+                      singleCourseItem.id == isSelected &&
                               widget.singleCourseBlocProgress ==
                                   BlocProgress.IS_LOADING
                           ? Container(

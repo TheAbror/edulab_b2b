@@ -9,7 +9,7 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final FocusNode _textFieldFocusNode = FocusNode();
-  // final CurrentUser? user = userBox.get(ShPrefKeys.currentUser);
+  final db = PreferencesServices.getUserInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -24,24 +24,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               space32,
-              // if (user?.photo != null && user?.photo != '')
-              //   ProfilePhoto(context, user?.photo ?? ''),
-              // space24,
-              // EditProfilePageItem(
-              //   label: 'First name',
-              //   text: user?.firstName ?? '',
-              //   textFieldFocusNode: _textFieldFocusNode,
-              // ),
-              // EditProfilePageItem(
-              //   label: 'Last name',
-              //   text: user?.lastName ?? '',
-              //   textFieldFocusNode: _textFieldFocusNode,
-              // ),
-              // EditProfilePageItem(
-              //   label: 'Email',
-              //   text: user?.email ?? '',
-              //   textFieldFocusNode: _textFieldFocusNode,
-              // ),
+              if (db?.profile_photo != null &&
+                  db?.profile_photo?.original_url != '')
+                ProfilePhoto(context, db?.profile_photo?.original_url ?? ''),
+              space24,
+              EditProfilePageItem(
+                label: 'First name',
+                text: db?.firstName ?? '',
+                textFieldFocusNode: _textFieldFocusNode,
+              ),
+              EditProfilePageItem(
+                label: 'Last name',
+                text: db?.lastName ?? '',
+                textFieldFocusNode: _textFieldFocusNode,
+              ),
+              EditProfilePageItem(
+                label: 'Email',
+                text: db?.email ?? '',
+                textFieldFocusNode: _textFieldFocusNode,
+              ),
               EditProfileBiography(textFieldFocusNode: _textFieldFocusNode),
               space24,
               ActionButton(

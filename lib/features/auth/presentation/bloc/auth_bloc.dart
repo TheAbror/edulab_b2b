@@ -79,6 +79,10 @@ class AuthBloc extends Cubit<AuthState> {
               username: user.username,
               firstName: user.firstname,
               lastName: user.lastname,
+              account_type_str: user.accountType,
+              email: user.email,
+              status: user.status,
+              profile_photo: user.profilePhoto,
             ),
           );
 
