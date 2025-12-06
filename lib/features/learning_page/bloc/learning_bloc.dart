@@ -40,6 +40,7 @@ class LearningBloc extends Cubit<LearningState> {
               chapter: _chapter,
               topic: _topic,
               step: _step,
+              appbarTabIndex: _topic.steps.indexWhere((e) => e.id == _step.id),
               allSteps: _topic.steps,
               courseID: id,
               chapterID: data.currentlyActive?.chapterID ?? 0,
