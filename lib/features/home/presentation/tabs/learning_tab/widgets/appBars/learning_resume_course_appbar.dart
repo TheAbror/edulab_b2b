@@ -86,7 +86,10 @@ class LearningResumeCourseAppBar extends StatelessWidget
               builder: (context, innerState) {
                 return TabBar(
                   onTap: (value) {
-                    context.read<LearningBloc>().changeAppbarTabIndex(value);
+                    context.read<LearningBloc>().changeAppbarTabIndex(
+                      value,
+                      StepModel.initial(),
+                    );
                   },
                   tabAlignment: TabAlignment.start,
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
