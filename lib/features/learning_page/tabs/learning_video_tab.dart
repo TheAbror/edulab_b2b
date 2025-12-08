@@ -53,6 +53,15 @@ class LearningPageVideoTab extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
+                MarkAsCompleteButton(
+                  status: step.status,
+                  markAsComplete: () {
+                    step.status == "COMPLETED"
+                        ? () {}
+                        : context.read<LearningBloc>().completeStep(step);
+                  },
+                ),
+
                 // CoursesDownloadsTab(),
               ],
             ),

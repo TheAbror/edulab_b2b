@@ -74,115 +74,115 @@ class LearningPageQuizTab extends StatelessWidget {
                             ),
                           ),
 
-                  // ListView.builder(
-                  //   itemCount: step.questions.length,
-                  //   shrinkWrap: true,
-                  //   physics: NeverScrollableScrollPhysics(),
-                  //   itemBuilder: (context, index) {
-                  //     final question = step.questions[index];
+                  ListView.builder(
+                    itemCount: step.questions.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final question = step.questions[index];
 
-                  //     final currentQuestionRequest = state.quizRequests
-                  //         .firstWhere(
-                  //           (q) => q.questionId == question.id,
-                  //           orElse: () => QuizRequest(
-                  //             questionId: question.id,
-                  //             stepId: step.id,
-                  //             selectedOptionIds: [],
-                  //           ),
-                  //         );
+                      final currentQuestionRequest = state.quizRequests
+                          .firstWhere(
+                            (q) => q.questionId == question.id,
+                            orElse: () => QuizRequest(
+                              questionId: question.id,
+                              stepId: step.id,
+                              selectedOptionIds: [],
+                            ),
+                          );
 
-                  //     Color? bgColor;
-                  //     IconData? icon;
+                      Color? bgColor;
+                      IconData? icon;
 
-                  //     QuizResponse? quizResponse;
+                      QuizResponse? quizResponse;
 
-                  //     if (state.response != null &&
-                  //         state.response!.isNotEmpty) {
-                  //       try {
-                  //         quizResponse = state.response!.firstWhere(
-                  //           (r) => r.id == question.id,
-                  //         );
-                  //       } catch (_) {
-                  //         quizResponse = null;
-                  //       }
-                  //     }
+                      if (state.response != null &&
+                          state.response!.isNotEmpty) {
+                        try {
+                          quizResponse = state.response!.firstWhere(
+                            (r) => r.id == question.id,
+                          );
+                        } catch (_) {
+                          quizResponse = null;
+                        }
+                      }
 
-                  //     if (quizResponse != null) {
-                  //       if (quizResponse.status == "CORRECT") {
-                  //         bgColor = Colors.green.withOpacity(0.15);
-                  //         icon = Icons.done;
-                  //       } else if (quizResponse.status == "INCORRECT") {
-                  //         bgColor = Colors.red.withOpacity(0.15);
-                  //         icon = Icons.close;
-                  //       }
-                  //     }
+                      if (quizResponse != null) {
+                        if (quizResponse.status == "CORRECT") {
+                          bgColor = Colors.green.withOpacity(0.15);
+                          icon = Icons.done;
+                        } else if (quizResponse.status == "INCORRECT") {
+                          bgColor = Colors.red.withOpacity(0.15);
+                          icon = Icons.close;
+                        }
+                      }
 
-                  //     return Container(
-                  //       padding: EdgeInsets.all(8.w),
-                  //       decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(8),
-                  //         border: Border.all(
-                  //           color: context.colors.borderMuted.withOpacity(0.15),
-                  //           width: 1.w,
-                  //         ),
-                  //       ),
-                  //       margin: EdgeInsets.only(
-                  //         bottom: 10.h,
-                  //       ),
-                  //       child: Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           HtmlWidget(
-                  //             question.text,
-                  //             textStyle: TextStyle(
-                  //               fontSize: 20.sp,
-                  //             ),
-                  //           ),
-                  //           SizedBox(height: 16.h),
+                      return Container(
+                        padding: EdgeInsets.all(8.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: context.colors.borderMuted.withOpacity(0.15),
+                            width: 1.w,
+                          ),
+                        ),
+                        margin: EdgeInsets.only(
+                          bottom: 10.h,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HtmlWidget(
+                              question.text,
+                              textStyle: TextStyle(
+                                fontSize: 20.sp,
+                              ),
+                            ),
+                            SizedBox(height: 16.h),
 
-                  //           AppText.headline2('Select all correct answers'),
+                            AppText.headline2('Select all correct answers'),
 
-                  //           SizedBox(height: 12.h),
+                            SizedBox(height: 12.h),
 
-                  //           QuizOptionsWidget(
-                  //             question: question,
-                  //             step: step,
-                  //             currentQuestionRequest: currentQuestionRequest,
-                  //             bgColor: bgColor,
-                  //             icon: icon,
-                  //             state: state,
-                  //           ),
-                  //           SizedBox(height: 10.h),
-                  //         ],
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
-                  // SizedBox(height: 20.h),
+                            QuizOptionsWidget(
+                              question: question,
+                              step: step,
+                              currentQuestionRequest: currentQuestionRequest,
+                              bgColor: bgColor,
+                              icon: icon,
+                              state: state,
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20.h),
 
-                  // if (state.correctnessPercentage > 90)
-                  //   ActionButton(text: 'Completed', onTap: () {}),
+                  if (state.correctnessPercentage > 90)
+                    ActionButton(text: 'Completed', onTap: () {}),
 
-                  // if (state.correctnessPercentage != 0 &&
-                  //     state.correctnessPercentage < 90)
-                  //   ActionButton(
-                  //     text: 'Retake quiz',
-                  //     onTap: () {
-                  //       context.read<QuizBloc>().clearAll();
-                  //     },
-                  //   ),
+                  if (state.correctnessPercentage != 0 &&
+                      state.correctnessPercentage < 90)
+                    ActionButton(
+                      text: 'Retake quiz',
+                      onTap: () {
+                        context.read<QuizBloc>().clearAll();
+                      },
+                    ),
 
-                  // if (state.correctnessPercentage == 0)
-                  //   ActionButton(
-                  //     isDisabled: !state.isAllSelected,
-                  //     text: 'Submit',
-                  //     onTap: () {
-                  //       if (state.isAllSelected &&
-                  //           state.blocProgress != BlocProgress.IS_LOADING) {
-                  //         context.read<QuizBloc>().submitAllQuizzes();
-                  //       }
-                  //     },
-                  //   ),
+                  if (state.correctnessPercentage == 0)
+                    ActionButton(
+                      isDisabled: !state.isAllSelected,
+                      text: 'Submit',
+                      onTap: () {
+                        if (state.isAllSelected &&
+                            state.blocProgress != BlocProgress.IS_LOADING) {
+                          context.read<QuizBloc>().submitAllQuizzes();
+                        }
+                      },
+                    ),
                   MarkAsCompleteButton(
                     status: step.status,
                     markAsComplete: markAsComplete,
