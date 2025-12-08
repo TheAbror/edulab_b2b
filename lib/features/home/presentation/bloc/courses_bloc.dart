@@ -5,6 +5,47 @@ part 'courses_state.dart';
 class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
+  void enrollToCourse(int courseID, VoidCallback onCall) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = EnrollmentRequest(courseID: courseID);
+
+    try {
+      final response = await ApiProvider.singleCourseServices.enrollToCourse(
+        request,
+      );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(blocProgress: BlocProgress.LOADED));
+
+          onCall();
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
   Future<bool?> checkEnrollment(int id) async {
     emit(state.copyWith(singleCourseBlocProgress: BlocProgress.IS_LOADING));
 

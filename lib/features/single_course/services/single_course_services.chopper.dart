@@ -37,6 +37,20 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
+  Future<Response<CourseEnrollmentResponse>> enrollToCourse(
+    EnrollmentRequest body,
+  ) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/enrollment/',
+    );
+    final $body = body;
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<CourseEnrollmentResponse, CourseEnrollmentResponse>(
+      $request,
+    );
+  }
+
+  @override
   Future<Response<SingleCourseInfo>> getSingleStepByID({
     required int chapterId,
     required int courseId,

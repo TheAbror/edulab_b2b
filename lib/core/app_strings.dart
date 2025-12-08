@@ -18,6 +18,7 @@ class AppStrings {
   static const learningWithID = 'learning/';
   static const submitQuiz = 'learning/submit';
   static const checkEnrollment = 'enrollment/check';
+  static const enrollToCourse = 'enrollment/';
   static const completeStep = 'learning/complete';
 
   //

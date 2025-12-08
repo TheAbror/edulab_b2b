@@ -177,3 +177,6 @@ export 'package:leti_mobile/features/home/data/datasources/models/topic_model.da
 export 'package:leti_mobile/features/learning_page/widgets/mark_as_completed_button.dart';
 export 'package:leti_mobile/features/learning_page/tabs/learning_quiz_tab.dart';
 export 'package:leti_mobile/features/learning_page/widgets/learning_page_body.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/request_models.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
+export 'package:leti_mobile/features/home/data/datasources/models/course_enrollment_response.dart';

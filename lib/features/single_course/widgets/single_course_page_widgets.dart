@@ -481,7 +481,12 @@ class CourseInfoBlocsTitle extends StatelessWidget {
 }
 
 class CourseInfoBottomNavigator extends StatelessWidget {
-  const CourseInfoBottomNavigator({super.key});
+  const CourseInfoBottomNavigator({
+    super.key,
+    required this.courseID,
+  });
+
+  final int courseID;
 
   @override
   Widget build(BuildContext context) {
@@ -497,7 +502,20 @@ class CourseInfoBottomNavigator extends StatelessWidget {
         children: [
           ActionButton(
             text: 'Enroll',
-            onTap: () {},
+            onTap: () {
+              context.read<CoursesBloc>().enrollToCourse(courseID, () {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.enrolledCoursePage,
+                  arguments: courseID,
+                );
+
+                showMessage(
+                  'Congratulations you have successfully enrolled',
+                  context,
+                );
+              });
+            },
           ),
           space8,
         ],

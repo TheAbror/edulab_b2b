@@ -12,7 +12,7 @@ class SingleCoursePage extends StatelessWidget {
       child: Scaffold(
         appBar: CourseInfoAppBar(id: id),
         body: SingleCourseBody(isContent: false),
-        bottomNavigationBar: CourseInfoBottomNavigator(),
+        bottomNavigationBar: CourseInfoBottomNavigator(courseID: id),
       ),
     );
   }

@@ -32,7 +32,7 @@ class SingleCourseContent extends StatelessWidget {
 }
 
 class CourseInfoMaterialExpansionItem extends StatelessWidget {
-  final String title;
+  final String? title;
   final String subTitle;
   final List<String> chapterInfoText;
   final int lessonsLength;
@@ -55,7 +55,7 @@ class CourseInfoMaterialExpansionItem extends StatelessWidget {
       title: Padding(
         padding: EdgeInsets.only(bottom: 4.h),
         child: Text(
-          title,
+          title ?? '---',
           style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500),
         ),
       ),

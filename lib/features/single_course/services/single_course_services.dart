@@ -1,5 +1,4 @@
 import 'package:chopper/chopper.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 part 'single_course_services.chopper.dart';
@@ -14,6 +13,11 @@ abstract class SingleCourseServices extends ChopperService {
 
   @Get(path: '${AppStrings.checkEnrollment}/?course_id={id}')
   Future<Response<MobileResponse>> checkEnrollment(@Path('id') int id);
+
+  @Post(path: AppStrings.enrollToCourse)
+  Future<Response<CourseEnrollmentResponse>> enrollToCourse(
+    @Body() EnrollmentRequest body,
+  );
 
   @Get(path: AppStrings.course)
   Future<Response<SingleCourseInfo>> getSingleStepByID({

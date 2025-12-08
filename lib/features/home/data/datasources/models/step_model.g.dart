@@ -250,18 +250,3 @@ Map<String, dynamic> _$QuizResponseAnswerOptionToJson(
   'text': instance.text,
   'value': instance.value,
 };
-
-CompleteStepRequest _$CompleteStepRequestFromJson(Map<String, dynamic> json) =>
-    CompleteStepRequest(
-      chapterID: (json['chapter_id'] as num?)?.toInt() ?? 0,
-      topicID: (json['topic_id'] as num?)?.toInt() ?? 0,
-      stepID: (json['step_id'] as num?)?.toInt() ?? 0,
-    );
-
-Map<String, dynamic> _$CompleteStepRequestToJson(
-  CompleteStepRequest instance,
-) => <String, dynamic>{
-  'chapter_id': instance.chapterID,
-  'topic_id': instance.topicID,
-  'step_id': instance.stepID,
-};
