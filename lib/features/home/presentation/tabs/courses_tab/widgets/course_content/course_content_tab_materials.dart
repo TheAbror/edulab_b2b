@@ -81,14 +81,18 @@ class CourseInfoMaterialExpansionItem extends StatelessWidget {
             final chapterID = topic.chapterId;
             final courseID = topic.courseId;
 
+            //TODO work here
+
             return CourseInfoChapterInfoText(
               onTap: () {
-                context.read<SingleCourseBloc>().getSingleStepByID(
-                  chapterId: chapterID ?? 0,
+                context.read<SingleCourseBloc>().openSelectedTopic(
                   courseId: courseID ?? 0,
-                  topicId: topic.id,
+                  ids: CurrentlyActive(
+                    chapterID: chapterID ?? 0,
+                    topicID: topic.id,
+                    stepID: topic.steps.first.id,
+                  ),
                 );
-                //TODO add complicated logic here
               },
               text: chapterInfoText[index],
               status: topic.status,

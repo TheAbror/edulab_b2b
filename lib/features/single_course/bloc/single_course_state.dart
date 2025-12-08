@@ -11,6 +11,8 @@ class SingleCourseState extends Equatable {
   final BlocProgress blocProgress;
   final String failureMessage;
   final CurrentlyActive? lastStoppedStep;
+  final bool navigateToLearning;
+  final int courseID;
 
   const SingleCourseState({
     required this.singleCourse,
@@ -22,6 +24,8 @@ class SingleCourseState extends Equatable {
     required this.blocProgress,
     required this.failureMessage,
     required this.lastStoppedStep,
+    required this.navigateToLearning,
+    required this.courseID,
   });
 
   factory SingleCourseState.initial() {
@@ -72,6 +76,8 @@ class SingleCourseState extends Equatable {
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
       lastStoppedStep: CurrentlyActive(chapterID: 0, topicID: 0, stepID: 0),
+      navigateToLearning: false,
+      courseID: 0,
     );
   }
 
@@ -85,6 +91,8 @@ class SingleCourseState extends Equatable {
     BlocProgress? blocProgress,
     String? failureMessage,
     CurrentlyActive? lastStoppedStep,
+    bool? navigateToLearning,
+    int? courseID,
   }) {
     return SingleCourseState(
       singleCourse: singleCourse ?? this.singleCourse,
@@ -97,6 +105,8 @@ class SingleCourseState extends Equatable {
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
       lastStoppedStep: lastStoppedStep ?? this.lastStoppedStep,
+      navigateToLearning: navigateToLearning ?? this.navigateToLearning,
+      courseID: courseID ?? this.courseID,
     );
   }
 
@@ -111,5 +121,7 @@ class SingleCourseState extends Equatable {
     blocProgress,
     failureMessage,
     lastStoppedStep,
+    navigateToLearning,
+    courseID,
   ];
 }

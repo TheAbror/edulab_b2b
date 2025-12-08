@@ -180,3 +180,4 @@ export 'package:leti_mobile/features/learning_page/widgets/learning_page_body.da
 export 'package:leti_mobile/features/home/data/datasources/models/request_models.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/course_enrollment_response.dart';
+export 'package:leti_mobile/features/learning_page/widgets/open_course_by_topic_selection_model.dart';

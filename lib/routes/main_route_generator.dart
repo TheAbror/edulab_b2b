@@ -115,7 +115,9 @@ class MainRouteGenerator {
 
       case AppRoutes.learningPage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => LearningPage(id: settings.arguments as int),
+          builder: (_) => LearningPage(
+            args: settings.arguments as OpenCourseByTopicSelectionModel,
+          ),
         );
 
       case AppRoutes.chatPage:

@@ -1,9 +1,12 @@
 import 'package:leti_mobile/widget_imports.dart';
 
 class LearningPage extends StatefulWidget {
-  final int id;
+  final OpenCourseByTopicSelectionModel args;
 
-  const LearningPage({super.key, required this.id});
+  const LearningPage({
+    super.key,
+    required this.args,
+  });
 
   @override
   State<LearningPage> createState() => _LearningPageState();
@@ -36,7 +39,11 @@ class _LearningPageState extends State<LearningPage>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LearningBloc()..resumeCourseById(widget.id),
+      create: (_) => LearningBloc()
+        ..resumeCourseById(
+          id: widget.args.courseID,
+          currentlyActive: widget.args.ids,
+        ),
       child: BlocBuilder<LearningBloc, LearningState>(
         builder: (context, state) {
           if (state.blocProgress == BlocProgress.IS_LOADING) {

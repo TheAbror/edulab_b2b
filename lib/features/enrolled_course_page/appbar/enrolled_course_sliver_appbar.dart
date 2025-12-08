@@ -26,7 +26,9 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(
                   context,
                   AppRoutes.learningPage,
-                  arguments: course.id,
+                  arguments: OpenCourseByTopicSelectionModel(
+                    courseID: course.id,
+                  ),
                 ),
                 child: Container(
                   color: state.isLightTheme

@@ -19,8 +19,8 @@ abstract class SingleCourseServices extends ChopperService {
     @Body() EnrollmentRequest body,
   );
 
-  @Get(path: AppStrings.course)
-  Future<Response<SingleCourseInfo>> getSingleStepByID({
+  @Get(path: AppStrings.learningWithID)
+  Future<Response<StepModel>> openSelectedTopic({
     @Query('chapter_id') required int chapterId,
     @Query('course_id') required int courseId,
     @Query('step_id') required int stepId,

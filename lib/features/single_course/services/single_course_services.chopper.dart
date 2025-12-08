@@ -51,14 +51,14 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
-  Future<Response<SingleCourseInfo>> getSingleStepByID({
+  Future<Response<StepModel>> openSelectedTopic({
     required int chapterId,
     required int courseId,
     required int stepId,
     required int topicId,
   }) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course',
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/',
     );
     final Map<String, dynamic> $params = <String, dynamic>{
       'chapter_id': chapterId,
@@ -72,7 +72,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
       client.baseUrl,
       parameters: $params,
     );
-    return client.send<SingleCourseInfo, SingleCourseInfo>($request);
+    return client.send<StepModel, StepModel>($request);
   }
 
   @override

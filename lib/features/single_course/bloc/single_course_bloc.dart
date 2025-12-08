@@ -14,23 +14,26 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
     );
   }
 
+  void manageNavigateToLearning(bool result) {
+    emit(state.copyWith(navigateToLearning: result));
+  }
+
   void manageDescriptionHidden() {
     emit(state.copyWith(isDescriptionHidden: !state.isDescriptionHidden));
   }
 
-  void getSingleStepByID({
-    required int chapterId,
+  void openSelectedTopic({
     required int courseId,
-    required int topicId,
+    required CurrentlyActive ids,
   }) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.singleCourseServices.getSingleStepByID(
-        chapterId: chapterId,
+      final response = await ApiProvider.singleCourseServices.openSelectedTopic(
+        chapterId: ids.chapterID,
         courseId: courseId,
-        stepId: 0,
-        topicId: topicId,
+        stepId: ids.stepID,
+        topicId: ids.topicID,
       );
 
       if (response.isSuccessful) {
@@ -39,7 +42,9 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
         if (data != null) {
           emit(
             state.copyWith(
-              //
+              navigateToLearning: true,
+              lastStoppedStep: ids,
+              courseID: courseId,
               blocProgress: BlocProgress.LOADED,
             ),
           );

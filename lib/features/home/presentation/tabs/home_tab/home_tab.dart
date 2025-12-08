@@ -37,7 +37,9 @@ class _HomeTabState extends State<HomeTab> {
                     Navigator.pushNamed(
                       context,
                       AppRoutes.learningPage,
-                      arguments: currentCourse.first.id,
+                      arguments: OpenCourseByTopicSelectionModel(
+                        courseID: currentCourse.first.id,
+                      ),
                     );
                   },
                   viewAllOnTap: () {

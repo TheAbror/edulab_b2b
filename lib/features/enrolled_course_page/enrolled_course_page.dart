@@ -16,7 +16,25 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
     return BlocProvider(
       create: (context) => SingleCourseBloc()..getSingleCourse(widget.id),
       child: Scaffold(
-        body: BlocBuilder<SingleCourseBloc, SingleCourseState>(
+        body: BlocConsumer<SingleCourseBloc, SingleCourseState>(
+          listener: (context, state) {
+            if (state.navigateToLearning) {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.learningPage,
+                arguments: OpenCourseByTopicSelectionModel(
+                  courseID: state.courseID,
+                  ids: CurrentlyActive(
+                    chapterID: state.lastStoppedStep?.chapterID ?? 0,
+                    topicID: state.lastStoppedStep?.topicID ?? 0,
+                    stepID: state.lastStoppedStep?.stepID ?? 0,
+                  ),
+                ),
+              );
+
+              context.read<SingleCourseBloc>().manageNavigateToLearning(false);
+            }
+          },
           builder: (context, state) {
             if (state.blocProgress == BlocProgress.IS_LOADING) {
               return const PrimaryLoader();

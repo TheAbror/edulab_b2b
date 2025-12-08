@@ -7,7 +7,10 @@ part 'learning_state.dart';
 class LearningBloc extends Cubit<LearningState> {
   LearningBloc() : super(LearningState.initial());
 
-  void resumeCourseById(int id) async {
+  void resumeCourseById({
+    required int id,
+    CurrentlyActive? currentlyActive,
+  }) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
@@ -19,18 +22,20 @@ class LearningBloc extends Cubit<LearningState> {
         final data = response.body;
 
         if (data != null) {
+          final lastStopped = currentlyActive ?? data.currentlyActive;
+
           final ChapterModel _chapter = data.chapters.firstWhere(
-            (c) => c.id == data.currentlyActive?.chapterID,
+            (c) => c.id == lastStopped?.chapterID,
             orElse: () => ChapterModel.initial(),
           );
 
           final TopicModel _topic = _chapter.topics.firstWhere(
-            (t) => t.id == data.currentlyActive?.topicID,
+            (t) => t.id == lastStopped?.topicID,
             orElse: () => TopicModel.initial(),
           );
 
           final StepModel _step = _topic.steps.firstWhere(
-            (s) => s.id == data.currentlyActive?.stepID,
+            (s) => s.id == lastStopped?.stepID,
             orElse: () => StepModel.initial(),
           );
 
@@ -43,9 +48,9 @@ class LearningBloc extends Cubit<LearningState> {
               appbarTabIndex: _topic.steps.indexWhere((e) => e.id == _step.id),
               allSteps: _topic.steps,
               courseID: id,
-              chapterID: data.currentlyActive?.chapterID ?? 0,
-              topicID: data.currentlyActive?.topicID ?? 0,
-              stepID: data.currentlyActive?.stepID ?? 0,
+              chapterID: lastStopped?.chapterID ?? 0,
+              topicID: lastStopped?.topicID ?? 0,
+              stepID: lastStopped?.stepID ?? 0,
               blocProgress: BlocProgress.LOADED,
             ),
           );
@@ -313,185 +318,4 @@ class LearningBloc extends Cubit<LearningState> {
 
     controller.index = controller.length - 1;
   }
-
-  // void moveToPreviousTopicasassas(StepModel stepModel) async {
-  //   final _chapter = state.chapter;
-  //   final _allChapters = state.resumedCourse.chapters;
-  //   final chapterIndex = _allChapters.indexWhere((e) => e.id == _chapter.id);
-  //   final _previousChapter = _allChapters[chapterIndex - 1];
-  //   final _firstTopic = _previousChapter.topics.first;
-  //   final _firstTopicID = _previousChapter.topics.first.id;
-  //   final _firstStepID = _firstTopic.steps.first.id;
-
-  //   emit(
-  //     state.copyWith(
-  //       appbarTabIndex: 0,
-  //       chapterID: _previousChapter.id,
-  //       topicID: _firstTopicID,
-  //       stepID: _firstStepID,
-
-  //       chapter: _previousChapter,
-  //       topic: _firstTopic,
-  //       step: _firstTopic.steps.first,
-  //       allSteps: _firstTopic.steps,
-  //     ),
-  //   );
-  // }
-
-  // void moveToPreviousTopic(StepModel stepModel) {
-  //   final _currentChapter = state.chapter;
-  //   final _currentTopics = _currentChapter.topics;
-  //   final _currentTopic = _currentTopics.indexWhere(
-  //     (e) => e.id == state.topic.id,
-  //   );
-  //   if (_currentTopic == -1) return;
-  //   final indexOfCurrentTopic = _currentTopics.indexWhere(
-  //     (e) => e.id == _currentTopic,
-  //   );
-  //   if (indexOfCurrentTopic == -1) return;
-  //   // final firstTopicID = _currentChapter.topics.first.id;
-  //   final previouseTopic = _currentTopics[indexOfCurrentTopic - 1];
-
-  // }
-
-  // void moveToPreviousTopicLastStep({
-  //   required currentTopicIndex,
-  //   required TabController controller,
-  // }) {
-  //   final topicIndex = chapter.topics.indexWhere((t) => t.id == topic.id);
-  //   final prevTopic = state.chapter.topics[topicIndex - 1];
-
-  //   if (prevTopic.steps.isEmpty) return;
-
-  //   final lastStep = prevTopic.steps.last;
-
-  //   emit(
-  //     state.copyWith(
-  //       chapterID: chapter.id,
-  //       topicID: prevTopic.id,
-  //       stepID: lastStep.id,
-  //       chapter: chapter,
-  //       topic: prevTopic,
-  //       step: lastStep,
-  //       allSteps: prevTopic.steps,
-  //       appbarTabIndex: 2,
-  //     ),
-  //   );
-
-  //   controller.index = controller.length - 1;
-  // }
-
-  // void moveToPreviousTopicOrStep(
-  //   StepModel stepModel,
-  //   TabController controller,
-  // ) {
-  //   // Handle tab navigation
-  //   if (controller.index > 0) {
-  //     controller.index--;
-  //     return;
-  //   }
-
-  //   final currentChapter = state.chapter;
-  //   final currentTopic = state.topic;
-  //   final currentStep = state.step;
-
-  //   if (currentChapter == null || currentTopic == null || currentStep == null) {
-  //     return;
-  //   }
-
-  //   _navigateToPrevious(
-  //     currentChapter,
-  //     currentTopic,
-  //     currentStep,
-  //     controller,
-  //   ); // Pass controller
-  // }
-
-  // void _navigateToPrevious(
-  //   ChapterModel chapter,
-  //   TopicModel topic,
-  //   StepModel step,
-  //   TabController controller, // Add controller parameter
-  // ) {
-  //   final stepIndex = topic.steps.indexWhere((s) => s.id == step.id);
-
-  //   // Case 1: Move to previous step in current topic
-  //   if (stepIndex > 0) {
-  //     _moveToPreviousStep(topic, stepIndex, controller); // Pass controller
-  //     return;
-  //   }
-
-  //   final topicIndex = chapter.topics.indexWhere((t) => t.id == topic.id);
-
-  //   // Case 2: Move to last step of previous topic
-  //   if (topicIndex > 0) {
-  //     _moveToPreviousTopicLastStep(
-  //       chapter,
-  //       topicIndex,
-  //       controller,
-  //     ); // Pass controller
-  //     return;
-  //   }
-
-  //   // Case 3: Move to last step of last topic in previous chapter
-  //   final chapterIndex = state.resumedCourse.chapters.indexWhere(
-  //     (c) => c.id == chapter.id,
-  //   );
-
-  //   _moveToPreviousChapterLastTopicLastStep(
-  //     chapterIndex,
-  //     state.resumedCourse.chapters,
-  //     controller, // Pass controller
-  //   );
-  // }
-
-  // void _moveToPreviousStep(
-  //   TopicModel topic,
-  //   int currentStepIndex,
-  //   TabController controller, // Add controller parameter
-  // ) {
-  //   final prevStep = topic.steps[currentStepIndex - 1];
-
-  //   emit(
-  //     state.copyWith(
-  //       stepID: prevStep.id,
-  //       step: prevStep,
-  //       allSteps: topic.steps,
-  //     ),
-  //   );
-
-  //   // Set tab to last tab for the previous step
-  //   controller.index = controller.length - 1;
-  // }
-
-  // void _moveToPreviousChapterLastTopicLastStep(
-  //   int chapterIndex,
-  //   List<ChapterModel> allChapters,
-  //   TabController controller, // Add controller parameter
-  // ) {
-  //   if (chapterIndex == 0) return;
-
-  //   final prevChapter = allChapters[chapterIndex - 1];
-  //   if (prevChapter.topics.isEmpty) return;
-
-  //   final lastTopic = prevChapter.topics.last;
-  //   if (lastTopic.steps.isEmpty) return;
-
-  //   final lastStep = lastTopic.steps.last;
-
-  //   emit(
-  //     state.copyWith(
-  //       chapterID: prevChapter.id,
-  //       topicID: lastTopic.id,
-  //       stepID: lastStep.id,
-  //       chapter: prevChapter,
-  //       topic: lastTopic,
-  //       step: lastStep,
-  //       allSteps: lastTopic.steps,
-  //     ),
-  //   );
-
-  //   // Set tab to last tab
-  //   controller.index = controller.length - 1;
-  // }
 }
