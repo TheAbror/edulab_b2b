@@ -6,11 +6,13 @@ class LearningBottomNavigation extends StatelessWidget {
     required this.controller,
     required this.stepsLength,
     required this.status,
+    required this.stepModel,
   });
 
   final TabController controller;
   final int stepsLength;
   final String status;
+  final StepModel stepModel;
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +43,18 @@ class LearningBottomNavigation extends StatelessWidget {
           // NEXT
           LearningBottomNavButtonRight(
             onTap: () {
+              final index = controller.index + 1;
+
               if (controller.index < stepsLength - 1) {
-                final index = controller.index + 1;
                 controller.animateTo(index);
                 context.read<LearningBloc>().changeAppbarTabIndex(index);
+              }
+
+              if (controller.index <= stepsLength - 1) {
+                if (stepsLength == index) {
+                  context.read<LearningBloc>().moveToNextTopic(stepModel);
+                  controller.index = 0;
+                }
               }
             },
             isEnabled: status == "COMPLETED" ? true : false,

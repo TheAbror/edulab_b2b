@@ -73,19 +73,13 @@ class LearningBloc extends Cubit<LearningState> {
     }
   }
 
-  void completeStep({
-    required chapterID,
-    required topicID,
-    required stepID,
-  }) async {
-    // emit(LearningState.initial());
-
+  void completeStep(StepModel stepModel) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = CompleteStepRequest(
-      chapterID: chapterID,
-      topicID: topicID,
-      stepID: stepID,
+      chapterID: stepModel.chapterId ?? 0,
+      topicID: stepModel.topicId ?? 0,
+      stepID: stepModel.id,
     );
 
     try {
@@ -97,20 +91,13 @@ class LearningBloc extends Cubit<LearningState> {
         final data = response.body;
 
         if (data != null) {
-          // final receivedStepIndex = state.allSteps.indexWhere(
-          //   (element) => element.id == stepID,
-          // );
-
-          // final length = state.allSteps.length - 1;
-
-          // if (receivedStepIndex != length) {
           final completedStep = state.step.copyWith(
             status: 'COMPLETED',
           );
 
           final updatedSteps = List<StepModel>.from(state.allSteps);
           final stepIndex = updatedSteps.indexWhere(
-            (step) => step.id == stepID,
+            (step) => step.id == stepModel.id,
           );
 
           if (stepIndex != -1) {
@@ -118,20 +105,24 @@ class LearningBloc extends Cubit<LearningState> {
               status: 'COMPLETED',
             );
           }
+          if (data.topicCompleted) {
+            emit(
+              state.copyWith(
+                chapterID: data.nextChapterId,
+                topicID: data.nextTopicId,
+                stepID: data.nextStepId,
+              ),
+            );
+          }
+
           emit(
             state.copyWith(
-              // chapterID: data.nextChapterId,
-              // topicID: data.nextTopicId,
-              // stepID: data.nextStepId,
               step: completedStep,
               allSteps: updatedSteps,
               blocProgress: BlocProgress.LOADED,
             ),
           );
         }
-        // }
-
-        // resumeCourseById(state.courseID);
       } else {
         final error = ErrorResponse.fromJson(
           json.decode(response.error.toString()),
@@ -159,11 +150,11 @@ class LearningBloc extends Cubit<LearningState> {
     emit(state.copyWith(isExpanded: value));
   }
 
-  void moveToNextStep() {
-    final newList = List<StepModel>.from(state.allSteps);
+  // void moveToNextStep() {
+  //   final newList = List<StepModel>.from(state.allSteps);
 
-    emit(state.copyWith(step: newList[state.appbarTabIndex + 1]));
-  }
+  //   emit(state.copyWith(step: newList[state.appbarTabIndex + 1]));
+  // }
 
   void changeMaterialsTabIndex(int index) {
     emit(state.copyWith(materialsTabIndex: index));
@@ -171,5 +162,84 @@ class LearningBloc extends Cubit<LearningState> {
 
   void changeAppbarTabIndex(int appbarTabIndex) {
     emit(state.copyWith(appbarTabIndex: appbarTabIndex));
+  }
+
+  void moveToNextTopic(StepModel stepModel) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = CompleteStepRequest(
+      chapterID: stepModel.chapterId ?? 0,
+      topicID: stepModel.topicId ?? 0,
+      stepID: stepModel.id,
+    );
+
+    try {
+      final response = await ApiProvider.singleCourseServices.completeStep(
+        request,
+      );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          final _chapter = state.resumedCourse.chapters.firstWhere(
+            (e) => e.id == data.nextChapterId,
+            orElse: ChapterModel.initial,
+          );
+
+          final _topic = _chapter.topics.firstWhere(
+            (e) => e.id == data.nextTopicId,
+            orElse: TopicModel.initial,
+          );
+
+          final _step = _topic.steps.firstWhere(
+            (e) => e.id == data.nextStepId,
+            orElse: StepModel.initial,
+          );
+
+          emit(
+            state.copyWith(
+              appbarTabIndex: 0,
+              chapter: _chapter,
+              topic: _topic,
+
+              step: _step,
+              allSteps: _topic.steps,
+
+              // final ChapterModel chapter;
+              // final TopicModel topic;
+              // final StepModel step;
+              // final List<StepModel> allSteps;
+              chapterID: data.nextChapterId,
+              topicID: data.nextTopicId,
+              stepID: data.nextStepId,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+          // emit(LearningState.initial());
+
+          // resumeCourseById(state.courseID);
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
   }
 }
