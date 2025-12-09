@@ -14,12 +14,19 @@ class LearningPageVideoTab extends StatefulWidget {
   State<LearningPageVideoTab> createState() => _LearningPageVideoTabState();
 }
 
-class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
+class _LearningPageVideoTabState extends State<LearningPageVideoTab>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   VideoPlayerController? _videoController;
   ChewieController? _chewieController;
 
   bool _isLoading = false;
   bool _hasError = false;
+
+  double _progress = 0.0; // 0–1 progress
+  bool _canComplete = false; // unlock after 80%
 
   @override
   void initState() {
@@ -40,6 +47,9 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
     try {
       _videoController = VideoPlayerController.networkUrl(Uri.parse(url));
       await _videoController!.initialize();
+
+      // Track progress
+      _videoController!.addListener(_handleVideoProgress);
 
       _chewieController = ChewieController(
         videoPlayerController: _videoController!,
@@ -73,8 +83,27 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
     }
   }
 
+  void _handleVideoProgress() {
+    if (!mounted || _videoController == null) return;
+
+    final p = _videoController!.value.position;
+    final d = _videoController!.value.duration;
+
+    if (p.inMilliseconds == 0 || d.inMilliseconds == 0) return;
+
+    final newProgress = p.inMilliseconds / d.inMilliseconds;
+
+    if (newProgress != _progress) {
+      setState(() {
+        _progress = newProgress;
+        _canComplete = newProgress >= 0.8;
+      });
+    }
+  }
+
   @override
   void dispose() {
+    _videoController?.removeListener(_handleVideoProgress);
     _chewieController?.dispose();
     _videoController?.dispose();
     super.dispose();
@@ -82,13 +111,9 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    if (_hasError || _chewieController == null) {
-      return _buildFallback();
-    }
+    super.build(context); // IMPORTANT
+    if (_isLoading) return const Center(child: CircularProgressIndicator());
+    if (_hasError || _chewieController == null) return _buildFallback();
 
     return _buildVideoPlayer();
   }
@@ -101,6 +126,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
             aspectRatio: _videoController!.value.aspectRatio,
             child: Chewie(controller: _chewieController!),
           ),
+          const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -113,6 +139,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                 const SizedBox(height: 16),
 
                 if (widget.step.text?.isNotEmpty == true)
@@ -124,8 +151,12 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
                 const SizedBox(height: 16),
 
                 MarkAsCompleteButton(
-                  status: widget.step.status,
-                  markAsComplete: widget.markAsComplete,
+                  status: _canComplete ? widget.step.status : "NOT_READY",
+                  markAsComplete: () {
+                    if (_canComplete) {
+                      widget.markAsComplete();
+                    }
+                  },
                 ),
               ],
             ),
@@ -146,7 +177,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab> {
           const SizedBox(height: 16),
           MarkAsCompleteButton(
             status: widget.step.status,
-            markAsComplete: widget.markAsComplete,
+            markAsComplete: () {},
           ),
         ],
       ),

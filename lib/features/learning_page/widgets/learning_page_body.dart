@@ -28,38 +28,51 @@ class LearningPageBodyState extends State<LearningPageBody> {
           physics: const BouncingScrollPhysics(),
           children: state.allSteps.map(
             (step) {
-              switch (step.type) {
-                case 'TEXT':
-                  return LearningPageTextTab(
-                    step: step,
-                    markAsComplete: () {
-                      step.status == "COMPLETED" ? () {} : completeStep(step);
-                    },
-                  );
-
-                case 'VIDEO':
-                  return LearningPageVideoTab(
-                    step: step,
-                    markAsComplete: () {
-                      step.status == "COMPLETED" ? () {} : completeStep(step);
-                    },
-                  );
-
-                case 'QUIZ':
-                  return LearningPageQuizTab(
-                    step: step,
-                    markAsComplete: () {
-                      step.status == "COMPLETED" ? () {} : completeStep(step);
-                    },
-                  );
-
-                default:
-                  return SingleChildScrollView(child: Text(step.title));
-              }
+              return KeyedSubtree(
+                key: ValueKey(step.id),
+                child: _buildStepTab(step),
+              );
             },
           ).toList(),
         );
       },
     );
+  }
+
+  Widget _buildStepTab(StepModel step) {
+    switch (step.type) {
+      case 'TEXT':
+        return LearningPageTextTab(
+          step: step,
+          markAsComplete: () {
+            if (step.status != "COMPLETED") {
+              completeStep(step);
+            }
+          },
+        );
+
+      case 'VIDEO':
+        return LearningPageVideoTab(
+          step: step,
+          markAsComplete: () {
+            if (step.status != "COMPLETED") {
+              completeStep(step);
+            }
+          },
+        );
+
+      case 'QUIZ':
+        return LearningPageQuizTab(
+          step: step,
+          markAsComplete: () {
+            if (step.status != "COMPLETED") {
+              completeStep(step);
+            }
+          },
+        );
+
+      default:
+        return SingleChildScrollView(child: Text(step.title));
+    }
   }
 }

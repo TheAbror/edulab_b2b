@@ -5,10 +5,12 @@ class MarkAsCompleteButton extends StatelessWidget {
     super.key,
     required this.markAsComplete,
     required this.status,
+    this.canComplete = true,
   });
 
   final VoidCallback markAsComplete;
   final String status;
+  final bool? canComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MarkAsCompleteButton extends StatelessWidget {
         width: 163.w,
         margin: EdgeInsets.only(top: 24.h),
         decoration: BoxDecoration(
-          color: status == "COMPLETED"
+          color: status == "COMPLETED" && (canComplete == true)
               ? context.colors.successDefault
               : context.colors.accentDefault,
           borderRadius: BorderRadius.circular(8),
@@ -33,9 +35,12 @@ class MarkAsCompleteButton extends StatelessWidget {
 
                 color: CustomThemes.neutral0,
               ),
-            if (status == "COMPLETED") SizedBox(width: 10.w),
+            if (status == "COMPLETED" && (canComplete == true))
+              SizedBox(width: 10.w),
             AppText.headline1(
-              status == "COMPLETED" ? "Completed" : 'Mark as complete',
+              status == "COMPLETED" && (canComplete == true)
+                  ? "Completed"
+                  : 'Mark as complete',
               color: CustomThemes.neutral0,
             ),
           ],
