@@ -103,12 +103,20 @@ class AllCoursesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          AppRoutes.singleCoursePageForRecommended,
-          arguments: item.id,
+      onTap: () async {
+        final bool? result = await context.read<CoursesBloc>().checkEnrollment(
+          item.id,
         );
+
+        if (!context.mounted) return;
+
+        if (result != null) {
+          Navigator.pushNamed(
+            context,
+            result ? AppRoutes.enrolledCoursePage : AppRoutes.singleCoursePage,
+            arguments: item.id,
+          );
+        }
       },
       behavior: HitTestBehavior.opaque,
       child: Container(

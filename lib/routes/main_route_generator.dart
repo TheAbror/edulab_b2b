@@ -129,11 +129,6 @@ class MainRouteGenerator {
               AllCoursesPage(idAndTitle: settings.arguments as IdAndTitle?),
         );
 
-      case AppRoutes.singleCoursePageForRecommended:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => SingleCoursePage(id: settings.arguments as int),
-        );
-
       case AppRoutes.singleCoursePage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => SingleCoursePage(id: settings.arguments as int),
