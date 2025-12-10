@@ -10,6 +10,7 @@ class LanguageSelectionPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 40.w),
         child: BlocBuilder<LocalizationBloc, LocalizationState>(
           builder: (context, state) {
+            final language = getLanguageName(state.languageCode);
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -18,7 +19,7 @@ class LanguageSelectionPage extends StatelessWidget {
                 space32,
                 themeItem(
                   'O’zbek',
-                  state.languageCode == 'O’zbek' ? true : false,
+                  language == 'O’zbek' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
                     'O’zbek',
                   ),
@@ -27,7 +28,7 @@ class LanguageSelectionPage extends StatelessWidget {
                 ),
                 themeItem(
                   'English',
-                  state.languageCode == 'English' ? true : false,
+                  language == 'English' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
                     'English',
                   ),
@@ -36,7 +37,7 @@ class LanguageSelectionPage extends StatelessWidget {
                 ),
                 themeItem(
                   'Русский',
-                  state.languageCode == 'Русский' ? true : false,
+                  language == 'Русский' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
                     'Русский',
                   ),

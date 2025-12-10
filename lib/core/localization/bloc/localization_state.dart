@@ -8,9 +8,7 @@ class LocalizationState extends Equatable {
   });
 
   factory LocalizationState.initial() {
-    var deviceLang = Platform.localeName.splitLangCodeFromLocale();
-
-    return LocalizationState(languageCode: deviceLang);
+    return LocalizationState(languageCode: '');
   }
 
   LocalizationState copyWith({
