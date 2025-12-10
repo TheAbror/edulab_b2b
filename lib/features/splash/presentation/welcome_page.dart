@@ -44,27 +44,27 @@ class WelcomePage extends StatelessWidget {
               ),
               isFilled: false,
             ),
-            SizedBox(height: 28.h),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  AppRoutes.rootPage,
-                  (route) => false,
-                );
-              },
-              child: Center(
-                child: Text(
-                  context.localizations.skipfornow,
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: context.colors.neutralDefault,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+            // SizedBox(height: 28.h),
+            // GestureDetector(
+            //   behavior: HitTestBehavior.opaque,
+            //   onTap: () {
+            //     Navigator.pushNamedAndRemoveUntil(
+            //       context,
+            //       AppRoutes.rootPage,
+            //       (route) => false,
+            //     );
+            //   },
+            //   child: Center(
+            //     child: Text(
+            //       context.localizations.skipfornow,
+            //       style: TextStyle(
+            //         fontSize: 15.sp,
+            //         color: context.colors.neutralDefault,
+            //         fontWeight: FontWeight.w500,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

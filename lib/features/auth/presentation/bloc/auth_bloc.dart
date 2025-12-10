@@ -70,8 +70,6 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           final user = data.userInfo;
 
-          ApiProvider.create(token: data.token);
-
           PreferencesServices.saveToken(data.token);
           PreferencesServices.saveUserInfo(
             LocalStorageUserInfo(
@@ -86,9 +84,7 @@ class AuthBloc extends Cubit<AuthState> {
             ),
           );
 
-          final fds = PreferencesServices.getUserInfo();
-
-          print(fds);
+          ApiProvider.create(token: data.token);
 
           emit(
             state.copyWith(
