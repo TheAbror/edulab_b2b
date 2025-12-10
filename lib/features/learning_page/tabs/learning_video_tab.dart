@@ -177,7 +177,10 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
           const SizedBox(height: 16),
           MarkAsCompleteButton(
             status: widget.step.status,
-            markAsComplete: () {},
+            canComplete: true,
+            markAsComplete: () {
+              widget.markAsComplete();
+            },
           ),
         ],
       ),
