@@ -17,7 +17,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       resizeToAvoidBottomInset: false,
       appBar: EditProfilePageAppBar(context),
       body: SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
@@ -44,15 +44,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 textFieldFocusNode: _textFieldFocusNode,
               ),
               EditProfileBiography(textFieldFocusNode: _textFieldFocusNode),
-              space24,
-              ActionButton(
-                text: 'Save',
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                isDisabled: false,
-              ),
-              SizedBox(height: 250.h),
+              // space24,
+              // ActionButton(
+              //   text: 'Save',
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   isDisabled: false,
+              // ),
+              // SizedBox(height: 250.h),
             ],
           ),
         ),

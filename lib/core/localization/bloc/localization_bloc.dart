@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leti_mobile/core/extensions/string_extensions.dart';
+import 'package:leti_mobile/widget_imports.dart';
 
 part 'localization_state.dart';
 
@@ -10,48 +11,30 @@ class LocalizationBloc extends Cubit<LocalizationState> {
 
   Future<void> initLocalization() async {
     var deviceLang = Platform.localeName.splitLangCodeFromLocale();
-    // final currentUser = userBox.get(ShPrefKeys.currentUser);
-    // final settings = settingsBox.get(ShPrefKeys.projectSettings);
+    final lang = PreferencesServices.getLang();
+    final token = PreferencesServices.getToken();
 
     deviceLang = getLanguageName(deviceLang);
 
-    // final userLang = settings?.lang ?? deviceLang;
+    final userLang = lang ?? deviceLang;
 
-    // if (settings != null) {
-    //   settingsBox.put(
-    //     ShPrefKeys.projectSettings,
-    //     settings.copyWith(lang: userLang),
-    //   );
-    // } else {
-    //   settingsBox.put(
-    //     ShPrefKeys.projectSettings,
-    //     ProjectSettings(isLight: false, isSystemDefault: true, lang: userLang),
-    //   );
-    // }
+    PreferencesServices.saveLang(userLang);
 
-    // ApiProvider.create(token: currentUser?.token, language: userLang);
+    ApiProvider.create(token: token, language: userLang);
 
-    emit(state.copyWith(languageCode: 'en'));
-    // emit(state.copyWith(languageCode: userLang));
+    emit(state.copyWith(languageCode: userLang));
   }
 
   Future<void> changeLocalization(String? languageCode) async {
     var deviceLang = Platform.localeName.splitLangCodeFromLocale();
-
-    // final currentUser = userBox.get(ShPrefKeys.currentUser);
-
-    // final settings = settingsBox.get(ShPrefKeys.projectSettings);
-
+    final token = PreferencesServices.getToken();
     deviceLang = getLanguageName(deviceLang);
 
     final currentAppLang = languageCode ?? deviceLang;
 
-    // settingsBox.put(
-    //   ShPrefKeys.projectSettings,
-    //   settings.copyWith(lang: currentAppLang),
-    // );
+    PreferencesServices.saveLang(currentAppLang);
 
-    // ApiProvider.create(token: currentUser?.token, language: currentAppLang);
+    ApiProvider.create(token: token, language: currentAppLang);
 
     emit(state.copyWith(languageCode: currentAppLang));
   }

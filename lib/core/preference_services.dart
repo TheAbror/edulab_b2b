@@ -27,6 +27,14 @@ class PreferencesServices {
     return _getPrefs().setString(ShPrefKeys.token, token);
   }
 
+  static String? getLang() {
+    return _getPrefs().getString(ShPrefKeys.lang);
+  }
+
+  static Future<bool> saveLang(String lang) async {
+    return _getPrefs().setString(ShPrefKeys.lang, lang);
+  }
+
   static Future<bool> saveUserInfo(LocalStorageUserInfo userInfo) async {
     final jsonString = jsonEncode(userInfo.toJson());
     return _getPrefs().setString(ShPrefKeys.userInfo, jsonString);
