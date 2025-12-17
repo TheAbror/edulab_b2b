@@ -12,7 +12,7 @@ class CourseTabBanner extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 16.w),
           decoration: BoxDecoration(
             color: context.colors.status06ContainerDefault.withOpacity(
-              state.isLightTheme ? 0.1 : 0.2,
+              state.isLightTheme == true ? 0.1 : 0.2,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
@@ -59,7 +59,7 @@ class CourseTabBanner extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: context.colors.neutralDefault.withOpacity(
-                      state.isLightTheme ? 0.1 : 0.2,
+                      state.isLightTheme == true ? 0.1 : 0.2,
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(6.r)),
                   ),

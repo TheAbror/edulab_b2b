@@ -6,31 +6,29 @@ class LocalizationBloc extends Cubit<LocalizationState> {
   LocalizationBloc() : super(LocalizationState.initial());
 
   Future<void> initLocalization() async {
-    var deviceLang = Platform.localeName.splitLangCodeFromLocale();
-    final lang = PreferencesServices.getLang();
+    var deviceLangCode = Platform.localeName.splitLangCodeFromLocale();
+    final langCode = PreferencesServices.getLangCode();
     final token = PreferencesServices.getToken();
 
-    final userLang = lang ?? deviceLang;
+    final userLang = langCode ?? deviceLangCode;
 
-    PreferencesServices.saveLang(getLanguageCode(userLang));
+    PreferencesServices.saveLangCode(userLang);
 
-    ApiProvider.create(token: token, language: getLanguageCode(userLang));
+    ApiProvider.create(token: token, language: userLang);
 
-    emit(state.copyWith(languageCode: getLanguageCode(userLang)));
+    emit(state.copyWith(languageCode: userLang));
   }
 
   Future<void> changeLocalization(String? languageCode) async {
     var deviceLang = Platform.localeName.splitLangCodeFromLocale();
     final token = PreferencesServices.getToken();
-    deviceLang = getLanguageName(deviceLang);
+    final lang = languageCode ?? deviceLang;
 
-    final currentAppLang = languageCode ?? deviceLang;
+    PreferencesServices.saveLangCode(lang);
 
-    PreferencesServices.saveLang(currentAppLang);
+    ApiProvider.create(token: token, language: lang);
 
-    ApiProvider.create(token: token, language: currentAppLang);
-
-    emit(state.copyWith(languageCode: currentAppLang));
+    emit(state.copyWith(languageCode: lang));
   }
 
   void clearAll() {

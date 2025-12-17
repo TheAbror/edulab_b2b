@@ -58,7 +58,9 @@ class _Body extends StatelessWidget {
                   context,
                   lang.language,
                   () => languageSelectionDialog(context),
-                  selectedResult: localizationState.languageCode,
+                  selectedResult: returnLanguageName(
+                    localizationState.languageCode ?? '',
+                  ),
                 );
               },
             ),

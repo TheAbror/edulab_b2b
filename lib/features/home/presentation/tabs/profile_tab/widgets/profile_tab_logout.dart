@@ -11,22 +11,25 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        ApiProvider.create();
-        // userBox.clear();
-        // settingsBox.clear();
+      onTap: () async {
+        final result = await showConfirmDialog(context);
 
-        PreferencesServices.clearAll();
+        if (result != null && result) {
+          if (!context.mounted) return;
+          ApiProvider.create();
 
-        context.read<AuthBloc>().clearAll();
-        context.read<HomeBloc>().clearAll();
-        context.read<CoursesBloc>().clearAll();
-        context.read<LearningTabBloc>().clearAll();
-        context.read<SplashBloc>().clearAll();
-        context.read<ProfileBloc>().clearAll();
-        context.read<LocalizationBloc>().clearAll();
+          PreferencesServices.clearAll();
 
-        Navigator.pushNamed(context, AppRoutes.languageSelectionPage);
+          context.read<AuthBloc>().clearAll();
+          context.read<HomeBloc>().clearAll();
+          context.read<CoursesBloc>().clearAll();
+          context.read<LearningTabBloc>().clearAll();
+          context.read<SplashBloc>().clearAll();
+          context.read<ProfileBloc>().clearAll();
+          context.read<LocalizationBloc>().clearAll();
+
+          Navigator.pushNamed(context, AppRoutes.languageSelectionPage);
+        }
       },
       behavior: HitTestBehavior.opaque,
       child: Row(
@@ -51,4 +54,24 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
       ),
     );
   }
+}
+
+Future<bool?> showConfirmDialog(BuildContext context) {
+  return showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => AlertDialog(
+      title: const Text('Are you sure?'),
+      actions: [
+        ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(true),
+          child: const Text('Yes'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: const Text('No'),
+        ),
+      ],
+    ),
+  );
 }

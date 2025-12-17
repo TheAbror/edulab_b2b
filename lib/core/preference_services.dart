@@ -19,6 +19,18 @@ class PreferencesServices {
 
   static void dispose() => _prefs = null;
 
+  static bool? getTheme() {
+    return _getPrefs().getBool(ShPrefKeys.theme);
+  }
+
+  static Future<bool> saveTheme(bool? isLight) async {
+    if (isLight == null) {
+      return _getPrefs().remove(ShPrefKeys.theme);
+    }
+
+    return _getPrefs().setBool(ShPrefKeys.theme, isLight);
+  }
+
   static String? getToken() {
     return _getPrefs().getString(ShPrefKeys.token);
   }
@@ -27,11 +39,11 @@ class PreferencesServices {
     return _getPrefs().setString(ShPrefKeys.token, token);
   }
 
-  static String? getLang() {
+  static String? getLangCode() {
     return _getPrefs().getString(ShPrefKeys.lang);
   }
 
-  static Future<bool> saveLang(String lang) async {
+  static Future<bool> saveLangCode(String lang) async {
     return _getPrefs().setString(ShPrefKeys.lang, lang);
   }
 

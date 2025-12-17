@@ -42,6 +42,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color successContainerDefault;
   final Color errorContainerDefault;
   final Color accentDefault;
+  final Color neutralContainerActive;
 
   const CustomColors({
     required this.float,
@@ -74,6 +75,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.successContainerDefault,
     required this.errorContainerDefault,
     required this.accentDefault,
+    required this.neutralContainerActive,
   });
 
   @override
@@ -108,6 +110,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? successContainerDefault,
     Color? errorContainerDefault,
     Color? accentDefault,
+    Color? neutralContainerActive,
   }) {
     return CustomColors(
       float: float ?? this.float,
@@ -148,6 +151,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
       errorContainerDefault:
           errorContainerDefault ?? this.errorContainerDefault,
       accentDefault: accentDefault ?? this.accentDefault,
+      neutralContainerActive:
+          neutralContainerActive ?? this.neutralContainerActive,
     );
   }
 
@@ -244,6 +249,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
       accentDefault: Color.lerp(
         accentDefault,
         other.accentDefault,
+        t,
+      )!,
+      neutralContainerActive: Color.lerp(
+        neutralContainerActive,
+        other.neutralContainerActive,
         t,
       )!,
     );

@@ -116,7 +116,7 @@ class _FilterCoursesBottomSheetState extends State<FilterCoursesBottomSheet> {
                 ),
               ),
               Positioned(
-                bottom: 30.h,
+                bottom: 50.h,
                 left: 16.w,
                 right: 16.w,
                 child: areValuesSelected
@@ -158,6 +158,7 @@ class _FilterCoursesBottomSheetState extends State<FilterCoursesBottomSheet> {
 
   Container _showAllButton(BuildContext context) {
     return Container(
+      height: 50.h,
       padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
       width: double.infinity,
       decoration: BoxDecoration(

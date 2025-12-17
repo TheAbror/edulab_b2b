@@ -55,13 +55,16 @@ class _Body extends StatelessWidget {
           return const PrimaryLoader();
         }
 
+        if (state.allCourses.isEmpty) {
+          return Center(child: Text('No results'));
+        }
+
         return ListView(
           children: [
             Divider(
               color: context.colors.borderMuted.withOpacity(0.15),
               height: 1.h,
             ),
-            if (state.allCourses.isEmpty) Center(child: Text('No results')),
             ListView.separated(
               itemCount: (categoryID != null)
                   ? state.coursesByCategory.length

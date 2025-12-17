@@ -28,7 +28,7 @@ class LearningResumeCard extends StatelessWidget {
           decoration: isFirst != null && isFirst == true
               ? state.isSystemDefault
                     ? _isFirst(context, state)
-                    : state.isLightTheme
+                    : state.isLightTheme == true
                     ? _isFirst(context, state)
                     : _isFirstDark(context, state)
               : _Ordinary(context),
@@ -122,7 +122,7 @@ class LearningResumeCard extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 child: state.isSystemDefault
                     ? _ContinueButton(context)
-                    : state.isLightTheme
+                    : state.isLightTheme == true
                     ? _ContinueButton(context)
                     : isFirst != null && isFirst == true
                     ? _isFirstContinueButton(context)

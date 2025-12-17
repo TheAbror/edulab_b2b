@@ -31,7 +31,7 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  color: state.isLightTheme
+                  color: state.isLightTheme == true
                       ? context.colors.status03ContainerDefault.withOpacity(0.1)
                       : Theme.of(context).colorScheme.background,
                   child: FlexibleSpaceBar(
@@ -42,7 +42,7 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                       child: Text(course.title, style: TextStyle()),
                     ),
                     background: Container(
-                      color: state.isLightTheme
+                      color: state.isLightTheme == true
                           ? context.colors.status03ContainerDefault.withOpacity(
                               0.1,
                             )

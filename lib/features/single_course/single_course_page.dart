@@ -190,6 +190,8 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                           );
                         },
                       ),
+
+                      SizedBox(height: 40.h),
                     ],
                   ],
                 ),

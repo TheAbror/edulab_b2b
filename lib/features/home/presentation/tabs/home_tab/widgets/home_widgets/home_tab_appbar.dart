@@ -20,7 +20,12 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 26.w,
                 width: 95.w,
               ),
-              Assets.icons.main.notification.svg(),
+              Assets.icons.main.notification.svg(
+                colorFilter: ColorFilter.mode(
+                  context.colors.neutralContainerActive,
+                  BlendMode.srcIn,
+                ),
+              ),
             ],
           ),
         );
@@ -31,19 +36,3 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
-
-//  title: Row(
-//         children: [
-//           userData?.gPhotoUrl != null && userData?.gPhotoUrl?.isNotEmpty == true
-//               ? CircleAvatar(
-//                   backgroundImage: NetworkImage(userData?.gPhotoUrl ?? ''),
-//                 )
-//               : SizedBox(),
-//           SizedBox(width: 8.w),
-//           Text(
-//             userData?.gDispayName ?? 'error',
-//             style: TextStyle(color: AppColors.foregroundDefault),
-//           ),
-//         ],
-//       ),

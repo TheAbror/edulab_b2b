@@ -7,6 +7,7 @@ Future<dynamic> themeSelectionDialog(BuildContext context) {
       return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           final themeSystem = MediaQuery.of(context).platformBrightness;
+          final isSaved = PreferencesServices.getTheme();
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,8 +33,12 @@ Future<dynamic> themeSelectionDialog(BuildContext context) {
                     space20,
                     _themeItem(
                       context.localizations.systemDefault,
-                      state.isSystemDefault,
-                      () => context.read<HomeBloc>().changeSystemDefaultTheme(
+
+                      !state.isDark &&
+                          !state.isLightTheme &&
+                          state.isSystemDefault,
+
+                      () => context.read<HomeBloc>().setSystem(
                         themeSystem == Brightness.light,
                       ),
                       context,
@@ -41,23 +46,20 @@ Future<dynamic> themeSelectionDialog(BuildContext context) {
                     space20,
                     _themeItem(
                       context.localizations.light,
-                      state.isSystemDefault
-                          ? false
-                          : state.isLightTheme
-                          ? true
-                          : false,
-                      () => context.read<HomeBloc>().changeTheme(true),
+                      !state.isDark &&
+                          state.isLightTheme &&
+                          !state.isSystemDefault,
+
+                      () => context.read<HomeBloc>().setLight(),
                       context,
                     ),
                     space20,
                     _themeItem(
                       context.localizations.dark,
-                      state.isSystemDefault
-                          ? false
-                          : !state.isLightTheme
-                          ? true
-                          : false,
-                      () => context.read<HomeBloc>().changeTheme(false),
+                      state.isDark &&
+                          !state.isLightTheme &&
+                          !state.isSystemDefault,
+                      () => context.read<HomeBloc>().setDark(),
                       context,
                     ),
                   ],

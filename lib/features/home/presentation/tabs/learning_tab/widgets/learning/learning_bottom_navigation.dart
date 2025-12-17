@@ -17,13 +17,13 @@ class LearningBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 40.h),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(color: context.colors.borderMuted.withOpacity(0.15)),
         ),
       ),
-      height: 76.h,
+      height: 90.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

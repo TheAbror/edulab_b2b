@@ -6,6 +6,8 @@ Future<dynamic> languageSelectionDialog(BuildContext context) {
     builder: (BuildContext context) {
       return BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, state) {
+          final languageName = returnLanguageName(state.languageCode ?? 'ru');
+
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -24,16 +26,14 @@ Future<dynamic> languageSelectionDialog(BuildContext context) {
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
-                        // color: Theme.of(context).colorScheme.secondary,
-                        // color:
                       ),
                     ),
                     space20,
                     themeItem(
                       'O’zbek',
-                      state.languageCode == 'O’zbek' ? true : false,
+                      languageName == 'O’zbek' ? true : false,
                       () => context.read<LocalizationBloc>().changeLocalization(
-                        'O’zbek',
+                        'uz',
                       ),
                       context,
                       Assets.icons.languageIcons.uz.svg(),
@@ -41,9 +41,9 @@ Future<dynamic> languageSelectionDialog(BuildContext context) {
                     space20,
                     themeItem(
                       'English',
-                      state.languageCode == 'English' ? true : false,
+                      languageName == 'English' ? true : false,
                       () => context.read<LocalizationBloc>().changeLocalization(
-                        'English',
+                        'en',
                       ),
                       context,
                       Assets.icons.languageIcons.en.svg(),
@@ -51,9 +51,9 @@ Future<dynamic> languageSelectionDialog(BuildContext context) {
                     space20,
                     themeItem(
                       'Русский',
-                      state.languageCode == 'Русский' ? true : false,
+                      languageName == 'Русский' ? true : false,
                       () => context.read<LocalizationBloc>().changeLocalization(
-                        'Русский',
+                        'ru',
                       ),
                       context,
                       Assets.icons.languageIcons.ru.svg(),

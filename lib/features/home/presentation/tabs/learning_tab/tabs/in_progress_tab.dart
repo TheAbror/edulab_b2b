@@ -22,8 +22,7 @@ class InProgressTab extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             padding: EdgeInsets.only(top: 24.h, bottom: 12.h),
             itemBuilder: (context, index) {
-              // final progress = item[index].overallProgress;
-              const progress = 0;
+              final progress = item[index].progess;
 
               return LearningResumeCard(
                 title: item[index].title,

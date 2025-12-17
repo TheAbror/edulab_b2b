@@ -186,7 +186,7 @@ class CourseInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
         return AppBar(
           automaticallyImplyLeading: false,
           titleSpacing: 0,
-          backgroundColor: state.isLightTheme
+          backgroundColor: state.isLightTheme == true
               ? context.colors.status03ContainerDefault.withOpacity(0.1)
               : Color(0XFF9E8FF9).withOpacity(0.2),
           title: Row(
@@ -595,7 +595,7 @@ class CourseInfoHeader extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
         return Container(
-          color: homeState.isLightTheme
+          color: homeState.isLightTheme == true
               ? context.colors.status03ContainerDefault.withOpacity(0.1)
               : Color(0XFF9E8FF9).withOpacity(0.2),
           padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -671,7 +671,7 @@ class CourseInfoHeader extends StatelessWidget {
                           vertical: 4.h,
                         ),
                         decoration: BoxDecoration(
-                          color: homeState.isLightTheme
+                          color: homeState.isLightTheme == true
                               ? context.colors.accentContainerDefault
                                     .withOpacity(0.1)
                               : Color(0XFF47ADFF).withOpacity(0.2),
@@ -682,7 +682,7 @@ class CourseInfoHeader extends StatelessWidget {
                             Text(
                               '35%',
                               style: TextStyle(
-                                color: homeState.isLightTheme
+                                color: homeState.isLightTheme == true
                                     ? Theme.of(context).colorScheme.primary
                                     : Color(0XFF8CCBFF),
                                 fontSize: 12.sp,
@@ -691,7 +691,7 @@ class CourseInfoHeader extends StatelessWidget {
                             Text(
                               ' off',
                               style: TextStyle(
-                                color: homeState.isLightTheme
+                                color: homeState.isLightTheme == true
                                     ? Theme.of(context).colorScheme.primary
                                     : Color(0XFF8CCBFF),
                                 fontSize: 12.sp,

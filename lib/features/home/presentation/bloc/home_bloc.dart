@@ -45,37 +45,63 @@ class HomeBloc extends Cubit<HomeState> {
     }
   }
 
-  void initialTheme() {
-    // final settings = settingsBox.get(ShPrefKeys.projectSettings);
+  initialTheme() {
+    final bool? isLight = PreferencesServices.getTheme();
+    final returnedNULL = isLight == null;
+    final validResult = isLight != null;
 
+    if (returnedNULL) {
+      emit(
+        state.copyWith(
+          isSystemDefault: returnedNULL ? true : false,
+          isLightTheme: false,
+          isDark: false,
+        ),
+      );
+    }
+    if (validResult) {
+      emit(
+        state.copyWith(
+          isSystemDefault: false,
+          isLightTheme: isLight,
+          isDark: !isLight,
+        ),
+      );
+    }
+  }
+
+  void setDark() {
+    PreferencesServices.saveTheme(false);
     emit(
       state.copyWith(
-        // isSystemDefault: settings.isSystemDefault ?? true,
-        // isLightTheme: settings.isLight ?? true,
+        isLightTheme: false,
+        isSystemDefault: false,
+        isDark: true,
       ),
     );
   }
 
-  void changeTheme(bool isLight) {
-    // final settings = settingsBox.get(ShPrefKeys.projectSettings);
-
-    // settingsBox.put(
-    //   ShPrefKeys.projectSettings,
-    //   settings.copyWith(isLight: isLight, isSystemDefault: false),
-    // );
-
-    emit(state.copyWith(isLightTheme: isLight, isSystemDefault: false));
+  void setLight() {
+    PreferencesServices.saveTheme(true);
+    emit(
+      state.copyWith(
+        isLightTheme: true,
+        isSystemDefault: false,
+        isDark: false,
+      ),
+    );
   }
 
-  void changeSystemDefaultTheme(bool isLight) async {
-    // final settings = settingsBox.get(ShPrefKeys.projectSettings);
+  void setSystem(bool isLight) {
+    PreferencesServices.saveTheme(null);
 
-    // settingsBox.put(
-    //   ShPrefKeys.projectSettings,
-    //   settings.copyWith(isSystemDefault: isLight),
-    // );
-
-    emit(state.copyWith(isSystemDefault: isLight));
+    emit(
+      state.copyWith(
+        isSystemDefault: true,
+        isLightTheme: false,
+        isDark: false,
+      ),
+    );
   }
 
   void isDialogShownFirstTime() {

@@ -10,7 +10,8 @@ class LanguageSelectionPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 40.w),
         child: BlocBuilder<LocalizationBloc, LocalizationState>(
           builder: (context, state) {
-            final language = getLanguageName(state.languageCode);
+            final languageName = returnLanguageName(state.languageCode ?? 'ru');
+
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -19,27 +20,27 @@ class LanguageSelectionPage extends StatelessWidget {
                 space32,
                 themeItem(
                   'O’zbek',
-                  language == 'O’zbek' ? true : false,
+                  languageName == 'O’zbek' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
-                    'O’zbek',
+                    'uz',
                   ),
                   context,
                   Assets.icons.languageIcons.uz.svg(),
                 ),
                 themeItem(
                   'English',
-                  language == 'English' ? true : false,
+                  languageName == 'English' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
-                    'English',
+                    'en',
                   ),
                   context,
                   Assets.icons.languageIcons.en.svg(),
                 ),
                 themeItem(
                   'Русский',
-                  language == 'Русский' ? true : false,
+                  languageName == 'Русский' ? true : false,
                   () => context.read<LocalizationBloc>().changeLocalization(
-                    'Русский',
+                    'ru',
                   ),
                   context,
                   Assets.icons.languageIcons.ru.svg(),
@@ -50,7 +51,7 @@ class LanguageSelectionPage extends StatelessWidget {
                   onTap: () =>
                       Navigator.pushNamed(context, AppRoutes.welcomePage),
                 ),
-                space8,
+                space20,
                 space40,
               ],
             );

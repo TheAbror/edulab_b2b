@@ -5,6 +5,7 @@ class HomeState extends Equatable {
   final int tabIndex;
   final bool isLightTheme;
   final bool isSystemDefault;
+  final bool isDark;
   final List<TeacherModel> teachers;
   final TeacherModel teachersById;
   final BlocProgress blocProgress;
@@ -17,6 +18,7 @@ class HomeState extends Equatable {
     required this.isDialogShownFirstTime,
     required this.isLightTheme,
     required this.isSystemDefault,
+    required this.isDark,
     required this.blocProgress,
     required this.failureMessage,
   });
@@ -27,6 +29,7 @@ class HomeState extends Equatable {
       isDialogShownFirstTime: true,
       isLightTheme: true,
       isSystemDefault: true,
+      isDark: true,
       teachers: [
         TeacherModel(
           id: 1,
@@ -64,7 +67,8 @@ class HomeState extends Equatable {
           total_students_number: 10000,
           roles: ['Instructor', 'Author'],
           profile_picture: TeacherProfilePictureModel(
-            original_url: 'https://img-c.udemycdn.com/user/200_H/31334738_a13c_3.jpg',
+            original_url:
+                'https://img-c.udemycdn.com/user/200_H/31334738_a13c_3.jpg',
             pic_extension: '',
             file_size: 0,
             original_name: '',
@@ -86,7 +90,8 @@ class HomeState extends Equatable {
           total_students_number: 8000,
           roles: ['Instructor', 'Designer'],
           profile_picture: TeacherProfilePictureModel(
-            original_url: 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png',
+            original_url:
+                'https://www.spencerclarkegroup.co.uk/uploads/5005001.png',
             pic_extension: '',
             file_size: 0,
             original_name: '',
@@ -128,16 +133,19 @@ class HomeState extends Equatable {
     int? tabIndex,
     bool? isLightTheme,
     bool? isSystemDefault,
+    bool? isDark,
     List<TeacherModel>? teachers,
     TeacherModel? teachersById,
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
     return HomeState(
-      isDialogShownFirstTime: isDialogShownFirstTime ?? this.isDialogShownFirstTime,
+      isDialogShownFirstTime:
+          isDialogShownFirstTime ?? this.isDialogShownFirstTime,
       tabIndex: tabIndex ?? this.tabIndex,
       isLightTheme: isLightTheme ?? this.isLightTheme,
       isSystemDefault: isSystemDefault ?? this.isSystemDefault,
+      isDark: isDark ?? this.isDark,
       teachers: teachers ?? this.teachers,
       teachersById: teachersById ?? this.teachersById,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -147,13 +155,14 @@ class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [
-        isDialogShownFirstTime,
-        tabIndex,
-        isLightTheme,
-        isSystemDefault,
-        teachers,
-        teachersById,
-        blocProgress,
-        failureMessage,
-      ];
+    isDialogShownFirstTime,
+    tabIndex,
+    isLightTheme,
+    isSystemDefault,
+    isDark,
+    teachers,
+    teachersById,
+    blocProgress,
+    failureMessage,
+  ];
 }

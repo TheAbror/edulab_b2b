@@ -68,7 +68,7 @@ class __BodyState extends State<_Body> {
                 textInputAction: TextInputAction.next,
                 decoration: authFieldDecoration(
                   context,
-                  'Email or Phone number',
+                  'Phone number',
                 ),
               ),
               space24,

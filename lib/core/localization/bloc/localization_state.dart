@@ -1,7 +1,7 @@
 part of 'localization_bloc.dart';
 
 class LocalizationState extends Equatable {
-  final String languageCode;
+  final String? languageCode;
 
   const LocalizationState({
     required this.languageCode,

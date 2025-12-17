@@ -66,7 +66,10 @@ class _HomeTabState extends State<HomeTab> {
               if (state.categories.isNotEmpty)
                 HomeCategoriesList(
                   viewAllOnTap: () {
-                    Navigator.pushNamed(context, AppRoutes.allCategoriesPage);
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.allCategoriesPage,
+                    );
                   },
                 ),
               HomeLearnNewSkillsWidget(

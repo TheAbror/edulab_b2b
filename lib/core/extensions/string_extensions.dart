@@ -25,7 +25,7 @@ extension StringMakeFirstCap on String {
   }
 }
 
-String getLanguageName(String languageCode) {
+String returnLanguageName(String languageCode) {
   switch (languageCode) {
     case 'uz':
       return 'O’zbek';
@@ -38,7 +38,7 @@ String getLanguageName(String languageCode) {
   }
 }
 
-String getLanguageCode(String languageCode) {
+String returnLanguageCode(String languageCode) {
   switch (languageCode) {
     case 'O’zbek':
       return 'uz';
