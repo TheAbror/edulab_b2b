@@ -107,7 +107,7 @@ class _BodyState extends State<_Body> {
       },
       controller: _login,
       textInputAction: TextInputAction.next,
-      decoration: authFieldDecoration(context, 'Email or Phone number'),
+      decoration: authFieldDecoration(context, 'Phone number'),
     );
   }
 }

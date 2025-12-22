@@ -6,9 +6,6 @@ Future<dynamic> themeSelectionDialog(BuildContext context) {
     builder: (BuildContext context) {
       return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
-          final themeSystem = MediaQuery.of(context).platformBrightness;
-          final isSaved = PreferencesServices.getTheme();
-
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -32,34 +29,16 @@ Future<dynamic> themeSelectionDialog(BuildContext context) {
                     ),
                     space20,
                     _themeItem(
-                      context.localizations.systemDefault,
-
-                      !state.isDark &&
-                          !state.isLightTheme &&
-                          state.isSystemDefault,
-
-                      () => context.read<HomeBloc>().setSystem(
-                        themeSystem == Brightness.light,
-                      ),
-                      context,
-                    ),
-                    space20,
-                    _themeItem(
                       context.localizations.light,
-                      !state.isDark &&
-                          state.isLightTheme &&
-                          !state.isSystemDefault,
-
-                      () => context.read<HomeBloc>().setLight(),
+                      state.isLightTheme,
+                      () => context.read<HomeBloc>().setTheme(true),
                       context,
                     ),
                     space20,
                     _themeItem(
                       context.localizations.dark,
-                      state.isDark &&
-                          !state.isLightTheme &&
-                          !state.isSystemDefault,
-                      () => context.read<HomeBloc>().setDark(),
+                      !state.isLightTheme,
+                      () => context.read<HomeBloc>().setTheme(false),
                       context,
                     ),
                   ],

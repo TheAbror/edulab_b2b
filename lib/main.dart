@@ -44,16 +44,10 @@ class MyApp extends StatelessWidget {
               child: ScreenUtilInit(
                 designSize: const Size(360, 812),
                 minTextAdapt: true,
-
                 splitScreenMode: true,
                 builder: (sizesContext, child) {
                   return MaterialApp(
-                    theme: PreferencesServices.getTheme() == null
-                        ? (MediaQuery.of(context).platformBrightness ==
-                                  Brightness.light)
-                              ? lightTheme()
-                              : darkTheme()
-                        : state.isLightTheme == true
+                    theme: state.isLightTheme == true
                         ? lightTheme()
                         : darkTheme(),
                     themeMode: ThemeMode.system,
@@ -61,10 +55,13 @@ class MyApp extends StatelessWidget {
                     onGenerateRoute: MainRouteGenerator().generateRoute,
                     builder: BotToastInit(),
                     navigatorObservers: [BotToastNavigatorObserver()],
-                    locale: Locale(
-                      localizationState.languageCode ??
-                          Platform.localeName.splitLangCodeFromLocale(),
-                    ),
+                    locale:
+                        localizationState.languageCode != null &&
+                            localizationState.languageCode?.isNotEmpty == true
+                        ? Locale(localizationState.languageCode ?? '')
+                        : Locale(
+                            'ru',
+                          ),
                     localizationsDelegates:
                         AppLocalizations.localizationsDelegates,
                     supportedLocales: AppLocalizations.supportedLocales,

@@ -51,57 +51,17 @@ class HomeBloc extends Cubit<HomeState> {
     final validResult = isLight != null;
 
     if (returnedNULL) {
-      emit(
-        state.copyWith(
-          isSystemDefault: returnedNULL ? true : false,
-          isLightTheme: false,
-          isDark: false,
-        ),
-      );
+      emit(state.copyWith(isLightTheme: true));
     }
     if (validResult) {
-      emit(
-        state.copyWith(
-          isSystemDefault: false,
-          isLightTheme: isLight,
-          isDark: !isLight,
-        ),
-      );
+      emit(state.copyWith(isLightTheme: isLight));
     }
   }
 
-  void setDark() {
-    PreferencesServices.saveTheme(false);
-    emit(
-      state.copyWith(
-        isLightTheme: false,
-        isSystemDefault: false,
-        isDark: true,
-      ),
-    );
-  }
+  void setTheme(bool isLight) {
+    PreferencesServices.saveTheme(isLight);
 
-  void setLight() {
-    PreferencesServices.saveTheme(true);
-    emit(
-      state.copyWith(
-        isLightTheme: true,
-        isSystemDefault: false,
-        isDark: false,
-      ),
-    );
-  }
-
-  void setSystem(bool isLight) {
-    PreferencesServices.saveTheme(null);
-
-    emit(
-      state.copyWith(
-        isSystemDefault: true,
-        isLightTheme: false,
-        isDark: false,
-      ),
-    );
+    emit(state.copyWith(isLightTheme: isLight));
   }
 
   void isDialogShownFirstTime() {

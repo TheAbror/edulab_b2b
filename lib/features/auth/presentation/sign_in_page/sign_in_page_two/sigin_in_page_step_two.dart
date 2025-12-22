@@ -75,7 +75,7 @@ class _SignInPageStepTwoState extends State<SignInPageStepTwo> {
                       style: TextStyle(fontWeight: FontWeight.w400),
                     ),
                     SizedBox(width: 4.h),
-                    Text('+ 998991234567'),
+                    Text(state.phoneNumber),
                   ],
                 ),
                 space40,
@@ -119,6 +119,7 @@ class _SignInPageStepTwoState extends State<SignInPageStepTwo> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(context.localizations.resetafter),
+                          Text(' '),
                           Text(state.timerSeconds.toString()),
                           Text(' ${context.localizations.seconds}'),
                         ],

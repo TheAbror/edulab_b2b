@@ -26,9 +26,7 @@ class LearningResumeCard extends StatelessWidget {
           padding: EdgeInsets.all(12.w),
           margin: EdgeInsets.only(bottom: 12.h),
           decoration: isFirst != null && isFirst == true
-              ? state.isSystemDefault
-                    ? _isFirst(context, state)
-                    : state.isLightTheme == true
+              ? state.isLightTheme == true
                     ? _isFirst(context, state)
                     : _isFirstDark(context, state)
               : _Ordinary(context),
@@ -120,9 +118,7 @@ class LearningResumeCard extends StatelessWidget {
               GestureDetector(
                 onTap: onPressed,
                 behavior: HitTestBehavior.opaque,
-                child: state.isSystemDefault
-                    ? _ContinueButton(context)
-                    : state.isLightTheme == true
+                child: state.isLightTheme == true
                     ? _ContinueButton(context)
                     : isFirst != null && isFirst == true
                     ? _isFirstContinueButton(context)

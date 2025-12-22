@@ -4,8 +4,7 @@ class HomeState extends Equatable {
   final bool isDialogShownFirstTime;
   final int tabIndex;
   final bool isLightTheme;
-  final bool isSystemDefault;
-  final bool isDark;
+
   final List<TeacherModel> teachers;
   final TeacherModel teachersById;
   final BlocProgress blocProgress;
@@ -17,8 +16,7 @@ class HomeState extends Equatable {
     required this.tabIndex,
     required this.isDialogShownFirstTime,
     required this.isLightTheme,
-    required this.isSystemDefault,
-    required this.isDark,
+
     required this.blocProgress,
     required this.failureMessage,
   });
@@ -28,79 +26,8 @@ class HomeState extends Equatable {
       tabIndex: 0,
       isDialogShownFirstTime: true,
       isLightTheme: true,
-      isSystemDefault: true,
-      isDark: true,
-      teachers: [
-        TeacherModel(
-          id: 1,
-          firstname: 'John',
-          lastname: 'Doe',
-          job_title: 'Senior Software Engineer',
-          about_me:
-              'John has over 10 years of experience in software development and specializes in Flutter development.',
-          average_rating: 4.8,
-          courses_number: 5,
-          total_reviews_number: 1200,
-          total_students_number: 15000,
-          roles: ['Instructor', 'Mentor'],
-          profile_picture: TeacherProfilePictureModel(
-            original_url:
-                'https://onlinecoursesgalore.com/wp-content/uploads/2017/04/Jose-Portilla-top-instructor-udemy.jpg',
-            pic_extension: '',
-            file_size: 0,
-            original_name: '',
-            src: '',
-            thumb_url: '',
-            url: '',
-          ),
-        ),
-        TeacherModel(
-          id: 2,
-          firstname: 'Jane',
-          lastname: 'Smith',
-          job_title: 'Data Scientist',
-          about_me:
-              'Jane is a seasoned data scientist with a passion for teaching and sharing her knowledge in data analytics and machine learning.',
-          average_rating: 4.9,
-          courses_number: 3,
-          total_reviews_number: 900,
-          total_students_number: 10000,
-          roles: ['Instructor', 'Author'],
-          profile_picture: TeacherProfilePictureModel(
-            original_url:
-                'https://img-c.udemycdn.com/user/200_H/31334738_a13c_3.jpg',
-            pic_extension: '',
-            file_size: 0,
-            original_name: '',
-            src: '',
-            thumb_url: '',
-            url: '',
-          ),
-        ),
-        TeacherModel(
-          id: 3,
-          firstname: 'Alice',
-          lastname: 'Johnson',
-          job_title: 'UI/UX Designer',
-          about_me:
-              'Alice is an experienced UI/UX designer who has worked with several high-profile clients and loves to teach design principles and techniques.',
-          average_rating: 4.7,
-          courses_number: 4,
-          total_reviews_number: 800,
-          total_students_number: 8000,
-          roles: ['Instructor', 'Designer'],
-          profile_picture: TeacherProfilePictureModel(
-            original_url:
-                'https://www.spencerclarkegroup.co.uk/uploads/5005001.png',
-            pic_extension: '',
-            file_size: 0,
-            original_name: '',
-            src: '',
-            thumb_url: '',
-            url: '',
-          ),
-        ),
-      ],
+
+      teachers: [],
       teachersById: TeacherModel(
         id: 0,
         firstname: 'John',
@@ -132,8 +59,6 @@ class HomeState extends Equatable {
     bool? isDialogShownFirstTime,
     int? tabIndex,
     bool? isLightTheme,
-    bool? isSystemDefault,
-    bool? isDark,
     List<TeacherModel>? teachers,
     TeacherModel? teachersById,
     BlocProgress? blocProgress,
@@ -144,8 +69,7 @@ class HomeState extends Equatable {
           isDialogShownFirstTime ?? this.isDialogShownFirstTime,
       tabIndex: tabIndex ?? this.tabIndex,
       isLightTheme: isLightTheme ?? this.isLightTheme,
-      isSystemDefault: isSystemDefault ?? this.isSystemDefault,
-      isDark: isDark ?? this.isDark,
+
       teachers: teachers ?? this.teachers,
       teachersById: teachersById ?? this.teachersById,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -158,8 +82,6 @@ class HomeState extends Equatable {
     isDialogShownFirstTime,
     tabIndex,
     isLightTheme,
-    isSystemDefault,
-    isDark,
     teachers,
     teachersById,
     blocProgress,

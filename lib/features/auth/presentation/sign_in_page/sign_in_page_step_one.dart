@@ -22,7 +22,14 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _formKey = GlobalKey<FormState>();
-  final _phoneNumber = TextEditingController(text: '+998914309084');
+
+  final TextEditingController _phoneNumberController = TextEditingController();
+
+  @override
+  void dispose() {
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +38,12 @@ class _BodyState extends State<_Body> {
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.signInPageStepTwo,
-            );
+            Navigator.pushNamed(context, AppRoutes.signInPageStepTwo);
 
             context.read<AuthBloc>().setInitialValue();
-            context.read<AuthBloc>().setPhoneNumber(_phoneNumber.text.trim());
+            context.read<AuthBloc>().setPhoneNumber(
+              _phoneNumberController.text.trim(),
+            );
           } else if (state.blocProgress == BlocProgress.FAILED) {
             showMessage(state.failureMessage, context, isError: true);
           }
@@ -58,23 +64,25 @@ class _BodyState extends State<_Body> {
                 ),
                 space32,
                 TextFormField(
-                  controller: _phoneNumber,
-                  textInputAction: TextInputAction.next,
+                  controller: _phoneNumberController,
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    UzbekistanPhoneFormatter(),
+                    LengthLimitingTextInputFormatter(13), // +998 + 9 digits
+                  ],
                   decoration: authFieldDecoration(
                     context,
-                    'Phone number',
+                    'Enter phone number',
                   ),
                 ),
-                space16,
-
                 space16,
                 ActionButton(
                   text: context.localizations.signin,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      final username = _phoneNumber.text.trim();
-
-                      context.read<AuthBloc>().signInStepOne(username);
+                      context.read<AuthBloc>().signInStepOne(
+                        _phoneNumberController.text.trim(),
+                      );
                     }
                   },
                 ),
@@ -83,6 +91,46 @@ class _BodyState extends State<_Body> {
           );
         },
       ),
+    );
+  }
+}
+
+class UzbekistanPhoneFormatter extends TextInputFormatter {
+  static const prefix = '+998';
+  static const prefixDigits = '998';
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    // 1️⃣ Allow empty → show hint
+    if (newValue.text.isEmpty) {
+      return newValue;
+    }
+
+    // 2️⃣ If user deletes back to prefix → clear completely
+    if (newValue.text == prefix) {
+      return const TextEditingValue(
+        text: '',
+        selection: TextSelection.collapsed(offset: 0),
+      );
+    }
+
+    // 3️⃣ Extract digits
+    String digits = newValue.text.replaceAll(RegExp(r'\D'), '');
+
+    // 4️⃣ Remove prefix digits if present
+    if (digits.startsWith(prefixDigits)) {
+      digits = digits.substring(prefixDigits.length);
+    }
+
+    // 5️⃣ Build final value
+    final text = '$prefix$digits';
+
+    return TextEditingValue(
+      text: text,
+      selection: TextSelection.collapsed(offset: text.length),
     );
   }
 }
