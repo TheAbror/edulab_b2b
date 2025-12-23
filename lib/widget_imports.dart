@@ -181,3 +181,6 @@ export 'package:leti_mobile/features/home/data/datasources/models/request_models
 export 'package:leti_mobile/features/home/data/datasources/models/course_progress_model.dart';
 export 'package:leti_mobile/features/home/data/datasources/models/course_enrollment_response.dart';
 export 'package:leti_mobile/features/learning_page/widgets/open_course_by_topic_selection_model.dart';
+export 'dart:async';
+export 'package:internet_connection_checker/internet_connection_checker.dart';
+export 'package:leti_mobile/main.dart';

@@ -2,8 +2,31 @@ import 'package:leti_mobile/widget_imports.dart';
 
 part 'home_state.dart';
 
+enum InternetStatus { connected, disconnected }
+
 class HomeBloc extends Cubit<HomeState> {
-  HomeBloc() : super(HomeState.initial());
+  late final StreamSubscription _subscription;
+
+  HomeBloc() : super(HomeState.initial()) {
+    _subscription = InternetConnectionChecker.instance.onStatusChange.listen(
+      (status) {
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.NOT_STARTED,
+            internetStatus: status == InternetConnectionStatus.connected
+                ? InternetStatus.connected
+                : InternetStatus.disconnected,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<void> close() {
+    _subscription.cancel();
+    return super.close();
+  }
 
   void getTeacherById(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

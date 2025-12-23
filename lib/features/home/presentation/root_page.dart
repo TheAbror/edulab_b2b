@@ -1,3 +1,4 @@
+import 'package:leti_mobile/features/home/presentation/widgets/no_internet_widget.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class RootPage extends StatefulWidget {
@@ -21,7 +22,6 @@ class _RootPageState extends State<RootPage> {
   void initState() {
     super.initState();
 
-    // context.read<HomeBloc>().getTeachersList();
     context.read<CoursesBloc>().getAllCategories();
     context.read<CoursesBloc>().getAllPossibleCourses();
     context.read<CoursesBloc>().getCurrentCourse();
@@ -36,7 +36,12 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: (context, state) {
+        if (state.internetStatus == InternetStatus.disconnected) {
+          return showNoInternetDialog(context);
+        }
+      },
       builder: (context, state) {
         return DefaultTabController(
           length: 4,

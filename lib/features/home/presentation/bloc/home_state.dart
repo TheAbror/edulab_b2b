@@ -4,7 +4,7 @@ class HomeState extends Equatable {
   final bool isDialogShownFirstTime;
   final int tabIndex;
   final bool isLightTheme;
-
+  final InternetStatus internetStatus;
   final List<TeacherModel> teachers;
   final TeacherModel teachersById;
   final BlocProgress blocProgress;
@@ -16,6 +16,7 @@ class HomeState extends Equatable {
     required this.tabIndex,
     required this.isDialogShownFirstTime,
     required this.isLightTheme,
+    required this.internetStatus,
 
     required this.blocProgress,
     required this.failureMessage,
@@ -26,7 +27,7 @@ class HomeState extends Equatable {
       tabIndex: 0,
       isDialogShownFirstTime: true,
       isLightTheme: true,
-
+      internetStatus: InternetStatus.connected,
       teachers: [],
       teachersById: TeacherModel(
         id: 0,
@@ -59,6 +60,7 @@ class HomeState extends Equatable {
     bool? isDialogShownFirstTime,
     int? tabIndex,
     bool? isLightTheme,
+    InternetStatus? internetStatus,
     List<TeacherModel>? teachers,
     TeacherModel? teachersById,
     BlocProgress? blocProgress,
@@ -69,6 +71,7 @@ class HomeState extends Equatable {
           isDialogShownFirstTime ?? this.isDialogShownFirstTime,
       tabIndex: tabIndex ?? this.tabIndex,
       isLightTheme: isLightTheme ?? this.isLightTheme,
+      internetStatus: internetStatus ?? this.internetStatus,
 
       teachers: teachers ?? this.teachers,
       teachersById: teachersById ?? this.teachersById,
@@ -82,6 +85,7 @@ class HomeState extends Equatable {
     isDialogShownFirstTime,
     tabIndex,
     isLightTheme,
+    internetStatus,
     teachers,
     teachersById,
     blocProgress,
