@@ -126,18 +126,19 @@ class LearningPageQuizTab extends StatelessWidget {
                             width: 1.w,
                           ),
                         ),
-                        margin: EdgeInsets.only(
-                          bottom: 10.h,
-                        ),
+                        margin: EdgeInsets.only(bottom: 10.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Text(
+                              '${index + 1}.',
+                              style: TextStyle(fontSize: 20.sp),
+                            ),
                             HtmlWidget(
                               question.text,
-                              textStyle: TextStyle(
-                                fontSize: 20.sp,
-                              ),
+                              textStyle: TextStyle(fontSize: 20.sp),
                             ),
+
                             SizedBox(height: 16.h),
 
                             AppText.headline2('Select all correct answers'),

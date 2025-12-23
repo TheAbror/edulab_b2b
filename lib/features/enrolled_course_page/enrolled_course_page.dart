@@ -42,6 +42,7 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
 
             return DefaultTabController(
               length: 3,
+              initialIndex: 1,
               child: NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext context, bool innerBoxIsScrolled) {

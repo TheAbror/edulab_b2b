@@ -20,7 +20,13 @@ class _HomeTabState extends State<HomeTab> {
 
         return RefreshIndicator(
           onRefresh: () async {
+            context.read<CoursesBloc>().getAllCategories();
+            context.read<CoursesBloc>().getAllPossibleCourses();
             context.read<CoursesBloc>().getCurrentCourse();
+            context.read<LearningTabBloc>().getInProgress();
+            context.read<LearningTabBloc>().getCompleted();
+            context.read<LearningTabBloc>().getFavorites();
+            context.read<LearningTabBloc>().getStatistics();
           },
           child: ListView(
             children: [
@@ -31,7 +37,6 @@ class _HomeTabState extends State<HomeTab> {
                   title: currentCourse.first.title,
                   image: currentCourse.first.thumbnail?.original_url ?? '',
                   progress: currentCourse.first.progess,
-                  // progress: 0,
                   buttonText: context.localizations.continueButton,
                   continueCourse: () {
                     Navigator.pushNamed(

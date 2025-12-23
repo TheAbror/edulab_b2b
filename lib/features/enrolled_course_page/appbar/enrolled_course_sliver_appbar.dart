@@ -20,7 +20,13 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
               final double percentage =
                   (constraints.maxHeight - kToolbarHeight) /
                   (312.h - kToolbarHeight);
-              final double opacity = percentage.clamp(0.0, 1.0);
+
+              // Only show title when fully collapsed (percentage <= 0)
+              // final double opacity = percentage <= 0 ? 1.0 : 0.0;
+              // Or for a smoother transition near the end:
+              final double opacity = (1.0 - percentage.clamp(0.0, 1.0) > 0.9)
+                  ? 1.0
+                  : 0.0;
 
               return GestureDetector(
                 onTap: () => Navigator.pushNamed(
@@ -38,7 +44,7 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                     centerTitle: true,
                     collapseMode: CollapseMode.parallax,
                     title: Opacity(
-                      opacity: 1 - opacity,
+                      opacity: opacity, // Use opacity directly
                       child: Text(course.title, style: TextStyle()),
                     ),
                     background: Container(
@@ -57,7 +63,6 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 24.sp,
                               fontWeight: FontWeight.w500,
-                              letterSpacing: -1,
                             ),
                           ),
                           space16,
@@ -83,26 +88,26 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                                   letterSpacing: -0.5,
                                 ),
                               ),
-                              // if (course.progress != null)
-                              //   Text(
-                              //     '${course.progress ?? 0 / 100}%',
-                              //     style: TextStyle(
-                              //       color: context.colors.fgMuted,
-                              //       fontSize: 12.sp,
-                              //     ),
-                              //   ),
+                              if (course.progress != null)
+                                Text(
+                                  '${course.progress ?? 0 / 100}%',
+                                  style: TextStyle(
+                                    color: context.colors.fgMuted,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
                             ],
                           ),
                           space6,
-                          // LinearProgressIndicator(
-                          //   minHeight: 8.h,
-                          //   value: (course.progress != null)
-                          //       ? (course.progress ?? 0 / 100).toDouble()
-                          //       : 0,
-                          //   color: context.colors.successDefault,
-                          //   backgroundColor: context.colors.float,
-                          //   borderRadius: BorderRadius.circular(10.r),
-                          // ),
+                          LinearProgressIndicator(
+                            minHeight: 8.h,
+                            value: (course.progress != null)
+                                ? (course.progress ?? 0) / 100
+                                : 0,
+                            color: context.colors.successDefault,
+                            backgroundColor: context.colors.float,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
                           SizedBox(height: 12.h),
                           Container(
                             padding: EdgeInsets.symmetric(vertical: 14.h),
@@ -150,32 +155,32 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
               ),
             ),
             Spacer(),
-            BlocBuilder<SingleCourseBloc, SingleCourseState>(
-              builder: (context, state) {
-                return GestureDetector(
-                  onTap: () {
-                    context.read<SingleCourseBloc>().postCourseAsFavorite(
-                      course.id,
-                    );
-                  },
-                  behavior: HitTestBehavior.opaque,
-                  child: (state.isFavorite)
-                      ? Assets.icons.courses.heartFilled.svg(
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.primary,
-                            BlendMode.srcIn,
-                          ),
-                        )
-                      : Assets.icons.courses.heart.svg(
-                          colorFilter: ColorFilter.mode(
-                            context.colors.fgDefault,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                );
-              },
-            ),
-            SizedBox(width: 16.w),
+            // BlocBuilder<SingleCourseBloc, SingleCourseState>(
+            //   builder: (context, state) {
+            //     return GestureDetector(
+            //       onTap: () {
+            //         context.read<SingleCourseBloc>().postCourseAsFavorite(
+            //           course.id,
+            //         );
+            //       },
+            //       behavior: HitTestBehavior.opaque,
+            //       child: (state.isFavorite)
+            //           ? Assets.icons.courses.heartFilled.svg(
+            //               colorFilter: ColorFilter.mode(
+            //                 Theme.of(context).colorScheme.primary,
+            //                 BlendMode.srcIn,
+            //               ),
+            //             )
+            //           : Assets.icons.courses.heart.svg(
+            //               colorFilter: ColorFilter.mode(
+            //                 context.colors.fgDefault,
+            //                 BlendMode.srcIn,
+            //               ),
+            //             ),
+            //     );
+            //   },
+            // ),
+            // SizedBox(width: 16.w),
           ],
         );
       },
