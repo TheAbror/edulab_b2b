@@ -29,34 +29,8 @@ class RecommendedCourses extends StatefulWidget {
 
 class _RecommendedCoursesState extends State<RecommendedCourses> {
   final ScrollController _scrollController = ScrollController();
-  double _leftPadding = 16.0;
   int? selectedCourseId;
   bool isLoadingSelected = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_updatePadding);
-  }
-
-  void _updatePadding() {
-    if (_scrollController.offset > 0) {
-      setState(() {
-        _leftPadding = 0.0;
-      });
-    } else {
-      setState(() {
-        _leftPadding = 16.0;
-      });
-    }
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(_updatePadding);
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,54 +38,71 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _Header(context),
-        space16,
-        SizedBox(
-          height: 276.h,
-          child: ListView.builder(
-            controller: _scrollController,
-            padding: EdgeInsets.only(left: _leftPadding),
-            shrinkWrap: true,
-            itemCount: widget.courses.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              final singleCourseItem = widget.courses[index];
-              final isSelected = selectedCourseId == singleCourseItem.id;
+        space8,
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8.w,
+            mainAxisSpacing: 12.h,
+            childAspectRatio: 155.w / 250.h,
+          ),
+          controller: _scrollController,
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          shrinkWrap: true,
+          itemCount: widget.courses.length,
+          itemBuilder: (context, index) {
+            final singleCourseItem = widget.courses[index];
+            final isSelected = selectedCourseId == singleCourseItem.id;
 
-              return GestureDetector(
-                onTap: () async {
-                  setState(() {
-                    selectedCourseId = singleCourseItem.id;
-                    isLoadingSelected = true;
-                  });
-                  final bool? result = await context
-                      .read<CoursesBloc>()
-                      .checkEnrollment(singleCourseItem.id);
+            return GestureDetector(
+              onTap: () async {
+                setState(() {
+                  selectedCourseId = singleCourseItem.id;
+                  isLoadingSelected = true;
+                });
+                final bool? result = await context
+                    .read<CoursesBloc>()
+                    .checkEnrollment(singleCourseItem.id);
 
-                  setState(() => isLoadingSelected = false);
+                setState(() => isLoadingSelected = false);
 
-                  if (!context.mounted) return;
+                if (!context.mounted) return;
 
-                  if (result != null) {
-                    Navigator.pushNamed(
-                      context,
-                      result
-                          ? AppRoutes.enrolledCoursePage
-                          : AppRoutes.singleCoursePage,
-                      arguments: singleCourseItem.id,
-                    );
-                  }
-                },
+                if (result != null) {
+                  Navigator.pushNamed(
+                    context,
+                    result
+                        ? AppRoutes.enrolledCoursePage
+                        : AppRoutes.singleCoursePage,
+                    arguments: singleCourseItem.id,
+                  );
+                }
+              },
 
-                behavior: HitTestBehavior.opaque,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 16.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      isSelected && isLoadingSelected
+              behavior: HitTestBehavior.opaque,
+              child: Container(
+                height: 250.h,
+                padding: EdgeInsets.only(
+                  left: 10.w,
+                  right: 10.w,
+                  top: 10.h,
+                  bottom: 16.h,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2.w,
+                    color: context.colors.borderMuted.withOpacity(0.15),
+                  ),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: isSelected && isLoadingSelected
                           ? Container(
                               height: 120.h,
-                              width: 188.w,
                               decoration: BoxDecoration(
                                 color: context.colors.neutralContainerDefault
                                     .withOpacity(0.1),
@@ -126,11 +117,9 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                                     singleCourseItem.thumbnail?.original_url ??
                                     '',
                                 height: 120.h,
-                                width: 188.w,
                                 fit: BoxFit.fill,
                                 placeholder: (context, url) => Container(
                                   height: 120.h,
-                                  width: 188.w,
                                   color: Colors.grey[200],
                                   child: Center(
                                     child: CircularProgressIndicator(),
@@ -138,7 +127,6 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                                 ),
                                 errorWidget: (context, url, error) => Container(
                                   height: 120.h,
-                                  width: 188.w,
                                   decoration: BoxDecoration(
                                     color: context
                                         .colors
@@ -153,75 +141,55 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                                 ),
                               ),
                             ),
-                      SizedBox(
-                        height: 156.h,
-                        width: 188.w,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            space16,
-                            Text(
-                              singleCourseItem.title,
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 106.h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          space8,
+                          Text(
+                            singleCourseItem.title,
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
                             ),
-                            space8,
-                            Text(
-                              singleCourseItem.short_description,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          space8,
 
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: context.colors.fgSoft,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            space8,
-                            CourseInfo(
-                              widget.learners ?? '',
-                              widget.rating ?? 0,
-                              widget.courseDuration ?? 0,
-                              context,
-                              isCertificateAvailble:
-                                  widget.isCertificateAvailble != null &&
-                                      widget
-                                              .isCertificateAvailble?[index]
-                                              ?.title
-                                              .isNotEmpty ==
-                                          true
-                                  ? true
-                                  : false,
-                            ),
-                            singleCourseItem.short_description.length < 25
-                                ? Spacer()
-                                : space20,
-                            Text(
-                              // index != 0 && index != 1
-                              //     ? '${widget.price?[index]} UZS'
-                              //     :
-                              '200.000 UZS',
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
+                          Spacer(),
+                          CourseInfo(
+                            widget.learners ?? '',
+                            widget.rating ?? 0,
+                            widget.courseDuration ?? 0,
+                            context,
+                            isCertificateAvailble:
+                                widget.isCertificateAvailble != null &&
+                                    widget
+                                            .isCertificateAvailble?[index]
+                                            ?.title
+                                            .isNotEmpty ==
+                                        true
+                                ? true
+                                : false,
+                          ),
+                          singleCourseItem.short_description.length < 25
+                              ? Spacer()
+                              : space10,
+                          AppText.footNote(
+                            '200.000 UZS',
+                            color: context.colors.fgDefault,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ],
     );
