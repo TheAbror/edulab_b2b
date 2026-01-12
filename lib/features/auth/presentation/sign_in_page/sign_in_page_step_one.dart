@@ -1,5 +1,3 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:leti_mobile/widget_imports.dart';
 
 class SignInPageStepOne extends StatelessWidget {
@@ -22,11 +20,29 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _phoneNumberController = TextEditingController();
+  final FocusNode _phoneFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneFocusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (_phoneFocusNode.hasFocus && _phoneNumberController.text.isEmpty) {
+      // Set the prefix when field gains focus and is empty
+      _phoneNumberController.text = '+998';
+      _phoneNumberController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _phoneNumberController.text.length),
+      );
+    }
+  }
 
   @override
   void dispose() {
+    _phoneFocusNode.removeListener(_onFocusChange);
+    _phoneFocusNode.dispose();
     _phoneNumberController.dispose();
     super.dispose();
   }
@@ -65,14 +81,15 @@ class _BodyState extends State<_Body> {
                 space32,
                 TextFormField(
                   controller: _phoneNumberController,
+                  focusNode: _phoneFocusNode,
                   keyboardType: TextInputType.phone,
                   inputFormatters: [
                     UzbekistanPhoneFormatter(),
-                    LengthLimitingTextInputFormatter(13), // +998 + 9 digits
+                    LengthLimitingTextInputFormatter(13),
                   ],
                   decoration: authFieldDecoration(
                     context,
-                    'Enter phone number',
+                    '+998',
                   ),
                 ),
                 space16,
@@ -80,6 +97,7 @@ class _BodyState extends State<_Body> {
                   text: context.localizations.signin,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
+                      _phoneFocusNode.unfocus();
                       context.read<AuthBloc>().signInStepOne(
                         _phoneNumberController.text.trim(),
                       );
@@ -109,7 +127,6 @@ class UzbekistanPhoneFormatter extends TextInputFormatter {
       return newValue;
     }
 
-    // 2️⃣ If user deletes back to prefix → clear completely
     if (newValue.text == prefix) {
       return const TextEditingValue(
         text: '',
@@ -117,15 +134,12 @@ class UzbekistanPhoneFormatter extends TextInputFormatter {
       );
     }
 
-    // 3️⃣ Extract digits
     String digits = newValue.text.replaceAll(RegExp(r'\D'), '');
 
-    // 4️⃣ Remove prefix digits if present
     if (digits.startsWith(prefixDigits)) {
       digits = digits.substring(prefixDigits.length);
     }
 
-    // 5️⃣ Build final value
     final text = '$prefix$digits';
 
     return TextEditingValue(

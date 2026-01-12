@@ -101,6 +101,7 @@ class LearningBottomNavButtonRight extends StatelessWidget {
                     : context.colors.borderMuted.withOpacity(0.15),
                 fontWeight: FontWeight.w500,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(width: 8.w),
             Assets.icons.learning.right.svg(

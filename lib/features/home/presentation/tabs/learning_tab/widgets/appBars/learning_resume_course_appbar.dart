@@ -8,12 +8,14 @@ class LearningResumeCourseAppBar extends StatelessWidget
     required this.controller,
     required this.title,
     required this.steps,
+    required this.status,
   });
 
   final LearningState state;
   final TabController controller;
   final String title;
   final List<StepModel> steps;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -86,10 +88,12 @@ class LearningResumeCourseAppBar extends StatelessWidget
               builder: (context, innerState) {
                 return TabBar(
                   onTap: (value) {
+                    // if (steps[value].status == "COMPLETED") {
                     context.read<LearningBloc>().changeAppbarTabIndex(
                       value,
                       StepModel.initial(),
                     );
+                    // }
                   },
                   tabAlignment: TabAlignment.start,
                   overlayColor: MaterialStateProperty.all(Colors.transparent),

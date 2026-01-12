@@ -9,14 +9,14 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get signIn => 'Войти';
+  String get signIn => 'Вход';
 
   @override
   String get enterYourCredentials =>
       'Введите свои учетные данные для доступа к платформе';
 
   @override
-  String get login => 'Авторизоваться';
+  String get login => 'Вход';
 
   @override
   String get password => 'Пароль';
@@ -28,7 +28,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get idText => 'ID';
 
   @override
-  String get inCorrect => 'Неправильный';
+  String get inCorrect => 'Неверно';
 
   @override
   String get internalError => 'Внутренняя ошибка';
@@ -46,7 +46,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get attendance => 'Посещаемость';
 
   @override
-  String get more => 'Еще';
+  String get more => 'Ещё';
 
   @override
   String get editProfile => 'Профиль';
@@ -58,7 +58,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get libraryButton => 'Библиотека';
 
   @override
-  String get faceID => 'FaceID безопасность';
+  String get faceID => 'Защита Face ID';
 
   @override
   String get logout => 'Выйти';
@@ -73,7 +73,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dark => 'Темный';
 
   @override
-  String get noModulesAvailable => 'Нет доступных модулей';
+  String get noModulesAvailable => 'Модули недоступны';
 
   @override
   String get somethingWentWrong => 'Что-то пошло не так';
@@ -94,13 +94,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get course => 'Курс';
 
   @override
-  String get academicYear => 'Академический год';
+  String get academicYear => 'Учебный год';
 
   @override
   String get cancelButton => 'Отмена';
 
   @override
-  String get overallMark => 'Общая оценка';
+  String get overallMark => 'Итоговая оценка';
 
   @override
   String get onlineLearning => 'ОНЛАЙН ОБУЧЕНИЕ';
@@ -112,7 +112,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get noLessonsAddedYet => 'Уроки пока не добавлены';
 
   @override
-  String get noOnlineLessonsAddedYet => 'Онлайн-уроки пока не добавлены.';
+  String get noOnlineLessonsAddedYet => 'Онлайн-уроки пока не добавлены';
 
   @override
   String get all => 'ВСЕ';
@@ -124,10 +124,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get noFilesToDownload => 'Нет файлов для скачивания';
 
   @override
-  String get noVideoFilesToDownload => 'Нет доступных видеофайлов';
+  String get noVideoFilesToDownload => 'Видеофайлы недоступны';
 
   @override
-  String get noDocumentsToDownload => 'Нет доступных документов';
+  String get noDocumentsToDownload => 'Документы недоступны';
 
   @override
   String get profile => 'Профиль';
@@ -136,25 +136,25 @@ class AppLocalizationsRu extends AppLocalizations {
   String get search => 'Поиск';
 
   @override
-  String get filterByCategory => 'Фильтровать по категории';
+  String get filterByCategory => 'Фильтр по категории';
 
   @override
-  String get passcodeWasRemoved => 'Пароль был удален';
+  String get passcodeWasRemoved => 'Код-пароль удалён';
 
   @override
-  String get turnPasscodeOn => 'Включить пароль';
+  String get turnPasscodeOn => 'Включить код-пароль';
 
   @override
-  String get changePasscode => 'Изменить пароль';
+  String get changePasscode => 'Изменить код-пароль';
 
   @override
-  String get enterNewPasscode => 'Введите новый пароль';
+  String get enterNewPasscode => 'Введите новый код-пароль';
 
   @override
-  String get confirmNewPasscode => 'Подтвердите новый пароль';
+  String get confirmNewPasscode => 'Подтвердите новый код-пароль';
 
   @override
-  String get passcodeWasSuccessfullyChanged => 'Пароль успешно изменен';
+  String get passcodeWasSuccessfullyChanged => 'Пароль успешно изменён';
 
   @override
   String get passcodesDoNotMatch => 'Пароли не совпадают';
@@ -187,7 +187,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get download => 'Скачать';
 
   @override
-  String get editText => 'Ред...';
+  String get editText => 'Ред.';
 
   @override
   String get phone => 'Телефон';
@@ -232,7 +232,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get pleaseEnterID => 'Пожалуйста, введите свой ID';
 
   @override
-  String get pleaseEnterPassword => 'Пожалуйста введите ваш пароль';
+  String get pleaseEnterPassword => 'Пожалуйста, введите ваш пароль';
 
   @override
   String get timetableGroup => 'Группа';
@@ -253,7 +253,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get created => 'Созданные';
 
   @override
-  String get errorOccured => 'произошла ошибка';
+  String get errorOccured => 'Произошла ошибка';
 
   @override
   String get createButton => 'Создать';
@@ -265,7 +265,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get createInquiry => 'Создать запрос';
 
   @override
-  String get addItem => 'Добавить ';
+  String get addItem => 'Добавить элемент';
 
   @override
   String get pleaseEnterTitleAndDescription =>
@@ -302,7 +302,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get changeLog => 'Журнал изменений';
 
   @override
-  String get involvedUsers => 'Вовлеченные пользователи';
+  String get involvedUsers => 'Вовлечённые пользователи';
 
   @override
   String get staffFrom => 'От';
@@ -356,10 +356,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get selectUser => 'Выберите пользователя';
 
   @override
-  String get position => 'Позиция';
+  String get position => 'Должность';
 
   @override
-  String get department => 'Отделение';
+  String get department => 'Отдел';
 
   @override
   String get selectButton => 'Выбрать';
@@ -371,10 +371,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cantbeEmpty => 'Не может быть пустым';
 
   @override
-  String get inquiryWasSuccessfullyDeleted => 'Запрос успешно удален';
+  String get inquiryWasSuccessfullyDeleted => 'Запрос успешно удалён';
 
   @override
-  String get inquiryUpdated => 'Запрос успешно обновлен';
+  String get inquiryUpdated => 'Запрос успешно обновлён';
 
   @override
   String get inquiryCommentPosted => 'Шаблон комментария успешно создан!';
@@ -398,7 +398,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fri => 'ПТ';
 
   @override
-  String get sat => 'СУ';
+  String get sat => 'СБ';
 
   @override
   String get selectValue => 'Выберите значение';
@@ -414,7 +414,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ifFormatNotSupported =>
-      'Если формат не поддерживается, нажмите и удерживайте значок.';
+      'Если формат не поддерживается, нажмите и удерживайте значок';
 
   @override
   String get core => 'Основной';
@@ -531,10 +531,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get inquiriesTab => 'Запросы';
 
   @override
-  String get payments => 'To\'lovlar';
+  String get payments => 'Платежи';
 
   @override
-  String get viewYourPaymentData => 'Toʻlov maʼlumotlaringizni koʻring';
+  String get viewYourPaymentData => 'Просмотрите свои платежные данные';
 
   @override
   String get debitTotalAmount => 'Общая сумма';
@@ -783,7 +783,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get emailaddress => 'Адрес электронной почты';
 
   @override
-  String get skipstep => 'Пропустить';
+  String get skipstep => 'Пропустить шаг';
 
   @override
   String get startlearning => 'Начать обучение';
@@ -809,7 +809,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Проверьте свою электронную почту и откройте ссылку, которую мы отправили';
 
   @override
-  String get didntgetit => 'Не получил?';
+  String get didntgetit => 'Не получили?';
 
   @override
   String get sendmeanewemail => 'Отправьте мне новое письмо';
@@ -956,7 +956,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get inProgress => 'В процессе';
 
   @override
-  String get completed => 'Завершенныe';
+  String get completed => 'Завершенный';
 
   @override
   String get archived => 'Архив';
@@ -1025,4 +1025,41 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noResults => 'Нет результатов';
+
+  @override
+  String get noInternetC => 'Нет подключения к интернету';
+
+  @override
+  String get complete => 'Завершить';
+
+  @override
+  String get pleaseCheck =>
+      'Пожалуйста, проверьте подключение к интернету и попробуйте снова.';
+
+  @override
+  String get markAsComplete => 'Отметить как выполненное';
+
+  @override
+  String get prev => 'Пред.';
+
+  @override
+  String get totalTimeLearning => 'Общее время обучения';
+
+  @override
+  String get courseInProgress => 'Пройденные курсы';
+
+  @override
+  String get courseCompleted => 'Завершенные курсы';
+
+  @override
+  String get info => 'Инфо';
+
+  @override
+  String get content => 'Контент';
+
+  @override
+  String get news => 'Новости';
+
+  @override
+  String get newsWillAppear => 'Новости будут появляться здесь.';
 }

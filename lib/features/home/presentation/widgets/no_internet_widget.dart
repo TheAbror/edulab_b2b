@@ -8,13 +8,13 @@ void showNoInternetDialog(BuildContext context) {
 
     builder: (context) {
       return AlertDialog(
-        title: const Text('No Internet Connection'),
+        title: Text(context.localizations.noInternetC),
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             Icon(Icons.wifi_off, size: 64, color: Colors.red),
             SizedBox(height: 16),
-            Text('Please check your internet connection and try again.'),
+            Text(context.localizations.pleaseCheck),
           ],
         ),
         actions: [
@@ -37,10 +37,10 @@ class NoInternetView extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(Icons.wifi_off, size: 64),
             SizedBox(height: 16),
-            Text('No internet connection'),
+            Text(context.localizations.noInternetC),
           ],
         ),
       ),

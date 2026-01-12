@@ -117,7 +117,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                                     singleCourseItem.thumbnail?.original_url ??
                                     '',
                                 height: 120.h,
-                                fit: BoxFit.fill,
+                                fit: BoxFit.cover,
                                 placeholder: (context, url) => Container(
                                   height: 120.h,
                                   color: Colors.grey[200],

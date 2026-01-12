@@ -17,17 +17,18 @@ class MarkAsCompleteButton extends StatelessWidget {
     return GestureDetector(
       onTap: markAsComplete,
       child: Container(
-        height: 48.h,
-        width: 163.w,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        height: 50.h,
         margin: EdgeInsets.only(top: 24.h),
         decoration: BoxDecoration(
           color: status == "COMPLETED" && (canComplete == true)
               ? context.colors.successDefault
-              : context.colors.accentDefault,
+              : Colors.grey,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             if (status == "COMPLETED")
               Icon(
@@ -39,8 +40,8 @@ class MarkAsCompleteButton extends StatelessWidget {
               SizedBox(width: 10.w),
             AppText.headline1(
               status == "COMPLETED" && (canComplete == true)
-                  ? "Completed"
-                  : 'Mark as complete',
+                  ? context.localizations.completed
+                  : context.localizations.markAsComplete,
               color: CustomThemes.neutral0,
             ),
           ],

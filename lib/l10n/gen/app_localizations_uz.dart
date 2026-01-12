@@ -13,7 +13,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get enterYourCredentials =>
-      'Platformaga kirish uchun ma\'lumotlaringizni kiriting';
+      'Platformaga kirish uchun ma’lumotlaringizni kiriting';
 
   @override
   String get login => 'Tizimga kirish';
@@ -28,25 +28,25 @@ class AppLocalizationsUz extends AppLocalizations {
   String get idText => 'ID';
 
   @override
-  String get inCorrect => 'Noto\'g\'ri';
+  String get inCorrect => 'Noto‘g‘ri';
 
   @override
-  String get internalError => 'Ichki xato';
+  String get internalError => 'Ichki xatolik';
 
   @override
-  String get home => 'Asosiy';
+  String get home => 'Bosh sahifa';
 
   @override
-  String get timetable => 'Jadval';
+  String get timetable => 'Dars jadvali';
 
   @override
-  String get marks => 'Baho';
+  String get marks => 'Baholar';
 
   @override
   String get attendance => 'Davomat';
 
   @override
-  String get more => 'Ko\'proq';
+  String get more => 'Yana';
 
   @override
   String get editProfile => 'Profil';
@@ -58,7 +58,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libraryButton => 'Kutubxona';
 
   @override
-  String get faceID => 'FaceID xavfsizligi';
+  String get faceID => 'Face ID orqali himoya';
 
   @override
   String get logout => 'Chiqish';
@@ -67,16 +67,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get auto => 'Avtomatik';
 
   @override
-  String get light => 'Yorug\'';
+  String get light => 'Yorug‘';
 
   @override
-  String get dark => 'Qorong\'i';
+  String get dark => 'Qorong‘i';
 
   @override
   String get noModulesAvailable => 'Modullar mavjud emas';
 
   @override
-  String get somethingWentWrong => 'Nimadir noto\'g\'ri bajarildi';
+  String get somethingWentWrong => 'Nimadir xato ketdi';
 
   @override
   String get yourModules => 'Sizning modullaringiz';
@@ -88,43 +88,43 @@ class AppLocalizationsUz extends AppLocalizations {
   String get module => 'Modul';
 
   @override
-  String get absentHours => 'Yo\'q soatlar';
+  String get absentHours => 'Qoldirilgan soatlar';
 
   @override
   String get course => 'Kurs';
 
   @override
-  String get academicYear => 'O\'quv yili';
+  String get academicYear => 'O‘quv yili';
 
   @override
   String get cancelButton => 'Bekor qilish';
 
   @override
-  String get overallMark => 'Umumiy baho';
+  String get overallMark => 'Yakuniy baho';
 
   @override
-  String get onlineLearning => 'ONLAYN TA\'LIM';
+  String get onlineLearning => 'Onlayn ta’lim';
 
   @override
-  String get documentsWithCapital => 'HUJJATLAR';
+  String get documentsWithCapital => 'Hujjatlar';
 
   @override
-  String get noLessonsAddedYet => 'Hali darslar qo\'shilmagan';
+  String get noLessonsAddedYet => 'Hozircha darslar qo‘shilmagan';
 
   @override
-  String get noOnlineLessonsAddedYet => 'Hozircha onlayn darslar qo\'shilmagan';
+  String get noOnlineLessonsAddedYet => 'Hozircha onlayn darslar qo‘shilmagan';
 
   @override
-  String get all => 'BARCHA';
+  String get all => 'Barchasi';
 
   @override
-  String get video => 'VIDEO';
+  String get video => 'Video';
 
   @override
-  String get noFilesToDownload => 'Yuklab olish uchun fayl yo\'q';
+  String get noFilesToDownload => 'Yuklab olish uchun fayllar yo‘q';
 
   @override
-  String get noVideoFilesToDownload => 'Video fayl mavjud emas';
+  String get noVideoFilesToDownload => 'Video fayllar mavjud emas';
 
   @override
   String get noDocumentsToDownload => 'Hujjatlar mavjud emas';
@@ -136,22 +136,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get search => 'Izlash';
 
   @override
-  String get filterByCategory => 'Kategoriya bo\'yicha filtrlash';
+  String get filterByCategory => 'Kategoriya bo‘yicha saralash';
 
   @override
-  String get passcodeWasRemoved => 'Parol olib tashlandi';
+  String get passcodeWasRemoved => 'Parol kodi o‘chirildi';
 
   @override
-  String get turnPasscodeOn => 'Parolni yoqish';
+  String get turnPasscodeOn => 'Parol kodini yoqish';
 
   @override
-  String get changePasscode => 'Parolni o\'zgartirish';
+  String get changePasscode => 'Parol kodini o‘zgartirish';
 
   @override
-  String get enterNewPasscode => 'Yangi parolni kiriting';
+  String get enterNewPasscode => 'Yangi parol kodini kiriting';
 
   @override
-  String get confirmNewPasscode => 'Yangi parolni tasdiqlang';
+  String get confirmNewPasscode => 'Yangi parol kodini tasdiqlang';
 
   @override
   String get passcodeWasSuccessfullyChanged =>
@@ -167,13 +167,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get signOut => 'Tizimdan chiqish?';
 
   @override
-  String get doYouWannaSignOut => 'Tizimdan chiqmoqchimisiz';
+  String get doYouWannaSignOut => 'Tizimdan chiqmoqchimisiz?';
 
   @override
   String get yes => 'Ha';
 
   @override
-  String get no => 'Yo\'q';
+  String get no => 'Yo‘q';
 
   @override
   String get documentType => 'Hujjat turi';
@@ -185,7 +185,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get date => 'Sana';
 
   @override
-  String get download => 'Yuklash';
+  String get download => 'Yuklab olish';
 
   @override
   String get editText => 'Tahrir';
@@ -206,7 +206,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get saveButton => 'Saqlash';
 
   @override
-  String get noResultsText => 'Natijalar yoʻq';
+  String get noResultsText => 'Natijalar yo‘q';
 
   @override
   String get finalGrade => 'Yakuniy baho';
@@ -215,10 +215,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enterCurrentPasscode => 'Joriy parolni kiriting';
 
   @override
-  String get success => 'Muvaffaqiyat';
+  String get success => 'Muvaffaqiyatli';
 
   @override
-  String get incorrectPasscode => 'Noto\'g\'ri parol';
+  String get incorrectPasscode => 'Noto‘g‘ri parol';
 
   @override
   String get enterPasscode => 'Parolni kiriting';
@@ -230,7 +230,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get week => 'Hafta';
 
   @override
-  String get pleaseEnterID => 'Iltimos, talaba identifikatoringizni kiriting';
+  String get pleaseEnterID => 'Iltimos, talaba ID raqamingizni kiriting';
 
   @override
   String get pleaseEnterPassword => 'Iltimos, parolingizni kiriting';
@@ -239,13 +239,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get timetableGroup => 'Guruh';
 
   @override
-  String get timetableTeacher => 'O\'qituvchi';
+  String get timetableTeacher => 'O‘qituvchi';
 
   @override
   String get timetableRoom => 'Xona';
 
   @override
-  String get academicYearSelection => 'O\'quv yilini tanlang';
+  String get academicYearSelection => 'O‘quv yilini tanlang';
 
   @override
   String get assigned => 'Tayinlangan';
@@ -254,23 +254,23 @@ class AppLocalizationsUz extends AppLocalizations {
   String get created => 'Yaratilgan';
 
   @override
-  String get errorOccured => 'xatolik yuz berdi';
+  String get errorOccured => 'Xatolik yuz berdi';
 
   @override
   String get createButton => 'Yaratish';
 
   @override
-  String get editInquiry => 'So\'rovni tahrirlash';
+  String get editInquiry => 'So‘rovni tahrirlash';
 
   @override
-  String get createInquiry => 'So\'rov yarating';
+  String get createInquiry => 'So‘rov yaratish';
 
   @override
-  String get addItem => 'Qo\'shish';
+  String get addItem => 'Qo‘shish';
 
   @override
   String get pleaseEnterTitleAndDescription =>
-      'Iltimos, so\'rovning nomi va tavsifini kiriting';
+      'Iltimos, so‘rovning nomi va tavsifini kiriting';
 
   @override
   String get title => 'Sarlavha';
@@ -297,10 +297,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get submitButton => 'Yuborish';
 
   @override
-  String get actionButton => 'Qaror qilish';
+  String get actionButton => 'Amal';
 
   @override
-  String get changeLog => 'Jurnalni o\'zgartirish';
+  String get changeLog => 'O‘zgarishlar jurnali';
 
   @override
   String get involvedUsers => 'Ishtirokchilar';
@@ -327,10 +327,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get newxtWeek => 'Keyingi hafta';
 
   @override
-  String get saveAsTemplate => 'Shablonga saqlash';
+  String get saveAsTemplate => 'Shablon sifatida saqlash';
 
   @override
-  String get quickReply => 'Tez javob';
+  String get quickReply => 'Tezkor javob';
 
   @override
   String get inspector => 'Tekshiruvchi';
@@ -339,13 +339,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get selectRecipient => 'Qabul qiluvchini tanlang';
 
   @override
-  String get removeButton => 'O\'chirish';
+  String get removeButton => 'O‘chirish';
 
   @override
   String get chooseAction => 'Amalni tanlang';
 
   @override
-  String get deleteButton => 'Oʻchirish';
+  String get deleteButton => 'O‘chirish';
 
   @override
   String get name => 'Ism';
@@ -360,7 +360,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get position => 'Lavozim';
 
   @override
-  String get department => 'Bo\'lim';
+  String get department => 'Bo‘lim';
 
   @override
   String get selectButton => 'Tanlang';
@@ -369,7 +369,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get confirmButton => 'Tasdiqlash';
 
   @override
-  String get cantbeEmpty => 'Bo\'sh bo\'lishi mumkin emas';
+  String get cantbeEmpty => 'Bo‘sh bo‘lishi mumkin emas';
 
   @override
   String get inquiryWasSuccessfullyDeleted =>
@@ -379,7 +379,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get inquiryUpdated => 'So‘rov muvaffaqiyatli yangilandi';
 
   @override
-  String get inquiryCommentPosted => 'Fikr shabloni muvaffaqiyatli yaratildi!';
+  String get inquiryCommentPosted => 'Izoh shabloni muvaffaqiyatli yaratildi!';
 
   @override
   String get errorHappened => 'Xatolik yuz berdi';
@@ -409,14 +409,14 @@ class AppLocalizationsUz extends AppLocalizations {
   String get staffSettings => 'Sozlamalar';
 
   @override
-  String get attachments => 'Qo\'shimchalar';
+  String get attachments => 'Qo‘shimchalar';
 
   @override
   String get open => 'Ochish';
 
   @override
   String get ifFormatNotSupported =>
-      'Agar format qo\'llab-quvvatlanmasa, belgini uzoq vaqt bosib turing';
+      'Agar format qo‘llab-quvvatlanmasa, belgini uzoq bosib turing';
 
   @override
   String get core => 'Asosiy';
@@ -440,7 +440,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get aboutUs => 'Biz haqimizda';
 
   @override
-  String get customizableLMS => 'Ta\'limni boshqarish tizimi (LMS)';
+  String get customizableLMS => 'Ta’limni boshqarish tizimi (LMS)';
 
   @override
   String get ourWebsite => 'Bizning veb-sayt';
@@ -452,7 +452,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get next => 'Keyingi';
 
   @override
-  String get fieldsCantbeEmpty => 'Maydonlar boʻsh boʻlishi mumkin emas';
+  String get fieldsCantbeEmpty => 'Maydonlar bo‘sh bo‘lishi mumkin emas';
 
   @override
   String get language => 'Til';
@@ -461,25 +461,26 @@ class AppLocalizationsUz extends AppLocalizations {
   String get canteen => 'Oshxona';
 
   @override
-  String get shop => 'Elektron do\'kon';
+  String get shop => 'Elektron do‘kon';
 
   @override
   String get inStock => 'Mavjud';
 
   @override
-  String get add => 'Qo\'shish';
+  String get add => 'Qo‘shish';
 
   @override
-  String get featureWillBeAvailableSoon => 'Xususiyat tez orada ishlaydi';
+  String get featureWillBeAvailableSoon => 'Xususiyat tez orada ishga tushadi';
 
   @override
-  String get shopSizes => 'O\'lchamlari';
+  String get shopSizes => 'O‘lchamlar';
 
   @override
   String get shopColors => 'Ranglar';
 
   @override
-  String get downloadStudyMaterials => 'O\'quv materiallari va e-kitoblar.';
+  String get downloadStudyMaterials =>
+      'O‘quv materiallari va elektron kitoblar.';
 
   @override
   String get attendanceHistory => 'Davomat tarixi';
@@ -488,10 +489,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String get trackAttendanceRecords => 'Davomat yozuvlarini kuzatib boring.';
 
   @override
-  String get viewCanteenMenu => 'Oshxona menyusi va narxlarini ko\'ring.';
+  String get viewCanteenMenu => 'Oshxona menyusi va narxlarini ko‘ring.';
 
   @override
-  String get buyStudyMaterials => 'O\'quv materiallarini sotib oling.';
+  String get buyStudyMaterials =>
+      'O‘quv materiallari va aksessuarlarni sotib oling.';
 
   @override
   String get view => 'Ko‘rish';
@@ -512,41 +514,41 @@ class AppLocalizationsUz extends AppLocalizations {
   String get reply => 'Javob berish';
 
   @override
-  String get addComment => 'Izoh qo\'shish...';
+  String get addComment => 'Izoh qo‘shish...';
 
   @override
-  String get noMessagesYet => 'Hali hech qanday xabar yo\'q';
+  String get noMessagesYet => 'Hali hech qanday xabar yo‘q';
 
   @override
   String get startAConversation =>
-      'O\'qituvchingiz bilan suhbatni boshlang. Savollar bering, yangilanishlarni baham ko\'ring.';
+      'O‘qituvchingiz bilan suhbatni boshlang. Savollar bering, yangiliklarni baham ko‘ring.';
 
   @override
-  String get support => 'Qo\'llab-quvvatlash';
+  String get support => 'Qo‘llab-quvvatlash';
 
   @override
   String get moduleCode => 'Kod';
 
   @override
-  String get inquiriesTab => 'So\'rovlar';
+  String get inquiriesTab => 'So‘rovlar';
 
   @override
-  String get payments => 'Платежи';
+  String get payments => 'To‘lovlar';
 
   @override
-  String get viewYourPaymentData => 'Просмотрите свои платежные данные';
+  String get viewYourPaymentData => 'To‘lov ma’lumotlaringizni ko‘ring';
 
   @override
   String get debitTotalAmount => 'Umumiy miqdor';
 
   @override
-  String get debitPaidAmount => 'To`langan miqdor';
+  String get debitPaidAmount => 'To‘langan miqdor';
 
   @override
   String get debitRemainingAmount => 'Qolgan miqdor';
 
   @override
-  String get paymentAcademicYear => 'O\'quv yili';
+  String get paymentAcademicYear => 'O‘quv yili';
 
   @override
   String get paymentDebit => 'Debit';
@@ -567,7 +569,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get paymentsParts => 'Qismlar';
 
   @override
-  String get paymentsDeadline => 'To\'lov muddati';
+  String get paymentsDeadline => 'To‘lov muddati';
 
   @override
   String get contractName => 'Shartnoma nomi';
@@ -582,16 +584,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get filter => 'Filtr';
 
   @override
-  String get filterByWeek => 'Hafta bo\'yicha filtrlash';
+  String get filterByWeek => 'Hafta bo‘yicha filtrlash';
 
   @override
-  String get teachingWeek => 'Ta\'lim haftasi';
+  String get teachingWeek => 'Ta’lim haftasi';
 
   @override
-  String get signInWith => 'Tizimga kirish';
+  String get signInWith => 'Orqali kirish';
 
   @override
-  String get maybeLater => 'Keginroq';
+  String get maybeLater => 'Keyinroq';
 
   @override
   String get byUsingThisApp =>
@@ -613,7 +615,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get favorites => 'Sevimlilar';
 
   @override
-  String get viewAll => 'Hammasini ko\'rish';
+  String get viewAll => 'Hammasini ko‘rish';
 
   @override
   String get startYourAdventure =>
@@ -626,16 +628,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get forgotPassword => 'Parolni unutdingizmi?';
 
   @override
-  String get dontHaveAccount => 'Hisobingiz yo\'qmi?';
+  String get dontHaveAccount => 'Hisobingiz yo‘qmi?';
 
   @override
-  String get signUp => 'Ro\'yxatdan o\'tish';
+  String get signUp => 'Ro‘yxatdan o‘tish';
 
   @override
   String get createYourAccount => 'Hisob qaydnomangizni yarating';
 
   @override
-  String get cantBeEmpty => 'Bo\'sh bo\'lishi mumkin emas';
+  String get cantBeEmpty => 'Bo‘sh bo‘lishi mumkin emas';
 
   @override
   String get enterYourEmail => 'Elektron pochtangizni kiriting';
@@ -655,7 +657,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get passwordMustContain =>
-      'Parol kamida 5 ta harfdan iborat bo\'lishi kerak';
+      'Parol kamida 5 ta belgidan iborat bo‘lishi kerak';
 
   @override
   String get repeatPassword => 'Parolni qayta kiriting';
@@ -670,7 +672,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sendAgain => 'Yana yuborish';
 
   @override
-  String get changePassword => 'Parolni o\'zgartirish';
+  String get changePassword => 'Parolni o‘zgartirish';
 
   @override
   String get signInNow => 'Hozir kirish';
@@ -679,10 +681,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get resendCode => 'Kodni qayta yuborish';
 
   @override
-  String get skipStep => 'Qadamni o\'tkazib yuborish';
+  String get skipStep => 'Qadamni o‘tkazib yuborish';
 
   @override
-  String get tellUsAboutY => 'O\'zingiz haqingizda gapirib bering';
+  String get tellUsAboutY => 'O‘zingiz haqingizda gapirib bering';
 
   @override
   String get firstName => 'Ism';
@@ -691,14 +693,14 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lastName => 'Familiya';
 
   @override
-  String get emailAddress => 'E-pochta manzili';
+  String get emailAddress => 'Elektron pochta manzili';
 
   @override
-  String get welcomeToLetiEdu => 'Leti Edu-ga xush kelibsiz';
+  String get welcomeToLetiEdu => 'Leti Edu’ga xush kelibsiz';
 
   @override
   String get trackYourLearning =>
-      'O\'rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing';
+      'O‘rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing';
 
   @override
   String get createAnAccount => 'Hisob ochish';
@@ -707,13 +709,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get signin => 'Tizimga kirish';
 
   @override
-  String get skipfornow => 'Hozircha o\'tkazib yuboring';
+  String get skipfornow => 'Hozircha o‘tkazib yuboring';
 
   @override
-  String get homeTab => 'UY';
+  String get homeTab => 'BOSH SAHIFA';
 
   @override
-  String get learingTab => 'DARSLIKLARIM';
+  String get learingTab => 'O‘QISH';
 
   @override
   String get coursesTab => 'KURSLAR';
@@ -722,11 +724,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileTab => 'PROFIL';
 
   @override
-  String get welcometoEdulab => 'Edulabga xush kelibsiz';
+  String get welcometoEdulab => 'Edulab’ga xush kelibsiz';
 
   @override
   String get trackyourlearning =>
-      'O\'rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing';
+      'O‘rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing';
 
   @override
   String get createanaccount => 'Yangi profil ochish';
@@ -735,30 +737,30 @@ class AppLocalizationsUz extends AppLocalizations {
   String get createayourccount => 'Yangi profil ochish';
 
   @override
-  String get skipforNow => 'O\'tkazib yuborish';
+  String get skipforNow => 'O‘tkazib yuborish';
 
   @override
-  String get signup => 'Ro\'yxatdan o\'tish';
+  String get signup => 'Ro‘yxatdan o‘tish';
 
   @override
-  String get skip => 'Oʻtkazib yuborish';
+  String get skip => 'O‘tkazib yuborish';
 
   @override
   String get bysignningAgree =>
-      'Roʻyxatdan oʻtish orqali siz Edulabning xizmat koʻrsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.';
+      'Ro‘yxatdan o‘tish orqali siz Edulab’ning xizmat ko‘rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.';
 
   @override
   String get existinguser => 'Mavjud foydalanuvchi';
 
   @override
   String get buildskillsfortodayetc =>
-      'Bugun, ertaga va undan keyingi kunlar uchun ko\'nikmalar hosil qiling. Kelajakdagi martabangizni isbotlash uchun ta\'lim.';
+      'Bugun, ertaga va undan keyingi kunlar uchun ko‘nikmalarni rivojlantiring. Kelajakdagi martabangizni mustahkamlovchi ta’lim.';
 
   @override
   String get emailorPhonenumber => 'Elektron pochta yoki telefon raqami';
 
   @override
-  String get continuewithGoogle => 'Google bilan davom eting';
+  String get continuewithGoogle => 'Google orqali davom eting';
 
   @override
   String get entercode => 'Kodni kiriting';
@@ -782,26 +784,26 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lastname => 'Familiya';
 
   @override
-  String get emailaddress => 'E-pochta manzili';
+  String get emailaddress => 'Elektron pochta manzili';
 
   @override
-  String get skipstep => 'Qadamni o\'tkazib yuborish';
+  String get skipstep => 'Qadamni o‘tkazib yuborish';
 
   @override
-  String get startlearning => 'O\'rganishni boshlang';
+  String get startlearning => 'O‘rganishni boshlang';
 
   @override
-  String get donthaveanaccountyet => 'Hali profilingiz yo\'qmi?';
+  String get donthaveanaccountyet => 'Hali profilingiz yo‘qmi?';
 
   @override
   String get forgotpassword => 'Parolni unutdingizmi';
 
   @override
-  String get cantbeempty => 'Bo\'sh bo\'lishi mumkin emas';
+  String get cantbeempty => 'Bo‘sh bo‘lishi mumkin emas';
 
   @override
   String get enteryouremailorphone =>
-      'Elektron pochtangizni yoki telefoningizni kiriting';
+      'Elektron pochtangizni yoki telefon raqamingizni kiriting';
 
   @override
   String get wellsendyou =>
@@ -809,7 +811,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get checkyouremailandopen =>
-      'Elektron pochtangizni tekshiring va biz davom ettirish uchun yuborgan havolani oching';
+      'Elektron pochtangizni tekshiring va davom etish uchun yuborgan havolani oching';
 
   @override
   String get didntgetit => 'Kelmadimi?';
@@ -824,7 +826,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get repeatpassword => 'Parolni qayta kiriting';
 
   @override
-  String get changepassword => 'Parolni o\'zgartirish';
+  String get changepassword => 'Parolni o‘zgartirish';
 
   @override
   String get passwordreset => 'Parol tiklandi';
@@ -840,13 +842,13 @@ class AppLocalizationsUz extends AppLocalizations {
       'Iltimos, to‘g‘ri elektron pochta manzilini kiriting';
 
   @override
-  String get myStudy => 'Mening o\'qishim';
+  String get myStudy => 'Mening o‘qishim';
 
   @override
-  String get courseProgress => 'Kursning borishi';
+  String get courseProgress => 'Kurs jarayoni';
 
   @override
-  String get tellUsAboutYrself => 'O\'zingiz haqingizda gapirib bering';
+  String get tellUsAboutYrself => 'O‘zingiz haqingizda gapirib bering';
 
   @override
   String get welcomeBack => 'Xush kelibsiz';
@@ -858,59 +860,59 @@ class AppLocalizationsUz extends AppLocalizations {
   String get authors => 'Mualliflar';
 
   @override
-  String get coursesWithnumber => 'kurslar';
+  String get coursesWithnumber => 'Kurslar';
 
   @override
-  String get softSkills => 'Yumshoq ko\'nikmalar';
+  String get softSkills => 'Yumshoq ko‘nikmalar';
 
   @override
-  String get learnNewSkills => 'Yangi ko\'nikmalarni o\'rganing';
+  String get learnNewSkills => 'Yangi ko‘nikmalarni o‘rganing';
 
   @override
-  String get proveYourPotential => 'O\'z salohiyatingizni isbotlang.';
+  String get proveYourPotential => 'O‘z salohiyatingizni isbotlang.';
 
   @override
-  String get viewAllCourses => 'Barcha kurslarni ko\'rish';
+  String get viewAllCourses => 'Barcha kurslarni ko‘rish';
 
   @override
   String get itLooksLikeUJNotEnroller =>
-      'Siz hech qanday kursga yozilmaganga o\'xshaysiz. O\'rganish uchun biror narsa topib, boshlang';
+      'Siz hali hech qanday kursga yozilmaganga o‘xshaysiz. O‘rganish uchun biror narsa topib boshlang';
 
   @override
-  String get findsomethingToLearn => 'O\'rganish uchun biror narsa toping';
+  String get findsomethingToLearn => 'O‘rganish uchun biror narsa toping';
 
   @override
-  String get showAll => 'Hammasini ko\'rsatish';
+  String get showAll => 'Hammasini ko‘rsatish';
 
   @override
   String get buy => 'Sotib olish';
 
   @override
-  String get tryForFree => 'Bepul sinab ko\'ring';
+  String get tryForFree => 'Bepul sinab ko‘ring';
 
   @override
   String get courseMaterials => 'Kurs materiallari';
 
   @override
-  String get whatUWillLearn => 'Siz nimani o\'rganasiz';
+  String get whatUWillLearn => 'Siz nimani o‘rganasiz';
 
   @override
   String get certificateOfCompletion => 'Tugatish sertifikati';
 
   @override
-  String get skillLevel => 'MAKORAT DARAJASI';
+  String get skillLevel => 'MAHORAT DARAJASI';
 
   @override
   String get prerequisities => 'Oldindan talablar';
 
   @override
-  String get none => 'Yo\'q';
+  String get none => 'Yo‘q';
 
   @override
   String get timeToComplete => 'Tugatish vaqti';
 
   @override
-  String get skilllsUWillGain => 'Siz qo\'lga kiritadigan ko\'nikmalar';
+  String get skilllsUWillGain => 'Siz qo‘lga kiritadigan ko‘nikmalar';
 
   @override
   String get clearFilter => 'Filtrni tozalash';
@@ -941,7 +943,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get weHaveGotLearning =>
-      'Bizda barcha mahorat darajalari uchun o\'rganish mavjud. 99 000 so\'mdan boshlab kurslarga ega bo\'ling.';
+      'Bizda barcha mahorat darajalari uchun o‘rganish mavjud. 99 000 so‘mdan boshlab kurslarga ega bo‘ling.';
 
   @override
   String get dayLeft => 'kun qoldi!';
@@ -953,7 +955,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get languages => 'Tillar';
 
   @override
-  String get learningStatisctics => 'O\'rganish statistikasi';
+  String get learningStatisctics => 'O‘rganish statistikasi';
 
   @override
   String get inProgress => 'Jarayonda';
@@ -965,7 +967,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get archived => 'Arxivlangan';
 
   @override
-  String get myLearning => 'Mening o\'rganishim';
+  String get myLearning => 'Mening o‘rganishim';
 
   @override
   String get achievements => 'Yutuqlar';
@@ -989,13 +991,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get accountSecurity => 'Hisob xavfsizligi';
 
   @override
-  String get learningReminders => 'Eslatmalarni o\'rganish';
+  String get learningReminders => 'O‘rganish eslatmalari';
 
   @override
   String get emailNotifications => 'Elektron pochta sozlamalari';
 
   @override
-  String get appearance => 'Tashqi ko\'rinish';
+  String get appearance => 'Tashqi ko‘rinish';
 
   @override
   String get theme => 'Tema';
@@ -1004,10 +1006,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get fonSizeInSteps => 'Shrift hajmi bosqichma-bosqich';
 
   @override
-  String get helpAndSupport => 'Yordam va qo\'llab-quvvatlash';
+  String get helpAndSupport => 'Yordam va qo‘llab-quvvatlash';
 
   @override
-  String get frequesntlyAskedQuestions => 'Tez so\'raladigan savollar';
+  String get frequesntlyAskedQuestions => 'Tez-tez so‘raladigan savollar';
 
   @override
   String get aboutEdulab => 'Edulab haqida';
@@ -1017,15 +1019,52 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get showYourProfileToLoggedUsers =>
-      'Tizimga kirgan foydalanuvchilarga profilingizni ko\'rsating';
+      'Tizimga kirgan foydalanuvchilarga profilingizni ko‘rsating';
 
   @override
   String get showCoursesYouAreTaking =>
-      'Profil sahifangizda oʻqiyotgan kurslaringizni koʻrsating';
+      'Profil sahifangizda o‘qiyotgan kurslaringizni ko‘rsating';
 
   @override
   String get systemDefault => 'Tizim standarti';
 
   @override
-  String get noResults => 'Natija yoʻq';
+  String get noResults => 'Natija yo‘q';
+
+  @override
+  String get noInternetC => 'Internetga ulanish yo\'q';
+
+  @override
+  String get complete => 'Bajarildi deb belgilash';
+
+  @override
+  String get pleaseCheck =>
+      'Internetga ulanishingizni tekshiring va qaytadan urinib ko\'ring.';
+
+  @override
+  String get markAsComplete => 'Bajarilgan deb belgilash';
+
+  @override
+  String get prev => 'Oldingi';
+
+  @override
+  String get totalTimeLearning => 'Umumiy o\'qish vaqti';
+
+  @override
+  String get courseInProgress => 'Davom etayotgan kurslar';
+
+  @override
+  String get courseCompleted => 'Tugallangan kurslar';
+
+  @override
+  String get info => 'Ma\'lumot';
+
+  @override
+  String get content => 'Kontent';
+
+  @override
+  String get news => 'Yangiliklar';
+
+  @override
+  String get newsWillAppear => 'Yangiliklar bu yerda ko\'rsatiladi';
 }

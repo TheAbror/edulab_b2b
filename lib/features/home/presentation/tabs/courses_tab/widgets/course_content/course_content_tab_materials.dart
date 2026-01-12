@@ -8,22 +8,29 @@ class SingleCourseContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return state.singleCourseChapters.isNotEmpty == true
-        ? ListView.builder(
-            shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
-            itemCount: state.singleCourseChapters.length,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              final title = state.singleCourseChapters[index];
-
-              return CourseInfoMaterialExpansionItem(
-                title: title.title,
-                subTitle: title.description,
-                chapterInfoText: title.topics.map((e) => e.title).toList(),
-                lessonsLength: title.topics.length,
-                topics: title.topics,
+        ? RefreshIndicator(
+            onRefresh: () async {
+              context.read<SingleCourseBloc>().getSingleCourse(
+                state.courseID,
               );
             },
+            child: ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
+              itemCount: state.singleCourseChapters.length,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                final title = state.singleCourseChapters[index];
+
+                return CourseInfoMaterialExpansionItem(
+                  title: title.title,
+                  subTitle: title.description,
+                  chapterInfoText: title.topics.map((e) => e.title).toList(),
+                  lessonsLength: title.topics.length,
+                  topics: title.topics,
+                );
+              },
+            ),
           )
         : Center(
             child: AppText.paragraph1('No results'),
@@ -63,7 +70,7 @@ class CourseInfoMaterialExpansionItem extends StatelessWidget {
       subtitle: Text(
         subTitle,
         style: TextStyle(color: Theme.of(context).colorScheme.surfaceTint),
-        maxLines: 1,
+        maxLines: 2,
       ),
       children: <Widget>[
         Divider(

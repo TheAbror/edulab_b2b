@@ -109,7 +109,7 @@ abstract class AppLocalizations {
   /// No description provided for @enterYourCredentials.
   ///
   /// In en, this message translates to:
-  /// **'Enter you credentials to access the platform'**
+  /// **'Enter your credentials to access the platform'**
   String get enterYourCredentials;
 
   /// No description provided for @login.
@@ -289,13 +289,13 @@ abstract class AppLocalizations {
   /// No description provided for @onlineLearning.
   ///
   /// In en, this message translates to:
-  /// **'ONLINE LEARNING'**
+  /// **'Online learning'**
   String get onlineLearning;
 
   /// No description provided for @documentsWithCapital.
   ///
   /// In en, this message translates to:
-  /// **'DOCUMENTS'**
+  /// **'Documents'**
   String get documentsWithCapital;
 
   /// No description provided for @noLessonsAddedYet.
@@ -457,7 +457,7 @@ abstract class AppLocalizations {
   /// No description provided for @editText.
   ///
   /// In en, this message translates to:
-  /// **'Edit'**
+  /// **'Edit (short)'**
   String get editText;
 
   /// No description provided for @phone.
@@ -481,7 +481,7 @@ abstract class AppLocalizations {
   /// No description provided for @editTextFull.
   ///
   /// In en, this message translates to:
-  /// **'Edit'**
+  /// **'Edit (full)'**
   String get editTextFull;
 
   /// No description provided for @saveButton.
@@ -589,7 +589,7 @@ abstract class AppLocalizations {
   /// No description provided for @errorOccured.
   ///
   /// In en, this message translates to:
-  /// **'error occured'**
+  /// **'error occurred'**
   String get errorOccured;
 
   /// No description provided for @createButton.
@@ -637,7 +637,7 @@ abstract class AppLocalizations {
   /// No description provided for @recepient.
   ///
   /// In en, this message translates to:
-  /// **'Recepient'**
+  /// **'Recipient'**
   String get recepient;
 
   /// No description provided for @staff.
@@ -817,7 +817,7 @@ abstract class AppLocalizations {
   /// No description provided for @cantbeEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Can`t be empty'**
+  /// **'Can’t be empty'**
   String get cantbeEmpty;
 
   /// No description provided for @inquiryWasSuccessfullyDeleted.
@@ -979,7 +979,7 @@ abstract class AppLocalizations {
   /// No description provided for @fieldsCantbeEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Fields can`t be empty'**
+  /// **'Fields can’t be empty'**
   String get fieldsCantbeEmpty;
 
   /// No description provided for @language.
@@ -1321,7 +1321,7 @@ abstract class AppLocalizations {
   /// No description provided for @dontHaveAccount.
   ///
   /// In en, this message translates to:
-  /// **'Don`t have account?'**
+  /// **'Don’t have an account?'**
   String get dontHaveAccount;
 
   /// No description provided for @signUp.
@@ -1339,7 +1339,7 @@ abstract class AppLocalizations {
   /// No description provided for @cantBeEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Can`t be empty'**
+  /// **'Can’t be empty'**
   String get cantBeEmpty;
 
   /// No description provided for @enterYourEmail.
@@ -1459,7 +1459,7 @@ abstract class AppLocalizations {
   /// No description provided for @trackYourLearning.
   ///
   /// In en, this message translates to:
-  /// **'Track your learning progress, personalize your experience and earn achievments'**
+  /// **'Track your learning progress, personalize your experience and earn achievements'**
   String get trackYourLearning;
 
   /// No description provided for @createAnAccount.
@@ -1513,7 +1513,7 @@ abstract class AppLocalizations {
   /// No description provided for @trackyourlearning.
   ///
   /// In en, this message translates to:
-  /// **'Track your learning progress, personalize your experience and earn achievments'**
+  /// **'Track your learning progress, personalize your experience and earn achievements'**
   String get trackyourlearning;
 
   /// No description provided for @createanaccount.
@@ -1639,7 +1639,7 @@ abstract class AppLocalizations {
   /// No description provided for @donthaveanaccountyet.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t have an account yet?'**
+  /// **'Don’t have an account yet?'**
   String get donthaveanaccountyet;
 
   /// No description provided for @forgotpassword.
@@ -1651,7 +1651,7 @@ abstract class AppLocalizations {
   /// No description provided for @cantbeempty.
   ///
   /// In en, this message translates to:
-  /// **'Can`t be empty'**
+  /// **'Can’t be empty'**
   String get cantbeempty;
 
   /// No description provided for @enteryouremailorphone.
@@ -1669,7 +1669,7 @@ abstract class AppLocalizations {
   /// No description provided for @checkyouremailandopen.
   ///
   /// In en, this message translates to:
-  /// **'Check your email and open the link we send to contunie'**
+  /// **'Check your email and open the link we sent to continue'**
   String get checkyouremailandopen;
 
   /// No description provided for @didntgetit.
@@ -1831,7 +1831,7 @@ abstract class AppLocalizations {
   /// No description provided for @whatUWillLearn.
   ///
   /// In en, this message translates to:
-  /// **'What you`ll learn'**
+  /// **'What you’ll learn'**
   String get whatUWillLearn;
 
   /// No description provided for @certificateOfCompletion.
@@ -1867,7 +1867,7 @@ abstract class AppLocalizations {
   /// No description provided for @skilllsUWillGain.
   ///
   /// In en, this message translates to:
-  /// **'Skills you`ll gain'**
+  /// **'Skills you’ll gain'**
   String get skilllsUWillGain;
 
   /// No description provided for @clearFilter.
@@ -2097,6 +2097,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No results'**
   String get noResults;
+
+  /// No description provided for @noInternetC.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet Connection'**
+  String get noInternetC;
+
+  /// No description provided for @complete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get complete;
+
+  /// No description provided for @pleaseCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your internet connection and try again.'**
+  String get pleaseCheck;
+
+  /// No description provided for @markAsComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as complete'**
+  String get markAsComplete;
+
+  /// No description provided for @prev.
+  ///
+  /// In en, this message translates to:
+  /// **'Prev.'**
+  String get prev;
+
+  /// No description provided for @totalTimeLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Total time learning'**
+  String get totalTimeLearning;
+
+  /// No description provided for @courseInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses in progress'**
+  String get courseInProgress;
+
+  /// No description provided for @courseCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses completed'**
+  String get courseCompleted;
+
+  /// No description provided for @info.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get info;
+
+  /// No description provided for @content.
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get content;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
+
+  /// No description provided for @newsWillAppear.
+  ///
+  /// In en, this message translates to:
+  /// **'News will appear here'**
+  String get newsWillAppear;
 }
 
 class _AppLocalizationsDelegate

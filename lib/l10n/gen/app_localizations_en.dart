@@ -13,7 +13,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterYourCredentials =>
-      'Enter you credentials to access the platform';
+      'Enter your credentials to access the platform';
 
   @override
   String get login => 'Login';
@@ -103,10 +103,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get overallMark => 'Overal Mark';
 
   @override
-  String get onlineLearning => 'ONLINE LEARNING';
+  String get onlineLearning => 'Online learning';
 
   @override
-  String get documentsWithCapital => 'DOCUMENTS';
+  String get documentsWithCapital => 'Documents';
 
   @override
   String get noLessonsAddedYet => 'No lessons added yet';
@@ -189,7 +189,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get download => 'Download';
 
   @override
-  String get editText => 'Edit';
+  String get editText => 'Edit (short)';
 
   @override
   String get phone => 'Phone';
@@ -201,7 +201,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pleaseEnterValue => 'Please enter value';
 
   @override
-  String get editTextFull => 'Edit';
+  String get editTextFull => 'Edit (full)';
 
   @override
   String get saveButton => 'Save';
@@ -255,7 +255,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get created => 'Created';
 
   @override
-  String get errorOccured => 'error occured';
+  String get errorOccured => 'error occurred';
 
   @override
   String get createButton => 'Create';
@@ -280,7 +280,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get description => 'Description';
 
   @override
-  String get recepient => 'Recepient';
+  String get recepient => 'Recipient';
 
   @override
   String get staff => 'STAFF';
@@ -370,7 +370,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmButton => 'Confirm';
 
   @override
-  String get cantbeEmpty => 'Can`t be empty';
+  String get cantbeEmpty => 'Can’t be empty';
 
   @override
   String get inquiryWasSuccessfullyDeleted =>
@@ -454,7 +454,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get next => 'Next';
 
   @override
-  String get fieldsCantbeEmpty => 'Fields can`t be empty';
+  String get fieldsCantbeEmpty => 'Fields can’t be empty';
 
   @override
   String get language => 'Language';
@@ -628,7 +628,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPassword => 'Forgot Password?';
 
   @override
-  String get dontHaveAccount => 'Don`t have account?';
+  String get dontHaveAccount => 'Don’t have an account?';
 
   @override
   String get signUp => 'Sign Up';
@@ -637,7 +637,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createYourAccount => 'Create your account';
 
   @override
-  String get cantBeEmpty => 'Can`t be empty';
+  String get cantBeEmpty => 'Can’t be empty';
 
   @override
   String get enterYourEmail => 'Enter your email';
@@ -699,7 +699,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get trackYourLearning =>
-      'Track your learning progress, personalize your experience and earn achievments';
+      'Track your learning progress, personalize your experience and earn achievements';
 
   @override
   String get createAnAccount => 'Create an account';
@@ -727,7 +727,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get trackyourlearning =>
-      'Track your learning progress, personalize your experience and earn achievments';
+      'Track your learning progress, personalize your experience and earn achievements';
 
   @override
   String get createanaccount => 'Create an account';
@@ -792,13 +792,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startlearning => 'Start learning';
 
   @override
-  String get donthaveanaccountyet => 'Don\'t have an account yet?';
+  String get donthaveanaccountyet => 'Don’t have an account yet?';
 
   @override
   String get forgotpassword => 'Forgot password';
 
   @override
-  String get cantbeempty => 'Can`t be empty';
+  String get cantbeempty => 'Can’t be empty';
 
   @override
   String get enteryouremailorphone => 'Enter your email or phone';
@@ -809,7 +809,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkyouremailandopen =>
-      'Check your email and open the link we send to contunie';
+      'Check your email and open the link we sent to continue';
 
   @override
   String get didntgetit => 'Didn’t get it?';
@@ -891,7 +891,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get courseMaterials => 'Course materials';
 
   @override
-  String get whatUWillLearn => 'What you`ll learn';
+  String get whatUWillLearn => 'What you’ll learn';
 
   @override
   String get certificateOfCompletion => 'Certificate of completion';
@@ -909,7 +909,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get timeToComplete => 'Time to complete';
 
   @override
-  String get skilllsUWillGain => 'Skills you`ll gain';
+  String get skilllsUWillGain => 'Skills you’ll gain';
 
   @override
   String get clearFilter => 'Clear filter';
@@ -1027,4 +1027,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noResults => 'No results';
+
+  @override
+  String get noInternetC => 'No Internet Connection';
+
+  @override
+  String get complete => 'Complete';
+
+  @override
+  String get pleaseCheck =>
+      'Please check your internet connection and try again.';
+
+  @override
+  String get markAsComplete => 'Mark as complete';
+
+  @override
+  String get prev => 'Prev.';
+
+  @override
+  String get totalTimeLearning => 'Total time learning';
+
+  @override
+  String get courseInProgress => 'Courses in progress';
+
+  @override
+  String get courseCompleted => 'Courses completed';
+
+  @override
+  String get info => 'Info';
+
+  @override
+  String get content => 'Content';
+
+  @override
+  String get news => 'News';
+
+  @override
+  String get newsWillAppear => 'News will appear here';
 }

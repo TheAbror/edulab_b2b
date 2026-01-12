@@ -1,17 +1,22 @@
-// class NotAuthorizedInterceptor implements ResponseInterceptor {
-//   final StreamController<bool> controller = StreamController<bool>.broadcast();
+import 'package:chopper/chopper.dart';
+import 'package:leti_mobile/widget_imports.dart';
 
-//   @override
-//   FutureOr<Response> onResponse(Response response) {
-//     CurrentUser? userData = userBox.get(ShPrefKeys.currentUser);
-//     final token = userData?.token;
+class NotAuthorizedInterceptor implements Interceptor {
+  final StreamController<bool> controller = StreamController<bool>.broadcast();
 
-//     if (token != null && token.isNotEmpty) {
-//       if (response.statusCode == 401) {
-//         controller.add(true);
-//       }
-//     }
+  @override
+  FutureOr<Response<BodyType>> intercept<BodyType>(
+    Chain<BodyType> chain,
+  ) async {
+    final response = await chain.proceed(chain.request);
 
-//     return response;
-//   }
-// }
+    final token = PreferencesServices.getToken();
+    if (token != null && token.isNotEmpty) {
+      if (response.statusCode == 401) {
+        controller.add(true);
+      }
+    }
+
+    return response;
+  }
+}

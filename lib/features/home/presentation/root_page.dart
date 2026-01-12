@@ -10,6 +10,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   late PageController pageController;
+  late StreamSubscription<bool> notAuthorizedStreamSubscription;
 
   List<Widget> pages = [
     HomeTab(),
@@ -21,6 +22,33 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
+
+    notAuthorizedStreamSubscription = ApiProvider
+        .notAuthorizedInterceptor
+        .controller
+        .stream
+        .listen(
+          (bool isNotAuthorized) {
+            if (isNotAuthorized) {
+              if (!mounted) return;
+
+              if (!context.mounted) return;
+              ApiProvider.create();
+
+              PreferencesServices.clearAll();
+
+              context.read<AuthBloc>().clearAll();
+              context.read<HomeBloc>().clearAll();
+              context.read<CoursesBloc>().clearAll();
+              context.read<LearningTabBloc>().clearAll();
+              context.read<SplashBloc>().clearAll();
+              context.read<ProfileBloc>().clearAll();
+              context.read<LocalizationBloc>().clearAll();
+
+              Navigator.pushNamed(context, AppRoutes.languageSelectionPage);
+            }
+          },
+        );
 
     context.read<CoursesBloc>().getAllCategories();
     context.read<CoursesBloc>().getAllPossibleCourses();

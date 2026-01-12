@@ -56,7 +56,7 @@ class _Body extends StatelessWidget {
         }
 
         if (state.allCourses.isEmpty) {
-          return Center(child: Text('No results'));
+          return Center(child: AppText.headline2('No results'));
         }
 
         return ListView(

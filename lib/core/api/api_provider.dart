@@ -41,17 +41,17 @@ class ApiProvider {
     learningTabServices = _client.getService<LearningTabServices>();
   }
 
-  // static NotAuthorizedInterceptor notAuthorizedInterceptor =
-  //     NotAuthorizedInterceptor();
+  static NotAuthorizedInterceptor notAuthorizedInterceptor =
+      NotAuthorizedInterceptor();
 
-  static List<Interceptor> getInterceptors({String? language}) {
+  static getInterceptors({String? language}) {
     final String? token = PreferencesServices.getToken();
 
     List<Interceptor> interceptors = [];
 
     interceptors.add(HttpLoggingInterceptor());
 
-    // interceptors.add(notAuthorizedInterceptor);
+    interceptors.add(notAuthorizedInterceptor);
 
     interceptors.add(
       HeadersInterceptor({

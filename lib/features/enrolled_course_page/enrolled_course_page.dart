@@ -60,10 +60,22 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
                               ).colorScheme.primary,
                               dividerColor: context.colors.borderMuted
                                   .withOpacity(0.15),
-                              tabs: const [
-                                Tab(child: TabText(text: 'Info')),
-                                Tab(child: TabText(text: 'Content')),
-                                Tab(child: TabText(text: 'News')),
+                              tabs: [
+                                Tab(
+                                  child: TabText(
+                                    text: context.localizations.info,
+                                  ),
+                                ),
+                                Tab(
+                                  child: TabText(
+                                    text: context.localizations.content,
+                                  ),
+                                ),
+                                Tab(
+                                  child: TabText(
+                                    text: context.localizations.news,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -72,7 +84,7 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
                     },
                 body: TabBarView(
                   children: [
-                    CourseContentTabInfo(),
+                    CourseContentTabInfo(id: widget.id),
                     SingleCourseContent(state: state),
                     CourseContentTabNews(),
                   ],

@@ -6,7 +6,7 @@ class CourseContentTabNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AppText.paragraph1('News will appear here'),
+      child: AppText.paragraph1(context.localizations.newsWillAppear),
     );
   }
 }

@@ -25,7 +25,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
       builder: (context, state) {
         return TabBarView(
           controller: widget.controller,
-          physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: state.allSteps.map(
             (step) {
               return KeyedSubtree(
@@ -54,6 +54,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
       case 'VIDEO':
         return LearningPageVideoTab(
           step: step,
+          tabController: widget.controller,
           markAsComplete: () {
             if (step.status != "COMPLETED") {
               completeStep(step);

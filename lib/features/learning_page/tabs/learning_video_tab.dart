@@ -3,11 +3,13 @@ import 'package:leti_mobile/widget_imports.dart';
 class LearningPageVideoTab extends StatefulWidget {
   final StepModel step;
   final VoidCallback markAsComplete;
+  final TabController tabController;
 
   const LearningPageVideoTab({
     super.key,
     required this.step,
     required this.markAsComplete,
+    required this.tabController,
   });
 
   @override
@@ -18,6 +20,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
+  late VoidCallback _tabListener;
 
   VideoPlayerController? _videoController;
   ChewieController? _chewieController;
@@ -32,6 +35,14 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
   void initState() {
     super.initState();
     _initializeVideo();
+
+    _tabListener = () {
+      if (widget.tabController.indexIsChanging) {
+        _videoController?.pause();
+      }
+    };
+
+    widget.tabController.addListener(_tabListener);
   }
 
   Future<void> _initializeVideo() async {
@@ -103,6 +114,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
 
   @override
   void dispose() {
+    widget.tabController.removeListener(_tabListener);
     _videoController?.removeListener(_handleVideoProgress);
     _chewieController?.dispose();
     _videoController?.dispose();

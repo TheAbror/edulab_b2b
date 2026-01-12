@@ -130,13 +130,21 @@ class LearningPageQuizTab extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              '${index + 1}.',
-                              style: TextStyle(fontSize: 20.sp),
-                            ),
-                            HtmlWidget(
-                              question.text,
-                              textStyle: TextStyle(fontSize: 20.sp),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${index + 1}.',
+                                  style: TextStyle(fontSize: 20.sp),
+                                ),
+                                SizedBox(width: 4.w),
+                                Flexible(
+                                  child: HtmlWidget(
+                                    question.text,
+                                    textStyle: TextStyle(fontSize: 20.sp),
+                                  ),
+                                ),
+                              ],
                             ),
 
                             SizedBox(height: 16.h),
@@ -184,10 +192,12 @@ class LearningPageQuizTab extends StatelessWidget {
                         }
                       },
                     ),
-                  MarkAsCompleteButton(
-                    status: step.status,
-                    markAsComplete: markAsComplete,
-                  ),
+
+                  if (state.correctnessPercentage > 90)
+                    MarkAsCompleteButton(
+                      status: step.status,
+                      markAsComplete: markAsComplete,
+                    ),
                 ],
               );
             },
@@ -268,19 +278,19 @@ class QuizOptionsWidget extends StatelessWidget {
                               context,
                             ).colorScheme.primary
                           : Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                        4,
-                      ),
+                      borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: context.colors.borderMuted.withOpacity(
-                          0.25,
-                        ),
+                        color: context.colors.borderMuted.withOpacity(0.25),
                         width: 2.w,
                       ),
                     ),
                     child: isSelected
-                        ? Icon(
-                            isSelected ? icon : Icons.done,
+                        ? Center(
+                            child: Icon(
+                              isSelected ? icon : Icons.done,
+                              color: Colors.white,
+                              size: 18.sp,
+                            ),
                           )
                         : SizedBox(),
                   ),

@@ -54,32 +54,33 @@ class LearningBottomNavigation extends StatelessWidget {
               }
             },
             isEnabled: true,
-            text: 'Prev',
+            text: context.localizations.prev,
           ),
 
           // NEXT
           LearningBottomNavButtonRight(
             onTap: () {
-              final index = controller.index + 1;
+              if (status == "COMPLETED") {
+                final index = controller.index + 1;
 
-              if (controller.index < stepsLength - 1) {
-                controller.animateTo(index);
-                context.read<LearningBloc>().changeAppbarTabIndex(
-                  index,
-                  stepModel,
-                );
-              }
+                if (controller.index < stepsLength - 1) {
+                  controller.animateTo(index);
+                  context.read<LearningBloc>().changeAppbarTabIndex(
+                    index,
+                    stepModel,
+                  );
+                }
 
-              if (controller.index <= stepsLength - 1) {
-                if (stepsLength == index) {
-                  context.read<LearningBloc>().moveToNextTopic(stepModel);
-                  controller.index = 0;
+                if (controller.index <= stepsLength - 1) {
+                  if (stepsLength == index) {
+                    context.read<LearningBloc>().moveToNextTopic(stepModel);
+                    controller.index = 0;
+                  }
                 }
               }
             },
             isEnabled: status == "COMPLETED" ? true : false,
-
-            text: 'Next',
+            text: context.localizations.next,
           ),
         ],
       ),
