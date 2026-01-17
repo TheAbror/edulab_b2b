@@ -20,7 +20,32 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _formKey = GlobalKey<FormState>();
-  final _login = TextEditingController(text: '');
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final FocusNode _phoneFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneFocusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (_phoneFocusNode.hasFocus && _phoneNumberController.text.isEmpty) {
+      // Set the prefix when field gains focus and is empty
+      _phoneNumberController.text = '+998';
+      _phoneNumberController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _phoneNumberController.text.length),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _phoneFocusNode.removeListener(_onFocusChange);
+    _phoneFocusNode.dispose();
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +83,7 @@ class _BodyState extends State<_Body> {
                 ActionButton(
                   text: context.localizations.signup,
                   onTap: () {
-                    final login = _login.text.trim();
+                    final login = _phoneNumberController.text.trim();
 
                     if (_formKey.currentState!.validate()) {
                       // context.read<AuthBloc>().sendSignUpKeyForVerification(sign_up_key);
@@ -105,9 +130,13 @@ class _BodyState extends State<_Body> {
 
         return null;
       },
-      controller: _login,
+      controller: _phoneNumberController,
+      inputFormatters: [
+        UzbekistanPhoneFormatter(),
+        LengthLimitingTextInputFormatter(13),
+      ],
       textInputAction: TextInputAction.next,
-      decoration: authFieldDecoration(context, 'Phone number'),
+      decoration: authFieldDecoration(context, '+998'),
     );
   }
 }

@@ -1564,11 +1564,11 @@ abstract class AppLocalizations {
   /// **'Build skills for today, tomorrow, and beyond. Education to future-proof your career.'**
   String get buildskillsfortodayetc;
 
-  /// No description provided for @emailorPhonenumber.
+  /// No description provided for @phonenumber.
   ///
   /// In en, this message translates to:
-  /// **'Email or Phone number'**
-  String get emailorPhonenumber;
+  /// **'Phone number'**
+  String get phonenumber;
 
   /// No description provided for @continuewithGoogle.
   ///

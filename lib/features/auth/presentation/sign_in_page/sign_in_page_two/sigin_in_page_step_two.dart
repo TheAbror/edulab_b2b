@@ -87,8 +87,9 @@ class _SignInPageStepTwoState extends State<SignInPageStepTwo> {
                   showFieldAsBox: true,
                   onCodeChanged: (String code) {},
                   onSubmit: (String code) {
+                    FocusScope.of(context).unfocus();
                     context.read<AuthBloc>().signInStepTwo(code);
-                  }, // end onSubmit
+                  },
                 ),
                 space32,
                 state.isVerificationSuccess

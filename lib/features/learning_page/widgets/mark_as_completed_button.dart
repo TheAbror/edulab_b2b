@@ -33,7 +33,6 @@ class MarkAsCompleteButton extends StatelessWidget {
             if (status == "COMPLETED")
               Icon(
                 Icons.done,
-
                 color: CustomThemes.neutral0,
               ),
             if (status == "COMPLETED" && (canComplete == true))

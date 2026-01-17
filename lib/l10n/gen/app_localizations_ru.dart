@@ -753,7 +753,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Развивайте навыки для сегодняшнего, завтрашнего дня и за его пределами. Образование, которое обеспечит вашу карьеру в будущем.';
 
   @override
-  String get emailorPhonenumber => 'Электронная почта или номер телефона';
+  String get phonenumber => 'Номер телефона';
 
   @override
   String get continuewithGoogle => 'Продолжить с Google';

@@ -757,7 +757,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Bugun, ertaga va undan keyingi kunlar uchun ko‘nikmalarni rivojlantiring. Kelajakdagi martabangizni mustahkamlovchi ta’lim.';
 
   @override
-  String get emailorPhonenumber => 'Elektron pochta yoki telefon raqami';
+  String get phonenumber => 'Telefon raqami';
 
   @override
   String get continuewithGoogle => 'Google orqali davom eting';

@@ -756,7 +756,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Build skills for today, tomorrow, and beyond. Education to future-proof your career.';
 
   @override
-  String get emailorPhonenumber => 'Email or Phone number';
+  String get phonenumber => 'Phone number';
 
   @override
   String get continuewithGoogle => 'Continue with Google';
