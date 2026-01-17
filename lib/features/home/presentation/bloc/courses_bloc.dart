@@ -5,6 +5,49 @@ part 'courses_state.dart';
 class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
+  void getHomeCourses() async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.coursesServices
+          .getAllPossibleCourses();
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              homeCourses: data,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+
+          print(data);
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
   void enrollToCourse(int courseID, VoidCallback onCall) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -97,43 +140,46 @@ class CoursesBloc extends Cubit<CoursesState> {
 
   // all courses for recommended
 
-  void getAllPossibleCourses() async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // void getAllPossibleCourses() async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    try {
-      final response = await ApiProvider.coursesServices
-          .getAllPossibleCourses();
+  //   try {
+  //     final response = await ApiProvider.coursesServices
+  //         .getAllPossibleCourses();
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(
-            state.copyWith(coursesAll: data, blocProgress: BlocProgress.LOADED),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
+  //       if (data != null) {
+  //         emit(
+  //           state.copyWith(
+  //             coursesAll: data,
+  //             blocProgress: BlocProgress.LOADED,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(
+  //         json.decode(response.error.toString()),
+  //       );
 
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
+  //       emit(
+  //         state.copyWith(
+  //           blocProgress: BlocProgress.FAILED,
+  //           failureMessage: error.message,
+  //         ),
+  //       );
+  //     }
+  //   } catch (e) {
+  //     emit(
+  //       state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: AppStrings.internalErrorMessage,
+  //       ),
+  //     );
+  //     debugPrint('$e');
+  //   }
+  // }
 
   void getCurrentCourse() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

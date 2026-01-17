@@ -6,15 +6,18 @@ part of 'courses_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MakeCourseFavoriteRequest _$MakeCourseFavoriteRequestFromJson(
-  Map<String, dynamic> json,
-) => MakeCourseFavoriteRequest(
-  courseID: (json['course_id'] as num?)?.toInt() ?? 0,
-);
+HomeCoursesResponse _$HomeCoursesResponseFromJson(Map<String, dynamic> json) =>
+    HomeCoursesResponse(
+      content:
+          (json['content'] as List<dynamic>?)
+              ?.map((e) => CourseShortInfo.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
 
-Map<String, dynamic> _$MakeCourseFavoriteRequestToJson(
-  MakeCourseFavoriteRequest instance,
-) => <String, dynamic>{'course_id': instance.courseID};
+Map<String, dynamic> _$HomeCoursesResponseToJson(
+  HomeCoursesResponse instance,
+) => <String, dynamic>{'content': instance.content};
 
 MediaDTO _$MediaDTOFromJson(Map<String, dynamic> json) => MediaDTO(
   original_name: json['original_name'] as String? ?? '',
@@ -160,6 +163,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
           ? null
           : CourseType.fromJson(json['type'] as Map<String, dynamic>),
       createdDate: (json['created_date'] as num?)?.toInt(),
+      price: json['price'] as String? ?? '',
       updatedDate: (json['updated_date'] as num?)?.toInt(),
       courseStatus: json['course_status'] == null
           ? null
@@ -240,6 +244,7 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'published': instance.published,
       'canPublish': instance.canPublish,
       'completion_time': instance.completionTime,
+      'price': instance.price,
       'chapters': instance.chapters,
       'current_active': instance.currentlyActive,
     };
@@ -289,14 +294,11 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
       type: json['type'] == null
           ? null
           : CourseType.fromJson(json['type'] as Map<String, dynamic>),
-      createdDate: (json['created_date'] as num?)?.toInt(),
-      updatedDate: (json['updated_date'] as num?)?.toInt(),
       courseStatus: json['course_status'] == null
           ? null
           : LabelValueResponse.fromJson(
               json['course_status'] as Map<String, dynamic>,
             ),
-      xapiCourseUrl: json['xapi_course_url'] as String?,
       file: json['file'] == null
           ? null
           : MediaDTO.fromJson(json['file'] as Map<String, dynamic>),
@@ -305,11 +307,13 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
       willLearn: (json['will_learn'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      price: json['price'] as String? ?? '',
       coAuthorIds: (json['co_author_ids'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
       status: json['status'] as String? ?? '',
       progess: (json['overall_progress'] as num?)?.toInt() ?? 0,
+      rating: json['rating'] as String? ?? '',
       learnersCount: (json['learners_count'] as num?)?.toInt() ?? 0,
     );
 
@@ -327,18 +331,17 @@ Map<String, dynamic> _$CourseShortInfoToJson(CourseShortInfo instance) =>
       'is_favorite': instance.is_favorite,
       'is_archived': instance.is_archived,
       'type': instance.type,
-      'created_date': instance.createdDate,
-      'updated_date': instance.updatedDate,
       'course_status': instance.courseStatus,
-      'xapi_course_url': instance.xapiCourseUrl,
       'file': instance.file,
       'language': instance.language,
       'level': instance.level,
       'will_learn': instance.willLearn,
       'co_author_ids': instance.coAuthorIds,
       'status': instance.status,
+      'price': instance.price,
       'overall_progress': instance.progess,
       'learners_count': instance.learnersCount,
+      'rating': instance.rating,
     };
 
 CurrentlyActive _$CurrentlyActiveFromJson(Map<String, dynamic> json) =>
@@ -354,3 +357,13 @@ Map<String, dynamic> _$CurrentlyActiveToJson(CurrentlyActive instance) =>
       'topic_id': instance.topicID,
       'step_id': instance.stepID,
     };
+
+MakeCourseFavoriteRequest _$MakeCourseFavoriteRequestFromJson(
+  Map<String, dynamic> json,
+) => MakeCourseFavoriteRequest(
+  courseID: (json['course_id'] as num?)?.toInt() ?? 0,
+);
+
+Map<String, dynamic> _$MakeCourseFavoriteRequestToJson(
+  MakeCourseFavoriteRequest instance,
+) => <String, dynamic>{'course_id': instance.courseID};

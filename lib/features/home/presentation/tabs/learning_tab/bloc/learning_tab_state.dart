@@ -4,7 +4,6 @@ class LearningTabState extends Equatable {
   final int tabIndex;
   final List<CourseShortInfo> inProgress;
   final List<CourseShortInfo> completed;
-  final List<CourseShortInfo> favorites;
   final LearningTabStatisticsResponse statistics;
   final BlocProgress blocProgress;
   final String failureMessage;
@@ -13,7 +12,6 @@ class LearningTabState extends Equatable {
     required this.tabIndex,
     required this.inProgress,
     required this.completed,
-    required this.favorites,
     required this.statistics,
     required this.blocProgress,
     required this.failureMessage,
@@ -24,7 +22,6 @@ class LearningTabState extends Equatable {
       tabIndex: 0,
       inProgress: const [],
       completed: const [],
-      favorites: const [],
       statistics: LearningTabStatisticsResponse(
         streak: StreakResponse(
           days: StreakDaysResponse(
@@ -51,7 +48,6 @@ class LearningTabState extends Equatable {
     int? tabIndex,
     List<CourseShortInfo>? inProgress,
     List<CourseShortInfo>? completed,
-    List<CourseShortInfo>? favorites,
     LearningTabStatisticsResponse? statistics,
     BlocProgress? blocProgress,
     String? failureMessage,
@@ -60,7 +56,6 @@ class LearningTabState extends Equatable {
       tabIndex: tabIndex ?? this.tabIndex,
       inProgress: inProgress ?? this.inProgress,
       completed: completed ?? this.completed,
-      favorites: favorites ?? this.favorites,
       statistics: statistics ?? this.statistics,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
@@ -69,12 +64,11 @@ class LearningTabState extends Equatable {
 
   @override
   List<Object?> get props => [
-        tabIndex,
-        inProgress,
-        completed,
-        favorites,
-        statistics,
-        blocProgress,
-        failureMessage,
-      ];
+    tabIndex,
+    inProgress,
+    completed,
+    statistics,
+    blocProgress,
+    failureMessage,
+  ];
 }

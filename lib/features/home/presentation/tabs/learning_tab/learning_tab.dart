@@ -13,7 +13,6 @@ class LearningTab extends StatelessWidget {
             builder: (context, state) {
               final inProgressItem = state.inProgress;
               final completedItem = state.completed;
-              final favoriteItem = state.favorites;
 
               return Expanded(
                 child: TabBarView(
@@ -27,10 +26,6 @@ class LearningTab extends StatelessWidget {
                     completedItem.isEmpty
                         ? NoResultsWidget()
                         : CompletedTab(item: completedItem),
-                    favoriteItem.isEmpty
-                        ? NoResultsWidget()
-                        : FavoritesTab(item: favoriteItem),
-                    NoResultsWidget(),
                   ],
                 ),
               );

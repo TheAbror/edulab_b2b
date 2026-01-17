@@ -13,7 +13,11 @@ class CourseContentConfettiCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
+      margin: EdgeInsets.only(
+        left: 16.h,
+        right: 16.h,
+        top: 16.h,
+      ),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Color(0XFF2E0661),

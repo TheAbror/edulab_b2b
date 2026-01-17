@@ -29,7 +29,7 @@ class _BodyState extends State<_Body> {
                 space40,
 
                 RecommendedCourses(
-                  courses: state.coursesAll,
+                  courses: state.homeCourses,
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                   },

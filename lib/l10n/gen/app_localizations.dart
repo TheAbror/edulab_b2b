@@ -2169,6 +2169,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'News will appear here'**
   String get newsWillAppear;
+
+  /// No description provided for @free.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get free;
+
+  /// No description provided for @enrollToThisCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Enroll to this course'**
+  String get enrollToThisCourse;
 }
 
 class _AppLocalizationsDelegate

@@ -620,7 +620,7 @@
   "@learningStatisctics": {},
   "inProgress": "В процессе",
   "@inProgress": {},
-  "completed": "Завершенный",
+  "completed": "Завершенные",
   "@completed": {},
   "archived": "Архив",
   "@archived": {},
@@ -689,5 +689,9 @@
   "news": "Новости",
   "@news": {},
   "newsWillAppear": "Новости будут появляться здесь.",
-  "@newsWillAppear": {}
+  "@newsWillAppear": {},
+  "free": "Бесплатно",
+  "@free": {},
+  "enrollToThisCourse": "Записаться на этот курс",
+  "@enrollToThisCourse": {}
 }

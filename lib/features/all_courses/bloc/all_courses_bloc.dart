@@ -46,42 +46,4 @@ class AllCoursesBloc extends Cubit<AllCoursesState> {
       debugPrint('$e');
     }
   }
-
-  void getAllCourses() async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.coursesServices
-          .getAllPossibleCourses();
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(allCourses: data, blocProgress: BlocProgress.LOADED),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
 }

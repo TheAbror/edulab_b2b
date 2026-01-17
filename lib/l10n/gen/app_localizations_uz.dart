@@ -961,7 +961,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get inProgress => 'Jarayonda';
 
   @override
-  String get completed => 'Bajarilgan';
+  String get completed => 'Yakunlangan';
 
   @override
   String get archived => 'Arxivlangan';
@@ -1067,4 +1067,10 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get newsWillAppear => 'Yangiliklar bu yerda ko\'rsatiladi';
+
+  @override
+  String get free => 'Bepul';
+
+  @override
+  String get enrollToThisCourse => 'Ushbu kursga yozilish';
 }

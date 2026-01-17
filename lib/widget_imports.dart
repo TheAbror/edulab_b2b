@@ -109,7 +109,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/course_all_categories_bottomsheet_top_icons.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/filter_courses_bottomsheet.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/home_authors_list.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_courses/home_courses_list.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_find_something_to_learn_widget.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_learn_new_skills_widget.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_my_study_widget.dart';
@@ -118,7 +117,6 @@ export 'package:leti_mobile/features/single_course/single_course_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/home_authors_item.dart';
 export 'package:leti_mobile/core/utils/something_went_wrong.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/certificates_page/widgets/certificates_item.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_courses/home_course_item.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_courses/home_course_resume_card.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/appBars/learning_resume_course_appbar.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/learning/learning_bottom_navigation.dart';

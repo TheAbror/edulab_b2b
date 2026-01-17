@@ -20,12 +20,12 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 26.w,
                 width: 95.w,
               ),
-              Assets.icons.main.notification.svg(
-                colorFilter: ColorFilter.mode(
-                  context.colors.neutralContainerActive,
-                  BlendMode.srcIn,
-                ),
-              ),
+              // Assets.icons.main.notification.svg(
+              //   colorFilter: ColorFilter.mode(
+              //     context.colors.neutralContainerActive,
+              //     BlendMode.srcIn,
+              //   ),
+              // ),
             ],
           ),
         );

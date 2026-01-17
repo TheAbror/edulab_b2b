@@ -54,8 +54,32 @@ class _LearningPageState extends State<LearningPage>
           }
           if (state.allSteps.isEmpty) {
             return Scaffold(
+              appBar: AppBar(
+                elevation: 0,
+                titleSpacing: 0,
+                automaticallyImplyLeading: false,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      icon: Assets.icons.main.arrowBack.svg(
+                        colorFilter: ColorFilter.mode(
+                          context.colors.fgDefault,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               backgroundColor: context.colors.bgPage1,
-              body: const Center(child: Text('No results')),
+              body: Center(child: Text(context.localizations.noResults)),
             );
           }
 

@@ -38,9 +38,9 @@ class AllCoursesState extends Equatable {
 
   @override
   List<Object?> get props => [
-        allCourses,
-        coursesByCategory,
-        blocProgress,
-        failureMessage,
-      ];
+    allCourses,
+    coursesByCategory,
+    blocProgress,
+    failureMessage,
+  ];
 }

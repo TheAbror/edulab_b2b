@@ -956,7 +956,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get inProgress => 'В процессе';
 
   @override
-  String get completed => 'Завершенный';
+  String get completed => 'Завершенные';
 
   @override
   String get archived => 'Архив';
@@ -1062,4 +1062,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get newsWillAppear => 'Новости будут появляться здесь.';
+
+  @override
+  String get free => 'Бесплатно';
+
+  @override
+  String get enrollToThisCourse => 'Записаться на этот курс';
 }

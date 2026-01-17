@@ -620,7 +620,7 @@
   "@learningStatisctics": {},
   "inProgress": "Jarayonda",
   "@inProgress": {},
-  "completed": "Bajarilgan",
+  "completed": "Yakunlangan",
   "@completed": {},
   "archived": "Arxivlangan",
   "@archived": {},
@@ -689,5 +689,9 @@
   "news": "Yangiliklar",
   "@news": {},
   "newsWillAppear": "Yangiliklar bu yerda ko'rsatiladi",
-  "@newsWillAppear": {}
+  "@newsWillAppear": {},
+  "free": "Bepul",
+  "@free": {},
+  "enrollToThisCourse": "Ushbu kursga yozilish",
+  "@enrollToThisCourse": {}
 }

@@ -1064,4 +1064,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newsWillAppear => 'News will appear here';
+
+  @override
+  String get free => 'Free';
+
+  @override
+  String get enrollToThisCourse => 'Enroll to this course';
 }

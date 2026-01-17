@@ -9,12 +9,12 @@ class AllCoursesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final bloc = AllCoursesBloc();
+        final bloc = CoursesBloc();
 
         if (idAndTitle?.id != null && idAndTitle?.id != 0) {
-          bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);
+          // bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);//TODO
         } else {
-          bloc.getAllCourses();
+          bloc.getHomeCourses();
         }
 
         return bloc;
@@ -155,18 +155,20 @@ class AllCoursesItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       space8,
-                      CourseInfo(
-                        '',
-                        0,
-                        0,
-                        context,
-                        isCertificateAvailble: true,
-                      ),
+                      // CourseInfo(
+                      //   '',
+                      //   '',
+                      //   0,
+                      //   context,
+                      //   isCertificateAvailble: true,
+                      // ),
                       space8,
                       Row(
                         children: [
                           Text(
-                            '${200000} UZS',
+                            item.price?.isEmpty == true
+                                ? context.localizations.free
+                                : item.price ?? '',
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,

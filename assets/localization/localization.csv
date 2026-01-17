@@ -328,7 +328,7 @@ daysLeft,days left!,осталось дней!,kunlar qoldi!
 languages,Languages,Языки,Tillar
 learningStatisctics,Learning Statistics,Статистика обучения,O‘rganish statistikasi
 inProgress,In progress,В процессе,Jarayonda
-completed,Completed,Завершенный,Bajarilgan
+completed,Completed,Завершенные,Yakunlangan
 favorites,Favorites,Избранное,Sevimlilar
 archived,Archived,Архив,Arxivlangan
 myLearning,My Learning,Мое обучение,Mening o‘rganishim
@@ -370,3 +370,5 @@ info,Info,Инфо,Ma'lumot
 content,Content,Контент,Kontent
 news,News,Новости,Yangiliklar
 newsWillAppear,News will appear here,Новости будут появляться здесь.,Yangiliklar bu yerda ko'rsatiladi
+free,Free,Бесплатно,Bepul
+enrollToThisCourse,Enroll to this course,Записаться на этот курс,Ushbu kursga yozilish

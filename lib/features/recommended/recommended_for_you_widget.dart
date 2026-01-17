@@ -4,19 +4,15 @@ class RecommendedCourses extends StatefulWidget {
   final String? headline;
   final String? coursesCount;
   final VoidCallback onTapViewAll;
-  final String? learners;
-  final double? rating;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
-  final List<CourseShortInfo> courses;
+  final HomeCoursesResponse courses;
 
   const RecommendedCourses({
     super.key,
     this.headline,
     this.coursesCount,
     required this.onTapViewAll,
-    this.learners = '0',
-    this.rating = 0,
     this.courseDuration = 0,
     this.isCertificateAvailble,
     required this.courses,
@@ -49,9 +45,9 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
           controller: _scrollController,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           shrinkWrap: true,
-          itemCount: widget.courses.length,
+          itemCount: widget.courses.content.length,
           itemBuilder: (context, index) {
-            final singleCourseItem = widget.courses[index];
+            final singleCourseItem = widget.courses.content[index];
             final isSelected = selectedCourseId == singleCourseItem.id;
 
             return GestureDetector(
@@ -86,7 +82,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                   left: 10.w,
                   right: 10.w,
                   top: 10.h,
-                  bottom: 16.h,
+                  bottom: 8.h,
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -161,10 +157,9 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
 
                           Spacer(),
                           CourseInfo(
-                            widget.learners ?? '',
-                            widget.rating ?? 0,
-                            widget.courseDuration ?? 0,
-                            context,
+                            learners: singleCourseItem.learnersCount.toString(),
+                            rating: singleCourseItem.rating,
+                            context: context,
                             isCertificateAvailble:
                                 widget.isCertificateAvailble != null &&
                                     widget
@@ -179,7 +174,9 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
                               ? Spacer()
                               : space10,
                           AppText.footNote(
-                            '200.000 UZS',
+                            singleCourseItem.price?.isEmpty == true
+                                ? context.localizations.free
+                                : singleCourseItem.price ?? '',
                             color: context.colors.fgDefault,
                           ),
                         ],
@@ -248,11 +245,11 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
   }
 }
 
-Row CourseInfo(
-  String learners,
-  double rating,
-  int courseDuration,
-  BuildContext context, {
+Row CourseInfo({
+  required String learners,
+  required String rating,
+  int? courseDuration,
+  required BuildContext context,
   bool? isCertificateAvailble,
 }) {
   return Row(
@@ -267,20 +264,23 @@ Row CourseInfo(
       Assets.icons.courses.star.svg(),
       SizedBox(width: 6.w),
       Text(
-        rating.toString(),
+        rating,
         style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
       ),
-      SizedBox(width: 10.w),
-      Assets.icons.courses.clock.svg(),
-      SizedBox(width: 6.w),
-      Text(
-        '${courseDuration}H',
-        style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
-      ),
-      SizedBox(width: 10.w),
-      isCertificateAvailble == true
-          ? Assets.icons.courses.courseCertificate.svg()
-          : SizedBox.shrink(),
+
+      if (courseDuration != null) ...[
+        SizedBox(width: 10.w),
+        Assets.icons.courses.clock.svg(),
+        SizedBox(width: 6.w),
+        Text(
+          '${courseDuration}H',
+          style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
+        ),
+        SizedBox(width: 10.w),
+        isCertificateAvailble == true
+            ? Assets.icons.courses.courseCertificate.svg()
+            : SizedBox.shrink(),
+      ],
     ],
   );
 }

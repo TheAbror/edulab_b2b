@@ -51,11 +51,10 @@ class _RootPageState extends State<RootPage> {
         );
 
     context.read<CoursesBloc>().getAllCategories();
-    context.read<CoursesBloc>().getAllPossibleCourses();
+    context.read<CoursesBloc>().getHomeCourses();
     context.read<CoursesBloc>().getCurrentCourse();
     context.read<LearningTabBloc>().getInProgress();
     context.read<LearningTabBloc>().getCompleted();
-    context.read<LearningTabBloc>().getFavorites();
     context.read<LearningTabBloc>().getStatistics();
 
     final state = context.read<HomeBloc>().state;
@@ -72,7 +71,7 @@ class _RootPageState extends State<RootPage> {
       },
       builder: (context, state) {
         return DefaultTabController(
-          length: 4,
+          length: 2,
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(

@@ -4,16 +4,15 @@ import 'package:leti_mobile/features/home/data/datasources/models/chapter_model.
 part 'courses_models.g.dart';
 
 @JsonSerializable(includeIfNull: true)
-class MakeCourseFavoriteRequest {
-  @JsonKey(defaultValue: 0, name: 'course_id')
-  final int courseID;
+class HomeCoursesResponse {
+  @JsonKey(defaultValue: [])
+  final List<CourseShortInfo> content;
 
-  MakeCourseFavoriteRequest({required this.courseID});
+  HomeCoursesResponse({required this.content});
 
-  factory MakeCourseFavoriteRequest.fromJson(Map<String, dynamic> json) =>
-      _$MakeCourseFavoriteRequestFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MakeCourseFavoriteRequestToJson(this);
+  factory HomeCoursesResponse.fromJson(Map<String, dynamic> json) =>
+      _$HomeCoursesResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$HomeCoursesResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -196,8 +195,6 @@ class SingleCourseInfo {
   final int? updatedDate;
   @JsonKey(name: "course_status")
   final LabelValueResponse? courseStatus;
-  // @JsonKey(name: "xapi_course_url")
-  // final String? xapiCourseUrl;
   final MediaDTO? file;
   final LanguageLevel? language;
   final LanguageLevel? level;
@@ -214,6 +211,8 @@ class SingleCourseInfo {
   final bool? canPublish;
   @JsonKey(name: "completion_time")
   final String? completionTime;
+  @JsonKey(defaultValue: '')
+  final String price;
   // final Map<String, dynamic>? structure;
   @JsonKey(defaultValue: [])
   final List<ChapterModel> chapters;
@@ -234,6 +233,7 @@ class SingleCourseInfo {
     this.is_archived,
     this.type,
     this.createdDate,
+    required this.price,
     this.updatedDate,
     this.courseStatus,
     // this.xapiCourseUrl,
@@ -310,17 +310,11 @@ class CourseShortInfo {
   @JsonKey()
   final CourseType? type;
 
-  @JsonKey(name: "created_date")
-  final int? createdDate;
-
-  @JsonKey(name: "updated_date")
-  final int? updatedDate;
-
   @JsonKey(name: "course_status")
   final LabelValueResponse? courseStatus;
 
-  @JsonKey(name: "xapi_course_url")
-  final String? xapiCourseUrl;
+  // @JsonKey(name: "xapi_course_url")
+  // final String? xapiCourseUrl;
 
   @JsonKey()
   final MediaDTO? file;
@@ -340,11 +334,17 @@ class CourseShortInfo {
   @JsonKey(defaultValue: "")
   final String? status;
 
+  @JsonKey(defaultValue: "")
+  final String? price;
+
   @JsonKey(defaultValue: 0, name: 'overall_progress')
   final int progess;
 
   @JsonKey(name: "learners_count", defaultValue: 0)
   final int learnersCount;
+  // "4.6"
+  @JsonKey(defaultValue: '')
+  final String rating;
 
   CourseShortInfo({
     required this.id,
@@ -359,17 +359,17 @@ class CourseShortInfo {
     this.is_favorite,
     this.is_archived,
     this.type,
-    this.createdDate,
-    this.updatedDate,
     this.courseStatus,
-    this.xapiCourseUrl,
+    // this.xapiCourseUrl,
     this.file,
     this.language,
     this.level,
     this.willLearn,
+    this.price,
     this.coAuthorIds,
     this.status,
     required this.progess,
+    required this.rating,
     required this.learnersCount,
   });
 
@@ -403,4 +403,17 @@ class CurrentlyActive {
   factory CurrentlyActive.fromJson(Map<String, dynamic> json) =>
       _$CurrentlyActiveFromJson(json);
   Map<String, dynamic> toJson() => _$CurrentlyActiveToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true)
+class MakeCourseFavoriteRequest {
+  @JsonKey(defaultValue: 0, name: 'course_id')
+  final int courseID;
+
+  MakeCourseFavoriteRequest({required this.courseID});
+
+  factory MakeCourseFavoriteRequest.fromJson(Map<String, dynamic> json) =>
+      _$MakeCourseFavoriteRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MakeCourseFavoriteRequestToJson(this);
 }

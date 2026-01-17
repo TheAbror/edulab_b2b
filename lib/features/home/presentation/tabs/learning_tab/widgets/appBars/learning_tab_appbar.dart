@@ -29,8 +29,6 @@ class LearningTabAppBar extends StatelessWidget implements PreferredSizeWidget {
           tabs: [
             _Tab(context.localizations.inProgress),
             _Tab(context.localizations.completed),
-            _Tab(context.localizations.favorites),
-            _Tab(context.localizations.archived),
           ],
         ),
       ),

@@ -689,5 +689,9 @@
   "news": "News",
   "@news": {},
   "newsWillAppear": "News will appear here",
-  "@newsWillAppear": {}
+  "@newsWillAppear": {},
+  "free": "Free",
+  "@free": {},
+  "enrollToThisCourse": "Enroll to this course",
+  "@enrollToThisCourse": {}
 }

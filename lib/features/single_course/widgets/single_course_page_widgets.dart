@@ -298,12 +298,6 @@ class CourseInfoAuthorDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              // Spacer(),
-              // GestureDetector(
-              //   onTap: onTap,
-              //   behavior: HitTestBehavior.opaque,
-              //   child: Assets.icons.courses.arrowRight.svg(),
-              // ),
             ],
           ),
           SizedBox(height: 16.h),
@@ -496,12 +490,12 @@ class CourseInfoBottomNavigator extends StatelessWidget {
         left: 12.w,
         right: 12.w,
       ),
-      height: 60.h,
+      height: 62.h,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ActionButton(
-            text: 'Enroll',
+            text: context.localizations.enrollToThisCourse,
             onTap: () {
               context.read<CoursesBloc>().enrollToCourse(courseID, () {
                 Navigator.pushNamed(
@@ -656,7 +650,7 @@ class CourseInfoHeader extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '${20000} UZS',
+                        item.price,
                         style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w700,

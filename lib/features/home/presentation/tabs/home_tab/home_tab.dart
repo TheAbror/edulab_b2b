@@ -11,11 +11,10 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   void myInit() {
     context.read<CoursesBloc>().getAllCategories();
-    context.read<CoursesBloc>().getAllPossibleCourses();
+    context.read<CoursesBloc>().getHomeCourses();
     context.read<CoursesBloc>().getCurrentCourse();
     context.read<LearningTabBloc>().getInProgress();
     context.read<LearningTabBloc>().getCompleted();
-    context.read<LearningTabBloc>().getFavorites();
     context.read<LearningTabBloc>().getStatistics();
   }
 
@@ -78,24 +77,15 @@ class _HomeTabState extends State<HomeTab> {
                     ),
 
                   space24,
-                  if (state.coursesAll.isNotEmpty)
+                  if (state.homeCourses.content.isNotEmpty)
                     RecommendedCourses(
-                      courses: state.coursesAll,
+                      courses: state.homeCourses,
                       onTapViewAll: () {
                         Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                       },
                     ),
                   space24,
 
-                  if (state.categories.isNotEmpty)
-                    HomeCategoriesList(
-                      viewAllOnTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.allCategoriesPage,
-                        );
-                      },
-                    ),
                   HomeLearnNewSkillsWidget(
                     onTap: () {
                       Navigator.pushNamed(context, AppRoutes.allCoursesPage);

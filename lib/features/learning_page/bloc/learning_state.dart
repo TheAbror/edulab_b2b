@@ -40,6 +40,7 @@ class LearningState extends Equatable {
       resumedCourse: SingleCourseInfo(
         id: 0,
         title: '',
+        price: '',
         description: [],
         shortDescription: '',
         co_authors: [],

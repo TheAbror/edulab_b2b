@@ -6,6 +6,8 @@ class CoursesState extends Equatable {
   final List<CourseShortInfo> coursesAll;
   final List<CourseShortInfo> currentCourse;
   final List<CourseShortInfo> courseByCategory;
+  final HomeCoursesResponse homeCourses;
+
   //
   final List<int> expandedSubcategoryIndexes;
   final BlocProgress blocProgress;
@@ -17,6 +19,8 @@ class CoursesState extends Equatable {
     required this.coursesAll,
     required this.currentCourse,
     required this.courseByCategory,
+    required this.homeCourses,
+
     required this.categories,
     required this.expandedSubcategoryIndexes,
     required this.blocProgress,
@@ -26,7 +30,10 @@ class CoursesState extends Equatable {
 
   factory CoursesState.initial() {
     return CoursesState(
+      homeCourses: HomeCoursesResponse(content: []),
+
       fullCourseInfo: CourseShortInfo(
+        rating: '',
         id: 0,
         title: '',
         progess: 0,
@@ -89,10 +96,14 @@ class CoursesState extends Equatable {
     List<int>? expandedSubcategoryIndexes,
     BlocProgress? blocProgress,
     BlocProgress? singleCourseBlocProgress,
+    HomeCoursesResponse? homeCourses,
+
     String? failureMessage,
     bool? isEnrolled,
   }) {
     return CoursesState(
+      homeCourses: homeCourses ?? this.homeCourses,
+
       fullCourseInfo: fullCourseInfo ?? this.fullCourseInfo,
       coursesAll: coursesAll ?? this.coursesAll,
       currentCourse: currentCourse ?? this.currentCourse,
@@ -112,6 +123,8 @@ class CoursesState extends Equatable {
     coursesAll,
     currentCourse,
     courseByCategory,
+    homeCourses,
+
     categories,
     expandedSubcategoryIndexes,
     blocProgress,

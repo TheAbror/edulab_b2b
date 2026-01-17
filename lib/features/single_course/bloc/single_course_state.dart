@@ -34,6 +34,7 @@ class SingleCourseState extends Equatable {
         id: 0,
         title: '',
         description: [],
+        price: '',
         shortDescription: '',
         co_authors: [],
         skills: [],
