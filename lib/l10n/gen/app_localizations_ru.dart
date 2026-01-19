@@ -833,8 +833,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get numberShouldStart => 'Номер должен начинаться с 998';
 
   @override
-  String get pleaseEnterValidEmail =>
-      'Введите, пожалуйста, действительный адрес электронной почты';
+  String get pleaseEnterValidPhoneNumber =>
+      'Введите, пожалуйста, действительный номер телефона';
 
   @override
   String get myStudy => 'Мое обучение';

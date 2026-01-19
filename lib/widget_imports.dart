@@ -126,7 +126,7 @@ export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/bloc/le
 export 'package:percent_indicator/linear_percent_indicator.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/learning/show_modal_bottomsheet.dart';
 export 'package:cached_network_image/cached_network_image.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_in_page/sign_in_page_two/sigin_in_page_step_two.dart';
+export 'package:leti_mobile/features/auth/presentation/sign_in_page/code_verification/code_verification_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_new_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_reset_page.dart';

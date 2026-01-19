@@ -1,13 +1,13 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class SignInPageStepTwo extends StatefulWidget {
-  const SignInPageStepTwo({super.key});
+class CodeVerificationPage extends StatefulWidget {
+  const CodeVerificationPage({super.key});
 
   @override
-  State<SignInPageStepTwo> createState() => _SignInPageStepTwoState();
+  State<CodeVerificationPage> createState() => _CodeVerificationPageState();
 }
 
-class _SignInPageStepTwoState extends State<SignInPageStepTwo> {
+class _CodeVerificationPageState extends State<CodeVerificationPage> {
   late Timer _timer;
 
   @override

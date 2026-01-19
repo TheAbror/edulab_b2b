@@ -25,7 +25,7 @@ class __BodyState extends State<_Body> {
       listener: (context, state) {
         if (state.blocProgress == BlocProgress.IS_SUCCESS &&
             state.isReponseSuccess) {
-          context.pushNamed(AppRoutes.signInPageStepTwo, extra: true);
+          context.pushNamed(AppRoutes.codeVerificationPage, extra: true);
           context.read<AuthBloc>().setInitialValue();
         }
       },
@@ -58,7 +58,7 @@ class __BodyState extends State<_Body> {
                     }
                   } else {
                     if (!emailRegEx.hasMatch(username)) {
-                      return context.localizations.pleaseEnterValidEmail;
+                      return context.localizations.pleaseEnterValidPhoneNumber;
                     }
                   }
 

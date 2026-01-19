@@ -54,7 +54,7 @@ class _BodyState extends State<_Body> {
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            Navigator.pushNamed(context, AppRoutes.signInPageStepTwo);
+            Navigator.pushNamed(context, AppRoutes.codeVerificationPage);
 
             context.read<AuthBloc>().setInitialValue();
             context.read<AuthBloc>().setPhoneNumber(

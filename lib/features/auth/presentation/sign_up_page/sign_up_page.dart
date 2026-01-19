@@ -19,7 +19,6 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  final _formKey = GlobalKey<FormState>();
   final TextEditingController _phoneNumberController = TextEditingController();
   final FocusNode _phoneFocusNode = FocusNode();
 
@@ -50,61 +49,62 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) async {
-        if (state.emailOrPhone.isNotEmpty && !state.isReponseSuccess) {
+      listener: (context, state) {
+        if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+          Navigator.pushNamed(context, AppRoutes.codeVerificationPage);
+
+          context.read<AuthBloc>().setInitialValue();
+          context.read<AuthBloc>().setPhoneNumber(
+            _phoneNumberController.text.trim(),
+          );
         } else if (state.blocProgress == BlocProgress.FAILED) {
           showMessage(state.failureMessage, context, isError: true);
         }
       },
       builder: (context, state) {
-        return Form(
-          key: _formKey,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                space32,
-                Text(
-                  context.localizations.createayourccount,
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              space32,
+              Text(
+                context.localizations.createayourccount,
+                style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w500,
                 ),
-                space10,
-                Text(
-                  context.localizations.buildskillsfortodayetc,
-                  style: TextStyle(fontWeight: FontWeight.w400),
-                ),
-                space40,
-                _loginField(context),
-                space24,
-                ActionButton(
-                  text: context.localizations.signup,
-                  onTap: () {
-                    final login = _phoneNumberController.text.trim();
+              ),
+              space10,
+              Text(
+                context.localizations.buildskillsfortodayetc,
+                style: TextStyle(fontWeight: FontWeight.w400),
+              ),
+              space40,
+              _loginField(context),
+              space24,
+              ActionButton(
+                text: context.localizations.signup,
+                onTap: () {
+                  final login = _phoneNumberController.text.trim();
 
-                    if (_formKey.currentState!.validate()) {
-                      // context.read<AuthBloc>().sendSignUpKeyForVerification(sign_up_key);
+                  if (login.length == 13) {
+                    context.read<AuthBloc>().saveLogin(login);
+                    _phoneFocusNode.unfocus();
+                    context.read<AuthBloc>().signInStepOne(
+                      _phoneNumberController.text.trim(),
+                    );
+                  }
+                },
+              ),
 
-                      context.read<AuthBloc>().saveLogin(login);
-                      // Navigator.pushNamed(context,AppRoutes.codeVerificationPage, extra: false);
-
-                      Navigator.pushNamed(context, AppRoutes.rootPage);
-                    }
-                  },
-                ),
-                // DividerWithOrText(),
-                // ContinueWithGoogleButton(),
-                Spacer(),
-                Text(
-                  context.localizations.bysignningAgree,
-                  style: TextStyle(fontSize: 13.sp),
-                ),
-                space40,
-              ],
-            ),
+              Spacer(),
+              Text(
+                context.localizations.bysignningAgree,
+                style: TextStyle(fontSize: 13.sp),
+              ),
+              space40,
+            ],
           ),
         );
       },
@@ -124,7 +124,7 @@ class _BodyState extends State<_Body> {
           }
         } else {
           if (!emailRegEx.hasMatch(username)) {
-            return context.localizations.pleaseEnterValidEmail;
+            return context.localizations.pleaseEnterValidPhoneNumber;
           }
         }
 

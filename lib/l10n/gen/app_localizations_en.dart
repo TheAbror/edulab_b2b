@@ -836,7 +836,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get numberShouldStart => 'Number should start with 998';
 
   @override
-  String get pleaseEnterValidEmail => 'Please enter a valid email';
+  String get pleaseEnterValidPhoneNumber => 'Please enter a valid phone number';
 
   @override
   String get myStudy => 'My Study';

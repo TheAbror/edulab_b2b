@@ -280,7 +280,7 @@ changepassword,Change password,Изменить пароль,Parolni o‘zgartir
 passwordreset,Password reset,Пароль восстановлен,Parol tiklandi
 signinnow,Sign in now,Войдите сейчас,Hozir kiring
 numberShouldStart,Number should start with 998,Номер должен начинаться с 998,Raqam 998 dan boshlanishi kerak
-pleaseEnterValidEmail,Please enter a valid email,"Введите, пожалуйста, действительный адрес электронной почты","Iltimos, to‘g‘ri elektron pochta manzilini kiriting"
+pleaseEnterValidPhoneNumber,Please enter a valid phone number,"Введите, пожалуйста, действительный номер телефона","Iltimos, to‘g‘ri telefon raqamini kiriting"
 myStudy,My Study,Мое обучение,Mening o‘qishim
 viewAll,View all,Посмотреть все,Hammasini ko‘rish
 courseProgress,Course progress,Прогресс курса,Kurs jarayoni

@@ -838,8 +838,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get numberShouldStart => 'Raqam 998 dan boshlanishi kerak';
 
   @override
-  String get pleaseEnterValidEmail =>
-      'Iltimos, to‘g‘ri elektron pochta manzilini kiriting';
+  String get pleaseEnterValidPhoneNumber =>
+      'Iltimos, to‘g‘ri telefon raqamini kiriting';
 
   @override
   String get myStudy => 'Mening o‘qishim';

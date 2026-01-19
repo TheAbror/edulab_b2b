@@ -23,10 +23,10 @@ class MainRouteGenerator {
           builder: (_) => const SignUpPage(),
         );
 
-      case AppRoutes.signInPageStepTwo:
+      case AppRoutes.codeVerificationPage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) {
-            return const SignInPageStepTwo();
+            return const CodeVerificationPage();
           },
         );
 

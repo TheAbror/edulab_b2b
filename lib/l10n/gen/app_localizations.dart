@@ -1720,11 +1720,11 @@ abstract class AppLocalizations {
   /// **'Number should start with 998'**
   String get numberShouldStart;
 
-  /// No description provided for @pleaseEnterValidEmail.
+  /// No description provided for @pleaseEnterValidPhoneNumber.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a valid email'**
-  String get pleaseEnterValidEmail;
+  /// **'Please enter a valid phone number'**
+  String get pleaseEnterValidPhoneNumber;
 
   /// No description provided for @myStudy.
   ///
