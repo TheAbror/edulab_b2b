@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
             ),
             SizedBox(height: 35.h),
             ActionButton(
-              text: context.localizations.signin,
+              text: context.localizations.signUp,
               onTap: () => Navigator.pushNamed(
                 context,
                 AppRoutes.signInPageStepOne,
