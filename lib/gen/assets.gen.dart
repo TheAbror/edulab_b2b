@@ -100,6 +100,10 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/learning
   $AssetsIconsLearningGen get learning => const $AssetsIconsLearningGen();
 
+  /// File path: assets/icons/leti_logo_png.png
+  AssetGenImage get letiLogoPng =>
+      const AssetGenImage('assets/icons/leti_logo_png.png');
+
   /// Directory path: assets/icons/main
   $AssetsIconsMainGen get main => const $AssetsIconsMainGen();
 
@@ -114,7 +118,7 @@ class $AssetsIconsGen {
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
   /// List of all assets
-  List<SvgGenImage> get values => [arrowLeft];
+  List<dynamic> get values => [arrowLeft, letiLogoPng];
 }
 
 class $AssetsImagesGen {
@@ -481,6 +485,9 @@ class $AssetsIconsMainGen {
   SvgGenImage get arrowBack =>
       const SvgGenImage('assets/icons/main/arrow_back.svg');
 
+  /// File path: assets/icons/main/call.svg
+  SvgGenImage get call => const SvgGenImage('assets/icons/main/call.svg');
+
   /// File path: assets/icons/main/google_icon.png
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/icons/main/google_icon.png');
@@ -498,6 +505,7 @@ class $AssetsIconsMainGen {
     letiLogo4x,
     letiLogoSmall,
     arrowBack,
+    call,
     googleIcon,
     letiSmallLogoSvg,
     notification,

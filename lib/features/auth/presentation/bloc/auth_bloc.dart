@@ -123,6 +123,10 @@ class AuthBloc extends Cubit<AuthState> {
     emit(state.copyWith(emailOrPhone: emailOrPhone));
   }
 
+  void enableButton() {
+    emit(state.copyWith(isDisabled: false));
+  }
+
   void decrementTimerSeconds() {
     final currentSeconds = state.timerSeconds;
     if (currentSeconds > 0) {

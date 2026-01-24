@@ -8,6 +8,7 @@ class AuthState extends Equatable {
   final int timerSeconds;
   final bool isVerificationSuccess;
   final bool isReponseSuccess;
+  final bool isDisabled;
   final String emailOrPhone;
   final AccountType accountType;
   final BlocProgress blocProgress;
@@ -22,6 +23,7 @@ class AuthState extends Equatable {
     required this.timerSeconds,
     required this.isVerificationSuccess,
     required this.isReponseSuccess,
+    required this.isDisabled,
     required this.emailOrPhone,
     required this.accountType,
     required this.blocProgress,
@@ -71,9 +73,10 @@ class AuthState extends Equatable {
       accountType: AccountType.unknown,
       isPasswordHidden: true,
       isCountDownFinished: false,
-      timerSeconds: 5,
+      timerSeconds: 60,
       isVerificationSuccess: false,
       isReponseSuccess: false,
+      isDisabled: true,
       emailOrPhone: '',
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
@@ -89,6 +92,7 @@ class AuthState extends Equatable {
     int? timerSeconds,
     bool? isVerificationSuccess,
     bool? isReponseSuccess,
+    bool? isDisabled,
     String? emailOrPhone,
     AccountType? accountType,
     BlocProgress? blocProgress,
@@ -104,6 +108,7 @@ class AuthState extends Equatable {
       isVerificationSuccess:
           isVerificationSuccess ?? this.isVerificationSuccess,
       isReponseSuccess: isReponseSuccess ?? this.isReponseSuccess,
+      isDisabled: isDisabled ?? this.isDisabled,
       emailOrPhone: emailOrPhone ?? this.emailOrPhone,
       accountType: accountType ?? this.accountType,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -121,6 +126,7 @@ class AuthState extends Equatable {
     timerSeconds,
     isVerificationSuccess,
     isReponseSuccess,
+    isDisabled,
     emailOrPhone,
     accountType,
     blocProgress,

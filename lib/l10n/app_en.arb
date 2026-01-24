@@ -450,7 +450,7 @@
   "@lastName": {},
   "emailAddress": "Email address",
   "@emailAddress": {},
-  "welcomeToLetiEdu": "Welcome to Leti Edu",
+  "welcomeToLetiEdu": "Welcome to Leti School!",
   "@welcomeToLetiEdu": {},
   "trackYourLearning": "Track your learning progress, personalize your experience and earn achievements",
   "@trackYourLearning": {},
@@ -458,7 +458,7 @@
   "@createAnAccount": {},
   "signin": "Sign in",
   "@signin": {},
-  "skipfornow": "Skip for now",
+  "skipfornow": "Skip",
   "@skipfornow": {},
   "homeTab": "HOME",
   "@homeTab": {},
@@ -693,5 +693,13 @@
   "free": "Free",
   "@free": {},
   "enrollToThisCourse": "Enroll to this course",
-  "@enrollToThisCourse": {}
+  "@enrollToThisCourse": {},
+  "learnWithLeti": "Learn with Leti — Start Your Journey Today",
+  "@learnWithLeti": {},
+  "exploreHighQuality": "Explore high-quality courses across different fields. Begin today — more subjects are coming soon.",
+  "@exploreHighQuality": {},
+  "joinForFree": "Join for free",
+  "@joinForFree": {},
+  "ourCourses": "Our courses",
+  "@ourCourses": {}
 }

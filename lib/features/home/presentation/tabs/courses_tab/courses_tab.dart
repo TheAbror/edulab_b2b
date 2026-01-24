@@ -28,7 +28,7 @@ class _BodyState extends State<_Body> {
                 CourseTabBanner(),
                 space40,
 
-                RecommendedCourses(
+                OurCoursesWidget(
                   courses: state.homeCourses,
                   onTapViewAll: () {
                     Navigator.pushNamed(context, AppRoutes.allCoursesPage);

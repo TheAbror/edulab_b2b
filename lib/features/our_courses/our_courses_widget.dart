@@ -1,6 +1,6 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class RecommendedCourses extends StatefulWidget {
+class OurCoursesWidget extends StatefulWidget {
   final String? headline;
   final String? coursesCount;
   final VoidCallback onTapViewAll;
@@ -8,7 +8,7 @@ class RecommendedCourses extends StatefulWidget {
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final HomeCoursesResponse courses;
 
-  const RecommendedCourses({
+  const OurCoursesWidget({
     super.key,
     this.headline,
     this.coursesCount,
@@ -20,10 +20,10 @@ class RecommendedCourses extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _RecommendedCoursesState createState() => _RecommendedCoursesState();
+  _OurCoursesWidgetState createState() => _OurCoursesWidgetState();
 }
 
-class _RecommendedCoursesState extends State<RecommendedCourses> {
+class _OurCoursesWidgetState extends State<OurCoursesWidget> {
   final ScrollController _scrollController = ScrollController();
   int? selectedCourseId;
   bool isLoadingSelected = false;
@@ -203,7 +203,7 @@ class _RecommendedCoursesState extends State<RecommendedCourses> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.headline ?? context.localizations.recommendedForYou,
+                widget.headline ?? context.localizations.ourCourses,
                 style: TextStyle(
                   fontSize: 17.sp,
                   letterSpacing: -1,

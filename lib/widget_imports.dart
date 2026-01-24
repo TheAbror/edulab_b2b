@@ -82,7 +82,7 @@ export 'package:leti_mobile/features/home/data/datasources/services/home_service
 export 'package:leti_mobile/features/splash/data/datasources/app_version_service.dart';
 export 'package:flutter_downloader/flutter_downloader.dart';
 export 'package:path_provider/path_provider.dart';
-export 'package:leti_mobile/features/recommended/recommended_for_you_widget.dart';
+export 'package:leti_mobile/features/our_courses/our_courses_widget.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/courses_tab/course_tab_item.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/search_and_filter.dart';
 export 'package:leti_mobile/core/bottom_sheet/primary_loader.dart';
@@ -110,7 +110,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/filter_courses_bottomsheet.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/home_authors_list.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_find_something_to_learn_widget.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_learn_new_skills_widget.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_my_study_widget.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_tab_appbar.dart';
 export 'package:leti_mobile/features/single_course/single_course_page.dart';
@@ -130,7 +129,6 @@ export 'package:leti_mobile/features/auth/presentation/sign_in_page/code_verific
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_new_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_reset_page.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_in_page/sign_in_page_step_one.dart';
 export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_enter_details_page.dart';
 export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_page.dart';
 export 'package:leti_mobile/features/home/presentation/root_page.dart';

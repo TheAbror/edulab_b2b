@@ -450,7 +450,7 @@
   "@lastName": {},
   "emailAddress": "Elektron pochta manzili",
   "@emailAddress": {},
-  "welcomeToLetiEdu": "Leti Edu’ga xush kelibsiz",
+  "welcomeToLetiEdu": "Leti Edu maktabiga xush kelibsiz",
   "@welcomeToLetiEdu": {},
   "trackYourLearning": "O‘rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing",
   "@trackYourLearning": {},
@@ -458,7 +458,7 @@
   "@createAnAccount": {},
   "signin": "Tizimga kirish",
   "@signin": {},
-  "skipfornow": "Hozircha o‘tkazib yuboring",
+  "skipfornow": "O‘tkazib yuborish",
   "@skipfornow": {},
   "homeTab": "BOSH SAHIFA",
   "@homeTab": {},
@@ -693,5 +693,13 @@
   "free": "Bepul",
   "@free": {},
   "enrollToThisCourse": "Ushbu kursga yozilish",
-  "@enrollToThisCourse": {}
+  "@enrollToThisCourse": {},
+  "learnWithLeti": "Leti bilan o'rganing — Bugun sayohatingizni boshlang",
+  "@learnWithLeti": {},
+  "exploreHighQuality": "Turli sohalardagi yuqori sifatli kurslarni o'rganing. Bugun boshlang — tez orada ko'proq fanlar qo'shiladi.",
+  "@exploreHighQuality": {},
+  "joinForFree": "Bepul qo'shiling",
+  "@joinForFree": {},
+  "ourCourses": "Bizning kurslarimiz",
+  "@ourCourses": {}
 }

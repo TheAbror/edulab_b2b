@@ -78,19 +78,13 @@ class _HomeTabState extends State<HomeTab> {
 
                   space24,
                   if (state.homeCourses.content.isNotEmpty)
-                    RecommendedCourses(
+                    OurCoursesWidget(
                       courses: state.homeCourses,
                       onTapViewAll: () {
                         Navigator.pushNamed(context, AppRoutes.allCoursesPage);
                       },
                     ),
-                  space24,
 
-                  HomeLearnNewSkillsWidget(
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.allCoursesPage);
-                    },
-                  ),
                   space24,
                 ],
               );

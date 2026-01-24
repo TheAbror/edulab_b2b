@@ -450,7 +450,7 @@
   "@lastName": {},
   "emailAddress": "Адрес электронной почты",
   "@emailAddress": {},
-  "welcomeToLetiEdu": "Добро пожаловать в Leti Edu",
+  "welcomeToLetiEdu": "Добро пожаловать в школу Leti",
   "@welcomeToLetiEdu": {},
   "trackYourLearning": "Отслеживайте свой прогресс в обучении, персонализируйте свой опыт и получайте достижения",
   "@trackYourLearning": {},
@@ -693,5 +693,13 @@
   "free": "Бесплатно",
   "@free": {},
   "enrollToThisCourse": "Записаться на этот курс",
-  "@enrollToThisCourse": {}
+  "@enrollToThisCourse": {},
+  "learnWithLeti": "Учитесь с Лети — начните свой путь сегодня!",
+  "@learnWithLeti": {},
+  "exploreHighQuality": "Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.",
+  "@exploreHighQuality": {},
+  "joinForFree": "Присоединяйтесь бесплатно!",
+  "@joinForFree": {},
+  "ourCourses": "Наши курсы",
+  "@ourCourses": {}
 }

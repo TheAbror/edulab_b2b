@@ -1,7 +1,7 @@
 keys,en,ru,uz
 signIn,Sign in,Вход,Tizimga kirish
 enterYourCredentials,Enter your credentials to access the platform,Введите данные для входа в систему,Tizimga kirish uchun ma’lumotlaringizni kiriting
-login,Login,Логин,Login
+login,Log in,Логин,Login
 password,Password,Пароль,Parol
 continueButton,Continue,Продолжить,Davom etish
 idText,ID,ID,ID
@@ -233,11 +233,11 @@ tellUsAboutY,Tell us about yourself,Расскажите о себе,O‘zingiz 
 firstName,First name,Имя,Ism
 lastName,Last name,Фамилия,Familiya
 emailAddress,Email address,Адрес электронной почты,Elektron pochta manzili
-welcomeToLetiEdu,Welcome to Leti Edu,Добро пожаловать в Leti Edu,Leti Edu’ga xush kelibsiz
+welcomeToLetiEdu,Welcome to Leti School!,Добро пожаловать в школу Leti,Leti Edu maktabiga xush kelibsiz
 trackYourLearning,"Track your learning progress, personalize your experience and earn achievements","Отслеживайте свой прогресс в обучении, персонализируйте свой опыт и получайте достижения","O‘rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing"
 createAnAccount,Create an account,Создайте учетную запись,Hisob ochish
 signin,Sign in,Войти,Tizimga kirish
-skipfornow,Skip for now,Пропустить,Hozircha o‘tkazib yuboring
+skipfornow,Skip,Пропустить,O‘tkazib yuborish
 homeTab,HOME,ГЛАВНАЯ,BOSH SAHIFA
 learingTab,LEARNING,ОБУЧЕНИЕ,O‘QISH
 coursesTab,COURSES,КУРСЫ,KURSLAR
@@ -372,3 +372,7 @@ news,News,Новости,Yangiliklar
 newsWillAppear,News will appear here,Новости будут появляться здесь.,Yangiliklar bu yerda ko'rsatiladi
 free,Free,Бесплатно,Bepul
 enrollToThisCourse,Enroll to this course,Записаться на этот курс,Ushbu kursga yozilish
+learnWithLeti,Learn with Leti — Start Your Journey Today,Учитесь с Лети — начните свой путь сегодня!,Leti bilan o'rganing — Bugun sayohatingizni boshlang
+exploreHighQuality,Explore high-quality courses across different fields. Begin today — more subjects are coming soon.,Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.,Turli sohalardagi yuqori sifatli kurslarni o'rganing. Bugun boshlang — tez orada ko'proq fanlar qo'shiladi.
+joinForFree,Join for free,Присоединяйтесь бесплатно!,Bepul qo'shiling
+ourCourses,Our courses,Наши курсы,Bizning kurslarimiz

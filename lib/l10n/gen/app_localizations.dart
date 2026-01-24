@@ -1453,7 +1453,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcomeToLetiEdu.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Leti Edu'**
+  /// **'Welcome to Leti School!'**
   String get welcomeToLetiEdu;
 
   /// No description provided for @trackYourLearning.
@@ -1477,7 +1477,7 @@ abstract class AppLocalizations {
   /// No description provided for @skipfornow.
   ///
   /// In en, this message translates to:
-  /// **'Skip for now'**
+  /// **'Skip'**
   String get skipfornow;
 
   /// No description provided for @homeTab.
@@ -2181,6 +2181,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enroll to this course'**
   String get enrollToThisCourse;
+
+  /// No description provided for @learnWithLeti.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn with Leti — Start Your Journey Today'**
+  String get learnWithLeti;
+
+  /// No description provided for @exploreHighQuality.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore high-quality courses across different fields. Begin today — more subjects are coming soon.'**
+  String get exploreHighQuality;
+
+  /// No description provided for @joinForFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Join for free'**
+  String get joinForFree;
+
+  /// No description provided for @ourCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Our courses'**
+  String get ourCourses;
 }
 
 class _AppLocalizationsDelegate

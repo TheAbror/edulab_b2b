@@ -692,7 +692,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get emailAddress => 'Адрес электронной почты';
 
   @override
-  String get welcomeToLetiEdu => 'Добро пожаловать в Leti Edu';
+  String get welcomeToLetiEdu => 'Добро пожаловать в школу Leti';
 
   @override
   String get trackYourLearning =>
@@ -1068,4 +1068,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get enrollToThisCourse => 'Записаться на этот курс';
+
+  @override
+  String get learnWithLeti => 'Учитесь с Лети — начните свой путь сегодня!';
+
+  @override
+  String get exploreHighQuality =>
+      'Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.';
+
+  @override
+  String get joinForFree => 'Присоединяйтесь бесплатно!';
+
+  @override
+  String get ourCourses => 'Наши курсы';
 }

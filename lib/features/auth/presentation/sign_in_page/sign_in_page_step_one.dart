@@ -83,18 +83,24 @@ class _BodyState extends State<_Body> {
                   controller: _phoneNumberController,
                   focusNode: _phoneFocusNode,
                   keyboardType: TextInputType.phone,
+                  onChanged: (value) {
+                    if (value.length == 13) {
+                      context.read<AuthBloc>().enableButton();
+                    }
+                  },
                   inputFormatters: [
-                    UzbekistanPhoneFormatter(),
+                    // UzbekistanPhoneFormatter(),
                     LengthLimitingTextInputFormatter(13),
                   ],
-                  decoration: authFieldDecoration(
+                  decoration: authSignInFieldDecoration(
                     context,
-                    '+998',
+                    context.localizations.phonenumber,
                   ),
                 ),
                 space16,
                 ActionButton(
                   text: context.localizations.signin,
+                  isDisabled: state.isDisabled,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
                       _phoneFocusNode.unfocus();
@@ -147,4 +153,43 @@ class UzbekistanPhoneFormatter extends TextInputFormatter {
       selection: TextSelection.collapsed(offset: text.length),
     );
   }
+}
+
+InputDecoration authSignInFieldDecoration(
+  BuildContext context,
+  String hintText, {
+  bool suffixicon = false,
+}) {
+  return InputDecoration(
+    border: InputBorder.none,
+    contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.w),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: context.colors.borderMuted.withOpacity(0.2),
+        width: 2.w,
+      ),
+      borderRadius: BorderRadius.circular(defaultRadius.r),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Theme.of(context).colorScheme.primary,
+        width: 2.w,
+      ),
+      borderRadius: BorderRadius.circular(defaultRadius.r),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.red, width: 2.w),
+      borderRadius: BorderRadius.circular(defaultRadius.r),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.red, width: 2.w),
+      borderRadius: BorderRadius.circular(defaultRadius.r),
+    ),
+    fillColor: Theme.of(context).colorScheme.surfaceTint,
+    hintText: hintText,
+    prefixIcon: Padding(
+      padding: EdgeInsets.all(12.w),
+      child: Assets.icons.main.call.svg(height: 24.w, width: 24.w),
+    ),
+  );
 }

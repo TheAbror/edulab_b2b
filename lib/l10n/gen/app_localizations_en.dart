@@ -695,7 +695,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailAddress => 'Email address';
 
   @override
-  String get welcomeToLetiEdu => 'Welcome to Leti Edu';
+  String get welcomeToLetiEdu => 'Welcome to Leti School!';
 
   @override
   String get trackYourLearning =>
@@ -708,7 +708,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signin => 'Sign in';
 
   @override
-  String get skipfornow => 'Skip for now';
+  String get skipfornow => 'Skip';
 
   @override
   String get homeTab => 'HOME';
@@ -1070,4 +1070,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enrollToThisCourse => 'Enroll to this course';
+
+  @override
+  String get learnWithLeti => 'Learn with Leti — Start Your Journey Today';
+
+  @override
+  String get exploreHighQuality =>
+      'Explore high-quality courses across different fields. Begin today — more subjects are coming soon.';
+
+  @override
+  String get joinForFree => 'Join for free';
+
+  @override
+  String get ourCourses => 'Our courses';
 }

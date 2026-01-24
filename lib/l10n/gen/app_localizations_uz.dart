@@ -696,7 +696,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get emailAddress => 'Elektron pochta manzili';
 
   @override
-  String get welcomeToLetiEdu => 'Leti Edu’ga xush kelibsiz';
+  String get welcomeToLetiEdu => 'Leti Edu maktabiga xush kelibsiz';
 
   @override
   String get trackYourLearning =>
@@ -709,7 +709,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get signin => 'Tizimga kirish';
 
   @override
-  String get skipfornow => 'Hozircha o‘tkazib yuboring';
+  String get skipfornow => 'O‘tkazib yuborish';
 
   @override
   String get homeTab => 'BOSH SAHIFA';
@@ -1073,4 +1073,18 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get enrollToThisCourse => 'Ushbu kursga yozilish';
+
+  @override
+  String get learnWithLeti =>
+      'Leti bilan o\'rganing — Bugun sayohatingizni boshlang';
+
+  @override
+  String get exploreHighQuality =>
+      'Turli sohalardagi yuqori sifatli kurslarni o\'rganing. Bugun boshlang — tez orada ko\'proq fanlar qo\'shiladi.';
+
+  @override
+  String get joinForFree => 'Bepul qo\'shiling';
+
+  @override
+  String get ourCourses => 'Bizning kurslarimiz';
 }
