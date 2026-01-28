@@ -709,5 +709,9 @@
   "keepLearning": "Продолжайте обучение — ваши курсы появятся здесь",
   "@keepLearning": {},
   "browseCourses": "Просмотреть курсы",
-  "@browseCourses": {}
+  "@browseCourses": {},
+  "welcometoLeti": "Добро пожаловать в Leti!",
+  "@welcometoLeti": {},
+  "continueLearningAndGrowing": "Продолжайте учиться и развиваться вместе с Leti.",
+  "@continueLearningAndGrowing": {}
 }

@@ -1100,4 +1100,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get browseCourses => 'Kurslarni ko\'rib chiqing';
+
+  @override
+  String get welcometoLeti => 'Letiga xush kelibsiz';
+
+  @override
+  String get continueLearningAndGrowing =>
+      'Leti bilan o\'rganishda va o\'sishda davom eting.';
 }

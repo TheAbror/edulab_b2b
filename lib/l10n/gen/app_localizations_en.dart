@@ -1095,4 +1095,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get browseCourses => 'Browse Courses';
+
+  @override
+  String get welcometoLeti => 'Welcome to Leti';
+
+  @override
+  String get continueLearningAndGrowing =>
+      'Continue learning and growing with Leti.';
 }

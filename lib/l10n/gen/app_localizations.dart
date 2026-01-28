@@ -2229,6 +2229,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Browse Courses'**
   String get browseCourses;
+
+  /// No description provided for @welcometoLeti.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Leti'**
+  String get welcometoLeti;
+
+  /// No description provided for @continueLearningAndGrowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue learning and growing with Leti.'**
+  String get continueLearningAndGrowing;
 }
 
 class _AppLocalizationsDelegate

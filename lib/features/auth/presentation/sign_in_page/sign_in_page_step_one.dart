@@ -72,13 +72,19 @@ class _BodyState extends State<_Body> {
               children: [
                 space32,
                 Text(
-                  context.localizations.welcomeBack,
+                  context.localizations.welcometoLeti,
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                space32,
+                space10,
+
+                AppText.paragraph1(
+                  context.localizations.continueLearningAndGrowing,
+                  color: context.colors.fgSoft,
+                ),
+                space24,
                 TextFormField(
                   controller: _phoneNumberController,
                   focusNode: _phoneFocusNode,
@@ -99,10 +105,11 @@ class _BodyState extends State<_Body> {
                 ),
                 space16,
                 ActionButton(
-                  text: context.localizations.signin,
+                  text: context.localizations.continueButton,
                   isDisabled: state.isDisabled,
                   onTap: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate() &&
+                        !state.isDisabled) {
                       _phoneFocusNode.unfocus();
                       context.read<AuthBloc>().signInStepOne(
                         _phoneNumberController.text.trim(),

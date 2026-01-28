@@ -19,11 +19,6 @@ class MainRouteGenerator {
           builder: (_) => const LanguageSelectionPage(),
         );
 
-      case AppRoutes.signUpPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const SignUpPage(),
-        );
-
       case AppRoutes.codeVerificationPage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) {

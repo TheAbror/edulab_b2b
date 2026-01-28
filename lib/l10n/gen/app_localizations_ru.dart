@@ -1093,4 +1093,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get browseCourses => 'Просмотреть курсы';
+
+  @override
+  String get welcometoLeti => 'Добро пожаловать в Leti!';
+
+  @override
+  String get continueLearningAndGrowing =>
+      'Продолжайте учиться и развиваться вместе с Leti.';
 }

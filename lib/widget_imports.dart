@@ -130,7 +130,6 @@ export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forg
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_reset_page.dart';
 export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_enter_details_page.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_page.dart';
 export 'package:leti_mobile/features/home/presentation/root_page.dart';
 export 'package:leti_mobile/features/all_courses/all_courses_page.dart';
 export 'package:leti_mobile/features/all_categories/all_categories_page.dart';

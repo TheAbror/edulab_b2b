@@ -709,5 +709,9 @@
   "keepLearning": "O'rganishda davom eting - kurslaringiz shu yerda ko'rinadi",
   "@keepLearning": {},
   "browseCourses": "Kurslarni ko'rib chiqing",
-  "@browseCourses": {}
+  "@browseCourses": {},
+  "welcometoLeti": "Letiga xush kelibsiz",
+  "@welcometoLeti": {},
+  "continueLearningAndGrowing": "Leti bilan o'rganishda va o'sishda davom eting.",
+  "@continueLearningAndGrowing": {}
 }

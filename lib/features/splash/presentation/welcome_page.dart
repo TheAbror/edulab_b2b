@@ -60,7 +60,10 @@ class WelcomePage extends StatelessWidget {
             SizedBox(height: 12.h),
             ActionButton(
               text: context.localizations.login,
-              onTap: () => Navigator.pushNamed(context, AppRoutes.signUpPage),
+              onTap: () => Navigator.pushNamed(
+                context,
+                AppRoutes.signInPageStepOne,
+              ),
               isFilled: false,
             ),
 

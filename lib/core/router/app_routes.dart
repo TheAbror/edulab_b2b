@@ -5,7 +5,6 @@ abstract class AppRoutes {
   static const languageSelectionPage = 'languageSelectionPage';
 
   //sign up
-  static const signUpPage = 'signUpPage';
   static const singUpEnterDetailsPage = 'singUpEnterDetailsPage';
 
   //sign in
