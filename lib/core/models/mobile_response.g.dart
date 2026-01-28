@@ -11,3 +11,11 @@ MobileResponse _$MobileResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MobileResponseToJson(MobileResponse instance) =>
     <String, dynamic>{'deleted': instance.isSuccess};
+
+CheckEnrollmentResponse _$CheckEnrollmentResponseFromJson(
+  Map<String, dynamic> json,
+) => CheckEnrollmentResponse(status: json['status'] as String? ?? '');
+
+Map<String, dynamic> _$CheckEnrollmentResponseToJson(
+  CheckEnrollmentResponse instance,
+) => <String, dynamic>{'status': instance.status};

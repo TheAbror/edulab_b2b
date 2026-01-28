@@ -1,6 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
 class AllCoursesPage extends StatelessWidget {
+  //id and title for subcategories
   final IdAndTitle? idAndTitle;
 
   const AllCoursesPage({super.key, this.idAndTitle});
@@ -12,7 +13,7 @@ class AllCoursesPage extends StatelessWidget {
         final bloc = CoursesBloc();
 
         if (idAndTitle?.id != null && idAndTitle?.id != 0) {
-          // bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);//TODO
+          bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);
         } else {
           bloc.getHomeCourses();
         }
@@ -45,17 +46,19 @@ class AllCoursesPage extends StatelessWidget {
 class _Body extends StatelessWidget {
   final int? categoryID;
 
-  const _Body({required this.categoryID});
+  const _Body({
+    required this.categoryID,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AllCoursesBloc, AllCoursesState>(
+    return BlocBuilder<CoursesBloc, CoursesState>(
       builder: (context, state) {
         if (state.blocProgress == BlocProgress.IS_LOADING) {
           return const PrimaryLoader();
         }
 
-        if (state.allCourses.isEmpty) {
+        if (categoryID != null && state.courseByCategory.isEmpty) {
           return Center(child: AppText.headline2('No results'));
         }
 
@@ -67,15 +70,15 @@ class _Body extends StatelessWidget {
             ),
             ListView.separated(
               itemCount: (categoryID != null)
-                  ? state.coursesByCategory.length
-                  : state.allCourses.length,
+                  ? state.courseByCategory.length
+                  : state.coursesAll.length,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
                 final item = (categoryID != null)
-                    ? state.coursesByCategory[index]
-                    : state.allCourses[index];
+                    ? state.courseByCategory[index]
+                    : state.coursesAll[index];
 
                 return AllCoursesItem(item: item);
               },
@@ -86,7 +89,7 @@ class _Body extends StatelessWidget {
                 );
               },
             ),
-            if (state.allCourses.isNotEmpty)
+            if (state.coursesAll.isNotEmpty)
               Divider(
                 color: context.colors.borderMuted.withOpacity(0.15),
                 height: 1.h,

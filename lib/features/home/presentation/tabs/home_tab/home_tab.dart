@@ -72,7 +72,10 @@ class _HomeTabState extends State<HomeTab> {
                   else
                     HomeFindSomethingToLearnWidget(
                       onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.allCoursesPage);
+                        Navigator.pushNamed(
+                          context,
+                          AppRoutes.allCoursesPage,
+                        );
                       },
                     ),
 

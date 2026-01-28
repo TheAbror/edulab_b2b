@@ -5,6 +5,48 @@ part 'courses_state.dart';
 class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
+  void getCoursesByCategoryID(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.coursesServices.getCoursesByCategoryId(
+        id,
+      );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              courseByCategory: data,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
   void getHomeCourses() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -19,6 +61,8 @@ class CoursesBloc extends Cubit<CoursesState> {
           emit(
             state.copyWith(
               homeCourses: data,
+              coursesAll: data.content,
+
               blocProgress: BlocProgress.LOADED,
             ),
           );
@@ -103,10 +147,10 @@ class CoursesBloc extends Cubit<CoursesState> {
         final data = response.body;
 
         if (data != null) {
-          isEnrolled = data.isSuccess;
+          isEnrolled = data.status == 'STARTED';
           emit(
             state.copyWith(
-              isEnrolled: data.isSuccess,
+              isEnrolled: data.status == 'STARTED',
               singleCourseBlocProgress: BlocProgress.LOADED,
             ),
           );

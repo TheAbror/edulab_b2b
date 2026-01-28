@@ -15,3 +15,18 @@ class MobileResponse {
 
   Map<String, dynamic> toJson() => _$MobileResponseToJson(this);
 }
+
+@JsonSerializable(includeIfNull: true)
+class CheckEnrollmentResponse {
+  @JsonKey(defaultValue: '')
+  final String status;
+
+  CheckEnrollmentResponse({
+    required this.status,
+  });
+
+  factory CheckEnrollmentResponse.fromJson(Map<String, dynamic> json) =>
+      _$CheckEnrollmentResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CheckEnrollmentResponseToJson(this);
+}

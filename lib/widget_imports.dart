@@ -151,7 +151,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/tabs/in
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/no_results_widget.dart';
 export 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 export 'package:leti_mobile/features/single_course/widgets/single_course_page_widgets.dart';
-export 'package:leti_mobile/features/all_courses/bloc/all_courses_bloc.dart';
 export 'package:leti_mobile/features/home/presentation/widgets/id_and_title.dart';
 export 'package:chewie/chewie.dart';
 export 'package:leti_mobile/features/learning_page/bloc/learning_bloc.dart';
