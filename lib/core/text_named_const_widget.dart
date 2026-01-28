@@ -27,7 +27,7 @@ class AppText extends StatelessWidget {
   AppText.title2(this.text, {this.color, this.maxLines, super.key})
     : style = TextStyle(
         fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w500,
         color: color,
       );
 

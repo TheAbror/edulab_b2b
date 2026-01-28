@@ -8,28 +8,34 @@ class CodeVerificationPage extends StatefulWidget {
 }
 
 class _CodeVerificationPageState extends State<CodeVerificationPage> {
-  late Timer _timer;
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    startTimer(context);
+    startTimer();
   }
 
-  void startTimer(BuildContext context) {
-    final state = context.read<AuthBloc>().state;
+  void startTimer() {
+    _timer?.cancel();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (state.timerSeconds > 0) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
+      final currentState = context.read<AuthBloc>().state;
+      if (currentState.timerSeconds >= 0) {
         context.read<AuthBloc>().decrementTimerSeconds();
       } else {
-        _timer.cancel();
+        timer.cancel();
       }
     });
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -53,13 +59,13 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                 (route) => false,
               );
             } else {
+              context.read<AuthBloc>().setInitialValue();
+
               Navigator.pushNamed(
                 context,
                 AppRoutes.rootPage,
               );
             }
-
-            context.read<AuthBloc>().setInitialValue();
           }
         },
         builder: (context, state) {
@@ -102,27 +108,31 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                   },
                 ),
                 space32,
-                state.isVerificationSuccess
-                    ? Center(
-                        child: Assets.icons.welcomeSignForgotIcons.successCircle
-                            .svg(),
-                      )
-                    : state.isCountDownFinished
+                state.isCountDownFinished
                     ? GestureDetector(
                         onTap: () {
                           if (state.isCountDownFinished) {
-                            startTimer(context);
                             context.read<AuthBloc>().setInitialValue();
+                            context.read<AuthBloc>().signInStepOne(
+                              state.phoneNumber,
+                              true,
+                            );
+                            startTimer();
                           }
                         },
                         behavior: HitTestBehavior.opaque,
-                        child: Center(
-                          child: Text(
-                            context.localizations.resendCode,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Assets.icons.resendCode.svg(),
+                            SizedBox(width: 8.w),
+                            Text(
+                              context.localizations.resendCode,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       )
                     : Row(

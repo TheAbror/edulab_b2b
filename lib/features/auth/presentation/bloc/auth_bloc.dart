@@ -7,7 +7,10 @@ class AuthBloc extends Cubit<AuthState> {
 
   //!----------------------- Sign IN functions start -------------------------------//
 
-  void signInStepOne(String phoneNumber) async {
+  void signInStepOne(
+    String phoneNumber,
+    bool? isResentCode,
+  ) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = SignInStepOneRequest(
@@ -25,7 +28,9 @@ class AuthBloc extends Cubit<AuthState> {
           emit(
             state.copyWith(
               phoneNumber: phoneNumber,
-              blocProgress: BlocProgress.IS_SUCCESS,
+              blocProgress: isResentCode == true
+                  ? BlocProgress.NOT_STARTED
+                  : BlocProgress.IS_SUCCESS,
             ),
           );
         }
@@ -228,11 +233,14 @@ class AuthBloc extends Cubit<AuthState> {
 
   void decrementTimerSeconds() {
     final currentSeconds = state.timerSeconds;
+
+    if (currentSeconds == 0) {
+      emit(state.copyWith(isCountDownFinished: true));
+    }
+
     if (currentSeconds > 0) {
       final newSeconds = currentSeconds - 1;
       emit(state.copyWith(timerSeconds: newSeconds));
-    } else {
-      emit(state.copyWith(isCountDownFinished: true));
     }
   }
 
@@ -243,17 +251,12 @@ class AuthBloc extends Cubit<AuthState> {
         blocProgress: BlocProgress.NOT_STARTED,
         timerSeconds: 60,
         isCountDownFinished: false,
-        isVerificationSuccess: false,
       ),
     );
   }
 
   void setPhoneNumber(String phoneNumber) {
     emit(state.copyWith(phoneNumber: phoneNumber));
-  }
-
-  void verificationSuccess(bool value) {
-    emit(state.copyWith(isVerificationSuccess: value));
   }
 
   void isPasswordHidden() {
@@ -287,8 +290,7 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           emit(
             state.copyWith(
-              // isRequestSent: true,
-              isReponseSuccess: data.deleted,
+              isReponseSuccess: data.isSuccess,
               blocProgress: BlocProgress.IS_SUCCESS,
             ),
           );

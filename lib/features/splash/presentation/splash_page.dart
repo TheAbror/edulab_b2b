@@ -22,12 +22,12 @@ class _SplashPageState extends State<SplashPage> {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.authStatus == SplashAuthStatus.authorized) {
-          Navigator.pushReplacementNamed(context, AppRoutes.rootPage);
+          // Navigator.pushReplacementNamed(context, AppRoutes.rootPage);
 
-          // Navigator.pushReplacementNamed(
-          //   context,
-          //   AppRoutes.languageSelectionPage,
-          // );
+          Navigator.pushReplacementNamed(
+            context,
+            AppRoutes.languageSelectionPage,
+          );
         } else {
           Navigator.pushReplacementNamed(
             context,

@@ -608,16 +608,10 @@ class CourseInfoHeader extends StatelessWidget {
                   ],
                   space24,
                   CourseInfoSmallHeadline(text: context.localizations.price),
-                  Text(
+                  AppText.title2(
                     item.price.isNotEmpty
                         ? item.price
                         : context.localizations.free,
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
 
                   space12,

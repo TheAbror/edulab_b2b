@@ -5,9 +5,10 @@ part 'mobile_response.g.dart';
 //Mobile Response to receive true or false for result
 @JsonSerializable(includeIfNull: true)
 class MobileResponse {
-  final bool deleted;
+  @JsonKey(name: 'deleted')
+  final bool isSuccess;
 
-  MobileResponse({required this.deleted});
+  MobileResponse({required this.isSuccess});
 
   factory MobileResponse.fromJson(Map<String, dynamic> json) =>
       _$MobileResponseFromJson(json);

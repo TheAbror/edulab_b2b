@@ -118,6 +118,7 @@ class _BodyState extends State<_Body> {
                       _phoneFocusNode.unfocus();
                       context.read<AuthBloc>().signInStepOne(
                         _phoneNumberController.text.trim(),
+                        false,
                       );
                     }
                   },

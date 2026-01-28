@@ -7,7 +7,7 @@ part of 'mobile_response.dart';
 // **************************************************************************
 
 MobileResponse _$MobileResponseFromJson(Map<String, dynamic> json) =>
-    MobileResponse(deleted: json['deleted'] as bool);
+    MobileResponse(isSuccess: json['deleted'] as bool);
 
 Map<String, dynamic> _$MobileResponseToJson(MobileResponse instance) =>
-    <String, dynamic>{'deleted': instance.deleted};
+    <String, dynamic>{'deleted': instance.isSuccess};

@@ -6,7 +6,6 @@ class AuthState extends Equatable {
   final bool isPasswordHidden;
   final bool isCountDownFinished;
   final int timerSeconds;
-  final bool isVerificationSuccess;
   final bool isReponseSuccess;
   final bool isDisabled;
   final String emailOrPhone;
@@ -24,7 +23,6 @@ class AuthState extends Equatable {
     required this.isPasswordHidden,
     required this.isCountDownFinished,
     required this.timerSeconds,
-    required this.isVerificationSuccess,
     required this.isReponseSuccess,
     required this.isDisabled,
     required this.emailOrPhone,
@@ -81,7 +79,6 @@ class AuthState extends Equatable {
       isPasswordHidden: true,
       isCountDownFinished: false,
       timerSeconds: 60,
-      isVerificationSuccess: false,
       isReponseSuccess: false,
       isDisabled: true,
       emailOrPhone: '',
@@ -100,7 +97,6 @@ class AuthState extends Equatable {
     bool? isPasswordHidden,
     bool? isCountDownFinished,
     int? timerSeconds,
-    bool? isVerificationSuccess,
     bool? isReponseSuccess,
     bool? isDisabled,
     String? emailOrPhone,
@@ -118,8 +114,7 @@ class AuthState extends Equatable {
       isPasswordHidden: isPasswordHidden ?? this.isPasswordHidden,
       isCountDownFinished: isCountDownFinished ?? this.isCountDownFinished,
       timerSeconds: timerSeconds ?? this.timerSeconds,
-      isVerificationSuccess:
-          isVerificationSuccess ?? this.isVerificationSuccess,
+
       isReponseSuccess: isReponseSuccess ?? this.isReponseSuccess,
       isDisabled: isDisabled ?? this.isDisabled,
       emailOrPhone: emailOrPhone ?? this.emailOrPhone,
@@ -141,7 +136,6 @@ class AuthState extends Equatable {
     isPasswordHidden,
     isCountDownFinished,
     timerSeconds,
-    isVerificationSuccess,
     isReponseSuccess,
     isDisabled,
     emailOrPhone,

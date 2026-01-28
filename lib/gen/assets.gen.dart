@@ -113,12 +113,16 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/profile
   $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
+  /// File path: assets/icons/resendCode.svg
+  SvgGenImage get resendCode =>
+      const SvgGenImage('assets/icons/resendCode.svg');
+
   /// Directory path: assets/icons/welcome_sign_forgot_icons
   $AssetsIconsWelcomeSignForgotIconsGen get welcomeSignForgotIcons =>
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
   /// List of all assets
-  List<dynamic> get values => [arrowLeft, letiLogoPng];
+  List<dynamic> get values => [arrowLeft, letiLogoPng, resendCode];
 }
 
 class $AssetsImagesGen {

@@ -103,10 +103,10 @@ class CoursesBloc extends Cubit<CoursesState> {
         final data = response.body;
 
         if (data != null) {
-          isEnrolled = data.deleted;
+          isEnrolled = data.isSuccess;
           emit(
             state.copyWith(
-              isEnrolled: data.deleted,
+              isEnrolled: data.isSuccess,
               singleCourseBlocProgress: BlocProgress.LOADED,
             ),
           );
