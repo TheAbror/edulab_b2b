@@ -1102,4 +1102,8 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get continueLearningAndGrowing =>
       'Continue learning and growing with Leti.';
+
+  @override
+  String get pleseEnterFirstLastName =>
+      'Please enter your first and last name.';
 }

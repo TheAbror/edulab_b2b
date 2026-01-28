@@ -68,23 +68,29 @@ class AuthBloc extends Cubit<AuthState> {
         final data = response.body;
 
         if (data != null) {
-          final user = data.userInfo;
+          if (data.signUpRequired != null) {
+            if (data.signUpRequired == false) {
+              final user = data.userInfo;
 
-          PreferencesServices.saveToken(data.token);
-          PreferencesServices.saveUserInfo(
-            LocalStorageUserInfo(
-              id: user.id,
-              username: user.username,
-              firstName: user.firstname,
-              lastName: user.lastname,
-              account_type_str: user.accountType,
-              email: user.email,
-              status: user.status,
-              profile_photo: user.profilePhoto,
-            ),
-          );
+              if (user != null && data.token != null) {
+                PreferencesServices.saveToken(data.token ?? '');
+                PreferencesServices.saveUserInfo(
+                  LocalStorageUserInfo(
+                    id: user.id,
+                    username: user.username,
+                    firstName: user.firstname,
+                    lastName: user.lastname,
+                    account_type_str: user.accountType,
+                    email: user.email,
+                    status: user.status,
+                    profile_photo: user.profilePhoto,
+                  ),
+                );
 
-          ApiProvider.create(token: data.token);
+                ApiProvider.create(token: data.token);
+              }
+            }
+          }
 
           emit(
             state.copyWith(
@@ -110,11 +116,83 @@ class AuthBloc extends Cubit<AuthState> {
       emit(
         state.copyWith(
           blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
+          failureMessage: e.toString(),
         ),
       );
     }
   }
+
+  void signInStepThree(String firstname, String lastname) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = SignInStepThreeRequest(
+      phoneNumber: state.phoneNumber,
+      locale: 'uz',
+      firstname: firstname,
+      lastname: lastname,
+    );
+
+    try {
+      final response = await ApiProvider.authService.signInStepThree(request);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          if (data.signUpRequired != null) {
+            if (data.signUpRequired == false) {
+              final user = data.userInfo;
+
+              if (user != null && data.token != null) {
+                PreferencesServices.saveToken(data.token ?? '');
+                PreferencesServices.saveUserInfo(
+                  LocalStorageUserInfo(
+                    id: user.id,
+                    username: user.username,
+                    firstName: user.firstname,
+                    lastName: user.lastname,
+                    account_type_str: user.accountType,
+                    email: user.email,
+                    status: user.status,
+                    profile_photo: user.profilePhoto,
+                  ),
+                );
+
+                ApiProvider.create(token: data.token);
+              }
+            }
+          }
+
+          emit(
+            state.copyWith(
+              authResponse: data,
+              blocProgress: BlocProgress.IS_SUCCESS,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
   //!<----------------------- Sign IN functions end ------------------------------>//
 
   //!----------------------- Small Bloc functions start -------------------------------//
@@ -264,72 +342,6 @@ class AuthBloc extends Cubit<AuthState> {
   //!<----------------------- Forgot password functions end ------------------------------>//
 
   //!----------------------- Sign UP functions start -------------------------------//
-
-  void signUp(
-    String firstname,
-    String lastname,
-    String login,
-    String password,
-  ) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    final request = SignUpRequest(
-      firstname: firstname,
-      lastname: lastname,
-      midname: '',
-      email: login,
-      password: password,
-      phone: login.contains('@') ? '' : login,
-      verificationCode: '12345',
-      localeLanguageType: LocaleLanguageType(label: '', value: ''),
-    );
-
-    try {
-      final response = await ApiProvider.authService.signUP(request);
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          final token = data.token;
-
-          emit(
-            state.copyWith(
-              authResponse: data,
-              isReponseSuccess: true,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-
-          ApiProvider.create(token: token);
-
-          // userDataBox.put(
-          //   ProjectKeys.userData,
-          //   UserData(token: data.token),
-          // );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-    }
-  }
 
   void sendSignUpKeyForVerification(String signUpKey) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

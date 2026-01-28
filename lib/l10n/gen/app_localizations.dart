@@ -2241,6 +2241,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue learning and growing with Leti.'**
   String get continueLearningAndGrowing;
+
+  /// No description provided for @pleseEnterFirstLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your first and last name.'**
+  String get pleseEnterFirstLastName;
 }
 
 class _AppLocalizationsDelegate

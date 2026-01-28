@@ -11,23 +11,23 @@ InputDecoration authFieldDecoration(
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: context.colors.borderMuted.withOpacity(0.2),
-        width: 2.w,
+        width: 1.w,
       ),
       borderRadius: BorderRadius.circular(defaultRadius.r),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: Theme.of(context).colorScheme.primary,
-        width: 2.w,
+        width: 1.w,
       ),
       borderRadius: BorderRadius.circular(defaultRadius.r),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.red, width: 2.w),
+      borderSide: BorderSide(color: Colors.red, width: 1.w),
       borderRadius: BorderRadius.circular(defaultRadius.r),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.red, width: 2.w),
+      borderSide: BorderSide(color: Colors.red, width: 1.w),
       borderRadius: BorderRadius.circular(defaultRadius.r),
     ),
     fillColor: Theme.of(context).colorScheme.surfaceTint,

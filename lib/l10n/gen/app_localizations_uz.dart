@@ -1107,4 +1107,8 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get continueLearningAndGrowing =>
       'Leti bilan o\'rganishda va o\'sishda davom eting.';
+
+  @override
+  String get pleseEnterFirstLastName =>
+      'Iltimos, ismingiz va familiyangizni kiriting.';
 }

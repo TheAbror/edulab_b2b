@@ -355,10 +355,6 @@ class $AssetsIconsHomeTabIconsGen {
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/icons/home_tab_icons/google_icon.png');
 
-  /// File path: assets/icons/home_tab_icons/notification-bell.png
-  AssetGenImage get notificationBell =>
-      const AssetGenImage('assets/icons/home_tab_icons/notification-bell.png');
-
   /// File path: assets/icons/home_tab_icons/recommendedAvatar.png
   AssetGenImage get recommendedAvatar =>
       const AssetGenImage('assets/icons/home_tab_icons/recommendedAvatar.png');
@@ -378,7 +374,6 @@ class $AssetsIconsHomeTabIconsGen {
     confettiBottom,
     confettiTop,
     googleIcon,
-    notificationBell,
     recommendedAvatar,
     shareIcon,
     star,

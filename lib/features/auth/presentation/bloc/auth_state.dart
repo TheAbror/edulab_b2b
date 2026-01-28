@@ -48,6 +48,7 @@ class AuthState extends Equatable {
       ),
       authResponse: AuthResponse(
         token: '',
+        signUpRequired: false,
         userInfo: UserInfo(
           id: 0,
           username: '',

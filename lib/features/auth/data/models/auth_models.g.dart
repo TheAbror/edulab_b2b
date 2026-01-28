@@ -8,11 +8,18 @@ part of 'auth_models.dart';
 
 AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
   token: json['token'] as String? ?? '',
-  userInfo: UserInfo.fromJson(json['user_info'] as Map<String, dynamic>),
+  signUpRequired: json['sign_up_required'] as bool? ?? false,
+  userInfo: json['user_info'] == null
+      ? null
+      : UserInfo.fromJson(json['user_info'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
-    <String, dynamic>{'token': instance.token, 'user_info': instance.userInfo};
+    <String, dynamic>{
+      'token': instance.token,
+      'sign_up_required': instance.signUpRequired,
+      'user_info': instance.userInfo,
+    };
 
 SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
     SignUpRequest(
@@ -125,6 +132,24 @@ Map<String, dynamic> _$SignInStepTwoRequestToJson(
   'phone_number': instance.phoneNumber,
   'locale': instance.locale,
   'code': instance.code,
+};
+
+SignInStepThreeRequest _$SignInStepThreeRequestFromJson(
+  Map<String, dynamic> json,
+) => SignInStepThreeRequest(
+  phoneNumber: json['phone_number'] as String? ?? '',
+  locale: json['locale'] as String? ?? '',
+  firstname: json['firstname'] as String? ?? '',
+  lastname: json['lastname'] as String? ?? '',
+);
+
+Map<String, dynamic> _$SignInStepThreeRequestToJson(
+  SignInStepThreeRequest instance,
+) => <String, dynamic>{
+  'phone_number': instance.phoneNumber,
+  'locale': instance.locale,
+  'firstname': instance.firstname,
+  'lastname': instance.lastname,
 };
 
 SignUpKeyRequest _$SignUpKeyRequestFromJson(Map<String, dynamic> json) =>

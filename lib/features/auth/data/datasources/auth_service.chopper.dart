@@ -39,9 +39,9 @@ final class _$AuthService extends AuthService {
   }
 
   @override
-  Future<Response<AuthResponse>> signUP(SignUpRequest body) {
+  Future<Response<AuthResponse>> signInStepThree(SignInStepThreeRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signup',
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_three',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);

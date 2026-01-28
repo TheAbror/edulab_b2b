@@ -44,10 +44,17 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.rootPage,
-            );
+            if (state.authResponse.signUpRequired == true) {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.enterDetailsPage,
+              );
+            } else {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.rootPage,
+              );
+            }
 
             context.read<AuthBloc>().setInitialValue();
           }
@@ -108,7 +115,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                         behavior: HitTestBehavior.opaque,
                         child: Center(
                           child: Text(
-                            'Resend code',
+                            context.localizations.resendCode,
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.primary,
                             ),

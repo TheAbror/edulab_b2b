@@ -1100,4 +1100,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get continueLearningAndGrowing =>
       'Продолжайте учиться и развиваться вместе с Leti.';
+
+  @override
+  String get pleseEnterFirstLastName =>
+      'Пожалуйста, введите ваше имя и фамилию.';
 }

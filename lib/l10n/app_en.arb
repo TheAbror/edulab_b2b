@@ -713,5 +713,7 @@
   "welcometoLeti": "Welcome to Leti",
   "@welcometoLeti": {},
   "continueLearningAndGrowing": "Continue learning and growing with Leti.",
-  "@continueLearningAndGrowing": {}
+  "@continueLearningAndGrowing": {},
+  "pleseEnterFirstLastName": "Please enter your first and last name.",
+  "@pleseEnterFirstLastName": {}
 }

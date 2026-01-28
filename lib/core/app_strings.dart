@@ -6,6 +6,7 @@ class AppStrings {
   static const signUP = 'signup';
   static const signInStepOne = 'signin/step_one';
   static const signInStepTwo = 'signin/step_two';
+  static const signInStepThree = 'signin/step_three';
   static const course = 'course';
   static const coursesAll = '$course/all';
   static const categoryAll = 'category/all';

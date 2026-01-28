@@ -18,8 +18,10 @@ abstract class AuthService extends ChopperService {
     @Body() SignInStepTwoRequest body,
   );
 
-  @Post(path: AppStrings.signUP)
-  Future<Response<AuthResponse>> signUP(@Body() SignUpRequest body);
+  @Post(path: AppStrings.signInStepThree)
+  Future<Response<AuthResponse>> signInStepThree(
+    @Body() SignInStepThreeRequest body,
+  );
 
   @Post(path: AppStrings.sendVerification)
   Future<Response<MobileResponse>> sendSignUpKeyForVerification(

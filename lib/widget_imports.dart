@@ -32,9 +32,7 @@ export 'package:leti_mobile/features/home/presentation/bloc/home_bloc.dart';
 export 'package:leti_mobile/core/dialogs/dialog_success_failure.dart';
 export 'package:leti_mobile/core/local_datasource/model/local_storage_user_info.dart';
 export 'package:leti_mobile/features/auth/presentation/bloc/auth_bloc.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_up_page/widgets/sign_up_page_appbar.dart';
 export 'package:leti_mobile/core/auth_field_decoration.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_up_page/widgets/sign_up_enter_details_page_appbar.dart';
 export 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 export 'package:leti_mobile/features/auth/presentation/sign_in_page/widgets/sign_in_page_appbar.dart';
 export 'package:leti_mobile/features/auth/data/models/auth_models.dart';
@@ -129,7 +127,7 @@ export 'package:leti_mobile/features/auth/presentation/sign_in_page/code_verific
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_new_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_page.dart';
 export 'package:leti_mobile/features/auth/presentation/forgot_password_page/forgot_password_reset_page.dart';
-export 'package:leti_mobile/features/auth/presentation/sign_up_page/sign_up_enter_details_page.dart';
+export 'package:leti_mobile/features/auth/presentation/enter_details_page/enter_details_page.dart';
 export 'package:leti_mobile/features/home/presentation/root_page.dart';
 export 'package:leti_mobile/features/all_courses/all_courses_page.dart';
 export 'package:leti_mobile/features/all_categories/all_categories_page.dart';

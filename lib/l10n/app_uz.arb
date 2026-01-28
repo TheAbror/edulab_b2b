@@ -713,5 +713,7 @@
   "welcometoLeti": "Letiga xush kelibsiz",
   "@welcometoLeti": {},
   "continueLearningAndGrowing": "Leti bilan o'rganishda va o'sishda davom eting.",
-  "@continueLearningAndGrowing": {}
+  "@continueLearningAndGrowing": {},
+  "pleseEnterFirstLastName": "Iltimos, ismingiz va familiyangizni kiriting.",
+  "@pleseEnterFirstLastName": {}
 }

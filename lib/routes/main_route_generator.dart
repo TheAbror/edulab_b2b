@@ -26,9 +26,9 @@ class MainRouteGenerator {
           },
         );
 
-      case AppRoutes.singUpEnterDetailsPage:
+      case AppRoutes.enterDetailsPage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const SignUpEnterDetailsPage(),
+          builder: (_) => const EnterDetailsPage(),
         );
 
       case AppRoutes.signInPageStepOne:

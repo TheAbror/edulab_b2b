@@ -6,11 +6,17 @@ part 'auth_models.g.dart';
 @JsonSerializable(includeIfNull: true)
 class AuthResponse {
   @JsonKey(defaultValue: '')
-  final String token;
+  final String? token;
+  @JsonKey(defaultValue: false, name: 'sign_up_required')
+  final bool? signUpRequired;
   @JsonKey(name: 'user_info')
-  final UserInfo userInfo;
+  final UserInfo? userInfo;
 
-  AuthResponse({required this.token, required this.userInfo});
+  AuthResponse({
+    this.token,
+    required this.signUpRequired,
+    this.userInfo,
+  });
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) =>
       _$AuthResponseFromJson(json);
@@ -108,6 +114,22 @@ class UserInfo {
     required this.accountTypeStr,
   });
 
+  factory UserInfo.initial() {
+    return UserInfo(
+      id: 0,
+      username: '',
+      firstname: '',
+      lastname: '',
+      profilePhoto: null,
+      roles: const [],
+      requiredActions: const [],
+      email: '',
+      status: '',
+      accountType: '',
+      accountTypeStr: '',
+    );
+  }
+
   factory UserInfo.fromJson(Map<String, dynamic> json) =>
       _$UserInfoFromJson(json);
 
@@ -166,6 +188,30 @@ class SignInStepTwoRequest {
       _$SignInStepTwoRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$SignInStepTwoRequestToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true)
+class SignInStepThreeRequest {
+  @JsonKey(defaultValue: '', name: 'phone_number')
+  final String phoneNumber;
+  @JsonKey(defaultValue: '')
+  final String locale;
+  @JsonKey(defaultValue: '')
+  final String firstname;
+  @JsonKey(defaultValue: '')
+  final String lastname;
+
+  SignInStepThreeRequest({
+    required this.phoneNumber,
+    required this.locale,
+    required this.firstname,
+    required this.lastname,
+  });
+
+  factory SignInStepThreeRequest.fromJson(Map<String, dynamic> json) =>
+      _$SignInStepThreeRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SignInStepThreeRequestToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)
