@@ -11,12 +11,12 @@ class NoResultsWidget extends StatelessWidget {
         Assets.icons.courses.emptyState.svg(),
         SizedBox(height: 24.h),
         Text(
-          'No courses found',
+          context.localizations.noCoursesFound,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
         ),
         SizedBox(height: 8.h),
         Text(
-          'Keep learning - your courses will appear here',
+          context.localizations.keepLearning,
           style: TextStyle(color: context.colors.fgMuted, fontSize: 15.sp),
           textAlign: TextAlign.center,
         ),
@@ -26,15 +26,15 @@ class NoResultsWidget extends StatelessWidget {
             Navigator.pushNamed(context, AppRoutes.allCoursesPage);
           },
           child: Container(
-            width: 153.w,
-            height: 48.h,
+            width: 180.w,
+            height: 50.h,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.circular(6.r),
             ),
             child: Center(
               child: Text(
-                'Browse Courses',
+                context.localizations.browseCourses,
                 style: TextStyle(
                   fontSize: 16.sp,
                   color: context.colors.accentOnAccent,

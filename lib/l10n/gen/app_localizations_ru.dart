@@ -1081,4 +1081,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ourCourses => 'Наши курсы';
+
+  @override
+  String get price => 'Цена';
+
+  @override
+  String get noCoursesFound => 'Курсы не найдены';
+
+  @override
+  String get keepLearning => 'Продолжайте обучение — ваши курсы появятся здесь';
+
+  @override
+  String get browseCourses => 'Просмотреть курсы';
 }

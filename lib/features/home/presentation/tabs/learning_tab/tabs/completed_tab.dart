@@ -12,10 +12,10 @@ class CompletedTab extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.only(top: 24.h, bottom: 12.h),
       itemBuilder: (context, index) {
-        // final progress = item[index].overallProgress;
-        const progress = 0;
+        final progress = item[index].progess;
 
         return LearningResumeCard(
+          id: item[index].id,
           title: item[index].title,
           isFirst: false,
           photo: item[index].thumbnail?.original_url ?? '',

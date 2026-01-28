@@ -1083,4 +1083,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ourCourses => 'Our courses';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get noCoursesFound => 'No courses found';
+
+  @override
+  String get keepLearning => 'Keep learning - your courses will appear here';
+
+  @override
+  String get browseCourses => 'Browse Courses';
 }

@@ -11,8 +11,10 @@ class SingleCoursePage extends StatelessWidget {
       create: (context) => SingleCourseBloc()..getSingleCourse(id),
       child: Scaffold(
         appBar: CourseInfoAppBar(id: id),
-        body: SingleCourseBody(isContent: false),
-        bottomNavigationBar: CourseInfoBottomNavigator(courseID: id),
+        body: SingleCourseBody(
+          isContent: false,
+          id: id,
+        ),
       ),
     );
   }
@@ -20,8 +22,13 @@ class SingleCoursePage extends StatelessWidget {
 
 class SingleCourseBody extends StatefulWidget {
   final bool isContent;
+  final int id;
 
-  const SingleCourseBody({super.key, required this.isContent});
+  const SingleCourseBody({
+    super.key,
+    required this.isContent,
+    required this.id,
+  });
 
   @override
   State<SingleCourseBody> createState() => SingleCourseBodyState();
@@ -44,7 +51,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              if (!widget.isContent) CourseInfoHeader(),
+              if (!widget.isContent) CourseInfoHeader(id: widget.id),
               Padding(
                 padding: EdgeInsets.only(top: 24.h, left: 16.w, right: 16.w),
                 child: Column(

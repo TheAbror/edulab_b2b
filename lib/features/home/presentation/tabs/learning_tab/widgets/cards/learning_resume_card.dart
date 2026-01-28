@@ -1,6 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
 class LearningResumeCard extends StatelessWidget {
+  final int id;
   final String title;
   final String photo;
   final double progress;
@@ -10,6 +11,7 @@ class LearningResumeCard extends StatelessWidget {
 
   const LearningResumeCard({
     super.key,
+    required this.id,
     required this.title,
     required this.photo,
     required this.progress,
@@ -22,109 +24,118 @@ class LearningResumeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return Container(
-          padding: EdgeInsets.all(12.w),
-          margin: EdgeInsets.only(bottom: 12.h),
-          decoration: isFirst != null && isFirst == true
-              ? state.isLightTheme == true
-                    ? _isFirst(context, state)
-                    : _isFirstDark(context, state)
-              : _Ordinary(context),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4.r),
-                    child: CachedNetworkImage(
-                      imageUrl: photo,
-                      height: 40.h,
-                      width: 46.w,
-                      fit: BoxFit.fill,
-                      placeholder: (context, url) => Container(
+        return GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.enrolledCoursePage,
+              arguments: id,
+            );
+          },
+          child: Container(
+            padding: EdgeInsets.all(12.w),
+            margin: EdgeInsets.only(bottom: 12.h),
+            decoration: isFirst != null && isFirst == true
+                ? state.isLightTheme == true
+                      ? _isFirst(context, state)
+                      : _isFirstDark(context, state)
+                : _Ordinary(context),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4.r),
+                      child: CachedNetworkImage(
+                        imageUrl: photo,
                         height: 40.h,
                         width: 46.w,
-                        color: Colors.grey[200],
-                        child: Center(child: CircularProgressIndicator()),
-                      ),
-                      errorWidget: (context, url, error) => Container(
-                        height: 40.h,
-                        width: 46.w,
-                        decoration: BoxDecoration(
-                          color: context.colors.neutralContainerDefault
-                              .withOpacity(0.1),
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'assets/images/network_image_error_case.png',
+                        fit: BoxFit.fill,
+                        placeholder: (context, url) => Container(
+                          height: 40.h,
+                          width: 46.w,
+                          color: Colors.grey[200],
+                          child: Center(child: CircularProgressIndicator()),
+                        ),
+                        errorWidget: (context, url, error) => Container(
+                          height: 40.h,
+                          width: 46.w,
+                          decoration: BoxDecoration(
+                            color: context.colors.neutralContainerDefault
+                                .withOpacity(0.1),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'assets/images/network_image_error_case.png',
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 16.w),
-                  SizedBox(
-                    width: 231.w,
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.7,
+                    SizedBox(width: 16.w),
+                    SizedBox(
+                      width: 231.w,
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: -0.7,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    progress == 100.0
-                        ? 'Completed'
-                        : context.localizations.courseProgress,
-                    style: TextStyle(
-                      color: context.colors.fgMuted,
-                      fontSize: 12.sp,
-                      letterSpacing: -0.5,
+                  ],
+                ),
+                SizedBox(height: 10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      progress == 100.0
+                          ? 'Completed'
+                          : context.localizations.courseProgress,
+                      style: TextStyle(
+                        color: context.colors.fgMuted,
+                        fontSize: 12.sp,
+                        letterSpacing: -0.5,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '$progress%'.replaceAll('.0', ''),
-                    style: TextStyle(
-                      color: context.colors.fgMuted,
-                      fontSize: 12.sp,
+                    Text(
+                      '$progress%'.replaceAll('.0', ''),
+                      style: TextStyle(
+                        color: context.colors.fgMuted,
+                        fontSize: 12.sp,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 6.h),
-              LinearProgressIndicator(
-                minHeight: 8.h,
-                value: progress / 100,
-                color: progress == 100.0
-                    ? Colors.green
-                    : Theme.of(context).colorScheme.primary,
-                backgroundColor: isFirst != null && isFirst == true
-                    ? context.colors.float
-                    : context.colors.bgSurface3,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              SizedBox(height: 12.h),
-              GestureDetector(
-                onTap: onPressed,
-                behavior: HitTestBehavior.opaque,
-                child: state.isLightTheme == true
-                    ? _ContinueButton(context)
-                    : isFirst != null && isFirst == true
-                    ? _isFirstContinueButton(context)
-                    : _ContinueButton(context),
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(height: 6.h),
+                LinearProgressIndicator(
+                  minHeight: 8.h,
+                  value: progress / 100,
+                  color: progress == 100.0
+                      ? Colors.green
+                      : Theme.of(context).colorScheme.primary,
+                  backgroundColor: isFirst != null && isFirst == true
+                      ? context.colors.float
+                      : context.colors.bgSurface3,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                SizedBox(height: 12.h),
+                GestureDetector(
+                  onTap: onPressed,
+                  behavior: HitTestBehavior.opaque,
+                  child: state.isLightTheme == true
+                      ? _ContinueButton(context)
+                      : isFirst != null && isFirst == true
+                      ? _isFirstContinueButton(context)
+                      : _ContinueButton(context),
+                ),
+              ],
+            ),
           ),
         );
       },

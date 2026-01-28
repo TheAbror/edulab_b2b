@@ -701,5 +701,13 @@
   "joinForFree": "Join for free",
   "@joinForFree": {},
   "ourCourses": "Our courses",
-  "@ourCourses": {}
+  "@ourCourses": {},
+  "price": "Price",
+  "@price": {},
+  "noCoursesFound": "No courses found",
+  "@noCoursesFound": {},
+  "keepLearning": "Keep learning - your courses will appear here",
+  "@keepLearning": {},
+  "browseCourses": "Browse Courses",
+  "@browseCourses": {}
 }

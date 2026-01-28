@@ -25,6 +25,7 @@ class InProgressTab extends StatelessWidget {
               final progress = item[index].progess;
 
               return LearningResumeCard(
+                id: item[index].id,
                 title: item[index].title,
                 isFirst: index == 0 ? true : false,
                 photo: item[index].thumbnail?.original_url ?? '',

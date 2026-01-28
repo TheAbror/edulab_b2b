@@ -701,5 +701,13 @@
   "joinForFree": "Bepul qo'shiling",
   "@joinForFree": {},
   "ourCourses": "Bizning kurslarimiz",
-  "@ourCourses": {}
+  "@ourCourses": {},
+  "price": "Narxi",
+  "@price": {},
+  "noCoursesFound": "Kurslar topilmadi",
+  "@noCoursesFound": {},
+  "keepLearning": "O'rganishda davom eting - kurslaringiz shu yerda ko'rinadi",
+  "@keepLearning": {},
+  "browseCourses": "Kurslarni ko'rib chiqing",
+  "@browseCourses": {}
 }

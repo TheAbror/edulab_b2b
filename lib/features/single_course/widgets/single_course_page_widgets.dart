@@ -474,50 +474,6 @@ class CourseInfoBlocsTitle extends StatelessWidget {
   }
 }
 
-class CourseInfoBottomNavigator extends StatelessWidget {
-  const CourseInfoBottomNavigator({
-    super.key,
-    required this.courseID,
-  });
-
-  final int courseID;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20.h),
-      padding: EdgeInsets.only(
-        left: 12.w,
-        right: 12.w,
-      ),
-      height: 62.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          ActionButton(
-            text: context.localizations.enrollToThisCourse,
-            onTap: () {
-              context.read<CoursesBloc>().enrollToCourse(courseID, () {
-                Navigator.pushNamed(
-                  context,
-                  AppRoutes.enrolledCoursePage,
-                  arguments: courseID,
-                );
-
-                showMessage(
-                  'Congratulations you have successfully enrolled',
-                  context,
-                );
-              });
-            },
-          ),
-          space8,
-        ],
-      ),
-    );
-  }
-}
-
 class CourseInfoChapterInfoText extends StatelessWidget {
   const CourseInfoChapterInfoText({
     super.key,
@@ -582,7 +538,11 @@ class CourseInfoDivider extends StatelessWidget {
 }
 
 class CourseInfoHeader extends StatelessWidget {
-  const CourseInfoHeader({super.key});
+  final int id;
+  const CourseInfoHeader({
+    super.key,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -632,6 +592,7 @@ class CourseInfoHeader extends StatelessWidget {
                     space8,
                     ListView.builder(
                       shrinkWrap: true,
+                      padding: EdgeInsets.zero,
                       itemCount: item.authors.length,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
@@ -646,68 +607,42 @@ class CourseInfoHeader extends StatelessWidget {
                     ),
                   ],
                   space24,
-                  CourseInfoSmallHeadline(text: 'PRICE'),
-                  Row(
-                    children: [
-                      Text(
-                        item.price,
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(width: 8.h),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 8.w,
-                          vertical: 4.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: homeState.isLightTheme == true
-                              ? context.colors.accentContainerDefault
-                                    .withOpacity(0.1)
-                              : Color(0XFF47ADFF).withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(4.r),
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              '35%',
-                              style: TextStyle(
-                                color: homeState.isLightTheme == true
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Color(0XFF8CCBFF),
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                            Text(
-                              ' off',
-                              style: TextStyle(
-                                color: homeState.isLightTheme == true
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Color(0XFF8CCBFF),
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 4.h),
+                  CourseInfoSmallHeadline(text: context.localizations.price),
                   Text(
-                    '1 250 000 UZS',
+                    item.price.isNotEmpty
+                        ? item.price
+                        : context.localizations.free,
                     style: TextStyle(
-                      fontSize: 14.sp,
-                      decoration: TextDecoration.lineThrough,
-                      color: context.colors.fgMuted,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  space24,
+
+                  space12,
+
+                  ActionButton(
+                    text: context.localizations.enrollToThisCourse,
+                    onTap: () {
+                      context.read<CoursesBloc>().enrollToCourse(
+                        id,
+                        () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.enrolledCoursePage,
+                            arguments: id,
+                          );
+
+                          showMessage(
+                            'Congratulations you have successfully enrolled',
+                            context,
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  space12,
                 ],
               );
             },

@@ -2205,6 +2205,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Our courses'**
   String get ourCourses;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @noCoursesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No courses found'**
+  String get noCoursesFound;
+
+  /// No description provided for @keepLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep learning - your courses will appear here'**
+  String get keepLearning;
+
+  /// No description provided for @browseCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse Courses'**
+  String get browseCourses;
 }
 
 class _AppLocalizationsDelegate

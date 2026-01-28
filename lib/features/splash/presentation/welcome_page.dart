@@ -33,6 +33,7 @@ class WelcomePage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     letterSpacing: -1,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 10.h),
 
@@ -47,9 +48,9 @@ class WelcomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 35.h),
+            SizedBox(height: 30.h),
             ActionButton(
-              text: context.localizations.signUp,
+              text: context.localizations.joinForFree,
               onTap: () => Navigator.pushNamed(
                 context,
                 AppRoutes.signInPageStepOne,

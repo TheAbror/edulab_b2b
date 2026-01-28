@@ -17,10 +17,10 @@ class CourseContentTabInfo extends StatelessWidget {
         padding: EdgeInsets.zero,
         physics: AlwaysScrollableScrollPhysics(),
         children: [
-          CourseContentConfettiCard(
-            title: 'You\'re enrolled.',
-            subTitle: 'You are enrolled, to begin click the "Start" button',
-          ),
+          // CourseContentConfettiCard(
+          //   title: 'You\'re enrolled.',
+          //   subTitle: 'You are enrolled, to begin click the "Start" button',
+          // ),
           // CourseContentCertificated(
           //   headline: 'Congratulations on getting your certificate!',
           //   shareText: 'Share certificate',
@@ -28,7 +28,10 @@ class CourseContentTabInfo extends StatelessWidget {
           //   subTitle: 'You completed this course on August 2, 2025',
           //   onTap: () {},
           // ),
-          SingleCourseBody(isContent: true),
+          SingleCourseBody(
+            isContent: true,
+            id: id,
+          ),
         ],
       ),
     );

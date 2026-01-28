@@ -142,7 +142,7 @@ class AuthBloc extends Cubit<AuthState> {
       state.copyWith(
         isReponseSuccess: false,
         blocProgress: BlocProgress.NOT_STARTED,
-        timerSeconds: 10,
+        timerSeconds: 60,
         isCountDownFinished: false,
         isVerificationSuccess: false,
       ),

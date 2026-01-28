@@ -1087,4 +1087,17 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get ourCourses => 'Bizning kurslarimiz';
+
+  @override
+  String get price => 'Narxi';
+
+  @override
+  String get noCoursesFound => 'Kurslar topilmadi';
+
+  @override
+  String get keepLearning =>
+      'O\'rganishda davom eting - kurslaringiz shu yerda ko\'rinadi';
+
+  @override
+  String get browseCourses => 'Kurslarni ko\'rib chiqing';
 }

@@ -701,5 +701,13 @@
   "joinForFree": "Присоединяйтесь бесплатно!",
   "@joinForFree": {},
   "ourCourses": "Наши курсы",
-  "@ourCourses": {}
+  "@ourCourses": {},
+  "price": "Цена",
+  "@price": {},
+  "noCoursesFound": "Курсы не найдены",
+  "@noCoursesFound": {},
+  "keepLearning": "Продолжайте обучение — ваши курсы появятся здесь",
+  "@keepLearning": {},
+  "browseCourses": "Просмотреть курсы",
+  "@browseCourses": {}
 }
