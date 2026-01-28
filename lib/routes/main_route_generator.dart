@@ -1,4 +1,4 @@
-import 'package:leti_mobile/features/auth/presentation/sign_in_page/sign_in_page_step_one.dart';
+import 'package:leti_mobile/features/auth/presentation/login_page/login_page.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class MainRouteGenerator {
@@ -31,24 +31,9 @@ class MainRouteGenerator {
           builder: (_) => const EnterDetailsPage(),
         );
 
-      case AppRoutes.signInPageStepOne:
+      case AppRoutes.loginPage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const SignInPageStepOne(),
-        );
-
-      case AppRoutes.forgotPasswordPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const ForgotPasswordPage(),
-        );
-
-      case AppRoutes.forgotPasswordSetNewPassword:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const ForgotPasswordNewPasswordPage(),
-        );
-
-      case AppRoutes.forgotPasswordResetPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const ForgotPasswordResetPage(),
+          builder: (_) => const LoginPage(),
         );
 
       case AppRoutes.rootPage:

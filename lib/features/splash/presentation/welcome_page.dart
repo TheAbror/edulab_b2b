@@ -53,7 +53,7 @@ class WelcomePage extends StatelessWidget {
               text: context.localizations.joinForFree,
               onTap: () => Navigator.pushNamed(
                 context,
-                AppRoutes.signInPageStepOne,
+                AppRoutes.loginPage,
               ),
             ),
 
@@ -62,7 +62,7 @@ class WelcomePage extends StatelessWidget {
               text: context.localizations.login,
               onTap: () => Navigator.pushNamed(
                 context,
-                AppRoutes.signInPageStepOne,
+                AppRoutes.loginPage,
               ),
               isFilled: false,
             ),

@@ -123,6 +123,8 @@ class AuthBloc extends Cubit<AuthState> {
   }
 
   void signInStepThree(String firstname, String lastname) async {
+    setInitialValue();
+
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = SignInStepThreeRequest(
@@ -199,6 +201,25 @@ class AuthBloc extends Cubit<AuthState> {
 
   void saveLogin(String emailOrPhone) {
     emit(state.copyWith(emailOrPhone: emailOrPhone));
+  }
+
+  void makeBlocProgressNotStarted() {
+    emit(state.copyWith(blocProgress: BlocProgress.NOT_STARTED));
+  }
+
+  void saveLastName(String lastName) {
+    emit(state.copyWith(lastName: lastName));
+
+    if (state.lastName.isNotEmpty && state.firstName.isNotEmpty) {
+      emit(state.copyWith(isFirstAndLastNameValid: true));
+    }
+  }
+
+  void saveFirstName(String firstName) {
+    emit(state.copyWith(firstName: firstName));
+    if (state.lastName.isNotEmpty && state.firstName.isNotEmpty) {
+      emit(state.copyWith(isFirstAndLastNameValid: true));
+    }
   }
 
   void enableButton() {

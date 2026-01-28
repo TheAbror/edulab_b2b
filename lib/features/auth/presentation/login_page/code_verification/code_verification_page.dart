@@ -45,9 +45,12 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
             if (state.authResponse.signUpRequired == true) {
-              Navigator.pushNamed(
+              context.read<AuthBloc>().setInitialValue();
+
+              Navigator.pushNamedAndRemoveUntil(
                 context,
                 AppRoutes.enterDetailsPage,
+                (route) => false,
               );
             } else {
               Navigator.pushNamed(

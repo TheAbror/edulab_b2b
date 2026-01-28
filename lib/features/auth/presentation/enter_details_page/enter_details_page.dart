@@ -6,7 +6,7 @@ class EnterDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SignInPageAppBar(),
+      appBar: LoginPageAppBar(),
       body: _Body(),
     );
   }
@@ -26,11 +26,14 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state.blocProgress == BlocProgress.IS_SUCCESS &&
-            state.isReponseSuccess) {
-          Navigator.pushReplacementNamed(context, AppRoutes.rootPage);
+        if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+          context.read<AuthBloc>().setInitialValue();
 
-          // Navigator.pushNamedAndRemoveUntil(context, AppRoutes.rootPage, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.rootPage,
+            (route) => false,
+          );
         } else if (state.blocProgress == BlocProgress.FAILED) {
           showMessage(state.failureMessage, context, isError: true);
         }
@@ -58,14 +61,34 @@ class _BodyState extends State<_Body> {
                 ),
                 space24,
 
-                _firstNameField(context),
+                TextFormField(
+                  controller: _firstName,
+                  textInputAction: TextInputAction.next,
+                  decoration: authFieldDecoration(
+                    context,
+                    context.localizations.firstName,
+                  ),
+                  onChanged: (value) {
+                    context.read<AuthBloc>().saveFirstName(value);
+                  },
+                ),
                 space12,
 
-                _lastNameField(context),
+                TextFormField(
+                  controller: _lastName,
+                  textInputAction: TextInputAction.next,
+                  decoration: authFieldDecoration(
+                    context,
+                    context.localizations.lastName,
+                  ),
+                  onChanged: (value) {
+                    context.read<AuthBloc>().saveLastName(value);
+                  },
+                ),
 
                 space32,
                 ActionButton(
-                  isDisabled: false,
+                  isDisabled: !state.isFirstAndLastNameValid,
                   text: context.localizations.startlearning,
                   onTap: () {
                     final firstName = _firstName.text.trim();
@@ -84,22 +107,6 @@ class _BodyState extends State<_Body> {
           ),
         );
       },
-    );
-  }
-
-  TextFormField _firstNameField(BuildContext context) {
-    return TextFormField(
-      controller: _firstName,
-      textInputAction: TextInputAction.next,
-      decoration: authFieldDecoration(context, context.localizations.firstName),
-    );
-  }
-
-  TextFormField _lastNameField(BuildContext context) {
-    return TextFormField(
-      controller: _lastName,
-      textInputAction: TextInputAction.next,
-      decoration: authFieldDecoration(context, context.localizations.lastName),
     );
   }
 }

@@ -1,13 +1,13 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class SignInPageStepOne extends StatelessWidget {
-  const SignInPageStepOne({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: SignInPageAppBar(),
+      appBar: LoginPageAppBar(),
       body: _Body(),
     );
   }
@@ -54,7 +54,12 @@ class _BodyState extends State<_Body> {
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            Navigator.pushNamed(context, AppRoutes.codeVerificationPage);
+            context.read<AuthBloc>().makeBlocProgressNotStarted();
+
+            Navigator.pushNamed(
+              context,
+              AppRoutes.codeVerificationPage,
+            );
 
             context.read<AuthBloc>().setInitialValue();
             context.read<AuthBloc>().setPhoneNumber(

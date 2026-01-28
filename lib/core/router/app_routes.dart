@@ -7,13 +7,8 @@ abstract class AppRoutes {
   static const enterDetailsPage = 'enterDetailsPage';
 
   //sign in
-  static const signInPageStepOne = 'signInPageStepOne';
+  static const loginPage = 'loginPage';
   static const codeVerificationPage = 'codeVerificationPage';
-
-  //forgot password
-  static const forgotPasswordPage = 'forgotPasswordPage';
-  static const forgotPasswordSetNewPassword = 'forgotPasswordSetNewPassword';
-  static const forgotPasswordResetPage = 'forgotPasswordResetPage';
 
   //root page
   static const rootPage = 'rootPage';

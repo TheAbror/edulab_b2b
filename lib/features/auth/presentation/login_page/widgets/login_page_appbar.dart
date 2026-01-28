@@ -1,7 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-class SignInPageAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const SignInPageAppBar({super.key});
+class LoginPageAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const LoginPageAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

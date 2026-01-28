@@ -14,6 +14,9 @@ class AuthState extends Equatable {
   final BlocProgress blocProgress;
   final String failureMessage;
   final String phoneNumber;
+  final String firstName;
+  final String lastName;
+  final bool isFirstAndLastNameValid;
 
   const AuthState({
     required this.request,
@@ -29,6 +32,9 @@ class AuthState extends Equatable {
     required this.blocProgress,
     required this.failureMessage,
     required this.phoneNumber,
+    required this.firstName,
+    required this.lastName,
+    required this.isFirstAndLastNameValid,
   });
 
   factory AuthState.initial() {
@@ -82,6 +88,9 @@ class AuthState extends Equatable {
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
       phoneNumber: '',
+      firstName: '',
+      lastName: '',
+      isFirstAndLastNameValid: false,
     );
   }
 
@@ -99,6 +108,9 @@ class AuthState extends Equatable {
     BlocProgress? blocProgress,
     String? failureMessage,
     String? phoneNumber,
+    String? firstName,
+    String? lastName,
+    bool? isFirstAndLastNameValid,
   }) {
     return AuthState(
       request: request ?? this.request,
@@ -115,6 +127,10 @@ class AuthState extends Equatable {
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      isFirstAndLastNameValid:
+          isFirstAndLastNameValid ?? this.isFirstAndLastNameValid,
     );
   }
 
@@ -133,5 +149,8 @@ class AuthState extends Equatable {
     blocProgress,
     failureMessage,
     phoneNumber,
+    firstName,
+    lastName,
+    isFirstAndLastNameValid,
   ];
 }
