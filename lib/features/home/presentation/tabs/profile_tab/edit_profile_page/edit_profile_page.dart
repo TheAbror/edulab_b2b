@@ -24,9 +24,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               space32,
-              if (db?.profile_photo != null &&
-                  db?.profile_photo?.original_url != '')
-                ProfilePhoto(context, db?.profile_photo?.original_url ?? ''),
+
+              ProfilePhoto(
+                context,
+                db?.profile_photo?.original_url ?? '',
+                db!,
+              ),
+
               space24,
               EditProfilePageItem(
                 label: 'First name',
