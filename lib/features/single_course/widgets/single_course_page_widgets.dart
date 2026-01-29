@@ -621,6 +621,7 @@ class CourseInfoHeader extends StatelessWidget {
                     onTap: () {
                       context.read<CoursesBloc>().enrollToCourse(
                         id,
+
                         (CourseEnrollmentResponse data) {
                           if (data.managerStatus == 'NEW') {
                             showMessage(
@@ -640,6 +641,13 @@ class CourseInfoHeader extends StatelessWidget {
                               arguments: id,
                             );
                           }
+                        },
+                        (String error) {
+                          showMessage(
+                            isError: true,
+                            error,
+                            context,
+                          );
                         },
                       );
                     },

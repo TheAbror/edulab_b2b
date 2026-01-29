@@ -90,7 +90,9 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                               ),
                               if (course.progress != null)
                                 Text(
-                                  '${course.progress ?? 0 / 100}%',
+                                  course.progress == 0
+                                      ? '0%'
+                                      : '${course.progress ?? 0 / 100}%',
                                   style: TextStyle(
                                     color: context.colors.fgMuted,
                                     fontSize: 12.sp,

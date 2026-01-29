@@ -95,6 +95,7 @@ class CoursesBloc extends Cubit<CoursesState> {
   void enrollToCourse(
     int courseID,
     ValueChanged<CourseEnrollmentResponse> onCall,
+    ValueChanged<String> errorCase,
   ) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -123,6 +124,8 @@ class CoursesBloc extends Cubit<CoursesState> {
           json.decode(response.error.toString()),
         );
 
+        errorCase.call(error.message ?? '');
+
         emit(
           state.copyWith(
             blocProgress: BlocProgress.FAILED,
@@ -131,6 +134,7 @@ class CoursesBloc extends Cubit<CoursesState> {
         );
       }
     } catch (e) {
+      //TODO aleady enrolled case
       emit(
         state.copyWith(
           blocProgress: BlocProgress.FAILED,
