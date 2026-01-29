@@ -1104,4 +1104,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get pleseEnterFirstLastName =>
       'Пожалуйста, введите ваше имя и фамилию.';
+
+  @override
+  String get yourRequestSuccessManagerWillContact =>
+      'Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.';
 }

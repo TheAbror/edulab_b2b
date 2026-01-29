@@ -621,17 +621,25 @@ class CourseInfoHeader extends StatelessWidget {
                     onTap: () {
                       context.read<CoursesBloc>().enrollToCourse(
                         id,
-                        () {
-                          Navigator.pushNamed(
-                            context,
-                            AppRoutes.enrolledCoursePage,
-                            arguments: id,
-                          );
+                        (CourseEnrollmentResponse data) {
+                          if (data.managerStatus == 'NEW') {
+                            showMessage(
+                              context
+                                  .localizations
+                                  .yourRequestSuccessManagerWillContact,
+                              context,
+                            );
+                          }
 
-                          showMessage(
-                            'Congratulations you have successfully enrolled',
-                            context,
-                          );
+                          if (data.managerStatus?.isEmpty == true ||
+                              data.managerStatus == 'ENROLLED') {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              AppRoutes.enrolledCoursePage,
+
+                              arguments: id,
+                            );
+                          }
                         },
                       );
                     },

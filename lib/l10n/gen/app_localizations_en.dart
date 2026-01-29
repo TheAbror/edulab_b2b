@@ -1106,4 +1106,8 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get pleseEnterFirstLastName =>
       'Please enter your first and last name.';
+
+  @override
+  String get yourRequestSuccessManagerWillContact =>
+      'Your request has been sent successfully. Our manager will contact you shortly.';
 }

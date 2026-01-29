@@ -139,20 +139,11 @@ class $AssetsImagesGen {
   AssetGenImage get networkImageErrorCase =>
       const AssetGenImage('assets/images/network_image_error_case.png');
 
-  /// File path: assets/images/recommended_course.png
-  AssetGenImage get recommendedCourse =>
-      const AssetGenImage('assets/images/recommended_course.png');
-
   /// Directory path: assets/images/stores
   $AssetsImagesStoresGen get stores => const $AssetsImagesStoresGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    avatarImg,
-    avatar,
-    networkImageErrorCase,
-    recommendedCourse,
-  ];
+  List<AssetGenImage> get values => [avatarImg, avatar, networkImageErrorCase];
 }
 
 class $AssetsLocalizationGen {

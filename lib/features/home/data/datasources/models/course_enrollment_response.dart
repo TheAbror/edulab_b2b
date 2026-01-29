@@ -8,10 +8,13 @@ class CourseEnrollmentResponse {
   final int id;
   @JsonKey(defaultValue: '')
   final String status;
+  @JsonKey(defaultValue: '', name: 'manager_status')
+  final String? managerStatus;
 
   const CourseEnrollmentResponse({
     required this.id,
     required this.status,
+    required this.managerStatus,
   });
 
   factory CourseEnrollmentResponse.fromJson(Map<String, dynamic> json) =>

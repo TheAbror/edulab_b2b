@@ -11,8 +11,13 @@ CourseEnrollmentResponse _$CourseEnrollmentResponseFromJson(
 ) => CourseEnrollmentResponse(
   id: (json['id'] as num?)?.toInt() ?? 0,
   status: json['status'] as String? ?? '',
+  managerStatus: json['manager_status'] as String? ?? '',
 );
 
 Map<String, dynamic> _$CourseEnrollmentResponseToJson(
   CourseEnrollmentResponse instance,
-) => <String, dynamic>{'id': instance.id, 'status': instance.status};
+) => <String, dynamic>{
+  'id': instance.id,
+  'status': instance.status,
+  'manager_status': instance.managerStatus,
+};

@@ -2247,6 +2247,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter your first and last name.'**
   String get pleseEnterFirstLastName;
+
+  /// No description provided for @yourRequestSuccessManagerWillContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request has been sent successfully. Our manager will contact you shortly.'**
+  String get yourRequestSuccessManagerWillContact;
 }
 
 class _AppLocalizationsDelegate

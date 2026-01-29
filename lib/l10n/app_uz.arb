@@ -715,5 +715,7 @@
   "continueLearningAndGrowing": "Leti bilan o'rganishda va o'sishda davom eting.",
   "@continueLearningAndGrowing": {},
   "pleseEnterFirstLastName": "Iltimos, ismingiz va familiyangizni kiriting.",
-  "@pleseEnterFirstLastName": {}
+  "@pleseEnterFirstLastName": {},
+  "yourRequestSuccessManagerWillContact": "Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.",
+  "@yourRequestSuccessManagerWillContact": {}
 }

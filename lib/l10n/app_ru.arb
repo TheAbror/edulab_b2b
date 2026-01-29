@@ -715,5 +715,7 @@
   "continueLearningAndGrowing": "Продолжайте учиться и развиваться вместе с Leti.",
   "@continueLearningAndGrowing": {},
   "pleseEnterFirstLastName": "Пожалуйста, введите ваше имя и фамилию.",
-  "@pleseEnterFirstLastName": {}
+  "@pleseEnterFirstLastName": {},
+  "yourRequestSuccessManagerWillContact": "Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.",
+  "@yourRequestSuccessManagerWillContact": {}
 }

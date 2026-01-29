@@ -92,7 +92,10 @@ class CoursesBloc extends Cubit<CoursesState> {
     }
   }
 
-  void enrollToCourse(int courseID, VoidCallback onCall) async {
+  void enrollToCourse(
+    int courseID,
+    ValueChanged<CourseEnrollmentResponse> onCall,
+  ) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = EnrollmentRequest(courseID: courseID);
@@ -106,9 +109,14 @@ class CoursesBloc extends Cubit<CoursesState> {
         final data = response.body;
 
         if (data != null) {
-          emit(state.copyWith(blocProgress: BlocProgress.LOADED));
+          emit(
+            state.copyWith(
+              enrollmentResponse: data,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
 
-          onCall();
+          onCall(data);
         }
       } else {
         final error = ErrorResponse.fromJson(

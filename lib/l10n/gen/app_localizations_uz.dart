@@ -1111,4 +1111,8 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get pleseEnterFirstLastName =>
       'Iltimos, ismingiz va familiyangizni kiriting.';
+
+  @override
+  String get yourRequestSuccessManagerWillContact =>
+      'Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.';
 }
