@@ -2259,6 +2259,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Requested'**
   String get requested;
+
+  /// No description provided for @singInToAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to access your courses, track progress, and continue learning.'**
+  String get singInToAccess;
 }
 
 class _AppLocalizationsDelegate

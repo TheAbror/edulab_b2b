@@ -74,7 +74,7 @@ class _HomeTabState extends State<HomeTab> {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          AppRoutes.allCoursesPage,
+                          AppRoutes.loginPage,
                         );
                       },
                     ),

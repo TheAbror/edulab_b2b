@@ -719,5 +719,7 @@
   "yourRequestSuccessManagerWillContact": "Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.",
   "@yourRequestSuccessManagerWillContact": {},
   "requested": "So'ralgan",
-  "@requested": {}
+  "@requested": {},
+  "singInToAccess": "Kurslaringizga kirish, taraqqiyotni kuzatish va o'qishni davom ettirish uchun tizimga kiring.",
+  "@singInToAccess": {}
 }

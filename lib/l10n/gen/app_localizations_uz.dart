@@ -1118,4 +1118,8 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get requested => 'So\'ralgan';
+
+  @override
+  String get singInToAccess =>
+      'Kurslaringizga kirish, taraqqiyotni kuzatish va o\'qishni davom ettirish uchun tizimga kiring.';
 }

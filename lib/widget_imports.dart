@@ -166,3 +166,4 @@ export 'package:leti_mobile/features/learning_page/widgets/open_course_by_topic_
 export 'dart:async';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
 export 'package:leti_mobile/main.dart';
+export 'package:leti_mobile/features/home/presentation/widgets/un_authorized_user.dart';

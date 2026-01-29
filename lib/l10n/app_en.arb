@@ -719,5 +719,7 @@
   "yourRequestSuccessManagerWillContact": "Your request has been sent successfully. Our manager will contact you shortly.",
   "@yourRequestSuccessManagerWillContact": {},
   "requested": "Requested",
-  "@requested": {}
+  "@requested": {},
+  "singInToAccess": "Sign in to access your courses, track progress, and continue learning.",
+  "@singInToAccess": {}
 }

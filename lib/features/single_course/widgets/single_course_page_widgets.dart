@@ -329,7 +329,7 @@ class CourseInfoAuthorsCoursesRatings extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           width: 2.w,
-          color: Theme.of(context).colorScheme.tertiaryContainer,
+          color: context.colors.borderMuted.withOpacity(0.15),
         ),
       ),
       child: IntrinsicHeight(

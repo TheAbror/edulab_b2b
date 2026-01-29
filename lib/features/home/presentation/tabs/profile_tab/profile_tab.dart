@@ -6,7 +6,10 @@ class ProfileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => ProfileBloc(), child: _Body());
+    return BlocProvider(
+      create: (context) => ProfileBloc(),
+      child: _Body(),
+    );
   }
 }
 
@@ -14,64 +17,78 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lang = context.localizations;
+    final LocalStorageUserInfo? db = PreferencesServices.getUserInfo();
 
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //! AppBar
-            ProfileTabAppBar(),
+    return db == null || db.firstName?.isEmpty == true
+        ? Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: UnAuthorizedUser(),
+          )
+        : SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //! AppBar
+                  ProfileTabAppBar(),
 
-            //! Video preferences
-            ProfileTabHeader(lang.videoPreferences, context),
-            ProfileTabSubHeader(context, lang.downloadOptions, () {}),
-            ProfileTabSubHeader(context, lang.videoPlayBackOptions, () {}),
-            space24,
-
-            //! Account settings
-            ProfileTabHeader(lang.accountSettings, context),
-
-            BlocBuilder<LocalizationBloc, LocalizationState>(
-              builder: (context, localizationState) {
-                return ProfileTabSubHeader(
-                  context,
-                  lang.language,
-                  () => languageSelectionDialog(context),
-                  selectedResult: returnLanguageName(
-                    localizationState.languageCode ?? '',
+                  //! Video preferences
+                  ProfileTabHeader(lang.videoPreferences, context),
+                  ProfileTabSubHeader(context, lang.downloadOptions, () {}),
+                  ProfileTabSubHeader(
+                    context,
+                    lang.videoPlayBackOptions,
+                    () {},
                   ),
-                );
-              },
+                  space24,
+
+                  //! Account settings
+                  ProfileTabHeader(lang.accountSettings, context),
+
+                  BlocBuilder<LocalizationBloc, LocalizationState>(
+                    builder: (context, localizationState) {
+                      return ProfileTabSubHeader(
+                        context,
+                        lang.language,
+                        () => languageSelectionDialog(context),
+                        selectedResult: returnLanguageName(
+                          localizationState.languageCode ?? '',
+                        ),
+                      );
+                    },
+                  ),
+                  space24,
+
+                  //! Appearance
+                  ProfileTabHeader(lang.appearance, context),
+                  ProfileTabSubHeader(
+                    context,
+                    lang.theme,
+                    () => themeSelectionDialog(context),
+                  ),
+                  space24,
+
+                  //! Help and support
+                  ProfileTabHeader(lang.helpAndSupport, context),
+                  ProfileTabSubHeader(
+                    context,
+                    lang.frequesntlyAskedQuestions,
+                    () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.frequentlyAskedQuestionsPage,
+                      );
+                    },
+                  ),
+                  ProfileTabSubHeader(context, lang.aboutEdulab, () {}),
+
+                  space24,
+                  ProfileTabLogOutButton(),
+                  space40,
+                ],
+              ),
             ),
-            space24,
-
-            //! Appearance
-            ProfileTabHeader(lang.appearance, context),
-            ProfileTabSubHeader(
-              context,
-              lang.theme,
-              () => themeSelectionDialog(context),
-            ),
-            space24,
-
-            //! Help and support
-            ProfileTabHeader(lang.helpAndSupport, context),
-            ProfileTabSubHeader(context, lang.frequesntlyAskedQuestions, () {
-              Navigator.pushNamed(
-                context,
-                AppRoutes.frequentlyAskedQuestionsPage,
-              );
-            }),
-            ProfileTabSubHeader(context, lang.aboutEdulab, () {}),
-
-            space24,
-            ProfileTabLogOutButton(),
-            space40,
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

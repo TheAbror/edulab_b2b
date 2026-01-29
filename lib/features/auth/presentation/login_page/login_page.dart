@@ -88,6 +88,7 @@ class _BodyState extends State<_Body> {
                 AppText.paragraph1(
                   context.localizations.continueLearningAndGrowing,
                   color: context.colors.fgSoft,
+                  maxLines: 2,
                 ),
                 space24,
                 TextFormField(

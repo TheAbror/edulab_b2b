@@ -92,7 +92,9 @@ class _RootPageState extends State<RootPage> {
   }
 
   Widget _appBar(context, selectedIndex) {
-    if (selectedIndex == 1) {
+    final LocalStorageUserInfo? db = PreferencesServices.getUserInfo();
+
+    if (selectedIndex == 1 && db != null) {
       return LearningTabAppBar();
     }
     if (selectedIndex == 2) {

@@ -719,5 +719,7 @@
   "yourRequestSuccessManagerWillContact": "Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.",
   "@yourRequestSuccessManagerWillContact": {},
   "requested": "Запрошено",
-  "@requested": {}
+  "@requested": {},
+  "singInToAccess": "Войдите в систему, чтобы получить доступ к своим курсам, отслеживать прогресс и продолжить обучение.",
+  "@singInToAccess": {}
 }
