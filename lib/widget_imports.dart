@@ -73,8 +73,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/edit_pro
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/profile_image_dialog.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/widgets/profile_tab_pages_app_bar.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/widgets/profile_tab_subheader_with_vertical_space.dart';
-export 'package:leti_mobile/features/home/presentation/bloc/account_security_bloc.dart';
-export 'package:leti_mobile/features/home/data/datasources/services/certificates_service.dart';
 export 'package:leti_mobile/features/home/data/datasources/services/courses_services.dart';
 export 'package:leti_mobile/features/home/data/datasources/services/home_services.dart';
 export 'package:leti_mobile/features/splash/data/datasources/app_version_service.dart';
@@ -113,7 +111,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/hom
 export 'package:leti_mobile/features/single_course/single_course_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/home_authors_item.dart';
 export 'package:leti_mobile/core/utils/something_went_wrong.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/certificates_page/widgets/certificates_item.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/home_courses/home_course_resume_card.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/appBars/learning_resume_course_appbar.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/learning/learning_bottom_navigation.dart';
@@ -133,9 +130,6 @@ export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/aut
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/student_profile_page.dart';
 export 'package:leti_mobile/features/learning_page/learning_page.dart';
 export 'package:leti_mobile/features/chat/chat_page.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/account_security_page/account_security_page.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/account_security_page/privacy_settings_page.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/certificates_page/certificates_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/edit_profile_page/edit_profile_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/profile_tab/frequently_asked_questions_page/frequently_asked_questions_page.dart';
 export 'package:leti_mobile/features/web_view/web_view_page.dart';

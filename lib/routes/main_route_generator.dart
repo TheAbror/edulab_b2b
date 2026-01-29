@@ -56,21 +56,6 @@ class MainRouteGenerator {
           builder: (_) => FrequentlyAskedQuestionsPage(),
         );
 
-      case AppRoutes.certificatesPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => CertificatesPage(),
-        );
-
-      case AppRoutes.accountSecurityPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => AccountSecurityPage(),
-        );
-
-      case AppRoutes.privacySettingsPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => PrivacySettingsPage(),
-        );
-
       case AppRoutes.homeTab:
         return CustomCupertinoStyleNavigationRoute(builder: (_) => HomeTab());
 

@@ -28,7 +28,6 @@ class AppStrings {
   static const createNewPassword = 'reset_password';
   //others
   static const teacher = 'teacher/';
-  static const certificate = 'certificate/';
   static const internalErrorMessage = 'Internal error';
 }
 

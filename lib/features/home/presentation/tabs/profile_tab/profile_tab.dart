@@ -24,17 +24,6 @@ class _Body extends StatelessWidget {
             //! AppBar
             ProfileTabAppBar(),
 
-            //! Achievements
-            ProfileTabHeader(lang.achievements, context),
-            ProfileTabSubHeader(context, lang.certificates, () {
-              Navigator.pushNamed(
-                context,
-                AppRoutes.certificatesPage,
-                arguments: context,
-              );
-            }),
-            space24,
-
             //! Video preferences
             ProfileTabHeader(lang.videoPreferences, context),
             ProfileTabSubHeader(context, lang.downloadOptions, () {}),
@@ -43,15 +32,7 @@ class _Body extends StatelessWidget {
 
             //! Account settings
             ProfileTabHeader(lang.accountSettings, context),
-            ProfileTabSubHeader(context, lang.accountSecurity, () {
-              Navigator.pushNamed(
-                context,
-                AppRoutes.accountSecurityPage,
-                arguments: context,
-              );
-            }),
-            ProfileTabSubHeader(context, lang.learningReminders, () {}),
-            ProfileTabSubHeader(context, lang.emailNotifications, () {}),
+
             BlocBuilder<LocalizationBloc, LocalizationState>(
               builder: (context, localizationState) {
                 return ProfileTabSubHeader(
@@ -73,7 +54,6 @@ class _Body extends StatelessWidget {
               lang.theme,
               () => themeSelectionDialog(context),
             ),
-            ProfileTabSubHeader(context, lang.fonSizeInSteps, () {}),
             space24,
 
             //! Help and support

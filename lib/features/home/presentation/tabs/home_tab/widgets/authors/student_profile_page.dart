@@ -100,19 +100,19 @@ class StudentProfilePage extends StatelessWidget {
                   ),
                 ),
                 space16,
-                ListView.builder(
-                  itemCount: 2,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return CertificatesItem(
-                      text: 'Foundations of User Experience (UX) Design',
-                      certificateUrl: '',
-                      grade: 'Grade Achieved: 95.55%',
-                      buttonText: 'View certificate',
-                    );
-                  },
-                ),
+                // ListView.builder(
+                //   itemCount: 2,
+                //   shrinkWrap: true,
+                //   physics: NeverScrollableScrollPhysics(),
+                //   itemBuilder: (context, index) {
+                //     return CertificatesItem(
+                //       text: 'Foundations of User Experience (UX) Design',
+                //       certificateUrl: '',
+                //       grade: 'Grade Achieved: 95.55%',
+                //       buttonText: 'View certificate',
+                //     );
+                //   },
+                // ),
               ],
             ),
           );

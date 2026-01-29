@@ -10,7 +10,6 @@ class ApiProvider {
   static late HomeServices homeServices;
   static late CourseServices coursesServices;
   static late SingleCourseServices singleCourseServices;
-  static late CertificatesServices certificatesServices;
   static late LearningTabServices learningTabServices;
 
   ///Services
@@ -25,7 +24,6 @@ class ApiProvider {
         HomeServices.create(),
         CourseServices.create(),
         SingleCourseServices.create(),
-        CertificatesServices.create(),
         LearningTabServices.create(),
       ],
       interceptors: getInterceptors(),
@@ -37,7 +35,6 @@ class ApiProvider {
     homeServices = _client.getService<HomeServices>();
     coursesServices = _client.getService<CourseServices>();
     singleCourseServices = _client.getService<SingleCourseServices>();
-    certificatesServices = _client.getService<CertificatesServices>();
     learningTabServices = _client.getService<LearningTabServices>();
   }
 
