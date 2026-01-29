@@ -1108,4 +1108,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get yourRequestSuccessManagerWillContact =>
       'Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.';
+
+  @override
+  String get requested => 'Запрошено';
 }

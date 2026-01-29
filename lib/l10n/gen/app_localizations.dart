@@ -2253,6 +2253,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your request has been sent successfully. Our manager will contact you shortly.'**
   String get yourRequestSuccessManagerWillContact;
+
+  /// No description provided for @requested.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested'**
+  String get requested;
 }
 
 class _AppLocalizationsDelegate

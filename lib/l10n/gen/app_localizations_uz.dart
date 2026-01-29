@@ -1115,4 +1115,7 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get yourRequestSuccessManagerWillContact =>
       'Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.';
+
+  @override
+  String get requested => 'So\'ralgan';
 }

@@ -13,6 +13,7 @@ class SingleCourseState extends Equatable {
   final CurrentlyActive? lastStoppedStep;
   final bool navigateToLearning;
   final int courseID;
+  final bool isRequested;
 
   const SingleCourseState({
     required this.singleCourse,
@@ -26,6 +27,7 @@ class SingleCourseState extends Equatable {
     required this.lastStoppedStep,
     required this.navigateToLearning,
     required this.courseID,
+    required this.isRequested,
   });
 
   factory SingleCourseState.initial() {
@@ -79,6 +81,7 @@ class SingleCourseState extends Equatable {
       lastStoppedStep: CurrentlyActive(chapterID: 0, topicID: 0, stepID: 0),
       navigateToLearning: false,
       courseID: 0,
+      isRequested: false,
     );
   }
 
@@ -94,6 +97,7 @@ class SingleCourseState extends Equatable {
     CurrentlyActive? lastStoppedStep,
     bool? navigateToLearning,
     int? courseID,
+    bool? isRequested,
   }) {
     return SingleCourseState(
       singleCourse: singleCourse ?? this.singleCourse,
@@ -108,6 +112,7 @@ class SingleCourseState extends Equatable {
       lastStoppedStep: lastStoppedStep ?? this.lastStoppedStep,
       navigateToLearning: navigateToLearning ?? this.navigateToLearning,
       courseID: courseID ?? this.courseID,
+      isRequested: isRequested ?? this.isRequested,
     );
   }
 
@@ -124,5 +129,6 @@ class SingleCourseState extends Equatable {
     lastStoppedStep,
     navigateToLearning,
     courseID,
+    isRequested,
   ];
 }

@@ -1110,4 +1110,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get yourRequestSuccessManagerWillContact =>
       'Your request has been sent successfully. Our manager will contact you shortly.';
+
+  @override
+  String get requested => 'Requested';
 }

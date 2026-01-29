@@ -14,6 +14,10 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
     );
   }
 
+  void manageRequested(bool value) {
+    emit(state.copyWith(isRequested: value));
+  }
+
   void manageNavigateToLearning(bool result) {
     emit(state.copyWith(navigateToLearning: result));
   }

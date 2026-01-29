@@ -103,6 +103,7 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                           space6,
                           LinearProgressIndicator(
                             minHeight: 8.h,
+                            //TODO
                             value: (course.progress != null)
                                 ? (course.progress ?? 0) / 100
                                 : 0,

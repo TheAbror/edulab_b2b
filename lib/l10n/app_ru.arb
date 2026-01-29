@@ -717,5 +717,7 @@
   "pleseEnterFirstLastName": "Пожалуйста, введите ваше имя и фамилию.",
   "@pleseEnterFirstLastName": {},
   "yourRequestSuccessManagerWillContact": "Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.",
-  "@yourRequestSuccessManagerWillContact": {}
+  "@yourRequestSuccessManagerWillContact": {},
+  "requested": "Запрошено",
+  "@requested": {}
 }

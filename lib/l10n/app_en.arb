@@ -717,5 +717,7 @@
   "pleseEnterFirstLastName": "Please enter your first and last name.",
   "@pleseEnterFirstLastName": {},
   "yourRequestSuccessManagerWillContact": "Your request has been sent successfully. Our manager will contact you shortly.",
-  "@yourRequestSuccessManagerWillContact": {}
+  "@yourRequestSuccessManagerWillContact": {},
+  "requested": "Requested",
+  "@requested": {}
 }

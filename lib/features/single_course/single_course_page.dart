@@ -1,3 +1,4 @@
+import 'package:leti_mobile/features/single_course/widgets/course_info_header.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class SingleCoursePage extends StatelessWidget {
@@ -7,8 +8,14 @@ class SingleCoursePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRequested = context.read<CoursesBloc>().state.enrollmentStatus;
+
     return BlocProvider(
-      create: (context) => SingleCourseBloc()..getSingleCourse(id),
+      create: (context) => SingleCourseBloc()
+        ..getSingleCourse(id)
+        ..manageRequested(
+          isRequested == 'REQUESTED' ? true : false,
+        ),
       child: Scaffold(
         appBar: CourseInfoAppBar(id: id),
         body: SingleCourseBody(
