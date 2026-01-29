@@ -546,6 +546,8 @@ class CourseInfoHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final enrollmentStatus = context.read<CoursesBloc>().state.enrollmentStatus;
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
         return Container(
@@ -617,39 +619,44 @@ class CourseInfoHeader extends StatelessWidget {
                   space12,
 
                   ActionButton(
-                    text: context.localizations.enrollToThisCourse,
+                    text: enrollmentStatus.isNotEmpty
+                        ? enrollmentStatus
+                        : context.localizations.enrollToThisCourse,
+                    isDisabled: enrollmentStatus.isNotEmpty ? true : false,
                     onTap: () {
-                      context.read<CoursesBloc>().enrollToCourse(
-                        id,
+                      if (enrollmentStatus.isEmpty) {
+                        context.read<CoursesBloc>().enrollToCourse(
+                          id,
 
-                        (CourseEnrollmentResponse data) {
-                          if (data.managerStatus == 'NEW') {
+                          (CourseEnrollmentResponse data) {
+                            if (data.managerStatus == 'NEW') {
+                              showMessage(
+                                context
+                                    .localizations
+                                    .yourRequestSuccessManagerWillContact,
+                                context,
+                              );
+                            }
+
+                            if (data.managerStatus?.isEmpty == true ||
+                                data.managerStatus == 'ENROLLED') {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                AppRoutes.enrolledCoursePage,
+
+                                arguments: id,
+                              );
+                            }
+                          },
+                          (String error) {
                             showMessage(
-                              context
-                                  .localizations
-                                  .yourRequestSuccessManagerWillContact,
+                              isError: true,
+                              error,
                               context,
                             );
-                          }
-
-                          if (data.managerStatus?.isEmpty == true ||
-                              data.managerStatus == 'ENROLLED') {
-                            Navigator.pushReplacementNamed(
-                              context,
-                              AppRoutes.enrolledCoursePage,
-
-                              arguments: id,
-                            );
-                          }
-                        },
-                        (String error) {
-                          showMessage(
-                            isError: true,
-                            error,
-                            context,
-                          );
-                        },
-                      );
+                          },
+                        );
+                      }
                     },
                   ),
                   space12,

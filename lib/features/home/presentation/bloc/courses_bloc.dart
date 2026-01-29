@@ -161,6 +161,7 @@ class CoursesBloc extends Cubit<CoursesState> {
           isEnrolled = data.status == 'STARTED';
           emit(
             state.copyWith(
+              enrollmentStatus: data.status,
               isEnrolled: data.status == 'STARTED',
               singleCourseBlocProgress: BlocProgress.LOADED,
             ),

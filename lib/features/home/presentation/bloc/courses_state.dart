@@ -8,6 +8,7 @@ class CoursesState extends Equatable {
   final List<CourseShortInfo> courseByCategory;
   final HomeCoursesResponse homeCourses;
   final CourseEnrollmentResponse enrollmentResponse;
+  final String enrollmentStatus;
 
   //
   final List<int> expandedSubcategoryIndexes;
@@ -22,6 +23,7 @@ class CoursesState extends Equatable {
     required this.courseByCategory,
     required this.homeCourses,
     required this.enrollmentResponse,
+    required this.enrollmentStatus,
 
     required this.categories,
     required this.expandedSubcategoryIndexes,
@@ -82,6 +84,7 @@ class CoursesState extends Equatable {
         status: '',
         managerStatus: '',
       ),
+      enrollmentStatus: '',
       coursesAll: const [],
       currentCourse: const [],
       courseByCategory: const [],
@@ -105,6 +108,7 @@ class CoursesState extends Equatable {
     BlocProgress? singleCourseBlocProgress,
     HomeCoursesResponse? homeCourses,
     CourseEnrollmentResponse? enrollmentResponse,
+    String? enrollmentStatus,
 
     String? failureMessage,
     bool? isEnrolled,
@@ -123,6 +127,7 @@ class CoursesState extends Equatable {
       failureMessage: failureMessage ?? this.failureMessage,
       isEnrolled: isEnrolled ?? this.isEnrolled,
       enrollmentResponse: enrollmentResponse ?? this.enrollmentResponse,
+      enrollmentStatus: enrollmentStatus ?? this.enrollmentStatus,
     );
   }
 
@@ -140,5 +145,6 @@ class CoursesState extends Equatable {
     failureMessage,
     isEnrolled,
     enrollmentResponse,
+    enrollmentStatus,
   ];
 }
