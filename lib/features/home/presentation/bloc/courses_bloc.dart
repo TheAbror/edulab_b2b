@@ -134,7 +134,6 @@ class CoursesBloc extends Cubit<CoursesState> {
         );
       }
     } catch (e) {
-      //TODO aleady enrolled case
       emit(
         state.copyWith(
           blocProgress: BlocProgress.FAILED,

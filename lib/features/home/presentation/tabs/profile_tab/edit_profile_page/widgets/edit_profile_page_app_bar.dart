@@ -11,7 +11,10 @@ AppBar EditProfilePageAppBar(BuildContext context) {
         CustomAppBarBackButton(),
         SizedBox(
           width: 256.w,
-          child: Text('Edit profile', style: TextStyle(fontSize: 16.sp)),
+          child: Text(
+            context.localizations.editProfile,
+            style: TextStyle(fontSize: 16.sp),
+          ),
         ),
         Assets.icons.courses.moreIcon.svg(),
       ],

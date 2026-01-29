@@ -33,7 +33,9 @@ class SingleCourseContent extends StatelessWidget {
             ),
           )
         : Center(
-            child: AppText.paragraph1('No results'),
+            child: AppText.paragraph1(
+              context.localizations.noResults,
+            ),
           );
   }
 }

@@ -35,7 +35,7 @@ class CertificatesPage extends StatelessWidget {
                     ? Expanded(
                         child: Center(
                           child: Text(
-                            'No results',
+                            context.localizations.noResults,
                             style: TextStyle(fontSize: 16.sp),
                           ),
                         ),
@@ -76,7 +76,7 @@ class CertificatesPage extends StatelessWidget {
           CustomAppBarBackButton(),
           SizedBox(width: 8.w),
           Text(
-            'Certificates',
+            context.localizations.certificates,
             style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
           ),
         ],

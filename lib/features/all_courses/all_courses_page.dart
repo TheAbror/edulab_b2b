@@ -59,7 +59,11 @@ class _Body extends StatelessWidget {
         }
 
         if (categoryID != null && state.courseByCategory.isEmpty) {
-          return Center(child: AppText.headline2('No results'));
+          return Center(
+            child: AppText.headline2(
+              context.localizations.noResults,
+            ),
+          );
         }
 
         return ListView(
