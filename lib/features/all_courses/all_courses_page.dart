@@ -15,7 +15,7 @@ class AllCoursesPage extends StatelessWidget {
         if (idAndTitle?.id != null && idAndTitle?.id != 0) {
           bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);
         } else {
-          bloc.getHomeCourses();
+          bloc.getAllCourses();
         }
 
         return bloc;
@@ -59,6 +59,14 @@ class _Body extends StatelessWidget {
         }
 
         if (categoryID != null && state.courseByCategory.isEmpty) {
+          return Center(
+            child: AppText.headline2(
+              context.localizations.noResults,
+            ),
+          );
+        }
+
+        if (state.coursesAll.isEmpty) {
           return Center(
             child: AppText.headline2(
               context.localizations.noResults,

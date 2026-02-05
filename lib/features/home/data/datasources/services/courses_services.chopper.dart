@@ -28,9 +28,18 @@ final class _$CourseServices extends CourseServices {
   }
 
   @override
-  Future<Response<HomeCoursesResponse>> getAllPossibleCourses() {
+  Future<Response<HomeCoursesResponse>> getAllCourses() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/course/?search=&page=0',
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/',
+    );
+    final Request $request = Request('GET', $url, client.baseUrl);
+    return client.send<HomeCoursesResponse, HomeCoursesResponse>($request);
+  }
+
+  @override
+  Future<Response<HomeCoursesResponse>> getAllCoursesAsUnauthorized() {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/public/course/all',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<HomeCoursesResponse, HomeCoursesResponse>($request);

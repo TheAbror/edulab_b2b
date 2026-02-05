@@ -27,26 +27,27 @@ class _BodyState extends State<_Body> {
               children: [
                 CourseTabBanner(),
                 space40,
-
-                OurCoursesWidget(
-                  courses: state.homeCourses,
-                  onTapViewAll: () {
-                    Navigator.pushNamed(context, AppRoutes.allCoursesPage);
-                  },
-                ),
+                if (state.categories.isNotEmpty)
+                  OurCoursesWidget(
+                    courses: state.homeCourses,
+                    onTapViewAll: () {
+                      Navigator.pushNamed(context, AppRoutes.allCoursesPage);
+                    },
+                  ),
 
                 space40,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Text(
-                    context.localizations.categories,
-                    style: TextStyle(
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -1,
+                if (state.categories.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Text(
+                      context.localizations.categories,
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -1,
+                      ),
                     ),
                   ),
-                ),
                 space16,
                 state.categories.isNotEmpty
                     ? GridView.builder(
@@ -75,12 +76,13 @@ class _BodyState extends State<_Body> {
                       )
                     : SizedBox.shrink(),
                 space20,
-                CourseInfoShowAllButton(
-                  isPaddingNeeded: true,
-                  onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.allCategoriesPage);
-                  },
-                ),
+                if (state.categories.isNotEmpty)
+                  CourseInfoShowAllButton(
+                    isPaddingNeeded: true,
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.allCategoriesPage);
+                    },
+                  ),
                 space40,
               ],
             );

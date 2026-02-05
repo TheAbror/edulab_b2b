@@ -5,7 +5,7 @@ class LearningTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LocalStorageUserInfo? db = PreferencesServices.getUserInfo();
+    final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
     return Padding(
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
@@ -16,7 +16,7 @@ class LearningTab extends StatelessWidget {
               final inProgressItem = state.inProgress;
               final completedItem = state.completed;
 
-              return db == null || db.firstName?.isEmpty == true
+              return isAuthorized == null
                   ? UnAuthorizedUser()
                   : Expanded(
                       child: TabBarView(

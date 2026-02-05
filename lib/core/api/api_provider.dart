@@ -42,7 +42,7 @@ class ApiProvider {
       NotAuthorizedInterceptor();
 
   static getInterceptors({String? language}) {
-    final token = PreferencesServices.getToken();
+    final String? token = PreferencesServices.getToken();
 
     List<Interceptor> interceptors = [];
 

@@ -11,13 +11,11 @@ abstract class CourseServices extends ChopperService {
   @Get(path: AppStrings.categoryAll)
   Future<Response<List<CategoryModel>>> getAllCategories();
 
-  // https://leti.slash.uz/edulab_corp/api/v1/core/course/
-  // @Get(path: AppStrings.course)
-  @Get(
-    path:
-        'https://leti.slash.uz/edulab_corp/api/v1/core/course/?search=&page=0',
-  )
-  Future<Response<HomeCoursesResponse>> getAllPossibleCourses();
+  @Get(path: '${AppStrings.course}/')
+  Future<Response<HomeCoursesResponse>> getAllCourses();
+
+  @Get(path: AppStrings.currentCourseAsUnauthorized)
+  Future<Response<HomeCoursesResponse>> getAllCoursesAsUnauthorized();
 
   @Get(path: AppStrings.currentCourse)
   Future<Response<List<CourseShortInfo>>> getCurrentCourse();

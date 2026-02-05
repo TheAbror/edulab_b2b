@@ -23,6 +23,8 @@ class _RootPageState extends State<RootPage> {
   void initState() {
     super.initState();
 
+    final bool? isAuthorized = PreferencesServices.getAuthStatus();
+
     notAuthorizedStreamSubscription = ApiProvider
         .notAuthorizedInterceptor
         .controller
@@ -51,11 +53,16 @@ class _RootPageState extends State<RootPage> {
         );
 
     context.read<CoursesBloc>().getAllCategories();
-    context.read<CoursesBloc>().getHomeCourses();
-    context.read<CoursesBloc>().getCurrentCourse();
-    context.read<LearningTabBloc>().getInProgress();
-    context.read<LearningTabBloc>().getCompleted();
-    context.read<LearningTabBloc>().getStatistics();
+
+    if (isAuthorized == true) {
+      context.read<CoursesBloc>().getAllCourses();
+      context.read<CoursesBloc>().getCurrentCourse();
+      context.read<LearningTabBloc>().getInProgress();
+      context.read<LearningTabBloc>().getCompleted();
+      context.read<LearningTabBloc>().getStatistics();
+    } else {
+      context.read<CoursesBloc>().getAllCoursesAsUnauthorized();
+    }
 
     final state = context.read<HomeBloc>().state;
     pageController = PageController(initialPage: state.tabIndex);

@@ -78,7 +78,7 @@ class AuthBloc extends Cubit<AuthState> {
               final user = data.userInfo;
 
               if (user != null && data.token != null) {
-                // PreferencesServices.saveToken(data.token ?? '');
+                PreferencesServices.saveToken(data.token ?? '');
                 PreferencesServices.saveAuthStatus(true);
                 PreferencesServices.saveUserInfo(
                   LocalStorageUserInfo(

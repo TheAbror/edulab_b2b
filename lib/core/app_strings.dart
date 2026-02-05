@@ -8,7 +8,6 @@ class AppStrings {
   static const signInStepOne = 'signin/step_one';
   static const signInStepTwo = 'signin/step_two';
   static const signInStepThree = 'signin/step_three';
-  static const course = 'course';
   static const coursesAll = '$course/all';
   static const categoryAll = 'category/all';
   static const learningTabInProgress = '$course/own?status=IN_PROGRESS';
@@ -23,6 +22,7 @@ class AppStrings {
   static const completeStep = 'learning/complete';
   //authorized
   static const currentCourse = '$course/own';
+  static const course = 'course';
   //unauthorized
   static const currentCourseAsUnauthorized = 'public/course/all';
 

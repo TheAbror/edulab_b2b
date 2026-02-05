@@ -17,9 +17,9 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lang = context.localizations;
-    final LocalStorageUserInfo? db = PreferencesServices.getUserInfo();
+    final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
-    return db == null || db.firstName?.isEmpty == true
+    return isAuthorized == null
         ? Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: UnAuthorizedUser(),

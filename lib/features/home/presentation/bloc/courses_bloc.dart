@@ -47,12 +47,11 @@ class CoursesBloc extends Cubit<CoursesState> {
     }
   }
 
-  void getHomeCourses() async {
+  void getAllCourses() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.coursesServices
-          .getAllPossibleCourses();
+      final response = await ApiProvider.coursesServices.getAllCourses();
 
       if (response.isSuccessful) {
         final data = response.body;
@@ -62,7 +61,50 @@ class CoursesBloc extends Cubit<CoursesState> {
             state.copyWith(
               homeCourses: data,
               coursesAll: data.content,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
 
+          print(data);
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+      debugPrint('$e');
+    }
+  }
+
+  void getAllCoursesAsUnauthorized() async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.coursesServices
+          .getAllCoursesAsUnauthorized();
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              homeCourses: data,
+              coursesAll: data.content,
               blocProgress: BlocProgress.LOADED,
             ),
           );
@@ -193,49 +235,6 @@ class CoursesBloc extends Cubit<CoursesState> {
 
     return isEnrolled;
   }
-
-  // all courses for recommended
-
-  // void getAllPossibleCourses() async {
-  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-  //   try {
-  //     final response = await ApiProvider.coursesServices
-  //         .getAllPossibleCourses();
-
-  //     if (response.isSuccessful) {
-  //       final data = response.body;
-
-  //       if (data != null) {
-  //         emit(
-  //           state.copyWith(
-  //             coursesAll: data,
-  //             blocProgress: BlocProgress.LOADED,
-  //           ),
-  //         );
-  //       }
-  //     } else {
-  //       final error = ErrorResponse.fromJson(
-  //         json.decode(response.error.toString()),
-  //       );
-
-  //       emit(
-  //         state.copyWith(
-  //           blocProgress: BlocProgress.FAILED,
-  //           failureMessage: error.message,
-  //         ),
-  //       );
-  //     }
-  //   } catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         blocProgress: BlocProgress.FAILED,
-  //         failureMessage: AppStrings.internalErrorMessage,
-  //       ),
-  //     );
-  //     debugPrint('$e');
-  //   }
-  // }
 
   void getCurrentCourse() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

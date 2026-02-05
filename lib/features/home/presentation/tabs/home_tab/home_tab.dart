@@ -10,12 +10,17 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   void myInit() {
-    context.read<CoursesBloc>().getAllCategories();
-    context.read<CoursesBloc>().getHomeCourses();
-    context.read<CoursesBloc>().getCurrentCourse();
-    context.read<LearningTabBloc>().getInProgress();
-    context.read<LearningTabBloc>().getCompleted();
-    context.read<LearningTabBloc>().getStatistics();
+    final bool? isAuthorized = PreferencesServices.getAuthStatus();
+
+    if (isAuthorized == true) {
+      context.read<CoursesBloc>().getAllCourses();
+      context.read<CoursesBloc>().getCurrentCourse();
+      context.read<LearningTabBloc>().getInProgress();
+      context.read<LearningTabBloc>().getCompleted();
+      context.read<LearningTabBloc>().getStatistics();
+    } else {
+      context.read<CoursesBloc>().getAllCoursesAsUnauthorized();
+    }
   }
 
   bool isConnectedAgain = false;
