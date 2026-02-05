@@ -18,19 +18,19 @@ class HomeCoursesResponse {
 @JsonSerializable()
 class MediaDTO {
   @JsonKey(defaultValue: '')
-  final String original_name;
+  final String? original_name;
   @JsonKey(defaultValue: '')
-  final String src;
+  final String? src;
   @JsonKey(defaultValue: 0)
-  final int file_size;
+  final int? file_size;
   @JsonKey(defaultValue: '')
-  final String original_url;
+  final String? original_url;
   @JsonKey(defaultValue: '')
-  final String thumb_url;
+  final String? thumb_url;
   @JsonKey(defaultValue: '')
-  final String url;
+  final String? url;
   @JsonKey(defaultValue: '')
-  final String extension;
+  final String? extension;
 
   MediaDTO({
     required this.original_name,

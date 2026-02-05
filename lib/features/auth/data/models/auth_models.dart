@@ -77,28 +77,28 @@ class LocaleLanguageType {
 @JsonSerializable(includeIfNull: true)
 class UserInfo {
   @JsonKey(defaultValue: 0)
-  final int id;
+  final int? id;
   @JsonKey(defaultValue: '')
-  final String username;
+  final String? username;
   @JsonKey(defaultValue: '')
-  final String firstname;
+  final String? firstname;
   @JsonKey(defaultValue: '')
-  final String lastname;
+  final String? lastname;
   @JsonKey(name: 'profile_photo')
   final MediaDTO? profilePhoto;
   @JsonKey(defaultValue: [])
-  final List<String> roles;
+  final List<String>? roles;
   // final String roles_map: HashMap<String, String>? = null
   @JsonKey(defaultValue: [], name: 'required_actions')
-  final List<UserRequiredActions> requiredActions;
+  final List<UserRequiredActions>? requiredActions;
   @JsonKey(defaultValue: '')
-  final String email;
+  final String? email;
   @JsonKey(defaultValue: '')
-  final String status;
+  final String? status;
   @JsonKey(defaultValue: '', name: 'account_type')
-  final String accountType;
+  final String? accountType;
   @JsonKey(defaultValue: '', name: 'account_type_str')
-  final String accountTypeStr;
+  final String? accountTypeStr;
 
   UserInfo({
     required this.id,
@@ -108,7 +108,7 @@ class UserInfo {
     required this.profilePhoto,
     required this.roles,
     required this.requiredActions,
-    required this.email,
+    this.email,
     required this.status,
     required this.accountType,
     required this.accountTypeStr,

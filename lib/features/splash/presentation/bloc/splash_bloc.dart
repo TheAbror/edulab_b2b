@@ -6,7 +6,6 @@ class SplashBloc extends Cubit<SplashState> {
   SplashBloc() : super(SplashState.initial());
 
   Future<void> setupInitialSettings() async {
-    // ⏳ Pause for 2 seconds
     await Future.delayed(const Duration(seconds: 2));
 
     final String? token = PreferencesServices.getToken();

@@ -16,6 +16,7 @@ class AuthState extends Equatable {
   final String firstName;
   final String lastName;
   final bool isFirstAndLastNameValid;
+  //TODO check globally if user is authorized or not
 
   const AuthState({
     required this.request,

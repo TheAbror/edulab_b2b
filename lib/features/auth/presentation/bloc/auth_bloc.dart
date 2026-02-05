@@ -78,7 +78,8 @@ class AuthBloc extends Cubit<AuthState> {
               final user = data.userInfo;
 
               if (user != null && data.token != null) {
-                PreferencesServices.saveToken(data.token ?? '');
+                // PreferencesServices.saveToken(data.token ?? '');
+                PreferencesServices.saveAuthStatus(true);
                 PreferencesServices.saveUserInfo(
                   LocalStorageUserInfo(
                     id: user.id,
@@ -93,16 +94,15 @@ class AuthBloc extends Cubit<AuthState> {
                 );
 
                 ApiProvider.create(token: data.token);
+                emit(
+                  state.copyWith(
+                    authResponse: data,
+                    blocProgress: BlocProgress.IS_SUCCESS,
+                  ),
+                );
               }
             }
           }
-
-          emit(
-            state.copyWith(
-              authResponse: data,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
         }
       } else {
         final error = ErrorResponse.fromJson(
@@ -152,6 +152,8 @@ class AuthBloc extends Cubit<AuthState> {
 
               if (user != null && data.token != null) {
                 PreferencesServices.saveToken(data.token ?? '');
+                PreferencesServices.saveAuthStatus(true);
+
                 PreferencesServices.saveUserInfo(
                   LocalStorageUserInfo(
                     id: user.id,
@@ -271,96 +273,6 @@ class AuthBloc extends Cubit<AuthState> {
   //!<----------------------- Small Bloc functions end ------------------------------>//
 
   //!----------------------- Forgot password functions start -------------------------------//
-
-  void getVerificationCodeBySendingLogin(String signUpKey) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    final request = GetVerificationCodeBySendingLogin(
-      signInKey: signUpKey,
-      type: 'PASSWORD_RESET',
-    );
-
-    try {
-      final response = await ApiProvider.authService
-          .getVerificationCodeBySendingLogin(request);
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              isReponseSuccess: data.isSuccess,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-    }
-  }
-
-  void resetPasswordToNew(String signUpKey) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    final request = ResetPasswordToNew(newPassword: signUpKey);
-
-    try {
-      final response = await ApiProvider.authService.resetPasswordToNew(
-        request,
-      );
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              // isReponseSuccess: data.success,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-    }
-  }
 
   //!<----------------------- Forgot password functions end ------------------------------>//
 

@@ -18,6 +18,15 @@ class PreferencesServices {
   }
 
   static void dispose() => _prefs = null;
+  //
+  static bool? getAuthStatus() {
+    return _getPrefs().getBool(ShPrefKeys.authStatus);
+  }
+
+  static Future<bool> saveAuthStatus(bool? isAuthorized) async {
+    return _getPrefs().setBool(ShPrefKeys.authStatus, isAuthorized ?? false);
+  }
+  //
 
   static bool? getTheme() {
     return _getPrefs().getBool(ShPrefKeys.theme);

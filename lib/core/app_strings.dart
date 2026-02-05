@@ -4,13 +4,13 @@ class AppStrings {
 
   static const projetName = 'EduLab';
   static const signUP = 'signup';
+  static const sendVerification = 'verify_code/send';
   static const signInStepOne = 'signin/step_one';
   static const signInStepTwo = 'signin/step_two';
   static const signInStepThree = 'signin/step_three';
   static const course = 'course';
   static const coursesAll = '$course/all';
   static const categoryAll = 'category/all';
-  static const currentCourse = '$course/own?limit=1';
   static const learningTabInProgress = '$course/own?status=IN_PROGRESS';
   static const learningTabCompleted = '$course/own?status=COMPLETED';
   static const learningTabFavorites = '$course/own?status=FAVORITES';
@@ -21,15 +21,18 @@ class AppStrings {
   static const checkEnrollment = 'enrollment/check';
   static const enrollToCourse = 'enrollment/';
   static const completeStep = 'learning/complete';
+  //authorized
+  static const currentCourse = '$course/own';
+  //unauthorized
+  static const currentCourseAsUnauthorized = 'public/course/all';
 
-  //
-  static const sendVerification = 'verify_code/send';
-  static const updatePassword = 'update_password';
-  static const createNewPassword = 'reset_password';
   //others
   static const teacher = 'teacher/';
   static const internalErrorMessage = 'Internal error';
 }
+// Authorized:
+// Get courses: ....../course/
+// Get own courses: ......../course/own
 
-//https://leti.slash.uz/edulab_corp/api/v1/core/enrollment/check?course_id=9587
-//https://leti.slash.uz/edulab_corp/api/v1/core/learning/?chapter_id=188&course_id=187&step_id=204&topic_id=192
+// Unauthorized:
+// Get courses: ........../public/course/all

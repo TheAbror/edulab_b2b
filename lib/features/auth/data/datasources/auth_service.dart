@@ -27,14 +27,4 @@ abstract class AuthService extends ChopperService {
   Future<Response<MobileResponse>> sendSignUpKeyForVerification(
     @Body() SignUpKeyRequest body,
   );
-
-  @Post(path: AppStrings.updatePassword)
-  Future<Response<MobileResponse>> getVerificationCodeBySendingLogin(
-    @Body() GetVerificationCodeBySendingLogin body,
-  );
-
-  @Post(path: AppStrings.createNewPassword)
-  Future<Response<AuthResponse>> resetPasswordToNew(
-    @Body() ResetPasswordToNew body,
-  );
 }

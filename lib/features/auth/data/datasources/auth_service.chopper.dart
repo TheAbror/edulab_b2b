@@ -59,26 +59,4 @@ final class _$AuthService extends AuthService {
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<MobileResponse, MobileResponse>($request);
   }
-
-  @override
-  Future<Response<MobileResponse>> getVerificationCodeBySendingLogin(
-    GetVerificationCodeBySendingLogin body,
-  ) {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/update_password',
-    );
-    final $body = body;
-    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
-    return client.send<MobileResponse, MobileResponse>($request);
-  }
-
-  @override
-  Future<Response<AuthResponse>> resetPasswordToNew(ResetPasswordToNew body) {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/reset_password',
-    );
-    final $body = body;
-    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
-    return client.send<AuthResponse, AuthResponse>($request);
-  }
 }

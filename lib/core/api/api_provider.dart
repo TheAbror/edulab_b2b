@@ -16,7 +16,7 @@ class ApiProvider {
   static create({String? token, String? language}) {
     _client = ChopperClient(
       client: http.IOClient(
-        HttpClient()..connectionTimeout = const Duration(seconds: 20),
+        HttpClient()..connectionTimeout = const Duration(seconds: 30),
       ),
       services: [
         AppVersionService.create(),
@@ -42,7 +42,7 @@ class ApiProvider {
       NotAuthorizedInterceptor();
 
   static getInterceptors({String? language}) {
-    final String? token = PreferencesServices.getToken();
+    final token = PreferencesServices.getToken();
 
     List<Interceptor> interceptors = [];
 
