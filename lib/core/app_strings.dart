@@ -24,6 +24,7 @@ class AppStrings {
   static const course = 'course';
   //unauthorized
   static const currentCourseAsUnauthorized = 'public/course/all';
+  static const courseAsUnauthorized = 'public/course';
 
   //others
   static const teacher = 'teacher/';

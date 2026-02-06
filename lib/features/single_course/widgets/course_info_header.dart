@@ -87,7 +87,18 @@ class CourseInfoHeader extends StatelessWidget {
                         : context.localizations.enrollToThisCourse,
                     isDisabled: state.isRequested,
                     onTap: () {
-                      if (!state.isRequested) {
+                      final bool? isAuthorized =
+                          PreferencesServices.getAuthStatus();
+
+                      if (isAuthorized != true) {
+                        context.read<HomeBloc>().changeTabIndex(0);
+                        Navigator.pushNamed(
+                          context,
+                          AppRoutes.loginPage,
+                        );
+                      }
+
+                      if (!state.isRequested && isAuthorized == true) {
                         context.read<CoursesBloc>().enrollToCourse(
                           id,
 

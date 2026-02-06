@@ -11,11 +11,19 @@ class SingleCoursePage extends StatelessWidget {
     final isRequested = context.read<CoursesBloc>().state.enrollmentStatus;
 
     return BlocProvider(
-      create: (context) => SingleCourseBloc()
-        ..getSingleCourse(id)
-        ..manageRequested(
-          isRequested == 'REQUESTED' ? true : false,
-        ),
+      create: (context) {
+        final bloc = SingleCourseBloc();
+        final bool? isAuthorized = PreferencesServices.getAuthStatus();
+
+        if (isAuthorized == true) {
+          bloc.getSingleCourse(id);
+          bloc.manageRequested(isRequested == 'REQUESTED' ? true : false);
+        } else {
+          bloc.getSingleCourseAsUnathorized(id);
+        }
+
+        return bloc;
+      },
       child: Scaffold(
         appBar: CourseInfoAppBar(id: id),
         body: SingleCourseBody(

@@ -134,6 +134,63 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
     }
   }
 
+  void getSingleCourseAsUnathorized(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.singleCourseServices
+          .getSingleCourseAsUnathorized(
+            id,
+          );
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          final content = data.syllabus?.courseContent;
+          emit(
+            state.copyWith(
+              singleCourse: data,
+              singleCourseChapters: data.chapters,
+              lastStoppedStep: data.currentlyActive,
+              courseMaterialsAreHidden: (content?.isNotEmpty == true)
+                  ? ((content?.length ?? 0) > 3 ? true : false)
+                  : false,
+              materialsMoreThan3: (content?.isNotEmpty == true)
+                  ? ((content?.length ?? 0) > 3 ? true : false)
+                  : false,
+              isFavorite: data.is_favorite,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+
+          print(state.courseMaterialsAreHidden);
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      if (!isClosed) {
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: AppStrings.internalErrorMessage,
+          ),
+        );
+        debugPrint('$e');
+      }
+    }
+  }
+
   void postCourseAsFavorite(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

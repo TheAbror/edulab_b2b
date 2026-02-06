@@ -28,6 +28,15 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
+  Future<Response<SingleCourseInfo>> getSingleCourseAsUnathorized(int id) {
+    final Uri $url = Uri.parse(
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/public/course/${id}',
+    );
+    final Request $request = Request('GET', $url, client.baseUrl);
+    return client.send<SingleCourseInfo, SingleCourseInfo>($request);
+  }
+
+  @override
   Future<Response<CheckEnrollmentResponse>> checkEnrollment(int id) {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/enrollment/check/?course_id=${id}',
