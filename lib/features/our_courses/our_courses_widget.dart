@@ -7,6 +7,7 @@ class OurCoursesWidget extends StatefulWidget {
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final List<CourseShortInfo> courses;
+  final bool? isHeaderedNeeded;
 
   const OurCoursesWidget({
     super.key,
@@ -16,6 +17,7 @@ class OurCoursesWidget extends StatefulWidget {
     this.courseDuration = 0,
     this.isCertificateAvailble,
     required this.courses,
+    this.isHeaderedNeeded = true,
   });
 
   @override
@@ -27,14 +29,15 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
   final ScrollController _scrollController = ScrollController();
   int? selectedCourseId;
   bool isLoadingSelected = false;
+  final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _Header(context),
-        space8,
+        if (widget.isHeaderedNeeded == true) _Header(context),
+        if (widget.isHeaderedNeeded == true) space8,
         GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -52,24 +55,32 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
 
             return GestureDetector(
               onTap: () async {
-                setState(() {
-                  selectedCourseId = singleCourseItem.id;
-                  isLoadingSelected = true;
-                });
-                final bool? result = await context
-                    .read<CoursesBloc>()
-                    .checkEnrollment(singleCourseItem.id);
+                if (isAuthorized == true) {
+                  setState(() {
+                    selectedCourseId = singleCourseItem.id;
+                    isLoadingSelected = true;
+                  });
+                  final bool? result = await context
+                      .read<CoursesBloc>()
+                      .checkEnrollment(singleCourseItem.id);
 
-                setState(() => isLoadingSelected = false);
+                  setState(() => isLoadingSelected = false);
 
-                if (!context.mounted) return;
+                  if (!context.mounted) return;
 
-                if (result != null) {
+                  if (result != null) {
+                    Navigator.pushNamed(
+                      context,
+                      result
+                          ? AppRoutes.enrolledCoursePage
+                          : AppRoutes.singleCoursePage,
+                      arguments: singleCourseItem.id,
+                    );
+                  }
+                } else {
                   Navigator.pushNamed(
                     context,
-                    result
-                        ? AppRoutes.enrolledCoursePage
-                        : AppRoutes.singleCoursePage,
+                    AppRoutes.singleCoursePage,
                     arguments: singleCourseItem.id,
                   );
                 }

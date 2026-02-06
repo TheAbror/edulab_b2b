@@ -25,10 +25,9 @@ class _BodyState extends State<_Body> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CourseTabBanner(),
-                space40,
                 if (state.coursesAll.isNotEmpty)
                   OurCoursesWidget(
+                    isHeaderedNeeded: false,
                     courses: state.coursesAll,
                     onTapViewAll: () {
                       Navigator.pushNamed(

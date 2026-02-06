@@ -5,7 +5,13 @@ class CoursesTabAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(automaticallyImplyLeading: false, title: SearchAndFilter());
+    // return AppBar(automaticallyImplyLeading: false, title: SearchAndFilter());
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: AppText.customTitle2Medium(
+        context.localizations.coursesTab.makeFirstCapital(),
+      ),
+    );
   }
 
   @override
