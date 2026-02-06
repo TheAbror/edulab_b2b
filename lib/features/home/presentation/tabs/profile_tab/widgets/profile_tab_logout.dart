@@ -28,7 +28,10 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
           context.read<ProfileBloc>().clearAll();
           context.read<LocalizationBloc>().clearAll();
 
-          Navigator.pushNamed(context, AppRoutes.languageSelectionPage);
+          Navigator.pushReplacementNamed(
+            context,
+            AppRoutes.languageSelectionPage,
+          );
         }
       },
       behavior: HitTestBehavior.opaque,

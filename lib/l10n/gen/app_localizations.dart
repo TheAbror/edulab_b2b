@@ -2265,6 +2265,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in to access your courses, track progress, and continue learning.'**
   String get singInToAccess;
+
+  /// No description provided for @allCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'All courses'**
+  String get allCourses;
 }
 
 class _AppLocalizationsDelegate

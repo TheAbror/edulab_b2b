@@ -124,7 +124,6 @@ export 'package:leti_mobile/features/auth/presentation/login_page/code_verificat
 export 'package:leti_mobile/features/auth/presentation/enter_details_page/enter_details_page.dart';
 export 'package:leti_mobile/features/home/presentation/root_page.dart';
 export 'package:leti_mobile/features/all_courses/all_courses_page.dart';
-export 'package:leti_mobile/features/all_categories/all_categories_page.dart';
 export 'package:leti_mobile/features/enrolled_course_page/enrolled_course_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/author_profile_page.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/home_tab/widgets/authors/student_profile_page.dart';

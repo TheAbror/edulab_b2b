@@ -52,8 +52,10 @@ class CourseTabBanner extends StatelessWidget {
               ),
               space16,
               GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, AppRoutes.allCoursesPage),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.allCoursesPage,
+                ),
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 8.h),
                   width: double.infinity,

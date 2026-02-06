@@ -721,5 +721,7 @@
   "requested": "Requested",
   "@requested": {},
   "singInToAccess": "Sign in to access your courses, track progress, and continue learning.",
-  "@singInToAccess": {}
+  "@singInToAccess": {},
+  "allCourses": "All courses",
+  "@allCourses": {}
 }

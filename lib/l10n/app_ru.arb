@@ -721,5 +721,7 @@
   "requested": "Запрошено",
   "@requested": {},
   "singInToAccess": "Войдите в систему, чтобы получить доступ к своим курсам, отслеживать прогресс и продолжить обучение.",
-  "@singInToAccess": {}
+  "@singInToAccess": {},
+  "allCourses": "Все курсы",
+  "@allCourses": {}
 }

@@ -27,62 +27,17 @@ class _BodyState extends State<_Body> {
               children: [
                 CourseTabBanner(),
                 space40,
-                if (state.categories.isNotEmpty)
+                if (state.coursesAll.isNotEmpty)
                   OurCoursesWidget(
-                    courses: state.homeCourses,
+                    courses: state.coursesAll,
                     onTapViewAll: () {
-                      Navigator.pushNamed(context, AppRoutes.allCoursesPage);
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.allCoursesPage,
+                      );
                     },
                   ),
 
-                space40,
-                if (state.categories.isNotEmpty)
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Text(
-                      context.localizations.categories,
-                      style: TextStyle(
-                        fontSize: 17.sp,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -1,
-                      ),
-                    ),
-                  ),
-                space16,
-                state.categories.isNotEmpty
-                    ? GridView.builder(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 160.w,
-                          childAspectRatio: 6 / 3.3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                        itemCount: state.categories.length,
-                        itemBuilder: (context, index) {
-                          final item = state.categories[index];
-                          return CourseTabItem(
-                            onTap: () {
-                              // Navigator.pushNamed(context,AppRoutes.courseSubcategoryPage);
-                            },
-                            text: item.title,
-                            // count:
-                            //     '${item.courseCount} ${context.localizations.coursesWithnumber}',
-                            count: '234234',
-                          );
-                        },
-                      )
-                    : SizedBox.shrink(),
-                space20,
-                if (state.categories.isNotEmpty)
-                  CourseInfoShowAllButton(
-                    isPaddingNeeded: true,
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.allCategoriesPage);
-                    },
-                  ),
                 space40,
               ],
             );

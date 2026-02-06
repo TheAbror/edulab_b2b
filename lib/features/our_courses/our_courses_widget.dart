@@ -6,7 +6,7 @@ class OurCoursesWidget extends StatefulWidget {
   final VoidCallback onTapViewAll;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
-  final HomeCoursesResponse courses;
+  final List<CourseShortInfo> courses;
 
   const OurCoursesWidget({
     super.key,
@@ -45,9 +45,9 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
           controller: _scrollController,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           shrinkWrap: true,
-          itemCount: widget.courses.content.length,
+          itemCount: widget.courses.length,
           itemBuilder: (context, index) {
-            final singleCourseItem = widget.courses.content[index];
+            final singleCourseItem = widget.courses[index];
             final isSelected = selectedCourseId == singleCourseItem.id;
 
             return GestureDetector(

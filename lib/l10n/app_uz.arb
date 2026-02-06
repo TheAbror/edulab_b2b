@@ -721,5 +721,7 @@
   "requested": "So'ralgan",
   "@requested": {},
   "singInToAccess": "Kurslaringizga kirish, taraqqiyotni kuzatish va o'qishni davom ettirish uchun tizimga kiring.",
-  "@singInToAccess": {}
+  "@singInToAccess": {},
+  "allCourses": "Barcha kurslar",
+  "@allCourses": {}
 }

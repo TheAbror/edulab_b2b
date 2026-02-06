@@ -91,8 +91,7 @@ class MainRouteGenerator {
 
       case AppRoutes.allCoursesPage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) =>
-              AllCoursesPage(idAndTitle: settings.arguments as IdAndTitle?),
+          builder: (_) => AllCoursesPage(),
         );
 
       case AppRoutes.singleCoursePage:
@@ -108,11 +107,6 @@ class MainRouteGenerator {
       case AppRoutes.enrolledCoursePage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => EnrolledCoursePage(id: settings.arguments as int),
-        );
-
-      case AppRoutes.allCategoriesPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => AllCategoriesPage(),
         );
 
       default:

@@ -5,48 +5,6 @@ part 'courses_state.dart';
 class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
-  void getCoursesByCategoryID(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.coursesServices.getCoursesByCategoryId(
-        id,
-      );
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              courseByCategory: data,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
-
   void getAllCourses() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -59,7 +17,6 @@ class CoursesBloc extends Cubit<CoursesState> {
         if (data != null) {
           emit(
             state.copyWith(
-              homeCourses: data,
               coursesAll: data.content,
               blocProgress: BlocProgress.LOADED,
             ),
@@ -103,8 +60,7 @@ class CoursesBloc extends Cubit<CoursesState> {
         if (data != null) {
           emit(
             state.copyWith(
-              homeCourses: data,
-              coursesAll: data.content,
+              coursesAll: data,
               blocProgress: BlocProgress.LOADED,
             ),
           );
@@ -295,88 +251,4 @@ class CoursesBloc extends Cubit<CoursesState> {
   void emptyExpandedSubcategoryIndexes() {
     emit(state.copyWith(expandedSubcategoryIndexes: []));
   }
-
-  //!----------------------- Get category, subcategory, topics, courses functions start -------------------------------//
-
-  void getAllCategories() async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.coursesServices.getAllCategories();
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(categories: data, blocProgress: BlocProgress.LOADED),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
-
-  //this is used in all categories page, it will open all subcategories page/topics
-  void getCoursesByCategoryId(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.coursesServices.getCoursesByCategoryId(
-        id,
-      );
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              courseByCategory: data,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
-
-  //!----------------------- Get category, subcategory, topics, courses functions end ------------------------------//
 }

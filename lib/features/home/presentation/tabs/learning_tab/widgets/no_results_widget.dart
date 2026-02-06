@@ -23,7 +23,10 @@ class NoResultsWidget extends StatelessWidget {
         SizedBox(height: 8.h),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, AppRoutes.allCoursesPage);
+            Navigator.pushNamed(
+              context,
+              AppRoutes.allCoursesPage,
+            );
           },
           child: Container(
             width: 180.w,

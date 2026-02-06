@@ -1115,4 +1115,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get singInToAccess =>
       'Войдите в систему, чтобы получить доступ к своим курсам, отслеживать прогресс и продолжить обучение.';
+
+  @override
+  String get allCourses => 'Все курсы';
 }

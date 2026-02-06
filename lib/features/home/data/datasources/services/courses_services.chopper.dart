@@ -19,15 +19,6 @@ final class _$CourseServices extends CourseServices {
   final Type definitionType = CourseServices;
 
   @override
-  Future<Response<List<CategoryModel>>> getAllCategories() {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/category/all',
-    );
-    final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<List<CategoryModel>, CategoryModel>($request);
-  }
-
-  @override
   Future<Response<HomeCoursesResponse>> getAllCourses() {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/',
@@ -37,29 +28,18 @@ final class _$CourseServices extends CourseServices {
   }
 
   @override
-  Future<Response<HomeCoursesResponse>> getAllCoursesAsUnauthorized() {
+  Future<Response<List<CourseShortInfo>>> getAllCoursesAsUnauthorized() {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/public/course/all',
-    );
-    final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<HomeCoursesResponse, HomeCoursesResponse>($request);
-  }
-
-  @override
-  Future<Response<List<CourseShortInfo>>> getCurrentCourse() {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
   }
 
   @override
-  Future<Response<List<CourseShortInfo>>> getCoursesByCategoryId(
-    int category_id,
-  ) {
+  Future<Response<List<CourseShortInfo>>> getCurrentCourse() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/all?category_id=${category_id}',
+      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);

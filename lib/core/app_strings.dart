@@ -9,7 +9,6 @@ class AppStrings {
   static const signInStepTwo = 'signin/step_two';
   static const signInStepThree = 'signin/step_three';
   static const coursesAll = '$course/all';
-  static const categoryAll = 'category/all';
   static const learningTabInProgress = '$course/own?status=IN_PROGRESS';
   static const learningTabCompleted = '$course/own?status=COMPLETED';
   static const learningTabFavorites = '$course/own?status=FAVORITES';

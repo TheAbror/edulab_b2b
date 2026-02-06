@@ -45,19 +45,26 @@ class UnAuthorizedUser extends StatelessWidget {
           SizedBox(height: 30.h),
           ActionButton(
             text: context.localizations.joinForFree,
-            onTap: () => Navigator.pushNamed(
-              context,
-              AppRoutes.loginPage,
-            ),
+            onTap: () {
+              context.read<HomeBloc>().changeTabIndex(0);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.loginPage,
+              );
+            },
           ),
 
           SizedBox(height: 12.h),
           ActionButton(
             text: context.localizations.login,
-            onTap: () => Navigator.pushNamed(
-              context,
-              AppRoutes.loginPage,
-            ),
+            onTap: () {
+              context.read<HomeBloc>().changeTabIndex(0);
+
+              Navigator.pushNamed(
+                context,
+                AppRoutes.loginPage,
+              );
+            },
             isFilled: false,
           ),
         ],

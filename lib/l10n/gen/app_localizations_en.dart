@@ -1117,4 +1117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get singInToAccess =>
       'Sign in to access your courses, track progress, and continue learning.';
+
+  @override
+  String get allCourses => 'All courses';
 }

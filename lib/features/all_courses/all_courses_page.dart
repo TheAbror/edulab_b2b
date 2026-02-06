@@ -1,10 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
 class AllCoursesPage extends StatelessWidget {
-  //id and title for subcategories
-  final IdAndTitle? idAndTitle;
-
-  const AllCoursesPage({super.key, this.idAndTitle});
+  const AllCoursesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +9,7 @@ class AllCoursesPage extends StatelessWidget {
       create: (context) {
         final bloc = CoursesBloc();
 
-        if (idAndTitle?.id != null && idAndTitle?.id != 0) {
-          bloc.getCoursesByCategoryID(idAndTitle?.id ?? 0);
-        } else {
-          bloc.getAllCourses();
-        }
+        bloc.getAllCourses();
 
         return bloc;
       },
@@ -29,26 +22,20 @@ class AllCoursesPage extends StatelessWidget {
               CustomAppBarBackButton(),
               SizedBox(width: 12.w),
               Text(
-                (idAndTitle?.title.isNotEmpty == true)
-                    ? idAndTitle?.title ?? ''
-                    : context.localizations.recommendedForYou,
+                context.localizations.allCourses,
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500),
               ),
             ],
           ),
         ),
-        body: _Body(categoryID: idAndTitle?.id),
+        body: _Body(),
       ),
     );
   }
 }
 
 class _Body extends StatelessWidget {
-  final int? categoryID;
-
-  const _Body({
-    required this.categoryID,
-  });
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
@@ -56,14 +43,6 @@ class _Body extends StatelessWidget {
       builder: (context, state) {
         if (state.blocProgress == BlocProgress.IS_LOADING) {
           return const PrimaryLoader();
-        }
-
-        if (categoryID != null && state.courseByCategory.isEmpty) {
-          return Center(
-            child: AppText.headline2(
-              context.localizations.noResults,
-            ),
-          );
         }
 
         if (state.coursesAll.isEmpty) {
@@ -81,16 +60,12 @@ class _Body extends StatelessWidget {
               height: 1.h,
             ),
             ListView.separated(
-              itemCount: (categoryID != null)
-                  ? state.courseByCategory.length
-                  : state.coursesAll.length,
+              itemCount: state.coursesAll.length,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
-                final item = (categoryID != null)
-                    ? state.courseByCategory[index]
-                    : state.coursesAll[index];
+                final item = state.coursesAll[index];
 
                 return AllCoursesItem(item: item);
               },
@@ -280,19 +255,3 @@ class AllCoursesItem extends StatelessWidget {
     );
   }
 }
-
-
-
-        // ListView(
-        //   children: [
-        //     Divider(
-        //       color: context.colors.borderMuted.withOpacity(0.15),
-        //       height: 1.h,
-        //     ),
-
-        //     Divider(
-        //       color: context.colors.borderMuted.withOpacity(0.15),
-        //       height: 1.h,
-        //     ),
-        //   ],
-        // );

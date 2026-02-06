@@ -1122,4 +1122,7 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get singInToAccess =>
       'Kurslaringizga kirish, taraqqiyotni kuzatish va o\'qishni davom ettirish uchun tizimga kiring.';
+
+  @override
+  String get allCourses => 'Barcha kurslar';
 }

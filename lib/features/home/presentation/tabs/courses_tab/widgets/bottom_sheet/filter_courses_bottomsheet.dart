@@ -58,17 +58,17 @@ class _FilterCoursesBottomSheetState extends State<FilterCoursesBottomSheet> {
                         thickness: 1.h,
                         color: context.colors.borderMuted.withOpacity(0.15),
                       ),
-                      BlocBuilder<CoursesBloc, CoursesState>(
-                        builder: (context, state) {
-                          return FilterCoursesBottomSheetTile(
-                            title: context.localizations.categories,
-                            isTopic: true,
-                            children: state.categories
-                                .map((e) => e.title)
-                                .toList(),
-                          );
-                        },
-                      ),
+                      // BlocBuilder<CoursesBloc, CoursesState>(
+                      //   builder: (context, state) {
+                      //     return FilterCoursesBottomSheetTile(
+                      //       title: context.localizations.categories,
+                      //       isTopic: true,
+                      //       children: state.categories
+                      //           .map((e) => e.title)
+                      //           .toList(),
+                      //     );
+                      //   },
+                      // ),
                       _divider(context),
                       FilterCoursesBottomSheetTile(
                         title: context.localizations.level,

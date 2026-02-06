@@ -98,7 +98,7 @@ class _LearningPageState extends State<LearningPage>
               controller: _tabController!,
               title: state.topic.title,
               steps: state.allSteps,
-              status: state.allSteps[state.appbarTabIndex].status, //TODO
+              status: state.allSteps[state.appbarTabIndex].status,
             ),
             body: LearningPageBody(
               steps: state.allSteps,
@@ -110,7 +110,7 @@ class _LearningPageState extends State<LearningPage>
                     controller: _tabController!,
                     stepsLength: state.allSteps.length,
                     status: state.allSteps[state.appbarTabIndex].status,
-                    stepModel: state.allSteps[state.appbarTabIndex], //TODO
+                    stepModel: state.allSteps[state.appbarTabIndex],
                   ),
           );
         },
