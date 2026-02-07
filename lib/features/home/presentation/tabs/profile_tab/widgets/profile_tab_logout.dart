@@ -16,9 +16,6 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
 
         if (result != null && result) {
           if (!context.mounted) return;
-          ApiProvider.create();
-
-          PreferencesServices.clearAll();
 
           context.read<AuthBloc>().clearAll();
           context.read<HomeBloc>().clearAll();
@@ -27,6 +24,8 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
           context.read<SplashBloc>().clearAll();
           context.read<ProfileBloc>().clearAll();
           context.read<LocalizationBloc>().clearAll();
+          ApiProvider.create();
+          PreferencesServices.clearAll();
 
           Navigator.pushReplacementNamed(
             context,

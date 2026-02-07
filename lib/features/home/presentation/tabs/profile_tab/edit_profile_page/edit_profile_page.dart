@@ -30,7 +30,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 db?.profile_photo?.original_url ?? '',
                 db!,
               ),
-
               space24,
               EditProfilePageItem(
                 label: 'First name',

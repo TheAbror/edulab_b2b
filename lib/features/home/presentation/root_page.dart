@@ -97,9 +97,9 @@ class _RootPageState extends State<RootPage> {
   }
 
   Widget _appBar(context, selectedIndex) {
-    final LocalStorageUserInfo? db = PreferencesServices.getUserInfo();
+    final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
-    if (selectedIndex == 1 && db != null) {
+    if (selectedIndex == 1 && isAuthorized == true) {
       return LearningTabAppBar();
     }
     if (selectedIndex == 2) {

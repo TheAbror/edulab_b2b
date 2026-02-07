@@ -9,8 +9,6 @@ class CourseInfoHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final enrollmentStatus = context.read<CoursesBloc>().state.enrollmentStatus;
-
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
         return Container(
@@ -128,6 +126,8 @@ class CourseInfoHeader extends StatelessWidget {
                                 context.localizations.success,
                                 context,
                               );
+
+                              context.read<LearningTabBloc>().getInProgress();
                             }
                           },
                           (String error) {

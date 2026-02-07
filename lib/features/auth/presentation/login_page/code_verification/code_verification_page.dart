@@ -61,9 +61,10 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
             } else {
               context.read<AuthBloc>().setInitialValue();
 
-              Navigator.pushNamed(
+              Navigator.pushNamedAndRemoveUntil(
                 context,
                 AppRoutes.rootPage,
+                (route) => false,
               );
             }
           }

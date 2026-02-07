@@ -24,6 +24,7 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   bool isConnectedAgain = false;
+  final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +46,11 @@ class _HomeTabState extends State<HomeTab> {
                   homeState.internetStatus == InternetStatus.disconnected) {
                 return NoInternetView();
               }
-              if (homeState.internetStatus == InternetStatus.connected &&
-                  !isConnectedAgain) {
-                myInit();
-                isConnectedAgain = true;
-              }
+              // if (homeState.internetStatus == InternetStatus.connected &&
+              //     !isConnectedAgain) {
+              //   myInit();
+              //   isConnectedAgain = true;
+              // }
 
               return ListView(
                 children: [
@@ -73,8 +74,8 @@ class _HomeTabState extends State<HomeTab> {
                       viewAllOnTap: () {
                         context.read<HomeBloc>().changeTabIndex(1);
                       },
-                    )
-                  else
+                    ),
+                  if (isAuthorized == null)
                     HomeFindSomethingToLearnWidget(
                       onTap: () {
                         Navigator.pushNamed(
@@ -83,8 +84,7 @@ class _HomeTabState extends State<HomeTab> {
                         );
                       },
                     ),
-
-                  space24,
+                  if (isAuthorized == null) space24,
                   if (state.coursesAll.isNotEmpty)
                     OurCoursesWidget(
                       courses: state.coursesAll,

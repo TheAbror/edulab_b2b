@@ -17,7 +17,7 @@ class LearningTab extends StatelessWidget {
               final completedItem = state.completed;
 
               return isAuthorized == null
-                  ? UnAuthorizedUser()
+                  ? Expanded(child: UnAuthorizedUser())
                   : Expanded(
                       child: TabBarView(
                         children: [

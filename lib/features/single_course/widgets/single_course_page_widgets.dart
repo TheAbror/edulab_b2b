@@ -196,24 +196,24 @@ class CourseInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
               SizedBox(width: 16.w),
               CustomAppBarBackButton(),
               Spacer(),
-              BlocBuilder<SingleCourseBloc, SingleCourseState>(
-                builder: (context, state) {
-                  return GestureDetector(
-                    onTap: () {
-                      context.read<SingleCourseBloc>().postCourseAsFavorite(id);
-                    },
-                    behavior: HitTestBehavior.opaque,
-                    child: (state.isFavorite)
-                        ? Assets.icons.courses.heartFilled.svg(
-                            colorFilter: ColorFilter.mode(
-                              Theme.of(context).colorScheme.primary,
-                              BlendMode.srcIn,
-                            ),
-                          )
-                        : Assets.icons.courses.heart.svg(),
-                  );
-                },
-              ),
+              // BlocBuilder<SingleCourseBloc, SingleCourseState>(
+              //   builder: (context, state) {
+              //     return GestureDetector(
+              //       onTap: () {
+              //         context.read<SingleCourseBloc>().postCourseAsFavorite(id);
+              //       },
+              //       behavior: HitTestBehavior.opaque,
+              //       child: (state.isFavorite)
+              //           ? Assets.icons.courses.heartFilled.svg(
+              //               colorFilter: ColorFilter.mode(
+              //                 Theme.of(context).colorScheme.primary,
+              //                 BlendMode.srcIn,
+              //               ),
+              //             )
+              //           : Assets.icons.courses.heart.svg(),
+              //     );
+              //   },
+              // ),
               SizedBox(width: 16.w),
             ],
           ),

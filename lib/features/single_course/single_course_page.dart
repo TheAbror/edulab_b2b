@@ -66,7 +66,9 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
         return SingleChildScrollView(
           child: Column(
             children: [
+              //HERE
               if (!widget.isContent) CourseInfoHeader(id: widget.id),
+              //
               Padding(
                 padding: EdgeInsets.only(top: 24.h, left: 16.w, right: 16.w),
                 child: Column(
