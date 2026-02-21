@@ -12,6 +12,8 @@ class ApiProvider {
   static late SingleCourseServices singleCourseServices;
   static late LearningTabServices learningTabServices;
 
+  //TODO add logout if 401
+
   ///Services
   static create({String? token, String? language}) {
     _client = ChopperClient(

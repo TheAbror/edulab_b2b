@@ -20,8 +20,8 @@ class AppStrings {
   static const enrollToCourse = 'enrollment/';
   static const completeStep = 'learning/complete';
   //authorized
-  static const currentCourse = '$course/own';
   static const course = 'course';
+  static const currentCourse = '$course/own';
   //unauthorized
   static const currentCourseAsUnauthorized = 'public/course/all';
   static const courseAsUnauthorized = 'public/course';

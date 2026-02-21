@@ -24,25 +24,54 @@ class CourseInfoHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   space20,
-                  Text(
-                    item.title,
-                    style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -1.5,
-                    ),
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: CachedNetworkImage(
+                          imageUrl: item.thumbnail?.original_url ?? '',
+                          height: 48.h,
+                          width: 62.w,
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) => Container(
+                            height: 48.h,
+                            color: Colors.grey[200],
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            height: 48.h,
+                            decoration: BoxDecoration(
+                              color: context.colors.neutralContainerDefault
+                                  .withOpacity(0.1),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/images/network_image_error_case.png',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(width: 8.w),
+
+                      Flexible(
+                        child: Text(
+                          item.title,
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -1.5,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  space16,
-                  Text(
-                    item.shortDescription,
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      height: 1.3,
-                      color: Theme.of(context).colorScheme.surfaceTint,
-                    ),
-                  ),
+
                   if (item.authors.isNotEmpty) ...[
+                    space4,
                     space24,
                     Text(
                       context.localizations.authors.toUpperCase(),

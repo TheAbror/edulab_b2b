@@ -170,6 +170,8 @@ class SingleCourseInfo {
   final int id;
   @JsonKey(defaultValue: '')
   final String title;
+  @JsonKey(defaultValue: '', name: 'about_course')
+  final String aboutCourse;
   @JsonKey(defaultValue: [])
   final List<String> description;
   @JsonKey(defaultValue: "")
@@ -209,7 +211,7 @@ class SingleCourseInfo {
   final int? progress;
   final bool? published;
   final bool? canPublish;
-  @JsonKey(name: "completion_time")
+  @JsonKey(name: "completion_time", defaultValue: '-- || --')
   final String? completionTime;
   @JsonKey(defaultValue: '')
   final String price;
@@ -222,6 +224,7 @@ class SingleCourseInfo {
   SingleCourseInfo({
     required this.id,
     required this.title,
+    required this.aboutCourse,
     required this.description,
     required this.shortDescription,
     required this.authors,

@@ -13,41 +13,16 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
-          children: [
-            CourseTopLevelHeaderAndSubHeader(
-              headlineLeft: context.localizations.skillLevel,
-              textLeft: state.singleCourse.level?.label ?? '',
-              isLeft: true,
-            ),
-            SizedBox(height: 20.h),
-            CourseTopLevelHeaderAndSubHeader(
-              headlineLeft: context.localizations.certificateOfCompletion,
-              textLeft: 'None',
-              isLeft: true,
-            ),
-          ],
+        CourseTopLevelHeaderAndSubHeader(
+          headlineLeft: context.localizations.timeToComplete,
+          textLeft: state.singleCourse.completionTime ?? '',
+          isLeft: false,
         ),
-        SizedBox(width: 15.w),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CourseTopLevelHeaderAndSubHeader(
-                headlineLeft: context.localizations.timeToComplete,
-                textLeft: state.singleCourse.completionTime ?? '',
-                isLeft: false,
-              ),
-              SizedBox(height: 20.h),
-              CourseTopLevelHeaderAndSubHeader(
-                headlineLeft: context.localizations.prerequisities,
-                textLeft: 'None',
-                isLeft: false,
-              ),
-            ],
-          ),
+        SizedBox(width: 20.h),
+        CourseTopLevelHeaderAndSubHeader(
+          headlineLeft: context.localizations.prerequisities,
+          textLeft: 'None',
+          isLeft: false,
         ),
       ],
     );

@@ -132,54 +132,14 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                           ),
                       ],
 
-                    // skills
-                    if (state.singleCourse.syllabus?.studyGoals?.isNotEmpty ==
-                        true) ...[
-                      SizedBox(height: 16.h),
-                      CourseInfoBlocsTitle(
-                        text: context.localizations.skilllsUWillGain,
-                      ),
-                      SizedBox(height: 16.h),
-                      Wrap(
-                        children: List.generate(
-                          state.singleCourse.syllabus?.studyGoals?.length ?? 0,
-                          (index) {
-                            return Container(
-                              margin: EdgeInsets.only(right: 8.w, bottom: 8.h),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 10.w,
-                                vertical: 5.h,
-                              ),
-                              decoration: BoxDecoration(
-                                color: context.colors.neutralContainerDefault
-                                    .withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(
-                                  defaultRadius.r,
-                                ),
-                              ),
-                              child: Text(
-                                state
-                                        .singleCourse
-                                        .syllabus
-                                        ?.studyGoals?[index] ??
-                                    '',
-                                style: TextStyle(fontSize: 12.sp),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      space24,
-                    ],
-
-                    if (state.singleCourse.description.isNotEmpty) ...[
+                    if (state.singleCourse.aboutCourse.isNotEmpty) ...[
                       CourseInfoBlocsTitle(
                         text: context.localizations.description,
                       ),
                       space8,
                       ExpandableHtml(
                         state: state,
-                        html: state.singleCourse.description.first,
+                        html: state.singleCourse.aboutCourse,
                       ),
                       space10,
                       ShowMoreTextWithOpacity(

@@ -132,6 +132,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
     SingleCourseInfo(
       id: (json['id'] as num?)?.toInt() ?? 0,
       title: json['title'] as String? ?? '',
+      aboutCourse: json['about_course'] as String? ?? '',
       description:
           (json['description'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -219,6 +220,7 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'about_course': instance.aboutCourse,
       'description': instance.description,
       'shortDescription': instance.shortDescription,
       'authors': instance.authors,

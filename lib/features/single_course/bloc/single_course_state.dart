@@ -35,6 +35,7 @@ class SingleCourseState extends Equatable {
       singleCourse: SingleCourseInfo(
         id: 0,
         title: '',
+        aboutCourse: '',
         description: [],
         price: '',
         shortDescription: '',
