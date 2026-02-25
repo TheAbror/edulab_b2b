@@ -6,7 +6,7 @@
 
 
     <application
-        android:label="leti_mobile"
+        android:label="LETI EDU"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
