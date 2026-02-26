@@ -29,6 +29,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
   bool _hasError = false;
 
   double _progress = 0.0; // 0–1 progress
+  // ignore: unused_field
   bool _canComplete = false; // unlock after 80%
 
   @override
@@ -163,7 +164,8 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
                 const SizedBox(height: 16),
 
                 MarkAsCompleteButton(
-                  status: _canComplete ? widget.step.status : "NOT_READY",
+                  // status: _canComplete ? widget.step.status : "NOT_READY",
+                  status: widget.step.status,
                   markAsComplete: () {
                     // if (_canComplete) {
                     widget.markAsComplete();

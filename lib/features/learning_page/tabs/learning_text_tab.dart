@@ -28,7 +28,6 @@ class _LearningPageTextTabState extends State<LearningPageTextTab> {
 
               MarkAsCompleteButton(
                 status: widget.step.status,
-
                 markAsComplete: widget.markAsComplete,
               ),
 

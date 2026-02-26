@@ -105,12 +105,6 @@ class QuizTab extends StatelessWidget {
 
                             SizedBox(height: 16.h),
 
-                            AppText.headline2(
-                              context.localizations.selectAllCorrectAnswers,
-                            ),
-
-                            SizedBox(height: 12.h),
-
                             QuizOptionsWidget(
                               question: question,
                               step: step,

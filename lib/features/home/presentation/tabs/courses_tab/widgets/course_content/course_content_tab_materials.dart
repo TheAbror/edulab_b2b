@@ -69,11 +69,15 @@ class CourseInfoMaterialExpansionItem extends StatelessWidget {
         ),
       ),
 
-      subtitle: Text(
-        subTitle,
-        style: TextStyle(color: Theme.of(context).colorScheme.surfaceTint),
-        maxLines: 2,
-      ),
+      subtitle: subTitle.isNotEmpty
+          ? Text(
+              subTitle,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.surfaceTint,
+              ),
+              maxLines: 2,
+            )
+          : null,
       children: <Widget>[
         Divider(
           thickness: 1.h,
