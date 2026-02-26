@@ -1137,10 +1137,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get tryagain => 'Qayta urinib ko\'ring 💪';
 
   @override
-  String get youscored => 'Siz terdingiz';
+  String get youscored => 'Siz to`pladingiz';
 
   @override
-  String get pointsAnd => 'ball oldi, lekin bu safar viktorinadan o\'ta olmadi';
+  String get pointsAnd => 'ball, lekin bu safar viktorinadan o\'ta olmadingiz';
 
   @override
   String get selectAllCorrectAnswers => 'Barcha to\'g\'ri javoblarni tanlang';

@@ -98,12 +98,20 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                                     fontSize: 12.sp,
                                   ),
                                 ),
+                              if (course.progress == null)
+                                Text(
+                                  '0%',
+                                  style: TextStyle(
+                                    color: context.colors.fgMuted,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
                             ],
                           ),
                           space6,
                           LinearProgressIndicator(
                             minHeight: 8.h,
-                            //TODO
+
                             value: (course.progress != null)
                                 ? (course.progress ?? 0) / 100
                                 : 0,

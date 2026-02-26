@@ -328,7 +328,7 @@ daysLeft,days left!,осталось дней!,kunlar qoldi!
 languages,Languages,Языки,Tillar
 learningStatisctics,Learning Statistics,Статистика обучения,O‘rganish statistikasi
 inProgress,In progress,В процессе,Jarayonda
-completed,Completed,Завершенные,Yakunlangan
+completed,Completed,Завершенный,Yakunlangan
 favorites,Favorites,Избранное,Sevimlilar
 archived,Archived,Архив,Arxivlangan
 myLearning,My Learning,Мое обучение,Mening o‘rganishim
@@ -390,9 +390,9 @@ allCourses,All courses,Все курсы,Barcha kurslar
 congratulations,Congratulations! 🎉,Поздравляем! 🎉,Tabriklaymiz! 🎉
 youhavesuccessfully,You’ve successfully completed the quiz and scored,Вы успешно прошли викторину и набрали баллы.,Siz testni muvaffaqiyatli yakunladingiz va ball to'pladingiz
 tryagain,Try Again 💪,Попробуйте еще раз 💪,Qayta urinib ko'ring 💪
-youscored,You scored,Вы набрали,Siz terdingiz
-pointsAnd,points and didn’t pass the quiz this time.,"баллы, но на этот раз не прошли викторину","ball oldi, lekin bu safar viktorinadan o'ta olmadi"
+youscored,You scored,Вы набрали,Siz to`pladingiz
+pointsAnd,points and didn’t pass the quiz this time.,"баллов, но на этот раз не прошли викторину","ball, lekin bu safar viktorinadan o'ta olmadingiz"
 selectAllCorrectAnswers,Select all correct answers,Выберите все правильные ответы,Barcha to'g'ri javoblarni tanlang
-watchExplanation,Watch explanation,Посмотрите объяснение,Tushuntirishni tomosha qiling
-retakeQuiz,Retake quiz,Перепройдите викторину,Viktorinani qayta topshiring
+watchExplanation,Watch explanation,Посмотреть объяснение,Tushuntirishni tomosha qiling
+retakeQuiz,Retake quiz,Перепройти викторину,Viktorinani qayta topshiring
 videoNotAvailable,Video not available,Видео недоступно,Video mavjud emas

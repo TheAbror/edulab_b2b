@@ -74,16 +74,15 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SkillLevelTimeToCompleteCertificatesPrereqs(state: state),
+                    // SkillLevelTimeToCompleteCertificatesPrereqs(state: state),
+                    // SizedBox(height: 24.h),
 
-                    SizedBox(height: 24.h),
-
-                    CourseInfoDivider(),
+                    // CourseInfoDivider(),
 
                     //studyGoals
                     if (state.singleCourse.syllabus?.studyGoals?.isNotEmpty ==
                         true) ...[
-                      space24,
+                      space12,
                       CourseInfoBlocsTitle(
                         text: context.localizations.whatUWillLearn,
                       ),

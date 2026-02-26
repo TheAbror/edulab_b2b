@@ -15,13 +15,15 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
       children: [
         CourseTopLevelHeaderAndSubHeader(
           headlineLeft: context.localizations.timeToComplete,
-          textLeft: state.singleCourse.completionTime ?? '',
+          textLeft: state.singleCourse.completionTime?.isNotEmpty == true
+              ? state.singleCourse.completionTime ?? ''
+              : '-- : --',
           isLeft: false,
         ),
         SizedBox(width: 20.h),
         CourseTopLevelHeaderAndSubHeader(
           headlineLeft: context.localizations.prerequisities,
-          textLeft: 'None',
+          textLeft: '-- : --',
           isLeft: false,
         ),
       ],

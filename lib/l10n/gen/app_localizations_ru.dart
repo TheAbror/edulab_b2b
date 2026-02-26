@@ -956,7 +956,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get inProgress => 'В процессе';
 
   @override
-  String get completed => 'Завершенные';
+  String get completed => 'Завершенный';
 
   @override
   String get archived => 'Архив';
@@ -1133,16 +1133,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get youscored => 'Вы набрали';
 
   @override
-  String get pointsAnd => 'баллы, но на этот раз не прошли викторину';
+  String get pointsAnd => 'баллов, но на этот раз не прошли викторину';
 
   @override
   String get selectAllCorrectAnswers => 'Выберите все правильные ответы';
 
   @override
-  String get watchExplanation => 'Посмотрите объяснение';
+  String get watchExplanation => 'Посмотреть объяснение';
 
   @override
-  String get retakeQuiz => 'Перепройдите викторину';
+  String get retakeQuiz => 'Перепройти викторину';
 
   @override
   String get videoNotAvailable => 'Видео недоступно';
