@@ -2271,6 +2271,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All courses'**
   String get allCourses;
+
+  /// No description provided for @congratulations.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations! 🎉'**
+  String get congratulations;
+
+  /// No description provided for @youhavesuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'You’ve successfully completed the quiz and scored'**
+  String get youhavesuccessfully;
+
+  /// No description provided for @tryagain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again 💪'**
+  String get tryagain;
+
+  /// No description provided for @youscored.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored'**
+  String get youscored;
+
+  /// No description provided for @pointsAnd.
+  ///
+  /// In en, this message translates to:
+  /// **'points and didn’t pass the quiz this time.'**
+  String get pointsAnd;
+
+  /// No description provided for @selectAllCorrectAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all correct answers'**
+  String get selectAllCorrectAnswers;
+
+  /// No description provided for @watchExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch explanation'**
+  String get watchExplanation;
+
+  /// No description provided for @retakeQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Retake quiz'**
+  String get retakeQuiz;
+
+  /// No description provided for @videoNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Video not available'**
+  String get videoNotAvailable;
 }
 
 class _AppLocalizationsDelegate

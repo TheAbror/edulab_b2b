@@ -12,7 +12,8 @@ class ApiProvider {
   static late SingleCourseServices singleCourseServices;
   static late LearningTabServices learningTabServices;
 
-  //TODO add logout if 401
+  static NotAuthorizedInterceptor notAuthorizedInterceptor =
+      NotAuthorizedInterceptor();
 
   ///Services
   static create({String? token, String? language}) {
@@ -39,9 +40,6 @@ class ApiProvider {
     singleCourseServices = _client.getService<SingleCourseServices>();
     learningTabServices = _client.getService<LearningTabServices>();
   }
-
-  static NotAuthorizedInterceptor notAuthorizedInterceptor =
-      NotAuthorizedInterceptor();
 
   static getInterceptors({String? language}) {
     final String? token = PreferencesServices.getToken();

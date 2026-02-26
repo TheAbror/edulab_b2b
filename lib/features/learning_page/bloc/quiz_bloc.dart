@@ -61,7 +61,10 @@ class QuizBloc extends Cubit<QuizState> {
             state.copyWith(
               correctAnswersCount: correctAnswersCount,
               overallAnswersCount: total,
-              correctnessPercentage: correctnessPercentage,
+              //when user answers all wrong
+              correctnessPercentage: correctnessPercentage == 0
+                  ? -1
+                  : correctnessPercentage,
               response: data,
               blocProgress: BlocProgress.IS_SUCCESS,
             ),

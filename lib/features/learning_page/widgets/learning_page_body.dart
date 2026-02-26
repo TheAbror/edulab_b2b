@@ -63,7 +63,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
         );
 
       case 'QUIZ':
-        return LearningPageQuizTab(
+        return QuizTab(
           step: step,
           markAsComplete: () {
             if (step.status != "COMPLETED") {

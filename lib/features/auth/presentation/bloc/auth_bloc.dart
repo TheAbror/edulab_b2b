@@ -2,7 +2,6 @@ import 'package:leti_mobile/widget_imports.dart';
 
 part 'auth_state.dart';
 
-//TODO token problem, when new user enters, old user data is returned
 class AuthBloc extends Cubit<AuthState> {
   AuthBloc() : super(AuthState.initial());
 

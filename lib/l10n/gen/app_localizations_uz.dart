@@ -1125,4 +1125,32 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get allCourses => 'Barcha kurslar';
+
+  @override
+  String get congratulations => 'Tabriklaymiz! 🎉';
+
+  @override
+  String get youhavesuccessfully =>
+      'Siz testni muvaffaqiyatli yakunladingiz va ball to\'pladingiz';
+
+  @override
+  String get tryagain => 'Qayta urinib ko\'ring 💪';
+
+  @override
+  String get youscored => 'Siz terdingiz';
+
+  @override
+  String get pointsAnd => 'ball oldi, lekin bu safar viktorinadan o\'ta olmadi';
+
+  @override
+  String get selectAllCorrectAnswers => 'Barcha to\'g\'ri javoblarni tanlang';
+
+  @override
+  String get watchExplanation => 'Tushuntirishni tomosha qiling';
+
+  @override
+  String get retakeQuiz => 'Viktorinani qayta topshiring';
+
+  @override
+  String get videoNotAvailable => 'Video mavjud emas';
 }

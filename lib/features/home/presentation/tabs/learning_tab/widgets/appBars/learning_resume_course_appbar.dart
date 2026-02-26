@@ -55,14 +55,6 @@ class LearningResumeCourseAppBar extends StatelessWidget
               ),
             ),
           ),
-          Spacer(),
-          Assets.icons.courses.moreIcon.svg(
-            colorFilter: ColorFilter.mode(
-              context.colors.fgDefault,
-              BlendMode.srcIn,
-            ),
-          ),
-          SizedBox(width: 16.w),
         ],
       ),
       bottom: PreferredSize(

@@ -387,3 +387,12 @@ yourRequestSuccessManagerWillContact,Your request has been sent successfully. Ou
 requested,Requested,Запрошено,So'ralgan
 singInToAccess,"Sign in to access your courses, track progress, and continue learning.","Войдите в систему, чтобы получить доступ к своим курсам, отслеживать прогресс и продолжить обучение.","Kurslaringizga kirish, taraqqiyotni kuzatish va o'qishni davom ettirish uchun tizimga kiring."
 allCourses,All courses,Все курсы,Barcha kurslar
+congratulations,Congratulations! 🎉,Поздравляем! 🎉,Tabriklaymiz! 🎉
+youhavesuccessfully,You’ve successfully completed the quiz and scored,Вы успешно прошли викторину и набрали баллы.,Siz testni muvaffaqiyatli yakunladingiz va ball to'pladingiz
+tryagain,Try Again 💪,Попробуйте еще раз 💪,Qayta urinib ko'ring 💪
+youscored,You scored,Вы набрали,Siz terdingiz
+pointsAnd,points and didn’t pass the quiz this time.,"баллы, но на этот раз не прошли викторину","ball oldi, lekin bu safar viktorinadan o'ta olmadi"
+selectAllCorrectAnswers,Select all correct answers,Выберите все правильные ответы,Barcha to'g'ri javoblarni tanlang
+watchExplanation,Watch explanation,Посмотрите объяснение,Tushuntirishni tomosha qiling
+retakeQuiz,Retake quiz,Перепройдите викторину,Viktorinani qayta topshiring
+videoNotAvailable,Video not available,Видео недоступно,Video mavjud emas

@@ -165,9 +165,9 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
                 MarkAsCompleteButton(
                   status: _canComplete ? widget.step.status : "NOT_READY",
                   markAsComplete: () {
-                    if (_canComplete) {
-                      widget.markAsComplete();
-                    }
+                    // if (_canComplete) {
+                    widget.markAsComplete();
+                    // }
                   },
                 ),
               ],

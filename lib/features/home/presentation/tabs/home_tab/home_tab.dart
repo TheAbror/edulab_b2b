@@ -15,7 +15,6 @@ class _HomeTabState extends State<HomeTab> {
 
     if (isAuthorized == true) {
       context.read<CoursesBloc>().getAllCourses();
-      // context.read<CoursesBloc>().getCurrentCourse();
       context.read<LearningTabBloc>().getInProgress();
       context.read<LearningTabBloc>().getCompleted();
       context.read<LearningTabBloc>().getStatistics();
@@ -56,7 +55,7 @@ class _HomeTabState extends State<HomeTab> {
                   HomeTabAppBar(),
 
                   SizedBox(
-                    height: 235.h,
+                    height: 237.h,
                     child: BlocBuilder<LearningTabBloc, LearningTabState>(
                       builder: (context, learningState) {
                         final inProgressList = learningState.inProgress;

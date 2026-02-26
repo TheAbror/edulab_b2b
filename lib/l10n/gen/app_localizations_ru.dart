@@ -1118,4 +1118,32 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get allCourses => 'Все курсы';
+
+  @override
+  String get congratulations => 'Поздравляем! 🎉';
+
+  @override
+  String get youhavesuccessfully =>
+      'Вы успешно прошли викторину и набрали баллы.';
+
+  @override
+  String get tryagain => 'Попробуйте еще раз 💪';
+
+  @override
+  String get youscored => 'Вы набрали';
+
+  @override
+  String get pointsAnd => 'баллы, но на этот раз не прошли викторину';
+
+  @override
+  String get selectAllCorrectAnswers => 'Выберите все правильные ответы';
+
+  @override
+  String get watchExplanation => 'Посмотрите объяснение';
+
+  @override
+  String get retakeQuiz => 'Перепройдите викторину';
+
+  @override
+  String get videoNotAvailable => 'Видео недоступно';
 }

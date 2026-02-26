@@ -192,46 +192,6 @@ class CoursesBloc extends Cubit<CoursesState> {
     return isEnrolled;
   }
 
-  // void getCurrentCourse() async {
-  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-  //   try {
-  //     final response = await ApiProvider.coursesServices.getCurrentCourse();
-
-  //     if (response.isSuccessful) {
-  //       final data = response.body;
-
-  //       if (data != null) {
-  //         emit(
-  //           state.copyWith(
-  //             currentCourse: data,
-  //             blocProgress: BlocProgress.LOADED,
-  //           ),
-  //         );
-  //       }
-  //     } else {
-  //       final error = ErrorResponse.fromJson(
-  //         json.decode(response.error.toString()),
-  //       );
-
-  //       emit(
-  //         state.copyWith(
-  //           blocProgress: BlocProgress.FAILED,
-  //           failureMessage: error.message,
-  //         ),
-  //       );
-  //     }
-  //   } catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         blocProgress: BlocProgress.FAILED,
-  //         failureMessage: AppStrings.internalErrorMessage,
-  //       ),
-  //     );
-  //     debugPrint('$e');
-  //   }
-  // }
-
   //! Get single selected course by its ID, mostly in recommended courses ends
 
   // to delete everything and aasign initial values

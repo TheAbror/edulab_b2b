@@ -1120,4 +1120,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allCourses => 'All courses';
+
+  @override
+  String get congratulations => 'Congratulations! 🎉';
+
+  @override
+  String get youhavesuccessfully =>
+      'You’ve successfully completed the quiz and scored';
+
+  @override
+  String get tryagain => 'Try Again 💪';
+
+  @override
+  String get youscored => 'You scored';
+
+  @override
+  String get pointsAnd => 'points and didn’t pass the quiz this time.';
+
+  @override
+  String get selectAllCorrectAnswers => 'Select all correct answers';
+
+  @override
+  String get watchExplanation => 'Watch explanation';
+
+  @override
+  String get retakeQuiz => 'Retake quiz';
+
+  @override
+  String get videoNotAvailable => 'Video not available';
 }
