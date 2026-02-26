@@ -81,14 +81,10 @@ class LearningPageQuizTab extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final question = step.questions[index];
 
-                      final currentQuestionRequest = state.quizRequests
+                      final currentQuestionRequest = state.quizRequests.answers
                           .firstWhere(
-                            (q) => q.questionId == question.id,
-                            orElse: () => QuizRequest(
-                              questionId: question.id,
-                              stepId: step.id,
-                              selectedOptionIds: [],
-                            ),
+                            (q) => q.questionID == question.id,
+                            orElse: () => NewQuizAnswers.initial(),
                           );
 
                       Color? bgColor;
@@ -108,10 +104,11 @@ class LearningPageQuizTab extends StatelessWidget {
                       }
 
                       if (quizResponse != null) {
-                        if (quizResponse.status == "CORRECT") {
+                        if (quizResponse.status == QuizStatus.correct) {
                           bgColor = Colors.green.withOpacity(0.15);
                           icon = Icons.done;
-                        } else if (quizResponse.status == "INCORRECT") {
+                        } else if (quizResponse.status ==
+                            QuizStatus.incorrect) {
                           bgColor = Colors.red.withOpacity(0.15);
                           icon = Icons.close;
                         }
@@ -162,6 +159,78 @@ class LearningPageQuizTab extends StatelessWidget {
                               state: state,
                             ),
                             SizedBox(height: 10.h),
+                            if (state.response?.isNotEmpty == true)
+                              // Container(
+                              //   padding: EdgeInsets.symmetric(vertical: 14.h),
+                              //   decoration: BoxDecoration(
+                              //     color: context.colors.neutralContainerDefault
+                              //         .withOpacity(0.1),
+                              //     borderRadius: BorderRadius.circular(100),
+                              //   ),
+                              //   child: Row(
+                              //     mainAxisAlignment: MainAxisAlignment.center,
+                              //     children: [
+                              //       Assets.icons.learning.videoPlay.svg(
+                              //         colorFilter: ColorFilter.mode(
+                              //           context.colors.fgDefault,
+                              //           BlendMode.srcIn,
+                              //         ),
+                              //       ),
+                              //       SizedBox(width: 6.w),
+                              //       AppText.headline1('Watch explanation'),
+                              //     ],
+                              //   ),
+                              // ),
+                              Theme(
+                                data: Theme.of(context).copyWith(
+                                  dividerColor: Colors.transparent,
+                                  splashColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                ),
+                                child: ExpansionTile(
+                                  leading: const SizedBox.shrink(),
+                                  tilePadding: EdgeInsets.zero,
+                                  childrenPadding: EdgeInsets.zero,
+                                  minTileHeight: 0,
+                                  shape:
+                                      const Border(), // ← removes default border on expand
+                                  collapsedShape: const Border(),
+                                  title: Container(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 14.h,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: context
+                                          .colors
+                                          .neutralContainerDefault
+                                          .withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Assets.icons.learning.videoPlay.svg(
+                                          colorFilter: ColorFilter.mode(
+                                            context.colors.fgDefault,
+                                            BlendMode.srcIn,
+                                          ),
+                                        ),
+                                        SizedBox(width: 6.w),
+                                        AppText.headline1('Watch explanation'),
+                                      ],
+                                    ),
+                                  ),
+                                  trailing: const SizedBox.shrink(),
+                                  children: [
+                                    Text('data'),
+                                    Text('data'),
+                                    Text('data'),
+                                    Text('data'),
+                                    Text('data'),
+                                  ],
+                                ),
+                              ),
                           ],
                         ),
                       );
@@ -188,7 +257,7 @@ class LearningPageQuizTab extends StatelessWidget {
                       onTap: () {
                         if (state.isAllSelected &&
                             state.blocProgress != BlocProgress.IS_LOADING) {
-                          context.read<QuizBloc>().submitAllQuizzes();
+                          context.read<QuizBloc>().submitAllQuizzes(step.id);
                         }
                       },
                     ),
@@ -221,7 +290,7 @@ class QuizOptionsWidget extends StatelessWidget {
 
   final QuestionModel question;
   final StepModel step;
-  final QuizRequest currentQuestionRequest;
+  final NewQuizAnswers currentQuestionRequest;
   final Color? bgColor;
   final IconData? icon;
   final QuizState state;
@@ -235,13 +304,13 @@ class QuizOptionsWidget extends StatelessWidget {
       itemBuilder: (context, innerIndex) {
         final option = question.options[innerIndex];
 
-        final request = QuizRequest(
-          questionId: question.id,
-          stepId: step.id,
-          selectedOptionIds: [option.id.toString()],
-        );
+        // final request = NewQuizRequest(
+        //   questionId: question.id,
+        //   stepId: step.id,
+        //   selectedOptionIds: [option.id.toString()],
+        // );
 
-        final isSelected = currentQuestionRequest.selectedOptionIds.contains(
+        final isSelected = state.answersIDS.contains(
           option.id.toString(),
         );
 
@@ -250,7 +319,10 @@ class QuizOptionsWidget extends StatelessWidget {
             onTap: () {
               if (state.response?.isEmpty == true) {
                 context.read<QuizBloc>().addQuizAnswer(
-                  request,
+                  NewQuizAnswers(
+                    questionID: question.id,
+                    selectedOptionIds: [option.id.toString()],
+                  ),
                 );
               }
             },

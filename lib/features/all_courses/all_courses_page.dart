@@ -223,7 +223,7 @@ class AllCoursesItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(4.r),
               child: CachedNetworkImage(
-                imageUrl: item.thumbnail?.original_url ?? '',
+                imageUrl: item.thumbnail?.originalUrl ?? '',
                 height: 60.w,
                 width: 60.w,
                 fit: BoxFit.fill,

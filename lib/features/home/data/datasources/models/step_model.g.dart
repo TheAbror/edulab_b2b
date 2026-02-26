@@ -90,21 +90,6 @@ Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
       'explanation_video': instance.explanationVideo,
     };
 
-QuestionType _$QuestionTypeFromJson(Map<String, dynamic> json) => QuestionType(
-  label: json['label'] as String? ?? '',
-  value: json['value'] as String? ?? '',
-  icon: json['icon'] as String?,
-  color: json['color'] as String?,
-);
-
-Map<String, dynamic> _$QuestionTypeToJson(QuestionType instance) =>
-    <String, dynamic>{
-      'label': instance.label,
-      'value': instance.value,
-      'icon': instance.icon,
-      'color': instance.color,
-    };
-
 QuestionOption _$QuestionOptionFromJson(Map<String, dynamic> json) =>
     QuestionOption(
       id: (json['id'] as num?)?.toInt() ?? 0,
@@ -176,77 +161,29 @@ Map<String, dynamic> _$AnswerOptionToJson(AnswerOption instance) =>
     };
 
 QuizRequest _$QuizRequestFromJson(Map<String, dynamic> json) => QuizRequest(
-  questionId: (json['question_id'] as num?)?.toInt() ?? 0,
   stepId: (json['step_id'] as num?)?.toInt() ?? 0,
-  selectedOptionIds:
-      (json['selected_option_ids'] as List<dynamic>?)
-          ?.map((e) => e as String)
+  answers:
+      (json['answers'] as List<dynamic>?)
+          ?.map((e) => NewQuizAnswers.fromJson(e as Map<String, dynamic>))
           .toList() ??
       [],
 );
 
 Map<String, dynamic> _$QuizRequestToJson(QuizRequest instance) =>
+    <String, dynamic>{'step_id': instance.stepId, 'answers': instance.answers};
+
+NewQuizAnswers _$NewQuizAnswersFromJson(Map<String, dynamic> json) =>
+    NewQuizAnswers(
+      questionID: (json['question_id'] as num?)?.toInt() ?? 0,
+      selectedOptionIds:
+          (json['selected_option_ids'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$NewQuizAnswersToJson(NewQuizAnswers instance) =>
     <String, dynamic>{
-      'question_id': instance.questionId,
-      'step_id': instance.stepId,
+      'question_id': instance.questionID,
       'selected_option_ids': instance.selectedOptionIds,
     };
-
-QuizResponse _$QuizResponseFromJson(Map<String, dynamic> json) => QuizResponse(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  number: (json['number'] as num?)?.toInt() ?? 0,
-  text: json['text'] as String? ?? '',
-  type: QuestionType.fromJson(json['type'] as Map<String, dynamic>),
-  difficulty: json['difficulty'] as String? ?? '',
-  priority: (json['priority'] as num?)?.toInt() ?? 0,
-  index: (json['index'] as num?)?.toInt() ?? 0,
-  options:
-      (json['options'] as List<dynamic>?)
-          ?.map(
-            (e) => QuizResponseAnswerOption.fromJson(e as Map<String, dynamic>),
-          )
-          .toList() ??
-      [],
-  status: json['status'] as String? ?? '',
-  explanationVideo: json['explanation_video'] == null
-      ? null
-      : MediaDTO.fromJson(json['explanation_video'] as Map<String, dynamic>),
-  selectedOptions:
-      (json['selected_options'] as List<dynamic>?)
-          ?.map(
-            (e) => QuizResponseAnswerOption.fromJson(e as Map<String, dynamic>),
-          )
-          .toList() ??
-      [],
-);
-
-Map<String, dynamic> _$QuizResponseToJson(QuizResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'number': instance.number,
-      'text': instance.text,
-      'type': instance.type,
-      'difficulty': instance.difficulty,
-      'priority': instance.priority,
-      'index': instance.index,
-      'options': instance.options,
-      'status': instance.status,
-      'explanation_video': instance.explanationVideo,
-      'selected_options': instance.selectedOptions,
-    };
-
-QuizResponseAnswerOption _$QuizResponseAnswerOptionFromJson(
-  Map<String, dynamic> json,
-) => QuizResponseAnswerOption(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  text: json['text'] as String? ?? '',
-  value: json['value'] as bool?,
-);
-
-Map<String, dynamic> _$QuizResponseAnswerOptionToJson(
-  QuizResponseAnswerOption instance,
-) => <String, dynamic>{
-  'id': instance.id,
-  'text': instance.text,
-  'value': instance.value,
-};

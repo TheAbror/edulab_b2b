@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/courses_models.dart';
+import 'package:leti_mobile/widget_imports.dart';
 
 part 'auth_models.g.dart';
 

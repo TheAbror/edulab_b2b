@@ -28,7 +28,7 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
           children: [
             ClipOval(
               child: CachedNetworkImage(
-                imageUrl: db?.profile_photo?.original_url ?? '',
+                imageUrl: db?.profile_photo?.originalUrl ?? '',
                 width: 48.w,
                 height: 48.w,
                 fit: BoxFit.cover,

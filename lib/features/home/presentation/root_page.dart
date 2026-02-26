@@ -54,7 +54,7 @@ class _RootPageState extends State<RootPage> {
 
     if (isAuthorized == true) {
       context.read<CoursesBloc>().getAllCourses();
-      context.read<CoursesBloc>().getCurrentCourse();
+      // context.read<CoursesBloc>().getCurrentCourse();
       context.read<LearningTabBloc>().getInProgress();
       context.read<LearningTabBloc>().getCompleted();
       context.read<LearningTabBloc>().getStatistics();

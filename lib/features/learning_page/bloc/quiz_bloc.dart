@@ -9,84 +9,76 @@ class QuizBloc extends Cubit<QuizState> {
     emit(state.copyWith(quizzesCount: count));
   }
 
-  void addQuizAnswer(QuizRequest quizRequest) {
-    final updatedQuizzes = List<QuizRequest>.from(state.quizRequests);
+  void addQuizAnswer(NewQuizAnswers answer) {
+    final updatedQuizzes = List<NewQuizAnswers>.from(state.answers);
+    final ids = List<String>.from(state.answersIDS); // String
+    final qIds = List<int>.from(state.questionIDS); // int
 
-    // Check if quiz for this question already exists
-    final existingIndex = updatedQuizzes.indexWhere(
-      (quiz) => quiz.questionId == quizRequest.questionId,
-    );
+    final existingIndex = qIds.indexWhere((id) => id == answer.questionID);
 
     if (existingIndex != -1) {
-      // Update existing quiz
-      updatedQuizzes[existingIndex] = quizRequest;
+      updatedQuizzes[existingIndex] = answer;
+      ids[existingIndex] = answer.selectedOptionIds.first;
     } else {
-      updatedQuizzes.add(quizRequest);
+      updatedQuizzes.add(answer);
+      ids.add(answer.selectedOptionIds.first);
+      qIds.add(answer.questionID);
     }
 
-    emit(state.copyWith(quizRequests: updatedQuizzes));
-
-    if (updatedQuizzes.length == state.quizzesCount) {
-      emit(state.copyWith(isAllSelected: true));
-    }
+    emit(
+      state.copyWith(
+        answers: updatedQuizzes,
+        answersIDS: ids,
+        questionIDS: qIds,
+        isAllSelected: updatedQuizzes.length == state.quizzesCount,
+      ),
+    );
   }
 
-  Future<void> submitAllQuizzes() async {
+  Future<void> submitAllQuizzes(int stepID) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final List<QuizResponse> collectedResponses = [];
+      final req = QuizRequest(stepId: stepID, answers: state.answers);
 
-      // ignore: no_leading_underscores_for_local_identifiers
-      var _correctAnswersCount = 0;
+      final response = await ApiProvider.singleCourseServices.submitQuiz(req);
 
-      // Submit each quiz individually
-      for (final quiz in state.quizRequests) {
-        final response = await ApiProvider.singleCourseServices.submitQuiz(
-          quiz,
-        );
+      if (response.isSuccessful) {
+        final data = response.body; // List<QuizResponse>
 
-        if (response.isSuccessful) {
-          final data = response.body;
+        if (data != null) {
+          final correctAnswersCount = data
+              .where((q) => q.status == QuizStatus.correct)
+              .length;
 
-          if (data != null) {
-            collectedResponses.add(data);
+          final total = data.length;
 
-            if (data.status == "CORRECT") {
-              _correctAnswersCount = _correctAnswersCount + 1;
-            }
-          }
-        } else {
-          final error = ErrorResponse.fromJson(
-            json.decode(response.error.toString()),
-          );
+          final correctnessPercentage = total == 0
+              ? 0
+              : ((correctAnswersCount / total) * 100).round();
 
           emit(
             state.copyWith(
-              blocProgress: BlocProgress.FAILED,
-              failureMessage: error.message,
+              correctAnswersCount: correctAnswersCount,
+              overallAnswersCount: total,
+              correctnessPercentage: correctnessPercentage,
+              response: data,
+              blocProgress: BlocProgress.IS_SUCCESS,
             ),
           );
-          return;
         }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
       }
-
-      final correct = _correctAnswersCount;
-      final total = collectedResponses.length;
-
-      final correctnessPercentage = total == 0
-          ? 0
-          : ((correct / total) * 100).round();
-
-      emit(
-        state.copyWith(
-          correctAnswersCount: correct,
-          overallAnswersCount: total,
-          correctnessPercentage: correctnessPercentage,
-          response: collectedResponses,
-          blocProgress: BlocProgress.IS_SUCCESS,
-        ),
-      );
     } catch (e) {
       debugPrint('Error submitting quizzes: $e');
 

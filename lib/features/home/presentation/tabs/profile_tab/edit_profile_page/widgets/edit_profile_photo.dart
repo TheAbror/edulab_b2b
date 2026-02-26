@@ -16,8 +16,7 @@ Center ProfilePhoto(context, String photo, LocalStorageUserInfo db) {
         child: Stack(
           alignment: Alignment.bottomRight,
           children: [
-            if (db.profile_photo != null &&
-                db.profile_photo?.original_url != '')
+            if (db.profile_photo != null && db.profile_photo?.originalUrl != '')
               ClipOval(
                 child: Image.network(
                   photo,

@@ -35,13 +35,4 @@ final class _$CourseServices extends CourseServices {
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
   }
-
-  @override
-  Future<Response<List<CourseShortInfo>>> getCurrentCourse() {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own',
-    );
-    final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
-  }
 }

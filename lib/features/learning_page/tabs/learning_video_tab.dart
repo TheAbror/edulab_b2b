@@ -46,7 +46,7 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
   }
 
   Future<void> _initializeVideo() async {
-    final url = widget.step.media?.original_url ?? "";
+    final url = widget.step.media?.originalUrl ?? "";
 
     if (url.isEmpty) {
       setState(() => _hasError = true);

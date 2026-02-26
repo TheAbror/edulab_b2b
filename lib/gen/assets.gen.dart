@@ -93,6 +93,9 @@ class $AssetsIconsGen {
   $AssetsIconsHomeTabIconsGen get homeTabIcons =>
       const $AssetsIconsHomeTabIconsGen();
 
+  /// File path: assets/icons/icon.png
+  AssetGenImage get icon => const AssetGenImage('assets/icons/icon.png');
+
   /// Directory path: assets/icons/language_icons
   $AssetsIconsLanguageIconsGen get languageIcons =>
       const $AssetsIconsLanguageIconsGen();
@@ -122,7 +125,7 @@ class $AssetsIconsGen {
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
   /// List of all assets
-  List<dynamic> get values => [arrowLeft, letiLogoPng, resendCode];
+  List<dynamic> get values => [arrowLeft, icon, letiLogoPng, resendCode];
 }
 
 class $AssetsImagesGen {
@@ -438,6 +441,10 @@ class $AssetsIconsLearningGen {
   /// File path: assets/icons/learning/text.svg
   SvgGenImage get text => const SvgGenImage('assets/icons/learning/text.svg');
 
+  /// File path: assets/icons/learning/video-play.svg
+  SvgGenImage get videoPlay =>
+      const SvgGenImage('assets/icons/learning/video-play.svg');
+
   /// File path: assets/icons/learning/writeIcon.svg
   SvgGenImage get writeIcon =>
       const SvgGenImage('assets/icons/learning/writeIcon.svg');
@@ -456,6 +463,7 @@ class $AssetsIconsLearningGen {
     questionMarkIcon,
     right,
     text,
+    videoPlay,
     writeIcon,
   ];
 }

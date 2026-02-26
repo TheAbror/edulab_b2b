@@ -36,6 +36,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 10.h),
         if (widget.isHeaderedNeeded == true) _Header(context),
         if (widget.isHeaderedNeeded == true) space8,
         GridView.builder(
@@ -121,7 +122,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                               borderRadius: BorderRadius.circular(8.r),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    singleCourseItem.thumbnail?.original_url ??
+                                    singleCourseItem.thumbnail?.originalUrl ??
                                     '',
                                 height: 120.h,
                                 fit: BoxFit.cover,

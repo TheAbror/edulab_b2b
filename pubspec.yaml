@@ -1,7 +1,7 @@
 name: leti_mobile
 description: "A new Flutter project."
 publish_to: 'none' 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.9.0
@@ -80,6 +80,8 @@ dependencies:
 
   internet_connection_checker: ^3.0.1
 
+  flutter_launcher_icons: ^0.14.4
+
 
 
 dev_dependencies:
@@ -98,7 +100,11 @@ dev_dependencies:
 
   arb_generator: 0.0.4
 
-
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_android: 21 
 
 flutter_gen:
   output: lib/gen/ 

@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/courses_models.dart';
+
+import 'package:leti_mobile/widget_imports.dart';
 
 part 'step_model.g.dart';
 
@@ -146,27 +146,6 @@ class QuestionModel {
 }
 
 @JsonSerializable(includeIfNull: true)
-class QuestionType {
-  @JsonKey(defaultValue: '')
-  final String label;
-  @JsonKey(defaultValue: '')
-  final String value;
-  final String? icon;
-  final String? color;
-
-  QuestionType({
-    required this.label,
-    required this.value,
-    this.icon,
-    this.color,
-  });
-
-  factory QuestionType.fromJson(Map<String, dynamic> json) =>
-      _$QuestionTypeFromJson(json);
-  Map<String, dynamic> toJson() => _$QuestionTypeToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true)
 class QuestionOption {
   @JsonKey(defaultValue: 0)
   final int id;
@@ -253,18 +232,22 @@ class AnswerOption {
 
 @JsonSerializable(includeIfNull: true)
 class QuizRequest {
-  @JsonKey(name: 'question_id', defaultValue: 0)
-  final int questionId;
   @JsonKey(name: 'step_id', defaultValue: 0)
   final int stepId;
-  @JsonKey(name: 'selected_option_ids', defaultValue: [])
-  final List<String> selectedOptionIds;
+  @JsonKey(defaultValue: [])
+  final List<NewQuizAnswers> answers;
 
   QuizRequest({
-    required this.questionId,
     required this.stepId,
-    required this.selectedOptionIds,
+    required this.answers,
   });
+
+  factory QuizRequest.initial() {
+    return QuizRequest(
+      stepId: 0,
+      answers: [],
+    );
+  }
 
   factory QuizRequest.fromJson(Map<String, dynamic> json) =>
       _$QuizRequestFromJson(json);
@@ -273,63 +256,26 @@ class QuizRequest {
 }
 
 @JsonSerializable(includeIfNull: true)
-class QuizResponse {
-  @JsonKey(defaultValue: 0)
-  final int id;
-  @JsonKey(defaultValue: 0)
-  final int number;
-  @JsonKey(defaultValue: '')
-  final String text;
-  final QuestionType type;
-  @JsonKey(defaultValue: '')
-  final String difficulty;
-  @JsonKey(defaultValue: 0)
-  final int priority;
-  @JsonKey(defaultValue: 0)
-  final int index;
-  @JsonKey(defaultValue: [])
-  final List<QuizResponseAnswerOption> options;
-  @JsonKey(defaultValue: '')
-  final String status;
-  @JsonKey(name: 'explanation_video')
-  final MediaDTO? explanationVideo;
-  @JsonKey(name: 'selected_options', defaultValue: [])
-  final List<QuizResponseAnswerOption> selectedOptions;
+class NewQuizAnswers {
+  @JsonKey(name: 'question_id', defaultValue: 0)
+  final int questionID;
+  @JsonKey(name: 'selected_option_ids', defaultValue: [])
+  final List<String> selectedOptionIds;
 
-  QuizResponse({
-    required this.id,
-    required this.number,
-    required this.text,
-    required this.type,
-    required this.difficulty,
-    required this.priority,
-    required this.index,
-    required this.options,
-    required this.status,
-    this.explanationVideo,
-    required this.selectedOptions,
+  NewQuizAnswers({
+    required this.questionID,
+    required this.selectedOptionIds,
   });
 
-  factory QuizResponse.fromJson(Map<String, dynamic> json) =>
-      _$QuizResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$QuizResponseToJson(this);
-}
+  factory NewQuizAnswers.initial() {
+    return NewQuizAnswers(
+      questionID: 0,
+      selectedOptionIds: [],
+    );
+  }
 
-@JsonSerializable(includeIfNull: true)
-class QuizResponseAnswerOption {
-  @JsonKey(defaultValue: 0)
-  final int id;
-  @JsonKey(defaultValue: '')
-  final String text;
-  final bool? value;
+  factory NewQuizAnswers.fromJson(Map<String, dynamic> json) =>
+      _$NewQuizAnswersFromJson(json);
 
-  QuizResponseAnswerOption({
-    required this.id,
-    required this.text,
-    this.value,
-  });
-
-  factory QuizResponseAnswerOption.fromJson(Map<String, dynamic> json) =>
-      _$QuizResponseAnswerOptionFromJson(json);
-  Map<String, dynamic> toJson() => _$QuizResponseAnswerOptionToJson(this);
+  Map<String, dynamic> toJson() => _$NewQuizAnswersToJson(this);
 }

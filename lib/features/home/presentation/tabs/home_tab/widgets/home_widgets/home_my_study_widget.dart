@@ -5,8 +5,8 @@ class HomeMyStudyWidget extends StatelessWidget {
   final int progress;
   final String buttonText;
   final String image;
-  final VoidCallback viewAllOnTap;
   final VoidCallback continueCourse;
+  final double width;
 
   const HomeMyStudyWidget({
     super.key,
@@ -14,51 +14,25 @@ class HomeMyStudyWidget extends StatelessWidget {
     required this.progress,
     required this.buttonText,
     required this.image,
-    required this.viewAllOnTap,
     required this.continueCourse,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.colors.accentContainerDefault.withOpacity(0.1),
-      padding: EdgeInsets.all(16.w),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                context.localizations.myStudy,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  letterSpacing: -1,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              GestureDetector(
-                onTap: viewAllOnTap,
-                behavior: HitTestBehavior.opaque,
-                child: Text(
-                  context.localizations.viewAll,
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          space16,
-          HomeCourseResumeCard(
-            title: title,
-            progress: progress,
-            buttonText: buttonText,
-            onPressed: continueCourse,
-            image: image,
-          ),
-        ],
+      width: width,
+      padding: EdgeInsets.only(
+        left: 0.w,
+        right: 8.w,
+        bottom: 14.w,
+      ),
+      child: HomeCourseResumeCard(
+        title: title,
+        progress: progress,
+        buttonText: buttonText,
+        onPressed: continueCourse,
+        image: image,
       ),
     );
   }

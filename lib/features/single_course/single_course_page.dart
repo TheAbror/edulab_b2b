@@ -167,7 +167,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                                 '${item.firstname}'
                                 ' '
                                 '${item.lastname}',
-                            authorPhoto: item.avatar?.original_url ?? '',
+                            authorPhoto: item.avatar?.originalUrl ?? '',
                             authorPosition: item.jobPosition,
                             courseCount: item.courseCount,
                             about: item.about,

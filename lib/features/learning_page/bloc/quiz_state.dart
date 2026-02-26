@@ -1,7 +1,10 @@
 part of 'quiz_bloc.dart';
 
 class QuizState extends Equatable {
-  final List<QuizRequest> quizRequests;
+  final QuizRequest quizRequests;
+  final List<NewQuizAnswers> answers;
+  final List<String> answersIDS;
+  final List<int> questionIDS;
   final List<QuizResponse>? response;
   //
   final int correctAnswersCount;
@@ -14,6 +17,9 @@ class QuizState extends Equatable {
 
   const QuizState({
     required this.quizRequests,
+    required this.answers,
+    required this.answersIDS,
+    required this.questionIDS,
     required this.response,
     required this.correctAnswersCount,
     required this.overallAnswersCount,
@@ -25,8 +31,14 @@ class QuizState extends Equatable {
   });
 
   factory QuizState.initial() {
-    return const QuizState(
-      quizRequests: [],
+    return QuizState(
+      quizRequests: QuizRequest(
+        stepId: 0,
+        answers: [],
+      ),
+      answers: [],
+      answersIDS: [],
+      questionIDS: [],
       response: [],
       correctAnswersCount: 0,
       overallAnswersCount: 0,
@@ -39,7 +51,10 @@ class QuizState extends Equatable {
   }
 
   QuizState copyWith({
-    List<QuizRequest>? quizRequests,
+    QuizRequest? quizRequests,
+    List<NewQuizAnswers>? answers,
+    List<String>? answersIDS,
+    List<int>? questionIDS,
     List<QuizResponse>? response,
     int? correctAnswersCount,
     int? overallAnswersCount,
@@ -51,6 +66,9 @@ class QuizState extends Equatable {
   }) {
     return QuizState(
       quizRequests: quizRequests ?? this.quizRequests,
+      answers: answers ?? this.answers,
+      answersIDS: answersIDS ?? this.answersIDS,
+      questionIDS: questionIDS ?? this.questionIDS,
       response: response ?? this.response,
       correctAnswersCount: correctAnswersCount ?? this.correctAnswersCount,
       overallAnswersCount: overallAnswersCount ?? this.overallAnswersCount,
@@ -66,6 +84,9 @@ class QuizState extends Equatable {
   @override
   List<Object?> get props => [
     quizRequests,
+    answers,
+    answersIDS,
+    questionIDS,
     response,
     correctAnswersCount,
     overallAnswersCount,

@@ -29,7 +29,7 @@ class CourseInfoHeader extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.r),
                         child: CachedNetworkImage(
-                          imageUrl: item.thumbnail?.original_url ?? '',
+                          imageUrl: item.thumbnail?.originalUrl ?? '',
                           height: 48.h,
                           width: 62.w,
                           fit: BoxFit.fill,
@@ -90,7 +90,7 @@ class CourseInfoHeader extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final authorItem = item.authors[index];
                         return CourseAuthorsItem(
-                          image: authorItem.avatar?.original_url ?? '',
+                          image: authorItem.avatar?.originalUrl ?? '',
                           name:
                               '${authorItem.firstname} ${authorItem.lastname}',
                           occupation: authorItem.jobPosition,

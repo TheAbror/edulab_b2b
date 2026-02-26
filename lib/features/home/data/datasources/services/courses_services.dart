@@ -14,6 +14,6 @@ abstract class CourseServices extends ChopperService {
   @Get(path: AppStrings.currentCourseAsUnauthorized)
   Future<Response<List<CourseShortInfo>>> getAllCoursesAsUnauthorized();
 
-  @Get(path: AppStrings.currentCourse)
-  Future<Response<List<CourseShortInfo>>> getCurrentCourse();
+  // @Get(path: AppStrings.currentCourse)
+  // Future<Response<List<CourseShortInfo>>> getCurrentCourse();
 }

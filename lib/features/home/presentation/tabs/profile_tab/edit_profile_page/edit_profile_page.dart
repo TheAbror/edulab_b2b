@@ -27,7 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
               ProfilePhoto(
                 context,
-                db?.profile_photo?.original_url ?? '',
+                db?.profile_photo?.originalUrl ?? '',
                 db!,
               ),
               space24,

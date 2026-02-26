@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/chapter_model.dart';
+import 'package:leti_mobile/widget_imports.dart';
 
 part 'courses_models.g.dart';
 
@@ -13,38 +13,6 @@ class HomeCoursesResponse {
   factory HomeCoursesResponse.fromJson(Map<String, dynamic> json) =>
       _$HomeCoursesResponseFromJson(json);
   Map<String, dynamic> toJson() => _$HomeCoursesResponseToJson(this);
-}
-
-@JsonSerializable()
-class MediaDTO {
-  @JsonKey(defaultValue: '')
-  final String? original_name;
-  @JsonKey(defaultValue: '')
-  final String? src;
-  @JsonKey(defaultValue: 0)
-  final int? file_size;
-  @JsonKey(defaultValue: '')
-  final String? original_url;
-  @JsonKey(defaultValue: '')
-  final String? thumb_url;
-  @JsonKey(defaultValue: '')
-  final String? url;
-  @JsonKey(defaultValue: '')
-  final String? extension;
-
-  MediaDTO({
-    required this.original_name,
-    required this.src,
-    required this.file_size,
-    required this.original_url,
-    required this.thumb_url,
-    required this.url,
-    required this.extension,
-  });
-
-  factory MediaDTO.fromJson(Map<String, dynamic> json) =>
-      _$MediaDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$MediaDTOToJson(this);
 }
 
 @JsonSerializable()

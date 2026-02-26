@@ -18,7 +18,7 @@ class CompletedTab extends StatelessWidget {
           id: item[index].id,
           title: item[index].title,
           isFirst: false,
-          photo: item[index].thumbnail?.original_url ?? '',
+          photo: item[index].thumbnail?.originalUrl ?? '',
           progress: progress.toDouble(),
           buttonText: context.localizations.continueButton,
           onPressed: () {

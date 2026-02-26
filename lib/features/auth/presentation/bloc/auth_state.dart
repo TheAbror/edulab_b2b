@@ -61,15 +61,8 @@ class AuthState extends Equatable {
           roles: [],
           requiredActions: [],
           email: '',
-          profilePhoto: MediaDTO(
-            original_name: '',
-            src: '',
-            file_size: 0,
-            original_url: '',
-            thumb_url: '',
-            url: '',
-            extension: '',
-          ),
+          profilePhoto: MediaDTO.initial(),
+
           status: '',
           accountType: '',
           accountTypeStr: '',

@@ -19,26 +19,6 @@ Map<String, dynamic> _$HomeCoursesResponseToJson(
   HomeCoursesResponse instance,
 ) => <String, dynamic>{'content': instance.content};
 
-MediaDTO _$MediaDTOFromJson(Map<String, dynamic> json) => MediaDTO(
-  original_name: json['original_name'] as String? ?? '',
-  src: json['src'] as String? ?? '',
-  file_size: (json['file_size'] as num?)?.toInt() ?? 0,
-  original_url: json['original_url'] as String? ?? '',
-  thumb_url: json['thumb_url'] as String? ?? '',
-  url: json['url'] as String? ?? '',
-  extension: json['extension'] as String? ?? '',
-);
-
-Map<String, dynamic> _$MediaDTOToJson(MediaDTO instance) => <String, dynamic>{
-  'original_name': instance.original_name,
-  'src': instance.src,
-  'file_size': instance.file_size,
-  'original_url': instance.original_url,
-  'thumb_url': instance.thumb_url,
-  'url': instance.url,
-  'extension': instance.extension,
-};
-
 Authors _$AuthorsFromJson(Map<String, dynamic> json) => Authors(
   id: (json['id'] as num?)?.toInt() ?? 0,
   userId: (json['user_id'] as num?)?.toInt() ?? 0,
@@ -203,7 +183,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
       progress: (json['progress'] as num?)?.toInt(),
       published: json['published'] as bool?,
       canPublish: json['canPublish'] as bool?,
-      completionTime: json['completion_time'] as String?,
+      completionTime: json['completion_time'] as String? ?? '-- || --',
       chapters:
           (json['chapters'] as List<dynamic>?)
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))

@@ -8,13 +8,14 @@ class HomeTab extends StatefulWidget {
   State<HomeTab> createState() => _HomeTabState();
 }
 
+//
 class _HomeTabState extends State<HomeTab> {
   void myInit() {
     final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
     if (isAuthorized == true) {
       context.read<CoursesBloc>().getAllCourses();
-      context.read<CoursesBloc>().getCurrentCourse();
+      // context.read<CoursesBloc>().getCurrentCourse();
       context.read<LearningTabBloc>().getInProgress();
       context.read<LearningTabBloc>().getCompleted();
       context.read<LearningTabBloc>().getStatistics();
@@ -33,8 +34,6 @@ class _HomeTabState extends State<HomeTab> {
         if (state.blocProgress == BlocProgress.IS_LOADING) {
           return Center(child: CircularProgressIndicator());
         }
-
-        final currentCourse = state.currentCourse;
 
         return RefreshIndicator(
           onRefresh: () async {
@@ -56,25 +55,90 @@ class _HomeTabState extends State<HomeTab> {
                 children: [
                   HomeTabAppBar(),
 
-                  if (currentCourse.isNotEmpty)
-                    HomeMyStudyWidget(
-                      title: currentCourse.first.title,
-                      image: currentCourse.first.thumbnail?.original_url ?? '',
-                      progress: currentCourse.first.progess,
-                      buttonText: context.localizations.continueButton,
-                      continueCourse: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.learningPage,
-                          arguments: OpenCourseByTopicSelectionModel(
-                            courseID: currentCourse.first.id,
+                  SizedBox(
+                    height: 235.h,
+                    child: BlocBuilder<LearningTabBloc, LearningTabState>(
+                      builder: (context, learningState) {
+                        final inProgressList = learningState.inProgress;
+
+                        return Container(
+                          color: context.colors.accentContainerDefault
+                              .withOpacity(0.1),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(16.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      context.localizations.myStudy,
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        letterSpacing: -1,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        context.read<HomeBloc>().changeTabIndex(
+                                          1,
+                                        );
+                                      },
+                                      behavior: HitTestBehavior.opaque,
+                                      child: Text(
+                                        context.localizations.viewAll,
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              Expanded(
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: EdgeInsets.only(left: 8.w),
+                                  itemCount: inProgressList.length,
+                                  itemBuilder: (context, index) {
+                                    final item = inProgressList[index];
+
+                                    return HomeMyStudyWidget(
+                                      width: inProgressList.length == 1
+                                          ? 358.w
+                                          : 330.w,
+                                      title: item.title,
+                                      image: item.thumbnail?.originalUrl ?? '',
+                                      progress: item.progess,
+                                      buttonText:
+                                          context.localizations.continueButton,
+                                      continueCourse: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.learningPage,
+                                          arguments:
+                                              OpenCourseByTopicSelectionModel(
+                                                courseID: item.id,
+                                              ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       },
-                      viewAllOnTap: () {
-                        context.read<HomeBloc>().changeTabIndex(1);
-                      },
                     ),
+                  ),
                   if (isAuthorized == null)
                     HomeFindSomethingToLearnWidget(
                       onTap: () {
