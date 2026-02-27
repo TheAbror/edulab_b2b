@@ -8,14 +8,14 @@ class LearningResumeCourseAppBar extends StatelessWidget
     required this.controller,
     required this.title,
     required this.steps,
-    required this.status,
+    required this.currentStatus,
   });
 
   final LearningState state;
   final TabController controller;
   final String title;
   final List<StepModel> steps;
-  final String status;
+  final StepItemStatus currentStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -80,13 +80,21 @@ class LearningResumeCourseAppBar extends StatelessWidget
               builder: (context, innerState) {
                 return TabBar(
                   onTap: (value) {
-                    if (status == "COMPLETED" || status == "CLOSED") {
+                    final tappedStatus = state.allSteps[value].status;
+                    final currentIndex = controller.previousIndex;
+                    final currentStatus = state.allSteps[currentIndex].status;
+                    final isNextStep = value == currentIndex + 1;
+
+                    if (tappedStatus == StepItemStatus.completed ||
+                        tappedStatus == StepItemStatus.active ||
+                        (currentStatus == StepItemStatus.completed &&
+                            isNextStep)) {
                       context.read<LearningBloc>().changeAppbarTabIndex(
                         value,
                         StepModel.initial(),
                       );
                     } else {
-                      controller.index = controller.previousIndex;
+                      controller.index = currentIndex;
                     }
                   },
                   tabAlignment: TabAlignment.start,

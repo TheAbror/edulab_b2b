@@ -98,7 +98,7 @@ class _LearningPageState extends State<LearningPage>
               controller: _tabController!,
               title: state.topic.title,
               steps: state.allSteps,
-              status: state.allSteps[state.appbarTabIndex].status,
+              currentStatus: state.allSteps[_tabController?.index ?? 0].status,
             ),
             body: LearningPageBody(
               steps: state.allSteps,

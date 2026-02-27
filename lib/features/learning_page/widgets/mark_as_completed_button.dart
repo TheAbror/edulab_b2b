@@ -9,7 +9,7 @@ class MarkAsCompleteButton extends StatelessWidget {
   });
 
   final VoidCallback markAsComplete;
-  final String status;
+  final StepItemStatus status;
   final bool? canComplete;
 
   @override
@@ -21,7 +21,7 @@ class MarkAsCompleteButton extends StatelessWidget {
         height: 50.h,
         margin: EdgeInsets.only(top: 24.h),
         decoration: BoxDecoration(
-          color: status == "COMPLETED" && (canComplete == true)
+          color: status == StepItemStatus.completed && (canComplete == true)
               ? context.colors.successDefault
               : Colors.grey,
           borderRadius: BorderRadius.circular(8),
@@ -30,15 +30,15 @@ class MarkAsCompleteButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (status == "COMPLETED")
+            if (status == StepItemStatus.completed)
               Icon(
                 Icons.done,
                 color: CustomThemes.neutral0,
               ),
-            if (status == "COMPLETED" && (canComplete == true))
+            if (status == StepItemStatus.completed && (canComplete == true))
               SizedBox(width: 10.w),
             AppText.headline1(
-              status == "COMPLETED" && (canComplete == true)
+              status == StepItemStatus.completed && (canComplete == true)
                   ? context.localizations.completed
                   : context.localizations.markAsComplete,
               color: CustomThemes.neutral0,

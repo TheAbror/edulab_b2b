@@ -11,6 +11,15 @@ enum QuizStatus {
   unknown,
 }
 
+enum StepItemStatus {
+  @JsonValue('ACTIVE')
+  active,
+  @JsonValue('CLOSED')
+  closed,
+  @JsonValue('COMPLETED')
+  completed,
+}
+
 enum QuestionTypeValue {
   @JsonValue('SINGLE_CHOICE')
   singleChoice,

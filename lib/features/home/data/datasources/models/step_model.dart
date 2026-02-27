@@ -15,8 +15,8 @@ class StepModel extends Equatable {
   final String type;
   @JsonKey(defaultValue: 0)
   final int priority;
-  @JsonKey(defaultValue: '')
-  final String status;
+  @JsonKey(defaultValue: StepItemStatus.closed)
+  final StepItemStatus status;
   final MediaDTO? media;
   final String? text;
   @JsonKey(name: 'course_id')
@@ -56,7 +56,7 @@ class StepModel extends Equatable {
       description: '',
       priority: 0,
       type: '',
-      status: '',
+      status: StepItemStatus.closed,
       materials: [],
       answers: [],
       questions: [],
@@ -73,7 +73,7 @@ class StepModel extends Equatable {
     String? description,
     String? type,
     int? priority,
-    String? status,
+    StepItemStatus? status,
     MediaDTO? media,
     String? text,
     int? courseId,

@@ -97,7 +97,7 @@ class LearningBloc extends Cubit<LearningState> {
 
         if (data != null) {
           final completedStep = state.step.copyWith(
-            status: 'COMPLETED',
+            status: StepItemStatus.completed,
           );
 
           final updatedSteps = List<StepModel>.from(state.allSteps);
@@ -107,7 +107,7 @@ class LearningBloc extends Cubit<LearningState> {
 
           if (stepIndex != -1) {
             updatedSteps[stepIndex] = updatedSteps[stepIndex].copyWith(
-              status: 'COMPLETED',
+              status: StepItemStatus.completed,
             );
           }
 

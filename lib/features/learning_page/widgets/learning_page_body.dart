@@ -45,7 +45,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
         return LearningPageTextTab(
           step: step,
           markAsComplete: () {
-            if (step.status != "COMPLETED") {
+            if (step.status != StepItemStatus.completed) {
               completeStep(step);
             }
           },
@@ -56,7 +56,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
           step: step,
           tabController: widget.controller,
           markAsComplete: () {
-            if (step.status != "COMPLETED") {
+            if (step.status != StepItemStatus.completed) {
               completeStep(step);
             }
           },
@@ -66,7 +66,7 @@ class LearningPageBodyState extends State<LearningPageBody> {
         return QuizTab(
           step: step,
           markAsComplete: () {
-            if (step.status != "COMPLETED") {
+            if (step.status != StepItemStatus.completed) {
               completeStep(step);
             }
           },

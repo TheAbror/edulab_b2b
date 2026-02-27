@@ -11,7 +11,7 @@ class LearningBottomNavigation extends StatelessWidget {
 
   final TabController controller;
   final int stepsLength;
-  final String status;
+  final StepItemStatus status;
   final StepModel stepModel;
 
   @override
@@ -60,7 +60,7 @@ class LearningBottomNavigation extends StatelessWidget {
           // NEXT
           LearningBottomNavButtonRight(
             onTap: () {
-              if (status == "COMPLETED") {
+              if (status == StepItemStatus.completed) {
                 final index = controller.index + 1;
 
                 if (controller.index < stepsLength - 1) {
@@ -79,7 +79,7 @@ class LearningBottomNavigation extends StatelessWidget {
                 }
               }
             },
-            isEnabled: status == "COMPLETED" ? true : false,
+            isEnabled: status == StepItemStatus.completed ? true : false,
             text: context.localizations.next,
           ),
         ],

@@ -54,89 +54,91 @@ class _HomeTabState extends State<HomeTab> {
                 children: [
                   HomeTabAppBar(),
 
-                  SizedBox(
-                    height: 237.h,
-                    child: BlocBuilder<LearningTabBloc, LearningTabState>(
-                      builder: (context, learningState) {
-                        final inProgressList = learningState.inProgress;
+                  BlocBuilder<LearningTabBloc, LearningTabState>(
+                    builder: (context, learningState) {
+                      final inProgressList = learningState.inProgress;
 
-                        return Container(
-                          color: context.colors.accentContainerDefault
-                              .withOpacity(0.1),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(16.w),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      context.localizations.myStudy,
+                      if (inProgressList.isEmpty) {
+                        return SizedBox.shrink();
+                      }
+
+                      return Container(
+                        height: 237.h,
+                        color: context.colors.accentContainerDefault
+                            .withOpacity(0.1),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(16.w),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    context.localizations.myStudy,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      letterSpacing: -1,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<HomeBloc>().changeTabIndex(
+                                        1,
+                                      );
+                                    },
+                                    behavior: HitTestBehavior.opaque,
+                                    child: Text(
+                                      context.localizations.viewAll,
                                       style: TextStyle(
-                                        fontSize: 16.sp,
-                                        letterSpacing: -1,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        context.read<HomeBloc>().changeTabIndex(
-                                          1,
-                                        );
-                                      },
-                                      behavior: HitTestBehavior.opaque,
-                                      child: Text(
-                                        context.localizations.viewAll,
-                                        style: TextStyle(
-                                          fontSize: 14.sp,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-
-                              Expanded(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  padding: EdgeInsets.only(left: 8.w),
-                                  itemCount: inProgressList.length,
-                                  itemBuilder: (context, index) {
-                                    final item = inProgressList[index];
-
-                                    return HomeMyStudyWidget(
-                                      width: inProgressList.length == 1
-                                          ? 358.w
-                                          : 330.w,
-                                      title: item.title,
-                                      image: item.thumbnail?.originalUrl ?? '',
-                                      progress: item.progess,
-                                      buttonText:
-                                          context.localizations.continueButton,
-                                      continueCourse: () {
-                                        Navigator.pushNamed(
+                                        fontSize: 14.sp,
+                                        color: Theme.of(
                                           context,
-                                          AppRoutes.learningPage,
-                                          arguments:
-                                              OpenCourseByTopicSelectionModel(
-                                                courseID: item.id,
-                                              ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
+                                        ).colorScheme.primary,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                            ),
+
+                            Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                padding: EdgeInsets.only(left: 8.w),
+                                itemCount: inProgressList.length,
+                                itemBuilder: (context, index) {
+                                  final item = inProgressList[index];
+
+                                  return HomeMyStudyWidget(
+                                    width: inProgressList.length == 1
+                                        ? 350.w
+                                        : 330.w,
+                                    title: item.title,
+                                    image: item.thumbnail?.originalUrl ?? '',
+                                    progress: item.progess,
+                                    buttonText:
+                                        context.localizations.continueButton,
+                                    continueCourse: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        AppRoutes.learningPage,
+                                        arguments:
+                                            OpenCourseByTopicSelectionModel(
+                                              courseID: item.id,
+                                            ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                   if (isAuthorized == null)
                     HomeFindSomethingToLearnWidget(

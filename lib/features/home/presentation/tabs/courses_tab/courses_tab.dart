@@ -18,30 +18,27 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 20.h),
-        child: BlocBuilder<CoursesBloc, CoursesState>(
-          builder: (context, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (state.coursesAll.isNotEmpty)
-                  OurCoursesWidget(
-                    isHeaderedNeeded: false,
-                    courses: state.coursesAll,
-                    onTapViewAll: () {
-                      Navigator.pushNamed(
-                        context,
-                        AppRoutes.allCoursesPage,
-                      );
-                    },
-                  ),
+      child: BlocBuilder<CoursesBloc, CoursesState>(
+        builder: (context, state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (state.coursesAll.isNotEmpty)
+                OurCoursesWidget(
+                  isHeaderedNeeded: false,
+                  courses: state.coursesAll,
+                  onTapViewAll: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.allCoursesPage,
+                    );
+                  },
+                ),
 
-                space40,
-              ],
-            );
-          },
-        ),
+              space40,
+            ],
+          );
+        },
       ),
     );
   }

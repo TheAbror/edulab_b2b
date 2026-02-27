@@ -12,7 +12,9 @@ StepModel _$StepModelFromJson(Map<String, dynamic> json) => StepModel(
   description: json['description'] as String?,
   type: json['type'] as String? ?? '',
   priority: (json['priority'] as num?)?.toInt() ?? 0,
-  status: json['status'] as String? ?? '',
+  status:
+      $enumDecodeNullable(_$StepItemStatusEnumMap, json['status']) ??
+      StepItemStatus.closed,
   media: json['media'] == null
       ? null
       : MediaDTO.fromJson(json['media'] as Map<String, dynamic>),
@@ -43,7 +45,7 @@ Map<String, dynamic> _$StepModelToJson(StepModel instance) => <String, dynamic>{
   'description': instance.description,
   'type': instance.type,
   'priority': instance.priority,
-  'status': instance.status,
+  'status': _$StepItemStatusEnumMap[instance.status]!,
   'media': instance.media,
   'text': instance.text,
   'course_id': instance.courseId,
@@ -52,6 +54,12 @@ Map<String, dynamic> _$StepModelToJson(StepModel instance) => <String, dynamic>{
   'materials': instance.materials,
   'questions': instance.questions,
   'questions_answers': instance.answers,
+};
+
+const _$StepItemStatusEnumMap = {
+  StepItemStatus.active: 'ACTIVE',
+  StepItemStatus.closed: 'CLOSED',
+  StepItemStatus.completed: 'COMPLETED',
 };
 
 QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
