@@ -119,7 +119,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                           text: context.localizations.courseMaterials,
                         ),
                         ExpandableCourseMaterials(state: state),
-                        SizedBox(height: 16.h),
+                        // SizedBox(height: 16.h),
                         if (state.materialsMoreThan3)
                           ShowAllButtonWithChangingText(
                             isHidden: state.courseMaterialsAreHidden,
@@ -131,7 +131,9 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                           ),
                       ],
 
+                    //aboutCourse
                     if (state.singleCourse.aboutCourse.isNotEmpty) ...[
+                      SizedBox(height: 20.h),
                       CourseInfoBlocsTitle(
                         text: context.localizations.description,
                       ),
@@ -141,10 +143,11 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                         html: state.singleCourse.aboutCourse,
                       ),
                       space10,
-                      ShowMoreTextWithOpacity(
-                        text: 'Show all',
-                        isDescriptionHidden: state.isDescriptionHidden,
-                      ),
+                      if (state.singleCourse.aboutCourse.length > 100)
+                        ShowMoreTextWithOpacity(
+                          text: context.localizations.showAll,
+                          isDescriptionHidden: state.isDescriptionHidden,
+                        ),
                       space24,
                     ],
 

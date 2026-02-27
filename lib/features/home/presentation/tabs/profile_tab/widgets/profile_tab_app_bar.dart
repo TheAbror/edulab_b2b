@@ -41,16 +41,10 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                 errorWidget: (context, url, error) => Container(
                   width: 48.w,
                   height: 48.w,
-                  decoration: BoxDecoration(
-                    color: context.colors.neutralContainerDefault.withOpacity(
-                      0.1,
-                    ),
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/network_image_error_case.png',
-                      ),
-                    ),
+                  color: context.colors.neutralContainerDefault.withOpacity(
+                    0.1,
                   ),
+                  child: Icon(Icons.person),
                 ),
               ),
             ),

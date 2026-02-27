@@ -105,7 +105,7 @@ class ExpandableCourseMaterials extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
       firstChild: SizedBox(
-        height: 300.h,
+        height: 200.h,
         child: ListView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(vertical: 8.h),

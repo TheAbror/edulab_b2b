@@ -16,7 +16,7 @@ AppBar EditProfilePageAppBar(BuildContext context) {
             style: TextStyle(fontSize: 16.sp),
           ),
         ),
-        Assets.icons.courses.moreIcon.svg(),
+        SizedBox(),
       ],
     ),
   );

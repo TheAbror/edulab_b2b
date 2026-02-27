@@ -80,6 +80,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
               builder: (context, innerState) {
                 return TabBar(
                   onTap: (value) {
+                    //TODO add version update feature
                     final tappedStatus = state.allSteps[value].status;
                     final currentIndex = controller.previousIndex;
                     final currentStatus = state.allSteps[currentIndex].status;

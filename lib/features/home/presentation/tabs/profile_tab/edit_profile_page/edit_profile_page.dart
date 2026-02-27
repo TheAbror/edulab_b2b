@@ -23,14 +23,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              space32,
+              space20,
 
-              ProfilePhoto(
-                context,
-                db?.profile_photo?.originalUrl ?? '',
-                db!,
-              ),
-              space24,
+              // ProfilePhoto(
+              //   context,
+              //   db?.profile_photo?.originalUrl ?? '',
+              //   db!,
+              // ),
+              // space24,
               EditProfilePageItem(
                 label: 'First name',
                 text: db?.firstName ?? '',
