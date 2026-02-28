@@ -115,32 +115,13 @@ class QuizTab extends StatelessWidget {
                             ),
                             SizedBox(height: 10.h),
                             if (state.response?.isNotEmpty == true)
-                              Theme(
-                                data: Theme.of(context).copyWith(
-                                  dividerColor: Colors.transparent,
-                                  splashColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                ),
-                                child: ExpansionTile(
-                                  leading: const SizedBox.shrink(),
-                                  tilePadding: EdgeInsets.zero,
-                                  childrenPadding: EdgeInsets.zero,
-                                  minTileHeight: 0,
-                                  shape: const Border(),
-                                  collapsedShape: const Border(),
-                                  title: QuizAnswerTitleWidget(),
-                                  trailing: const SizedBox.shrink(),
-                                  children: [
-                                    SimpleVideoPlayer(
-                                      url:
-                                          state
-                                              .response?[index]
-                                              .explanationVideo
-                                              ?.originalUrl ??
-                                          '',
-                                    ),
-                                  ],
-                                ),
+                              QuizAnswerTitleWidget(
+                                url:
+                                    state
+                                        .response?[index]
+                                        .explanationVideo
+                                        ?.originalUrl ??
+                                    '',
                               ),
                           ],
                         ),
@@ -166,7 +147,9 @@ class QuizTab extends StatelessWidget {
                         onTap: () {
                           if (state.isAllSelected &&
                               state.blocProgress != BlocProgress.IS_LOADING) {
-                            context.read<QuizBloc>().submitAllQuizzes(step.id);
+                            context.read<QuizBloc>().submitAllQuizzes(
+                              step.id,
+                            );
                           }
                         },
                       ),
@@ -251,36 +234,66 @@ class CongratsWidget extends StatelessWidget {
   }
 }
 
-class QuizAnswerTitleWidget extends StatelessWidget {
+class QuizAnswerTitleWidget extends StatefulWidget {
   const QuizAnswerTitleWidget({
     super.key,
+    required this.url,
   });
+
+  final String url;
+
+  @override
+  State<QuizAnswerTitleWidget> createState() => _QuizAnswerTitleWidgetState();
+}
+
+class _QuizAnswerTitleWidgetState extends State<QuizAnswerTitleWidget> {
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 14.h,
-      ),
-      decoration: BoxDecoration(
-        color: context.colors.neutralContainerDefault.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Assets.icons.learning.videoPlay.svg(
-            colorFilter: ColorFilter.mode(
-              context.colors.fgDefault,
-              BlendMode.srcIn,
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => setState(() => _expanded = !_expanded),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 14.h),
+            decoration: BoxDecoration(
+              color: context.colors.neutralContainerDefault.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Assets.icons.learning.videoPlay.svg(
+                  colorFilter: ColorFilter.mode(
+                    context.colors.fgDefault,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                SizedBox(width: 6.w),
+                Flexible(
+                  child: AppText.headline1(
+                    context.localizations.watchExplanation,
+                    maxLines: 1,
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(width: 6.w),
-          AppText.headline1(
-            context.localizations.watchExplanation,
-          ),
-        ],
-      ),
+        ),
+        AnimatedSize(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: _expanded
+              ? Column(
+                  children: [
+                    SizedBox(height: 10.h),
+                    SimpleVideoPlayer(url: widget.url),
+                  ],
+                )
+              : const SizedBox.shrink(),
+        ),
+      ],
     );
   }
 }

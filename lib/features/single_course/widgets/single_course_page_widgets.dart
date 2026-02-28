@@ -22,7 +22,7 @@ class SkillLevelTimeToCompleteCertificatesPrereqs extends StatelessWidget {
         ),
         SizedBox(width: 20.h),
         CourseTopLevelHeaderAndSubHeader(
-          headlineLeft: context.localizations.prerequisities,
+          headlineLeft: context.localizations.skillLevel,
           textLeft: '-- : --',
           isLeft: false,
         ),
@@ -532,6 +532,7 @@ class CourseTopLevelHeaderAndSubHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CourseInfoSmallHeadline(text: headlineLeft.toUpperCase()),
+        SizedBox(height: 4.h),
         CourseInfoBigHeadline(text: textLeft, isLeft: isLeft),
       ],
     );
