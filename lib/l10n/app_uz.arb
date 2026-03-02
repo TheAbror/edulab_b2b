@@ -741,5 +741,7 @@
   "retakeQuiz": "Viktorinani qayta topshiring",
   "@retakeQuiz": {},
   "videoNotAvailable": "Video mavjud emas",
-  "@videoNotAvailable": {}
+  "@videoNotAvailable": {},
+  "off": "chegirma",
+  "@off": {}
 }

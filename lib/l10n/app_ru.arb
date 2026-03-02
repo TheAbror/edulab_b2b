@@ -741,5 +741,7 @@
   "retakeQuiz": "Перепройти викторину",
   "@retakeQuiz": {},
   "videoNotAvailable": "Видео недоступно",
-  "@videoNotAvailable": {}
+  "@videoNotAvailable": {},
+  "off": "скидка",
+  "@off": {}
 }

@@ -1148,4 +1148,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get videoNotAvailable => 'Video not available';
+
+  @override
+  String get off => 'off';
 }

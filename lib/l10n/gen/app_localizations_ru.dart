@@ -1146,4 +1146,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get videoNotAvailable => 'Видео недоступно';
+
+  @override
+  String get off => 'скидка';
 }

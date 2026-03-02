@@ -741,5 +741,7 @@
   "retakeQuiz": "Retake quiz",
   "@retakeQuiz": {},
   "videoNotAvailable": "Video not available",
-  "@videoNotAvailable": {}
+  "@videoNotAvailable": {},
+  "off": "off",
+  "@off": {}
 }

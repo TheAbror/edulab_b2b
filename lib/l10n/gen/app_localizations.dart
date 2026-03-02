@@ -2325,6 +2325,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Video not available'**
   String get videoNotAvailable;
+
+  /// No description provided for @off.
+  ///
+  /// In en, this message translates to:
+  /// **'off'**
+  String get off;
 }
 
 class _AppLocalizationsDelegate

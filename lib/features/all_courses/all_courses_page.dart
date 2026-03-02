@@ -67,7 +67,10 @@ class _Body extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = state.coursesAll[index];
 
-                return AllCoursesItem(item: item);
+                return AllCoursesItem(
+                  index: index,
+                  item: item,
+                );
               },
               separatorBuilder: (context, index) {
                 return Divider(
@@ -90,11 +93,24 @@ class _Body extends StatelessWidget {
 
 class AllCoursesItem extends StatelessWidget {
   final CourseShortInfo item;
+  final int index;
 
-  const AllCoursesItem({super.key, required this.item});
+  const AllCoursesItem({
+    super.key,
+    required this.item,
+    required this.index,
+  });
+
+  static const List<Map<String, dynamic>> _priceData = [
+    {'original': '5 000 000 UZS', 'discount': 28},
+    {'original': '3 000 000 UZS', 'discount': 30},
+    {'original': '1 500 000 UZS', 'discount': 20},
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final priceInfo = index < _priceData.length ? _priceData[index] : null;
+
     return GestureDetector(
       onTap: () async {
         final bool? result = await context.read<CoursesBloc>().checkEnrollment(
@@ -134,24 +150,24 @@ class AllCoursesItem extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      space8,
-                      Text(
-                        item.short_description,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
+                      if (item.short_description.isNotEmpty) space8,
+                      if (item.short_description.isNotEmpty)
+                        Text(
+                          item.short_description,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
                       space8,
-                      // CourseInfo(
-                      //   '',
-                      //   '',
-                      //   0,
-                      //   context,
-                      //   isCertificateAvailble: true,
-                      // ),
+                      CourseInfo(
+                        learners: item.learnersCount.toString(),
+                        rating: item.rating,
+                        context: context,
+                        isCertificateAvailble: false,
+                      ),
                       space8,
                       Row(
                         children: [
@@ -167,44 +183,47 @@ class AllCoursesItem extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(width: 10.w),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8.w,
-                              vertical: 2.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: context.colors.accentContainerDefault
-                                  .withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(4.r),
-                            ),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '35%',
-                                  style: TextStyle(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                    fontSize: 10.sp,
+                          if (priceInfo?['discount'].toString().isNotEmpty ==
+                              true)
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.w,
+                                vertical: 2.h,
+                              ),
+                              decoration: BoxDecoration(
+                                color: context.colors.accentContainerDefault
+                                    .withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(4.r),
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    '${priceInfo?['discount'] ?? 0}%',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                      fontSize: 10.sp,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  ' off',
-                                  style: TextStyle(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                    fontSize: 10.sp,
+
+                                  Text(
+                                    ' ${context.localizations.off}',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                      fontSize: 10.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
                         ],
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        '350 000 UZS',
+                        priceInfo?['original'] ?? '',
                         style: TextStyle(
                           fontSize: 13.sp,
                           decoration: TextDecoration.lineThrough,

@@ -1153,4 +1153,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get videoNotAvailable => 'Video mavjud emas';
+
+  @override
+  String get off => 'chegirma';
 }
