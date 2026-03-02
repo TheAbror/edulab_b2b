@@ -1156,4 +1156,13 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get off => 'chegirma';
+
+  @override
+  String get maintenanceInProgress => 'Texnik ishlar olib borilmoqda';
+
+  @override
+  String get updateNow => 'Yangilash';
+
+  @override
+  String get notNow => 'Hozir emas';
 }

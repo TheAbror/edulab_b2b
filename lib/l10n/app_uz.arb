@@ -743,5 +743,11 @@
   "videoNotAvailable": "Video mavjud emas",
   "@videoNotAvailable": {},
   "off": "chegirma",
-  "@off": {}
+  "@off": {},
+  "maintenanceInProgress": "Texnik ishlar olib borilmoqda",
+  "@maintenanceInProgress": {},
+  "updateNow": "Yangilash",
+  "@updateNow": {},
+  "notNow": "Hozir emas",
+  "@notNow": {}
 }

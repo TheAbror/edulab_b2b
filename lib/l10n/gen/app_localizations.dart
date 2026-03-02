@@ -2331,6 +2331,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'off'**
   String get off;
+
+  /// No description provided for @maintenanceInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintenance in progress'**
+  String get maintenanceInProgress;
+
+  /// No description provided for @updateNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Update now'**
+  String get updateNow;
+
+  /// No description provided for @notNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get notNow;
 }
 
 class _AppLocalizationsDelegate

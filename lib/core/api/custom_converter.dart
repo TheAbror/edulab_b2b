@@ -42,8 +42,8 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case int:
       return int;
 
-    case AppVersionResponse:
-      return AppVersionResponse.fromJson(json);
+    case AppVersionsModel:
+      return AppVersionsModel.fromJson(json);
 
     case SignUpRequest:
       return SignUpRequest.fromJson(json);

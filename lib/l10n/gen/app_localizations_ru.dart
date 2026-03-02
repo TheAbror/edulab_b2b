@@ -1149,4 +1149,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get off => 'скидка';
+
+  @override
+  String get maintenanceInProgress => 'Ведется техническое обслуживание';
+
+  @override
+  String get updateNow => 'Обновить сейчас';
+
+  @override
+  String get notNow => 'Не сейчас';
 }

@@ -743,5 +743,11 @@
   "videoNotAvailable": "Видео недоступно",
   "@videoNotAvailable": {},
   "off": "скидка",
-  "@off": {}
+  "@off": {},
+  "maintenanceInProgress": "Ведется техническое обслуживание",
+  "@maintenanceInProgress": {},
+  "updateNow": "Обновить сейчас",
+  "@updateNow": {},
+  "notNow": "Не сейчас",
+  "@notNow": {}
 }

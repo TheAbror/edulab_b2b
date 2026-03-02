@@ -13,7 +13,6 @@ export 'package:leti_mobile/core/utils/custom_app_bar.dart';
 export 'package:leti_mobile/gen/assets.gen.dart';
 export 'package:leti_mobile/core/extensions/localization_extension.dart';
 export 'package:leti_mobile/core/models/mobile_response.dart';
-export 'package:leti_mobile/features/splash/data/models/app_version_response.dart';
 export 'package:bot_toast/bot_toast.dart';
 export 'package:leti_mobile/core/api/api_provider.dart';
 export 'package:leti_mobile/core/bloc_progress/bloc_progress.dart';

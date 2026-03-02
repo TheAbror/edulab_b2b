@@ -22,6 +22,8 @@ class SplashBloc extends Cubit<SplashState> {
 
   void getMinimumAppVersion() async {
     bool showMaintanance = false;
+    int minVersion = await PreferencesServices.getMinimumAppVersion() ?? 0;
+    int latestAppVersion = await PreferencesServices.getLatestAppVersion() ?? 0;
 
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -35,6 +37,20 @@ class SplashBloc extends Cubit<SplashState> {
 
         if (data != null) {
           showMaintanance = data.showMaintenance;
+          minVersion = Platform.isAndroid
+              ? data.androidMinVersion
+              : data.iosMinVersion;
+          latestAppVersion = Platform.isAndroid
+              ? data.androidLatestVersion
+              : data.iosLatestVersion;
+
+          PreferencesServices.saveShowMaintenance(showMaintanance);
+          PreferencesServices.saveMinimumAppVersion(minVersion);
+          PreferencesServices.saveLatestAppVersion(latestAppVersion);
+          PreferencesServices.saveAppVersionTitle(data.title);
+          PreferencesServices.saveAppVersionDescription(data.description);
+          PreferencesServices.saveAndroidStoreUrl(data.androidStoreUrl);
+          PreferencesServices.saveIOSstoreUrl(data.iosStoreUrl);
           emit(
             state.copyWith(
               appVersionData: data,

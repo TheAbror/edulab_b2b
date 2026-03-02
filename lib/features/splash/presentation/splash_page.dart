@@ -1,3 +1,4 @@
+import 'package:leti_mobile/features/splash/presentation/app_updates_view.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<SplashBloc>().setupInitialSettings();
+      context.read<SplashBloc>().getMinimumAppVersion();
     });
   }
 
@@ -23,11 +24,6 @@ class _SplashPageState extends State<SplashPage> {
       listener: (context, state) {
         if (state.authStatus == SplashAuthStatus.authorized) {
           Navigator.pushReplacementNamed(context, AppRoutes.rootPage);
-
-          // Navigator.pushReplacementNamed(
-          //   context,
-          //   AppRoutes.languageSelectionPage,
-          // );
         } else {
           Navigator.pushReplacementNamed(
             context,
@@ -38,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
-          body: _SplashView(),
+          body: state.showAppUpdatesPage ? AppUpdatesView() : _SplashView(),
         );
       },
     );

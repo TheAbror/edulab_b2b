@@ -1151,4 +1151,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get off => 'off';
+
+  @override
+  String get maintenanceInProgress => 'Maintenance in progress';
+
+  @override
+  String get updateNow => 'Update now';
+
+  @override
+  String get notNow => 'Not now';
 }

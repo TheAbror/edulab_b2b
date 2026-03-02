@@ -743,5 +743,11 @@
   "videoNotAvailable": "Video not available",
   "@videoNotAvailable": {},
   "off": "off",
-  "@off": {}
+  "@off": {},
+  "maintenanceInProgress": "Maintenance in progress",
+  "@maintenanceInProgress": {},
+  "updateNow": "Update now",
+  "@updateNow": {},
+  "notNow": "Not now",
+  "@notNow": {}
 }

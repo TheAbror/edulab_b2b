@@ -138,6 +138,18 @@ class $AssetsImagesGen {
   /// File path: assets/images/avatar.png
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.png');
 
+  /// File path: assets/images/google_play.png
+  AssetGenImage get googlePlay =>
+      const AssetGenImage('assets/images/google_play.png');
+
+  /// File path: assets/images/ios_app_store.png
+  AssetGenImage get iosAppStore =>
+      const AssetGenImage('assets/images/ios_app_store.png');
+
+  /// File path: assets/images/maintenance.svg
+  SvgGenImage get maintenance =>
+      const SvgGenImage('assets/images/maintenance.svg');
+
   /// File path: assets/images/network_image_error_case.png
   AssetGenImage get networkImageErrorCase =>
       const AssetGenImage('assets/images/network_image_error_case.png');
@@ -146,7 +158,14 @@ class $AssetsImagesGen {
   $AssetsImagesStoresGen get stores => const $AssetsImagesStoresGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [avatarImg, avatar, networkImageErrorCase];
+  List<dynamic> get values => [
+    avatarImg,
+    avatar,
+    googlePlay,
+    iosAppStore,
+    maintenance,
+    networkImageErrorCase,
+  ];
 }
 
 class $AssetsLocalizationGen {
