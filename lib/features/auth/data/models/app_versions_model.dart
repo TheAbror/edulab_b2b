@@ -1,15 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'app_version_response.g.dart';
+part 'app_versions_model.g.dart';
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
-class AppVersionResponse {
+class AppVersionsModel {
   @JsonKey(defaultValue: '')
   final String title;
   @JsonKey(defaultValue: '')
   final String description;
-  @JsonKey(name: 'show_maintanance', defaultValue: false)
-  final bool showMaintanance;
+  @JsonKey(name: 'show_maintenance', defaultValue: false)
+  final bool showMaintenance;
   @JsonKey(name: 'ios_min_version', defaultValue: 1)
   final int iosMinVersion;
   @JsonKey(name: 'ios_latest_version', defaultValue: 1)
@@ -23,10 +23,10 @@ class AppVersionResponse {
   @JsonKey(name: 'android_store_url', defaultValue: '')
   final String androidStoreUrl;
 
-  AppVersionResponse({
+  AppVersionsModel({
     required this.title,
     required this.description,
-    required this.showMaintanance,
+    required this.showMaintenance,
     required this.iosMinVersion,
     required this.iosLatestVersion,
     required this.androidMinVersion,
@@ -35,8 +35,8 @@ class AppVersionResponse {
     required this.androidStoreUrl,
   });
 
-  factory AppVersionResponse.fromJson(Map<String, dynamic> json) =>
-      _$AppVersionResponseFromJson(json);
+  factory AppVersionsModel.fromJson(Map<String, dynamic> json) =>
+      _$AppVersionsModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AppVersionResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AppVersionsModelToJson(this);
 }

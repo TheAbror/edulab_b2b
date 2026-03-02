@@ -29,6 +29,7 @@ class AppStrings {
   //others
   static const teacher = 'teacher/';
   static const internalErrorMessage = 'Internal error';
+  static const appVersions = 'settings/versions';
 }
 // Authorized:
 // Get courses: ....../course/

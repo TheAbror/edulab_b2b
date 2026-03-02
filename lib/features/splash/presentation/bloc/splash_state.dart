@@ -1,7 +1,7 @@
 part of 'splash_bloc.dart';
 
 class SplashState extends Equatable {
-  final AppVersionResponse appVersionData;
+  final AppVersionsModel appVersionData;
   final bool showAppUpdatesPage;
   final SplashAuthStatus authStatus;
   final AccountType accountType;
@@ -27,8 +27,8 @@ class SplashState extends Equatable {
 
   factory SplashState.initial() {
     return SplashState(
-      appVersionData: AppVersionResponse(
-        showMaintanance: false,
+      appVersionData: AppVersionsModel(
+        showMaintenance: false,
         iosMinVersion: 1,
         iosLatestVersion: 1,
         androidMinVersion: 1,
@@ -43,8 +43,8 @@ class SplashState extends Equatable {
       accountType: AccountType.unknown,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
-      // app status variables
 
+      // app status variables
       minVersion: 0,
       latestAppVersion: 0,
       buildNumber: 0,
@@ -52,14 +52,14 @@ class SplashState extends Equatable {
   }
 
   SplashState copyWith({
-    AppVersionResponse? appVersionData,
+    AppVersionsModel? appVersionData,
     bool? showAppUpdatesPage,
     SplashAuthStatus? authStatus,
     BlocProgress? blocProgress,
     String? failureMessage,
     AccountType? accountType,
-    //
 
+    //
     int? minVersion,
     int? latestAppVersion,
     int? buildNumber,
@@ -71,8 +71,8 @@ class SplashState extends Equatable {
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
       accountType: accountType ?? this.accountType,
-      //
 
+      //
       minVersion: minVersion ?? this.minVersion,
       latestAppVersion: latestAppVersion ?? this.latestAppVersion,
       buildNumber: buildNumber ?? this.buildNumber,
@@ -81,14 +81,14 @@ class SplashState extends Equatable {
 
   @override
   List<Object?> get props => [
-        appVersionData,
-        showAppUpdatesPage,
-        authStatus,
-        blocProgress,
-        failureMessage,
-        accountType,
-        minVersion,
-        latestAppVersion,
-        buildNumber,
-      ];
+    appVersionData,
+    showAppUpdatesPage,
+    authStatus,
+    blocProgress,
+    failureMessage,
+    accountType,
+    minVersion,
+    latestAppVersion,
+    buildNumber,
+  ];
 }

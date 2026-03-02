@@ -1,3 +1,4 @@
+import 'package:leti_mobile/features/auth/data/datasources/app_versions_service.dart';
 import 'package:leti_mobile/features/single_course/services/single_course_services.dart';
 import 'package:leti_mobile/widget_imports.dart';
 import 'package:chopper/chopper.dart';
@@ -11,6 +12,7 @@ class ApiProvider {
   static late CourseServices coursesServices;
   static late SingleCourseServices singleCourseServices;
   static late LearningTabServices learningTabServices;
+  static late AppVersionsService appVersionsService;
 
   static NotAuthorizedInterceptor notAuthorizedInterceptor =
       NotAuthorizedInterceptor();
@@ -28,6 +30,7 @@ class ApiProvider {
         CourseServices.create(),
         SingleCourseServices.create(),
         LearningTabServices.create(),
+        AppVersionsService.create(),
       ],
       interceptors: getInterceptors(),
       converter: CustomDataConverter(),

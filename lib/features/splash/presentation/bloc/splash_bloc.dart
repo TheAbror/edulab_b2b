@@ -1,4 +1,5 @@
 import 'package:leti_mobile/widget_imports.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 part 'splash_state.dart';
 
@@ -16,6 +17,66 @@ class SplashBloc extends Cubit<SplashState> {
       emit(state.copyWith(authStatus: SplashAuthStatus.authorized));
     } else {
       emit(state.copyWith(authStatus: SplashAuthStatus.notAuthorized));
+    }
+  }
+
+  void getMinimumAppVersion() async {
+    bool showMaintanance = false;
+
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    try {
+      final response = await ApiProvider.appVersionsService.getAppVersions();
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          showMaintanance = data.showMaintenance;
+          emit(
+            state.copyWith(
+              appVersionData: data,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(
+          json.decode(response.error.toString()),
+        );
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+
+    emit(state.copyWith(blocProgress: BlocProgress.LOADED));
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    int buildNumber = int.parse(packageInfo.buildNumber.split('.').last);
+
+    emit(state.copyWith(buildNumber: int.parse(packageInfo.version)));
+
+    if (showMaintanance ||
+        buildNumber < minVersion ||
+        buildNumber < latestAppVersion) {
+      emit(state.copyWith(showAppUpdatesPage: true));
+    } else {
+      setupInitialSettings();
     }
   }
 
