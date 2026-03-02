@@ -85,7 +85,7 @@ class SplashBloc extends Cubit<SplashState> {
 
     int buildNumber = int.parse(packageInfo.buildNumber.split('.').last);
 
-    emit(state.copyWith(buildNumber: int.parse(packageInfo.version)));
+    emit(state.copyWith(buildNumber: buildNumber));
 
     if (showMaintanance ||
         buildNumber < minVersion ||
