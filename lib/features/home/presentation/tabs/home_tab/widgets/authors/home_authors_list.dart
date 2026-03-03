@@ -32,7 +32,7 @@ class HomeAuthorsList extends StatelessWidget {
                       // );
                       // context.read<HomeBloc>().getTeacherById(item.id);
                     },
-                    authorName: '${item.firstname} ${item.lastname}',
+                    authorName: '${item.lastname} ${item.firstname}',
                     authorPhoto: item.profile_picture.original_url,
                     position: item.job_title,
                     count: item.courses_number.toString(),

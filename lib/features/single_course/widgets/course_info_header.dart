@@ -92,7 +92,7 @@ class CourseInfoHeader extends StatelessWidget {
                         return CourseAuthorsItem(
                           image: authorItem.avatar?.originalUrl ?? '',
                           name:
-                              '${authorItem.firstname} ${authorItem.lastname}',
+                              '${authorItem.lastname} ${authorItem.firstname}',
                           occupation: authorItem.jobPosition,
                         );
                       },

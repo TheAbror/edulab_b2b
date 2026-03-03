@@ -56,7 +56,7 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${db?.firstName ?? ''} ${db?.lastName ?? ''}",
+                    "${db?.lastName ?? ''} ${db?.firstName ?? ''}",
                     style: TextStyle(
                       fontSize: 17.sp,
                       fontWeight: FontWeight.w500,

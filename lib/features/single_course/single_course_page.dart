@@ -166,9 +166,9 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                           return CourseInfoAuthorDetails(
                             onTap: () {},
                             authorName:
-                                '${item.firstname}'
+                                '${item.lastname}'
                                 ' '
-                                '${item.lastname}',
+                                '${item.firstname}',
                             authorPhoto: item.avatar?.originalUrl ?? '',
                             authorPosition: item.jobPosition,
                             courseCount: item.courseCount,
