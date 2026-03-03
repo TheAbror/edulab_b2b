@@ -41,12 +41,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 text: db?.lastName ?? '',
                 textFieldFocusNode: _textFieldFocusNode,
               ),
-              EditProfilePageItem(
-                label: 'Email',
-                text: db?.email ?? '',
-                textFieldFocusNode: _textFieldFocusNode,
-              ),
-              EditProfileBiography(textFieldFocusNode: _textFieldFocusNode),
+              // EditProfilePageItem(
+              //   label: 'Email',
+              //   text: db?.email ?? '',
+              //   textFieldFocusNode: _textFieldFocusNode,
+              // ),
+              // EditProfileBiography(textFieldFocusNode: _textFieldFocusNode),
               // space24,
               // ActionButton(
               //   text: 'Save',

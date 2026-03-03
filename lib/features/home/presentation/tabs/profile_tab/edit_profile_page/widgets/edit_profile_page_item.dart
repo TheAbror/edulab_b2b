@@ -33,6 +33,7 @@ class EditProfilePageItem extends StatelessWidget {
               ),
             ),
             TextField(
+              readOnly: true,
               controller: TextEditingController(text: text),
               decoration: InputDecoration(
                 isDense: true,

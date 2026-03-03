@@ -8,7 +8,7 @@ class RootPage extends StatefulWidget {
   State<RootPage> createState() => _RootPageState();
 }
 
-class _RootPageState extends State<RootPage> {
+class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
   late PageController pageController;
   late StreamSubscription<bool> notAuthorizedStreamSubscription;
 
@@ -22,6 +22,8 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
 
     final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
@@ -65,12 +67,49 @@ class _RootPageState extends State<RootPage> {
     pageController = PageController(initialPage: state.tabIndex);
   }
 
+  // ignore: unused_field
+  bool _isInBackground = false;
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    _isInBackground = state != AppLifecycleState.resumed;
+
+    if (state == AppLifecycleState.resumed) {
+      context.read<HomeBloc>().checkConnection();
+    }
+  }
+
+  bool _isDialogShowing = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      listener: (context, state) {
-        if (state.internetStatus == InternetStatus.disconnected) {
-          return showNoInternetDialog(context);
+      listenWhen: (previous, current) =>
+          previous.internetStatus != current.internetStatus,
+      listener: (context, state) async {
+        if (state.internetStatus == InternetStatus.disconnected &&
+            !_isDialogShowing) {
+          await Future.delayed(const Duration(seconds: 1));
+
+          if (!context.mounted) return;
+
+          if (context.read<HomeBloc>().state.internetStatus ==
+              InternetStatus.disconnected) {
+            _isDialogShowing = true;
+            showNoInternetDialog(context);
+          }
+        }
+
+        if (state.internetStatus == InternetStatus.connected &&
+            _isDialogShowing) {
+          Navigator.of(context, rootNavigator: true).pop();
+          _isDialogShowing = false;
         }
       },
       builder: (context, state) {

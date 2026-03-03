@@ -21,10 +21,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SplashBloc, SplashState>(
+      listenWhen: (previous, current) =>
+          previous.authStatus != current.authStatus,
       listener: (context, state) {
         if (state.authStatus == SplashAuthStatus.authorized) {
           Navigator.pushReplacementNamed(context, AppRoutes.rootPage);
-        } else {
+        } else if (state.authStatus == SplashAuthStatus.notAuthorized) {
           Navigator.pushReplacementNamed(
             context,
             AppRoutes.languageSelectionPage,

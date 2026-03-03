@@ -8,24 +8,37 @@ class HomeBloc extends Cubit<HomeState> {
   late final StreamSubscription _subscription;
 
   HomeBloc() : super(HomeState.initial()) {
-    _subscription = InternetConnectionChecker.instance.onStatusChange.listen(
-      (status) {
+    _subscription = InternetConnectionChecker.instance.onStatusChange.listen((
+      status,
+    ) {
+      if (WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
         emit(
           state.copyWith(
-            blocProgress: BlocProgress.NOT_STARTED,
             internetStatus: status == InternetConnectionStatus.connected
                 ? InternetStatus.connected
                 : InternetStatus.disconnected,
           ),
         );
-      },
-    );
+      }
+    });
   }
 
   @override
   Future<void> close() {
     _subscription.cancel();
     return super.close();
+  }
+
+  Future<void> checkConnection() async {
+    final isConnected = await InternetConnectionChecker.instance.hasConnection;
+
+    emit(
+      state.copyWith(
+        internetStatus: isConnected
+            ? InternetStatus.connected
+            : InternetStatus.disconnected,
+      ),
+    );
   }
 
   void getTeacherById(int id) async {
