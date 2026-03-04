@@ -90,8 +90,6 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      listenWhen: (previous, current) =>
-          previous.internetStatus != current.internetStatus,
       listener: (context, state) async {
         if (state.internetStatus == InternetStatus.disconnected &&
             !_isDialogShowing) {
@@ -102,14 +100,16 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
           if (context.read<HomeBloc>().state.internetStatus ==
               InternetStatus.disconnected) {
             _isDialogShowing = true;
-            showNoInternetDialog(context);
+            await showNoInternetDialog(context);
+            _isDialogShowing = false;
           }
         }
 
         if (state.internetStatus == InternetStatus.connected &&
             _isDialogShowing) {
-          Navigator.of(context, rootNavigator: true).pop();
           _isDialogShowing = false;
+          if (!context.mounted) return;
+          Navigator.of(context, rootNavigator: true).pop();
         }
       },
       builder: (context, state) {

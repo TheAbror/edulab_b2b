@@ -1,4 +1,3 @@
-import 'package:leti_mobile/features/home/presentation/widgets/no_internet_widget.dart';
 import 'package:leti_mobile/widget_imports.dart';
 
 class HomeTab extends StatefulWidget {
@@ -40,16 +39,6 @@ class _HomeTabState extends State<HomeTab> {
           },
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, homeState) {
-              if (state.blocProgress != BlocProgress.IS_LOADING &&
-                  homeState.internetStatus == InternetStatus.disconnected) {
-                return NoInternetView();
-              }
-              // if (homeState.internetStatus == InternetStatus.connected &&
-              //     !isConnectedAgain) {
-              //   myInit();
-              //   isConnectedAgain = true;
-              // }
-
               return ListView(
                 children: [
                   HomeTabAppBar(),

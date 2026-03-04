@@ -1,7 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-void showNoInternetDialog(BuildContext context) {
-  showDialog(
+Future showNoInternetDialog(BuildContext context) {
+  return showDialog(
     context: context,
     barrierDismissible: false,
     barrierColor: Colors.transparent,
