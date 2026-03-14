@@ -1,7 +1,7 @@
 name: leti_mobile
 description: "A new Flutter project."
 publish_to: 'none' 
-version: 1.0.4+6
+version: 1.0.6+8
 
 environment:
   sdk: ^3.9.0
@@ -132,6 +132,7 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - assets/fonts/
     - assets/images/
     - assets/icons/
     - assets/images/stores/
@@ -145,7 +146,6 @@ flutter:
     - assets/icons/language_icons/
     - assets/icons/navbar/
     - assets/icons/chat/
-    - assets/fonts/
     - assets/localization/
     
   fonts:

@@ -97,7 +97,7 @@ class HomeCourseResumeCard extends StatelessWidget {
           ),
           SizedBox(height: 6.h),
           LinearProgressIndicator(
-            minHeight: 8.h,
+            minHeight: 4.h,
             value: progress.toDouble() / 100,
             color: Theme.of(context).colorScheme.primary,
             backgroundColor: context.colors.bgSurface3,
@@ -108,7 +108,7 @@ class HomeCourseResumeCard extends StatelessWidget {
             onTap: onPressed,
             behavior: HitTestBehavior.opaque,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
+              padding: EdgeInsets.symmetric(vertical: 6.h),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,

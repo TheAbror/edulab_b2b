@@ -43,6 +43,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color errorContainerDefault;
   final Color accentDefault;
   final Color neutralContainerActive;
+  final Color status01OnContainer;
+  final Color status01ContainerDefault;
 
   const CustomColors({
     required this.float,
@@ -76,6 +78,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.errorContainerDefault,
     required this.accentDefault,
     required this.neutralContainerActive,
+    required this.status01OnContainer,
+    required this.status01ContainerDefault,
   });
 
   @override
@@ -111,6 +115,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? errorContainerDefault,
     Color? accentDefault,
     Color? neutralContainerActive,
+    Color? status01OnContainer,
+    Color? status01ContainerDefault,
   }) {
     return CustomColors(
       float: float ?? this.float,
@@ -153,6 +159,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
       accentDefault: accentDefault ?? this.accentDefault,
       neutralContainerActive:
           neutralContainerActive ?? this.neutralContainerActive,
+      status01OnContainer: status01OnContainer ?? this.status01OnContainer,
+      status01ContainerDefault:
+          status01ContainerDefault ?? this.status01ContainerDefault,
     );
   }
 
@@ -202,6 +211,16 @@ class CustomColors extends ThemeExtension<CustomColors> {
       bgSurface1: Color.lerp(bgSurface1, other.bgSurface1, t)!,
       bgSurface3: Color.lerp(bgSurface3, other.bgSurface3, t)!,
       bgSurface4: Color.lerp(bgSurface4, other.bgSurface4, t)!,
+      status01ContainerDefault: Color.lerp(
+        status01ContainerDefault,
+        other.status01ContainerDefault,
+        t,
+      )!,
+      status01OnContainer: Color.lerp(
+        status01OnContainer,
+        other.status01OnContainer,
+        t,
+      )!,
       successDefault: Color.lerp(successDefault, other.successDefault, t)!,
       infoDefault: Color.lerp(infoDefault, other.infoDefault, t)!,
       status03ContainerDefault: Color.lerp(

@@ -52,6 +52,8 @@ ThemeData lightTheme() {
         errorContainerDefault: NewColorsLight.errorContainerDefault,
         accentDefault: NewColorsLight.accentDefault,
         neutralContainerActive: NewColorsLight.neutralContainerActive,
+        status01OnContainer: NewColorsLight.status01OnContainer,
+        status01ContainerDefault: NewColorsLight.status01ContainerDefault,
       ),
     ],
   );
@@ -108,6 +110,8 @@ ThemeData darkTheme() {
         errorContainerDefault: NewColorsDark.errorContainerDefault,
         accentDefault: NewColorsDark.accentDefault,
         neutralContainerActive: NewColorsDark.neutralContainerActive,
+        status01OnContainer: NewColorsDark.status01OnContainer,
+        status01ContainerDefault: NewColorsDark.status01ContainerDefault,
       ),
     ],
   );

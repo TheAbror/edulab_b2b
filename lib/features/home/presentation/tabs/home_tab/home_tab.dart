@@ -1,5 +1,7 @@
 import 'package:leti_mobile/widget_imports.dart';
 
+//TODO check no result case in matematika start
+//probably backend problem
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
 
@@ -52,7 +54,7 @@ class _HomeTabState extends State<HomeTab> {
                       }
 
                       return Container(
-                        height: 237.h,
+                        height: 226.h,
                         color: context.colors.accentContainerDefault
                             .withOpacity(0.1),
                         child: Column(
@@ -139,6 +141,7 @@ class _HomeTabState extends State<HomeTab> {
                       },
                     ),
                   if (isAuthorized == null) space24,
+
                   if (state.coursesAll.isNotEmpty)
                     OurCoursesWidget(
                       courses: state.coursesAll,
@@ -149,7 +152,6 @@ class _HomeTabState extends State<HomeTab> {
                         );
                       },
                     ),
-
                   space24,
                 ],
               );

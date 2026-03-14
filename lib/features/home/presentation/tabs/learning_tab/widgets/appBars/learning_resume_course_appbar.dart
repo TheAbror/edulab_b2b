@@ -80,7 +80,6 @@ class LearningResumeCourseAppBar extends StatelessWidget
               builder: (context, innerState) {
                 return TabBar(
                   onTap: (value) {
-                    //TODO add version update feature
                     final tappedStatus = state.allSteps[value].status;
                     final currentIndex = controller.previousIndex;
                     final currentStatus = state.allSteps[currentIndex].status;
@@ -106,28 +105,27 @@ class LearningResumeCourseAppBar extends StatelessWidget
                   isScrollable: true,
                   controller: controller,
                   indicatorSize: TabBarIndicatorSize.label,
-                  indicator: BoxDecoration(
-                    border: Border.all(
-                      width: 2.w,
-                      color: context.colors.accentMuted,
-                    ),
-                    color: context.colors.accentContainerDefault.withOpacity(
-                      0.1,
-                    ),
-                    borderRadius: BorderRadius.circular(50.r),
-                  ),
+                  indicator: const BoxDecoration(),
+                  // Pass index and state into _customTab
                   tabs: steps.asMap().entries.map((entry) {
                     final index = entry.key;
                     final step = entry.value;
+                    final isSelected =
+                        index ==
+                        innerState.appbarTabIndex; // use innerState, not state
+                    final isCompleted = step.status == StepItemStatus.completed;
 
                     return _customTab(
                       _getStepIcon(
                         step,
                         index,
-                        state.appbarTabIndex,
+                        innerState.appbarTabIndex,
                         context,
+                        isCompleted,
                       ),
                       context,
+                      isSelected: isSelected,
+                      isCompleted: isCompleted,
                     );
                   }).toList(),
                 );
@@ -144,10 +142,12 @@ class LearningResumeCourseAppBar extends StatelessWidget
     int index,
     int currentTabIndex,
     BuildContext context,
+    bool isCompleted,
   ) {
     final bool isActive = index == currentTabIndex;
 
     final Color activeColor = context.colors.fgDefault;
+    final Color completed = context.colors.status01OnContainer;
     final Color inactiveColor = context.colors.fgDisabled.withOpacity(
       0.4,
     );
@@ -155,48 +155,80 @@ class LearningResumeCourseAppBar extends StatelessWidget
     if (step.type == 'TEXT' || step.type == 'text') {
       return Assets.icons.learning.text.svg(
         colorFilter: ColorFilter.mode(
-          isActive ? activeColor : inactiveColor,
+          isCompleted
+              ? completed
+              : isActive
+              ? activeColor
+              : inactiveColor,
           BlendMode.srcIn,
         ),
       );
     } else if (step.type == 'VIDEO' || step.type == 'video') {
       return Assets.icons.learning.currentVideoIcon.svg(
         colorFilter: ColorFilter.mode(
-          isActive ? activeColor : inactiveColor,
+          isCompleted
+              ? completed
+              : isActive
+              ? activeColor
+              : inactiveColor,
           BlendMode.srcIn,
         ),
       );
     } else if (step.type == 'QUIZ' || step.type == 'quiz') {
       return Assets.icons.learning.questionMarkIcon.svg(
         colorFilter: ColorFilter.mode(
-          isActive ? activeColor : inactiveColor,
+          isCompleted
+              ? completed
+              : isActive
+              ? activeColor
+              : inactiveColor,
           BlendMode.srcIn,
         ),
       );
     } else if (step.type == 'DOCUMENT' || step.type == 'text') {
       return Assets.icons.learning.currentVideoIcon.svg(
         colorFilter: ColorFilter.mode(
-          isActive ? activeColor : inactiveColor,
+          isCompleted
+              ? completed
+              : isActive
+              ? activeColor
+              : inactiveColor,
           BlendMode.srcIn,
         ),
       );
     } else {
       return Assets.icons.learning.questionMarkIcon.svg(
         colorFilter: ColorFilter.mode(
-          isActive ? activeColor : inactiveColor,
+          isCompleted
+              ? completed
+              : isActive
+              ? activeColor
+              : inactiveColor,
           BlendMode.srcIn,
         ),
       );
     }
   }
 
-  Widget _customTab(Widget widget, BuildContext context) {
+  Widget _customTab(
+    Widget widget,
+    BuildContext context, {
+    required bool isSelected,
+    required bool isCompleted,
+  }) {
+    final Color borderColor = isCompleted
+        ? context.colors.status01ContainerDefault
+        : context.colors.accentMuted;
+
     return Container(
       height: 32.h,
       width: 48.w,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
       decoration: BoxDecoration(
-        color: context.colors.containerDefault.withOpacity(0.1),
+        color: isSelected
+            ? context.colors.accentContainerDefault.withOpacity(0.1)
+            : context.colors.containerDefault.withOpacity(0.1),
+        border: isSelected ? Border.all(width: 2.w, color: borderColor) : null,
         borderRadius: BorderRadius.circular(50.r),
       ),
       child: widget,
