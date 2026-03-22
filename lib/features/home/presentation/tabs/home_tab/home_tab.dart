@@ -144,6 +144,7 @@ class _HomeTabState extends State<HomeTab> {
 
                   if (state.coursesAll.isNotEmpty)
                     OurCoursesWidget(
+                      isViewAllNeeded: false,
                       courses: state.coursesAll,
                       onTapViewAll: () {
                         Navigator.pushNamed(

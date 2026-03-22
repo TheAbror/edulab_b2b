@@ -41,7 +41,7 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
             }
 
             return DefaultTabController(
-              length: 3,
+              length: 2,
               initialIndex: 1,
               child: NestedScrollView(
                 headerSliverBuilder:
@@ -71,11 +71,6 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
                                     text: context.localizations.content,
                                   ),
                                 ),
-                                Tab(
-                                  child: TabText(
-                                    text: context.localizations.news,
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -86,7 +81,6 @@ class _EnrolledCoursePageState extends State<EnrolledCoursePage> {
                   children: [
                     CourseContentTabInfo(id: widget.id),
                     SingleCourseContent(state: state),
-                    CourseContentTabNews(),
                   ],
                 ),
               ),

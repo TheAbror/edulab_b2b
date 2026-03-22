@@ -217,7 +217,7 @@ class LearningResumeCourseAppBar extends StatelessWidget
     required bool isCompleted,
   }) {
     final Color borderColor = isCompleted
-        ? context.colors.status01ContainerDefault
+        ? context.colors.neutralMuted
         : context.colors.accentMuted;
 
     return Container(

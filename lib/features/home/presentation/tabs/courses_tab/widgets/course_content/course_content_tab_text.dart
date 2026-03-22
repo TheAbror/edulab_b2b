@@ -7,11 +7,10 @@ class TabText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AppText.paragraph2(
       text,
-      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
+      color: context.colors.fgDefault,
       maxLines: 1,
-      overflow: TextOverflow.ellipsis,
     );
   }
 }

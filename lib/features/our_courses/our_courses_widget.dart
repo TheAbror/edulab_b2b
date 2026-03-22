@@ -8,6 +8,7 @@ class OurCoursesWidget extends StatefulWidget {
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final List<CourseShortInfo> courses;
   final bool? isHeaderedNeeded;
+  final bool isViewAllNeeded;
 
   const OurCoursesWidget({
     super.key,
@@ -18,6 +19,7 @@ class OurCoursesWidget extends StatefulWidget {
     this.isCertificateAvailble,
     required this.courses,
     this.isHeaderedNeeded = true,
+    this.isViewAllNeeded = true,
   });
 
   @override
@@ -37,7 +39,8 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 14.h),
-        if (widget.isHeaderedNeeded == true) _Header(context),
+        if (widget.isHeaderedNeeded == true)
+          _Header(context, widget.isViewAllNeeded),
         if (widget.isHeaderedNeeded == true) space10,
 
         GridView.builder(
@@ -167,7 +170,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
     );
   }
 
-  Widget _Header(BuildContext context) {
+  Widget _Header(BuildContext context, bool isViewAllNeeded) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
@@ -200,20 +203,16 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                   : SizedBox(),
             ],
           ),
-          GestureDetector(
-            onTap: widget.onTapViewAll,
-            behavior: HitTestBehavior.opaque,
-            child: Text(
-              context.localizations.viewAll,
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).colorScheme.primary,
+          if (isViewAllNeeded)
+            GestureDetector(
+              onTap: widget.onTapViewAll,
+              behavior: HitTestBehavior.opaque,
+              child: AppText.paragraph1(
+                context.localizations.viewAll,
+                maxLines: 1,
+                color: context.colors.accentDefault,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
         ],
       ),
     );

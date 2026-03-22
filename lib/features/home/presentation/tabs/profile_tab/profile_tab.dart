@@ -69,18 +69,17 @@ class _Body extends StatelessWidget {
                 space24,
 
                 //! Help and support
-                ProfileTabHeader(lang.helpAndSupport, context),
-                ProfileTabSubHeader(
-                  context,
-                  lang.frequesntlyAskedQuestions,
-                  () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.frequentlyAskedQuestionsPage,
-                    );
-                  },
-                ),
-
+                // ProfileTabHeader(lang.helpAndSupport, context),
+                // ProfileTabSubHeader(
+                //   context,
+                //   lang.frequesntlyAskedQuestions,
+                //   () {
+                //     Navigator.pushNamed(
+                //       context,
+                //       AppRoutes.frequentlyAskedQuestionsPage,
+                //     );
+                //   },
+                // ),
                 Spacer(),
                 ProfileTabLogOutButton(),
                 space20,

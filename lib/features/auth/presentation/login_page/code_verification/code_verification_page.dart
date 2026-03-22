@@ -77,23 +77,19 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
               children: [
                 space32,
                 Text(
-                  context.localizations.entercode,
+                  context.localizations.enterCode,
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 space10,
-                Row(
-                  children: [
-                    Text(
-                      context.localizations.wehavesentyoucodeto,
-                      style: TextStyle(fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(width: 4.h),
-                    Text(state.phoneNumber),
-                  ],
+
+                Text(
+                  context.localizations.smsToNumber(state.phoneNumber),
+                  style: TextStyle(fontWeight: FontWeight.w400),
                 ),
+
                 space40,
                 OtpTextField(
                   autoFocus: true,

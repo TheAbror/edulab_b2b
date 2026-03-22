@@ -54,6 +54,7 @@ ThemeData lightTheme() {
         neutralContainerActive: NewColorsLight.neutralContainerActive,
         status01OnContainer: NewColorsLight.status01OnContainer,
         status01ContainerDefault: NewColorsLight.status01ContainerDefault,
+        neutralMuted: NewColorsLight.neutralMuted,
       ),
     ],
   );
@@ -112,6 +113,7 @@ ThemeData darkTheme() {
         neutralContainerActive: NewColorsDark.neutralContainerActive,
         status01OnContainer: NewColorsDark.status01OnContainer,
         status01ContainerDefault: NewColorsDark.status01ContainerDefault,
+        neutralMuted: NewColorsDark.neutralMuted,
       ),
     ],
   );

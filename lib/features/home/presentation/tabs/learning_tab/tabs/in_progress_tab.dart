@@ -44,15 +44,15 @@ class InProgressTab extends StatelessWidget {
             },
           ),
 
-          Text(
-            context.localizations.learningStatisctics,
-            style: TextStyle(
-              fontSize: 17.sp,
-              fontWeight: FontWeight.w500,
-              letterSpacing: -1,
-            ),
-          ),
-          space8,
+          // Text(
+          //   context.localizations.learningStatisctics,
+          //   style: TextStyle(
+          //     fontSize: 17.sp,
+          //     fontWeight: FontWeight.w500,
+          //     letterSpacing: -1,
+          //   ),
+          // ),
+          // space8,
           //
           // LearningStreakCard(
           //   label: statistics.streak.label,
@@ -61,19 +61,19 @@ class InProgressTab extends StatelessWidget {
           // space8,
 
           //
-          LearningStatisticsItem(
-            headline: context.localizations.totalTimeLearning,
-            statisticsData: statistics.totalTimeLearning,
-          ),
-          LearningStatisticsItem(
-            headline: context.localizations.courseInProgress,
-            statisticsData: statistics.inProgress,
-          ),
-          LearningStatisticsItem(
-            headline: context.localizations.courseCompleted,
-            statisticsData: statistics.completed,
-          ),
-          space24,
+          // LearningStatisticsItem(
+          //   headline: context.localizations.totalTimeLearning,
+          //   statisticsData: statistics.totalTimeLearning,
+          // ),
+          // LearningStatisticsItem(
+          //   headline: context.localizations.courseInProgress,
+          //   statisticsData: statistics.inProgress,
+          // ),
+          // LearningStatisticsItem(
+          //   headline: context.localizations.courseCompleted,
+          //   statisticsData: statistics.completed,
+          // ),
+          // space24,
         ],
       ),
     );

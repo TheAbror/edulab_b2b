@@ -59,9 +59,7 @@ class MyApp extends StatelessWidget {
                         localizationState.languageCode != null &&
                             localizationState.languageCode?.isNotEmpty == true
                         ? Locale(localizationState.languageCode ?? '')
-                        : Locale(
-                            'ru',
-                          ),
+                        : Locale('ru'),
                     localizationsDelegates:
                         AppLocalizations.localizationsDelegates,
                     supportedLocales: AppLocalizations.supportedLocales,

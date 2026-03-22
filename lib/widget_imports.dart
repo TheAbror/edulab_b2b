@@ -85,7 +85,6 @@ export 'package:leti_mobile/core/bottom_sheet/primary_loader.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_text.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_info.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_materials.dart';
-export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_news.dart';
 export 'package:leti_mobile/features/home/presentation/tabs/courses_tab/widgets/courses_tab/course_tab_banner.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:leti_mobile/core/flutter_downloader_utils/app_utils.dart';

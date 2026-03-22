@@ -80,14 +80,11 @@ class EnrolledCourseSliverAppBar extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              AppText.caption1(
                                 context.localizations.courseProgress,
-                                style: TextStyle(
-                                  color: context.colors.fgMuted,
-                                  fontSize: 12.sp,
-                                  letterSpacing: -0.5,
-                                ),
+                                color: context.colors.fgMuted,
                               ),
+
                               if (course.progress != null)
                                 Text(
                                   course.progress == 0

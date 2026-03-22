@@ -124,6 +124,16 @@ class _BodyState extends State<_Body> {
                     }
                   },
                 ),
+
+                SizedBox(height: 12.h),
+
+                Center(
+                  child: AppText.caption1(
+                    context.localizations.weWillSendYouSMS,
+                    color: context.colors.fgSoft,
+                    maxLines: 2,
+                  ),
+                ),
               ],
             ),
           );
