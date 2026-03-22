@@ -644,7 +644,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get weWillSendYouACode => 'Мы отправим вам код для сброса пароля';
 
   @override
-  String get enterCode => 'Введите код';
+  String get enterCode => 'Введите код подтверждения';
 
   @override
   String get weHaveSentYou => 'Мы отправили код на';
@@ -692,7 +692,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get emailAddress => 'Адрес электронной почты';
 
   @override
-  String get welcomeToLetiEdu => 'Добро пожаловать в школу Leti';
+  String get welcomeToLetiEdu => 'Добро пожаловать в онлайн-школу LETI!';
 
   @override
   String get trackYourLearning =>
@@ -765,7 +765,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wehavesentyoucodeto => 'Мы отправили вам код на';
 
   @override
-  String get resetafter => 'Сбросить через';
+  String get resetafter => 'Повторная отправка кода';
 
   @override
   String get seconds => 'секунды';
@@ -1077,7 +1077,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.';
 
   @override
-  String get joinForFree => 'Присоединяйтесь бесплатно!';
+  String get joinForFree => 'Зарегистрироваться';
 
   @override
   String get ourCourses => 'Наши курсы';
@@ -1095,11 +1095,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get browseCourses => 'Просмотреть курсы';
 
   @override
-  String get welcometoLeti => 'Добро пожаловать в Leti!';
+  String get welcometoLeti => 'Доступ к платформе LETI EDU';
 
   @override
   String get continueLearningAndGrowing =>
-      'Продолжайте учиться и развиваться вместе с Leti.';
+      'Введите свой номер телефона, чтобы продолжить.';
 
   @override
   String get pleseEnterFirstLastName =>
@@ -1158,4 +1158,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notNow => 'Не сейчас';
+
+  @override
+  String get weWillSendYouSMS => 'Мы вышлем вам код подтверждения по SMS.';
+
+  @override
+  String smsToNumber(Object phoneNumber) {
+    return 'SMS-код был отправлен на номер $phoneNumber';
+  }
 }

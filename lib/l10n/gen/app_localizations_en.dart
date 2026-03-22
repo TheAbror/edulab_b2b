@@ -647,7 +647,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'We’ll send you a code to reset your password';
 
   @override
-  String get enterCode => 'Enter code';
+  String get enterCode => 'Enter confirmation code';
 
   @override
   String get weHaveSentYou => 'We have sent a code to';
@@ -695,7 +695,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailAddress => 'Email address';
 
   @override
-  String get welcomeToLetiEdu => 'Welcome to Leti School!';
+  String get welcomeToLetiEdu => 'Welcome to LETI online school!';
 
   @override
   String get trackYourLearning =>
@@ -768,7 +768,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wehavesentyoucodeto => 'We have sent you code to';
 
   @override
-  String get resetafter => 'Reset after';
+  String get resetafter => 'Resend code in';
 
   @override
   String get seconds => 'seconds';
@@ -1079,7 +1079,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Explore high-quality courses across different fields. Begin today — more subjects are coming soon.';
 
   @override
-  String get joinForFree => 'Join for free';
+  String get joinForFree => 'Sign up';
 
   @override
   String get ourCourses => 'Our courses';
@@ -1097,11 +1097,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get browseCourses => 'Browse Courses';
 
   @override
-  String get welcometoLeti => 'Welcome to Leti';
+  String get welcometoLeti => 'Access to the LETI EDU platform';
 
   @override
   String get continueLearningAndGrowing =>
-      'Continue learning and growing with Leti.';
+      'Enter your phone number to continue.';
 
   @override
   String get pleseEnterFirstLastName =>
@@ -1160,4 +1160,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notNow => 'Not now';
+
+  @override
+  String get weWillSendYouSMS => 'We will send a verification code via SMS.';
+
+  @override
+  String smsToNumber(Object phoneNumber) {
+    return 'The SMS code has been sent to $phoneNumber';
+  }
 }

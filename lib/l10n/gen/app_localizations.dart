@@ -1357,7 +1357,7 @@ abstract class AppLocalizations {
   /// No description provided for @enterCode.
   ///
   /// In en, this message translates to:
-  /// **'Enter code'**
+  /// **'Enter confirmation code'**
   String get enterCode;
 
   /// No description provided for @weHaveSentYou.
@@ -1453,7 +1453,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcomeToLetiEdu.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Leti School!'**
+  /// **'Welcome to LETI online school!'**
   String get welcomeToLetiEdu;
 
   /// No description provided for @trackYourLearning.
@@ -1591,7 +1591,7 @@ abstract class AppLocalizations {
   /// No description provided for @resetafter.
   ///
   /// In en, this message translates to:
-  /// **'Reset after'**
+  /// **'Resend code in'**
   String get resetafter;
 
   /// No description provided for @seconds.
@@ -2197,7 +2197,7 @@ abstract class AppLocalizations {
   /// No description provided for @joinForFree.
   ///
   /// In en, this message translates to:
-  /// **'Join for free'**
+  /// **'Sign up'**
   String get joinForFree;
 
   /// No description provided for @ourCourses.
@@ -2233,13 +2233,13 @@ abstract class AppLocalizations {
   /// No description provided for @welcometoLeti.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Leti'**
+  /// **'Access to the LETI EDU platform'**
   String get welcometoLeti;
 
   /// No description provided for @continueLearningAndGrowing.
   ///
   /// In en, this message translates to:
-  /// **'Continue learning and growing with Leti.'**
+  /// **'Enter your phone number to continue.'**
   String get continueLearningAndGrowing;
 
   /// No description provided for @pleseEnterFirstLastName.
@@ -2349,6 +2349,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not now'**
   String get notNow;
+
+  /// No description provided for @weWillSendYouSMS.
+  ///
+  /// In en, this message translates to:
+  /// **'We will send a verification code via SMS.'**
+  String get weWillSendYouSMS;
+
+  /// No description provided for @smsToNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'The SMS code has been sent to {phoneNumber}'**
+  String smsToNumber(Object phoneNumber);
 }
 
 class _AppLocalizationsDelegate

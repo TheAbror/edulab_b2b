@@ -217,7 +217,7 @@ email,Email,Электронная почта,Elektron pochta
 cantBeEmpty,Can’t be empty,Не может быть пустым,Bo‘sh bo‘lishi mumkin emas
 enterYourEmail,Enter your email,Введите адрес электронной почты,Elektron pochtangizni kiriting
 weWillSendYouACode,We’ll send you a code to reset your password,Мы отправим вам код для сброса пароля,Parolingizni tiklash uchun sizga kod yuboramiz
-enterCode,Enter code,Введите код,Kodni kiriting
+enterCode,Enter confirmation code,Введите код подтверждения,Tasdiqlash kodini kiriting
 weHaveSentYou,We have sent a code to,Мы отправили код на,Biz kodni yubordik
 newPassword,New password,Новый пароль,Yangi parol
 passwordMustContain,Password must contain at least 5 letters,Пароль должен содержать не менее 5 букв,Parol kamida 5 ta belgidan iborat bo‘lishi kerak
@@ -233,7 +233,7 @@ tellUsAboutY,Tell us about yourself,Расскажите о себе,O‘zingiz 
 firstName,First name,Имя,Ism
 lastName,Last name,Фамилия,Familiya
 emailAddress,Email address,Адрес электронной почты,Elektron pochta manzili
-welcomeToLetiEdu,Welcome to Leti School!,Добро пожаловать в школу Leti,Leti Edu maktabiga xush kelibsiz
+welcomeToLetiEdu,Welcome to LETI online school!,Добро пожаловать в онлайн-школу LETI!,LETI online maktabiga xush kelibsiz!
 trackYourLearning,"Track your learning progress, personalize your experience and earn achievements","Отслеживайте свой прогресс в обучении, персонализируйте свой опыт и получайте достижения","O‘rganish jarayonini kuzatib boring, tajribangizni shaxsiylashtiring va yutuqlarga erishing"
 createAnAccount,Create an account,Создайте учетную запись,Hisob ochish
 signin,Sign in,Войти,Tizimga kirish
@@ -257,7 +257,7 @@ phonenumber,Phone number,Номер телефона,Telefon raqami
 continuewithGoogle,Continue with Google,Продолжить с Google,Google orqali davom eting
 entercode,Enter code,Введите код,Kodni kiriting
 wehavesentyoucodeto,We have sent you code to,Мы отправили вам код на,Sizga kod yubordik
-resetafter,Reset after,Сбросить через,Qayta tiklash
+resetafter,Resend code in,Повторная отправка кода,Kodni qayta yuborish
 seconds,seconds,секунды,soniya
 resendcode,Resend code,Отправить код еще раз,Kodni qayta yuborish
 firstname,First name,Имя,Ism
@@ -374,14 +374,14 @@ free,Free,Бесплатно,Bepul
 enrollToThisCourse,Enroll to this course,Записаться на этот курс,Ushbu kursga yozilish
 learnWithLeti,Learn with Leti — Start Your Journey Today,Учитесь с Лети — начните свой путь сегодня!,Leti bilan o'rganing — Bugun sayohatingizni boshlang
 exploreHighQuality,Explore high-quality courses across different fields. Begin today — more subjects are coming soon.,Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.,Turli sohalardagi yuqori sifatli kurslarni o'rganing. Bugun boshlang — tez orada ko'proq fanlar qo'shiladi.
-joinForFree,Join for free,Присоединяйтесь бесплатно!,Bepul qo'shiling
+joinForFree,Sign up,Зарегистрироваться,Ro'yxatdan o'tish
 ourCourses,Our courses,Наши курсы,Bizning kurslarimiz
 price,Price,Цена,Narxi
 noCoursesFound,No courses found,Курсы не найдены,Kurslar topilmadi
 keepLearning,Keep learning - your courses will appear here,Продолжайте обучение — ваши курсы появятся здесь,O'rganishda davom eting - kurslaringiz shu yerda ko'rinadi
 browseCourses,Browse Courses,Просмотреть курсы,Kurslarni ko'rib chiqing
-welcometoLeti,Welcome to Leti,Добро пожаловать в Leti!,Letiga xush kelibsiz
-continueLearningAndGrowing,Continue learning and growing with Leti.,Продолжайте учиться и развиваться вместе с Leti.,Leti bilan o'rganishda va o'sishda davom eting.
+welcometoLeti,Access to the LETI EDU platform,Доступ к платформе LETI EDU,LETI EDU platformasiga kirish
+continueLearningAndGrowing,Enter your phone number to continue.,"Введите свой номер телефона, чтобы продолжить.",Davom etish uchun telefon raqamingizni kiriting
 pleseEnterFirstLastName,Please enter your first and last name.,"Пожалуйста, введите ваше имя и фамилию.","Iltimos, ismingiz va familiyangizni kiriting."
 yourRequestSuccessManagerWillContact,Your request has been sent successfully. Our manager will contact you shortly.,Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.,Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.
 requested,Requested,Запрошено,So'ralgan
@@ -400,3 +400,5 @@ off,off,скидка,chegirma
 maintenanceInProgress,Maintenance in progress,Ведется техническое обслуживание,Texnik ishlar olib borilmoqda
 updateNow,Update now,Обновить сейчас,Yangilash
 notNow,Not now,Не сейчас,Hozir emas
+weWillSendYouSMS,We will send a verification code via SMS.,Мы вышлем вам код подтверждения по SMS.,Biz SMS orqali tasdiqlash kodini yuboramiz
+smsToNumber,The SMS code has been sent to {phoneNumber},SMS-код был отправлен на номер {phoneNumber},SMS kod {phoneNumber} raqamiga yuborildi
