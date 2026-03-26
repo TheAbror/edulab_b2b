@@ -146,6 +146,8 @@ class SingleCourseInfo {
   final String shortDescription;
   @JsonKey(defaultValue: [])
   final List<Authors> authors;
+  @JsonKey(defaultValue: [], name: "will_learn")
+  final List<String>? willLearn;
   @JsonKey(defaultValue: [])
   final List<Authors> co_authors;
   @JsonKey(name: 'cover_image')
@@ -155,6 +157,8 @@ class SingleCourseInfo {
   final CategoryModel? category;
   @JsonKey(defaultValue: false)
   final bool? is_favorite;
+  @JsonKey(defaultValue: false, name: 'show_price')
+  final bool showPrice;
   @JsonKey(defaultValue: false)
   final bool? is_archived;
   @JsonKey()
@@ -196,7 +200,9 @@ class SingleCourseInfo {
     required this.description,
     required this.shortDescription,
     required this.authors,
+    required this.willLearn,
     required this.co_authors,
+    required this.showPrice,
     this.thumbnail,
     this.previewVideo,
     this.category,
@@ -275,6 +281,9 @@ class CourseShortInfo {
   @JsonKey(defaultValue: false)
   final bool? is_favorite;
 
+  @JsonKey(defaultValue: false, name: 'show_price')
+  final bool showPrice;
+
   @JsonKey(defaultValue: false)
   final bool? is_archived;
 
@@ -283,9 +292,6 @@ class CourseShortInfo {
 
   @JsonKey(name: "course_status")
   final LabelValueResponse? courseStatus;
-
-  // @JsonKey(name: "xapi_course_url")
-  // final String? xapiCourseUrl;
 
   @JsonKey()
   final MediaDTO? file;
@@ -324,6 +330,7 @@ class CourseShortInfo {
     required this.short_description,
     required this.authors,
     required this.co_authors,
+    required this.showPrice,
     this.thumbnail,
     this.previewVideo,
     required this.category,

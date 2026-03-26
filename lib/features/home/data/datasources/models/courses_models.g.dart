@@ -124,11 +124,17 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      willLearn:
+          (json['will_learn'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
       co_authors:
           (json['co_authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      showPrice: json['show_price'] as bool? ?? false,
       thumbnail: json['cover_image'] == null
           ? null
           : MediaDTO.fromJson(json['cover_image'] as Map<String, dynamic>),
@@ -204,11 +210,13 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'description': instance.description,
       'shortDescription': instance.shortDescription,
       'authors': instance.authors,
+      'will_learn': instance.willLearn,
       'co_authors': instance.co_authors,
       'cover_image': instance.thumbnail,
       'preview_video': instance.previewVideo,
       'category': instance.category,
       'is_favorite': instance.is_favorite,
+      'show_price': instance.showPrice,
       'is_archived': instance.is_archived,
       'type': instance.type,
       'created_date': instance.createdDate,
@@ -262,6 +270,7 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      showPrice: json['show_price'] as bool? ?? false,
       thumbnail: json['cover_image'] == null
           ? null
           : MediaDTO.fromJson(json['cover_image'] as Map<String, dynamic>),
@@ -311,6 +320,7 @@ Map<String, dynamic> _$CourseShortInfoToJson(CourseShortInfo instance) =>
       'preview_video': instance.previewVideo,
       'category': instance.category,
       'is_favorite': instance.is_favorite,
+      'show_price': instance.showPrice,
       'is_archived': instance.is_archived,
       'type': instance.type,
       'course_status': instance.courseStatus,

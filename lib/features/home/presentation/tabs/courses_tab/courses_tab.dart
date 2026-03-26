@@ -27,12 +27,6 @@ class _BodyState extends State<_Body> {
                 OurCoursesWidget(
                   isHeaderedNeeded: false,
                   courses: state.coursesAll,
-                  onTapViewAll: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.allCoursesPage,
-                    );
-                  },
                 ),
 
               space40,

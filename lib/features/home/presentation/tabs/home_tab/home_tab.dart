@@ -1,6 +1,5 @@
 import 'package:leti_mobile/widget_imports.dart';
 
-//TODO check no result case in matematika start
 //probably backend problem
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -143,16 +142,7 @@ class _HomeTabState extends State<HomeTab> {
                   if (isAuthorized == null) space24,
 
                   if (state.coursesAll.isNotEmpty)
-                    OurCoursesWidget(
-                      isViewAllNeeded: false,
-                      courses: state.coursesAll,
-                      onTapViewAll: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.allCoursesPage,
-                        );
-                      },
-                    ),
+                    OurCoursesWidget(courses: state.coursesAll),
                   space24,
                 ],
               );

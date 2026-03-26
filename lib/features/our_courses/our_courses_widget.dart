@@ -3,23 +3,19 @@ import 'package:leti_mobile/widget_imports.dart';
 class OurCoursesWidget extends StatefulWidget {
   final String? headline;
   final String? coursesCount;
-  final VoidCallback onTapViewAll;
   final int? courseDuration;
   final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final List<CourseShortInfo> courses;
   final bool? isHeaderedNeeded;
-  final bool isViewAllNeeded;
 
   const OurCoursesWidget({
     super.key,
     this.headline,
     this.coursesCount,
-    required this.onTapViewAll,
     this.courseDuration = 0,
     this.isCertificateAvailble,
     required this.courses,
     this.isHeaderedNeeded = true,
-    this.isViewAllNeeded = true,
   });
 
   @override
@@ -33,14 +29,20 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
   bool isLoadingSelected = false;
   final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
+  static const List<Map<String, dynamic>> _priceData = [
+    {'original': '5 000 000 UZS'},
+    {'original': '3 000 000 UZS'},
+    {'original': ''},
+    {'original': '1 500 000 UZS'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 14.h),
-        if (widget.isHeaderedNeeded == true)
-          _Header(context, widget.isViewAllNeeded),
+        SizedBox(height: 12.h),
+        if (widget.isHeaderedNeeded == true) _Header(context),
         if (widget.isHeaderedNeeded == true) space10,
 
         GridView.builder(
@@ -48,7 +50,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
             crossAxisCount: 2,
             crossAxisSpacing: 8.w,
             mainAxisSpacing: 8.h,
-            childAspectRatio: 155.w / 187.h,
+            childAspectRatio: 175.w / 280.h,
           ),
           controller: _scrollController,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -89,6 +91,47 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+
+                    SizedBox(height: 2.h),
+
+                    CourseInfo(
+                      learners: singleCourseItem.learnersCount.toString(),
+                      rating: singleCourseItem.rating,
+                      context: context,
+                      isCertificateAvailble:
+                          widget.isCertificateAvailble != null &&
+                              widget
+                                      .isCertificateAvailble?[index]
+                                      ?.title
+                                      .isNotEmpty ==
+                                  true
+                          ? true
+                          : false,
+                    ),
+
+                    singleCourseItem.short_description.length < 25
+                        ? Spacer()
+                        : space10,
+
+                    if (singleCourseItem.showPrice == true) ...[
+                      Spacer(),
+                      Text(
+                        _priceData[index].values.first,
+                        style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          decorationStyle: TextDecorationStyle.solid,
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w400,
+                          color: context.colors.fgMuted,
+                        ),
+                      ),
+                      AppText.footNote(
+                        singleCourseItem.price?.isEmpty == true
+                            ? context.localizations.free
+                            : singleCourseItem.price ?? '',
+                        color: context.colors.fgDefault,
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -170,7 +213,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
     );
   }
 
-  Widget _Header(BuildContext context, bool isViewAllNeeded) {
+  Widget _Header(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
@@ -203,16 +246,6 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                   : SizedBox(),
             ],
           ),
-          if (isViewAllNeeded)
-            GestureDetector(
-              onTap: widget.onTapViewAll,
-              behavior: HitTestBehavior.opaque,
-              child: AppText.paragraph1(
-                context.localizations.viewAll,
-                maxLines: 1,
-                color: context.colors.accentDefault,
-              ),
-            ),
         ],
       ),
     );
@@ -258,29 +291,3 @@ Row CourseInfo({
     ],
   );
 }
-
- // Spacer(),
-                          // CourseInfo(
-                          //   learners: singleCourseItem.learnersCount.toString(),
-                          //   rating: singleCourseItem.rating,
-                          //   context: context,
-                          //   isCertificateAvailble:
-                          //       widget.isCertificateAvailble != null &&
-                          //           widget
-                          //                   .isCertificateAvailble?[index]
-                          //                   ?.title
-                          //                   .isNotEmpty ==
-                          //               true
-                          //       ? true
-                          //       : false,
-                          // ),
-
-                           // singleCourseItem.short_description.length < 25
-                          //     ? Spacer()
-                          //     : space10,
-                          // AppText.footNote(
-                          //   singleCourseItem.price?.isEmpty == true
-                          //       ? context.localizations.free
-                          //       : singleCourseItem.price ?? '',
-                          //   color: context.colors.fgDefault,
-                          // ),

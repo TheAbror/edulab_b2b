@@ -99,12 +99,14 @@ class CourseInfoHeader extends StatelessWidget {
                     ),
                   ],
                   space24,
-                  CourseInfoSmallHeadline(text: context.localizations.price),
-                  AppText.title2(
-                    item.price.isNotEmpty
-                        ? item.price
-                        : context.localizations.free,
-                  ),
+                  if (item.showPrice) ...[
+                    CourseInfoSmallHeadline(text: context.localizations.price),
+                    AppText.title2(
+                      item.price.isNotEmpty
+                          ? item.price
+                          : context.localizations.free,
+                    ),
+                  ],
 
                   space12,
 

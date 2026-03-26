@@ -15,8 +15,6 @@ abstract class AppRoutes {
 
   //home
   static const homeTab = 'home';
-  static const authorProfilePage = 'authorProfilePage';
-  static const studentProfilePage = 'studentProfilePage';
 
   // courses
   static const singleCoursePage = 'singleCoursePage';
@@ -31,7 +29,4 @@ abstract class AppRoutes {
   static const profileTab = 'profile';
   static const editProfilePage = 'editProfilePage';
   static const frequentlyAskedQuestionsPage = 'frequentlyAskedQuestionsPage';
-
-  //allCoursesPage
-  static const allCoursesPage = 'allCoursesPage';
 }

@@ -41,46 +41,6 @@ class HomeBloc extends Cubit<HomeState> {
     );
   }
 
-  void getTeacherById(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.homeServices.getTeacherById(id);
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(
-              teachersById: data,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
-  }
-
   initialTheme() {
     final bool? isLight = PreferencesServices.getTheme();
     final returnedNULL = isLight == null;
@@ -108,43 +68,6 @@ class HomeBloc extends Cubit<HomeState> {
 
   void clearAll() {
     emit(HomeState.initial());
-  }
-
-  void getTeachersList() async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-
-    try {
-      final response = await ApiProvider.homeServices.getTeachersList();
-
-      if (response.isSuccessful) {
-        final data = response.body;
-
-        if (data != null) {
-          emit(
-            state.copyWith(teachers: data, blocProgress: BlocProgress.LOADED),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(
-          json.decode(response.error.toString()),
-        );
-
-        emit(
-          state.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: error.message,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: AppStrings.internalErrorMessage,
-        ),
-      );
-      debugPrint('$e');
-    }
   }
 
   void changeTabIndex(int index) {

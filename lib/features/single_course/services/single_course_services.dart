@@ -32,9 +32,6 @@ abstract class SingleCourseServices extends ChopperService {
     @Query('topic_id') required int topicId,
   });
 
-  // API: /learning/complete
-  // Body: chapter_id, topic_id, step_id
-
   @Post(path: AppStrings.completeStep)
   Future<Response<CourseProgressModel>> completeStep(
     @Body() CompleteStepRequest body,

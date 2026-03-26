@@ -80,8 +80,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                     // CourseInfoDivider(),
 
                     //studyGoals
-                    if (state.singleCourse.syllabus?.studyGoals?.isNotEmpty ==
-                        true) ...[
+                    if (state.singleCourse.willLearn?.isNotEmpty == true) ...[
                       space12,
                       CourseInfoBlocsTitle(
                         text: context.localizations.whatUWillLearn,

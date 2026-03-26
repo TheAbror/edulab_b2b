@@ -37,10 +37,12 @@ class SingleCourseState extends Equatable {
         title: '',
         aboutCourse: '',
         description: [],
+        willLearn: [],
         price: '',
         shortDescription: '',
         co_authors: [],
         skills: [],
+        showPrice: false,
         coAuthorIds: [],
         chapters: [],
         category: CategoryModel(

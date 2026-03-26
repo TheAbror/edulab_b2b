@@ -14,9 +14,6 @@ abstract class LearningTabServices extends ChopperService {
   @Get(path: AppStrings.learningTabCompleted)
   Future<Response<List<CourseShortInfo>>> getCompleted();
 
-  @Get(path: AppStrings.learningTabFavorites)
-  Future<Response<List<CourseShortInfo>>> getFavorites();
-
   @Get(path: AppStrings.statistics)
   Future<Response<LearningTabStatisticsResponse>> getStatistics();
 }

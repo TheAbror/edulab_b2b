@@ -8,7 +8,6 @@ class ApiProvider {
   static late ChopperClient _client;
   static late AppVersionService versions;
   static late AuthService authService;
-  static late HomeServices homeServices;
   static late CourseServices coursesServices;
   static late SingleCourseServices singleCourseServices;
   static late LearningTabServices learningTabServices;
@@ -26,7 +25,6 @@ class ApiProvider {
       services: [
         AppVersionService.create(),
         AuthService.create(),
-        HomeServices.create(),
         CourseServices.create(),
         SingleCourseServices.create(),
         LearningTabServices.create(),
@@ -38,7 +36,6 @@ class ApiProvider {
 
     versions = _client.getService<AppVersionService>();
     authService = _client.getService<AuthService>();
-    homeServices = _client.getService<HomeServices>();
     coursesServices = _client.getService<CourseServices>();
     singleCourseServices = _client.getService<SingleCourseServices>();
     learningTabServices = _client.getService<LearningTabServices>();

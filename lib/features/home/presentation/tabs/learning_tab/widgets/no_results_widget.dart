@@ -23,10 +23,7 @@ class NoResultsWidget extends StatelessWidget {
         SizedBox(height: 8.h),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.allCoursesPage,
-            );
+            context.read<HomeBloc>().changeTabIndex(2);
           },
           child: Container(
             width: 180.w,

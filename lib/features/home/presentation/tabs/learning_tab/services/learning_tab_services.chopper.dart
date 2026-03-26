@@ -37,15 +37,6 @@ final class _$LearningTabServices extends LearningTabServices {
   }
 
   @override
-  Future<Response<List<CourseShortInfo>>> getFavorites() {
-    final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own?status=FAVORITES',
-    );
-    final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
-  }
-
-  @override
   Future<Response<LearningTabStatisticsResponse>> getStatistics() {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/statistics/',

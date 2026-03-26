@@ -32,6 +32,7 @@ class CoursesState extends Equatable {
         id: 0,
         title: '',
         progess: 0,
+        showPrice: false,
         description: [],
         short_description: '',
         category: CategoryModel(

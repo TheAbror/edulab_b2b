@@ -59,26 +59,6 @@ class MainRouteGenerator {
       case AppRoutes.homeTab:
         return CustomCupertinoStyleNavigationRoute(builder: (_) => HomeTab());
 
-      case AppRoutes.authorProfilePage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) {
-            // final teacherName = state.extra as String? ?? 'Teacher';
-            const teacherName = 'Teacher';
-
-            return AuthorProfilePage(teacherName: teacherName);
-          },
-        );
-
-      case AppRoutes.studentProfilePage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) {
-            // final teacherName = state.extra as String? ?? 'Teacher';
-            const teacherName = 'Teacher';
-
-            return StudentProfilePage(teacherName: teacherName);
-          },
-        );
-
       case AppRoutes.learningPage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => LearningPage(
@@ -88,11 +68,6 @@ class MainRouteGenerator {
 
       case AppRoutes.chatPage:
         return CustomCupertinoStyleNavigationRoute(builder: (_) => ChatPage());
-
-      case AppRoutes.allCoursesPage:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => AllCoursesPage(),
-        );
 
       case AppRoutes.singleCoursePage:
         return CustomCupertinoStyleNavigationRoute(
