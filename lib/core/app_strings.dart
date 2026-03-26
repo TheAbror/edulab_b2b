@@ -1,6 +1,7 @@
 class AppStrings {
   static const baseLive =
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/';
+  // 'https://6602-213-230-82-221.ngrok-free.app/edulab_corp/api/v1/core/mobile/';
 
   static const projetName = 'EduLab';
 

@@ -55,7 +55,7 @@ class LearningState extends Equatable {
           title: '',
         ),
         learnersCount: 0,
-        syllabus: SyllabusResponse(studyGoals: []),
+        syllabus: SyllabusResponse(),
         authors: [
           Authors(
             userId: 0,

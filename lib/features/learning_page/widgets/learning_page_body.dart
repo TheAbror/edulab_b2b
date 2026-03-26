@@ -15,10 +15,6 @@ class LearningPageBody extends StatefulWidget {
 }
 
 class LearningPageBodyState extends State<LearningPageBody> {
-  void completeStep(StepModel stepModel) {
-    context.read<LearningBloc>().completeStep(stepModel);
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LearningBloc, LearningState>(
@@ -76,4 +72,9 @@ class LearningPageBodyState extends State<LearningPageBody> {
         return SingleChildScrollView(child: Text(step.title));
     }
   }
+
+  void completeStep(StepModel stepModel) {
+    context.read<LearningBloc>().completeStep(stepModel);
+  }
 }
+//4.a 5.d 6.a 8.d 10.b

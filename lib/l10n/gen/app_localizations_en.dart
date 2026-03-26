@@ -1122,20 +1122,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get allCourses => 'All courses';
 
   @override
-  String get congratulations => 'Congratulations! 🎉';
+  String get congratulations => 'Congratulations! ';
 
   @override
-  String get youhavesuccessfully =>
-      'You’ve successfully completed the quiz and scored';
+  String youhavesuccessfully(Object percentage) {
+    return 'You’ve successfully completed the quiz and scored $percentage%';
+  }
 
   @override
-  String get tryagain => 'Try Again 💪';
+  String get tryagain => 'Try Again ';
 
   @override
-  String get youscored => 'You scored';
-
-  @override
-  String get pointsAnd => 'points and didn’t pass the quiz this time.';
+  String youscored(Object percentage) {
+    return 'You scored $percentage% and didn’t pass the quiz this time.';
+  }
 
   @override
   String get selectAllCorrectAnswers => 'Select all correct answers';

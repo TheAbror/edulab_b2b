@@ -20,7 +20,7 @@ class LearningBottomNavigation extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 16.w,
         right: 16.w,
-        bottom: Platform.isAndroid ? 50.h : 40.h,
+        bottom: 40.h,
       ),
       decoration: BoxDecoration(
         border: Border(
@@ -77,6 +77,8 @@ class LearningBottomNavigation extends StatelessWidget {
                     controller.index = 0;
                   }
                 }
+
+                context.read<QuizBloc>().clearAll();
               }
             },
             isEnabled: status == StepItemStatus.completed ? true : false,

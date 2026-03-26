@@ -74,12 +74,7 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // SkillLevelTimeToCompleteCertificatesPrereqs(state: state),
-                    // SizedBox(height: 24.h),
-
-                    // CourseInfoDivider(),
-
-                    //studyGoals
+                    //willLearn
                     if (state.singleCourse.willLearn?.isNotEmpty == true) ...[
                       space12,
                       CourseInfoBlocsTitle(
@@ -88,18 +83,12 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
                       space16,
                       ListView.builder(
                         padding: EdgeInsets.zero,
-                        itemCount:
-                            state.singleCourse.syllabus?.studyGoals?.length,
+                        itemCount: state.singleCourse.willLearn?.length,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return CourseInfoWhatYouWillLearnItems(
-                            text:
-                                state
-                                    .singleCourse
-                                    .syllabus
-                                    ?.studyGoals?[index] ??
-                                '',
+                            text: state.singleCourse.willLearn?[index] ?? '',
                           );
                         },
                       ),

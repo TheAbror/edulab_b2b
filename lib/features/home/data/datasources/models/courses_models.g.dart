@@ -90,11 +90,6 @@ Map<String, dynamic> _$StatusToJson(Status instance) => <String, dynamic>{
 
 SyllabusResponse _$SyllabusResponseFromJson(Map<String, dynamic> json) =>
     SyllabusResponse(
-      studyGoals:
-          (json['study_goals'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
       courseContent:
           (json['course_content'] as List<dynamic>?)
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
@@ -103,10 +98,7 @@ SyllabusResponse _$SyllabusResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SyllabusResponseToJson(SyllabusResponse instance) =>
-    <String, dynamic>{
-      'study_goals': instance.studyGoals,
-      'course_content': instance.courseContent,
-    };
+    <String, dynamic>{'course_content': instance.courseContent};
 
 SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
     SingleCourseInfo(
@@ -125,7 +117,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
               .toList() ??
           [],
       willLearn:
-          (json['will_learn'] as List<dynamic>?)
+          (json['what_will_learn'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
@@ -210,7 +202,7 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'description': instance.description,
       'shortDescription': instance.shortDescription,
       'authors': instance.authors,
-      'will_learn': instance.willLearn,
+      'what_will_learn': instance.willLearn,
       'co_authors': instance.co_authors,
       'cover_image': instance.thumbnail,
       'preview_video': instance.previewVideo,
@@ -295,7 +287,7 @@ CourseShortInfo _$CourseShortInfoFromJson(Map<String, dynamic> json) =>
           : MediaDTO.fromJson(json['file'] as Map<String, dynamic>),
       language: json['language'] as String? ?? '',
       level: json['level'] as String? ?? '',
-      willLearn: (json['will_learn'] as List<dynamic>?)
+      willLearn: (json['what_will_learn'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       price: json['price'] as String? ?? '',
@@ -327,7 +319,7 @@ Map<String, dynamic> _$CourseShortInfoToJson(CourseShortInfo instance) =>
       'file': instance.file,
       'language': instance.language,
       'level': instance.level,
-      'will_learn': instance.willLearn,
+      'what_will_learn': instance.willLearn,
       'co_author_ids': instance.coAuthorIds,
       'status': instance.status,
       'price': instance.price,

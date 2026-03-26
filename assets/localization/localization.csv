@@ -387,11 +387,10 @@ yourRequestSuccessManagerWillContact,Your request has been sent successfully. Ou
 requested,Requested,Запрошено,So'ralgan
 singInToAccess,"Sign in to access your courses, track progress, and continue learning.","Войдите в систему, чтобы получить доступ к своим курсам, отслеживать прогресс и продолжить обучение.","Kurslaringizga kirish, taraqqiyotni kuzatish va o'qishni davom ettirish uchun tizimga kiring."
 allCourses,All courses,Все курсы,Barcha kurslar
-congratulations,Congratulations! 🎉,Поздравляем! 🎉,Tabriklaymiz! 🎉
-youhavesuccessfully,You’ve successfully completed the quiz and scored,Вы успешно прошли викторину и набрали баллы.,Siz testni muvaffaqiyatli yakunladingiz va ball to'pladingiz
-tryagain,Try Again 💪,Попробуйте еще раз 💪,Qayta urinib ko'ring 💪
-youscored,You scored,Вы набрали,Siz to`pladingiz
-pointsAnd,points and didn’t pass the quiz this time.,"баллов, но на этот раз не прошли викторину","ball, lekin bu safar viktorinadan o'ta olmadingiz"
+congratulations,Congratulations! ,Поздравляем! ,Tabriklaymiz! 
+youhavesuccessfully,You’ve successfully completed the quiz and scored {percentage}%,Вы успешно прошли викторину и набрали {percentage}%,Siz testni muvaffaqiyatli yakunladingiz va {percentage}% to'pladingiz
+tryagain,Try Again ,Попробуйте еще раз ,Qayta urinib ko'ring 
+youscored,You scored {percentage}% and didn’t pass the quiz this time.,"Вы набрали {percentage}%, но на этот раз не прошли викторину","Siz {percentage}% to`pladingiz, lekin bu safar viktorinadan o'ta olmadingiz"
 selectAllCorrectAnswers,Select all correct answers,Выберите все правильные ответы,Barcha to'g'ri javoblarni tanlang
 watchExplanation,Watch explanation,Посмотреть объяснение,Tushuntirishni tomosha qiling
 retakeQuiz,Retake quiz,Перепройти викторину,Viktorinani qayta topshiring

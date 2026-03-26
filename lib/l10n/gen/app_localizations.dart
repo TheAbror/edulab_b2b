@@ -2275,32 +2275,26 @@ abstract class AppLocalizations {
   /// No description provided for @congratulations.
   ///
   /// In en, this message translates to:
-  /// **'Congratulations! 🎉'**
+  /// **'Congratulations! '**
   String get congratulations;
 
   /// No description provided for @youhavesuccessfully.
   ///
   /// In en, this message translates to:
-  /// **'You’ve successfully completed the quiz and scored'**
-  String get youhavesuccessfully;
+  /// **'You’ve successfully completed the quiz and scored {percentage}%'**
+  String youhavesuccessfully(Object percentage);
 
   /// No description provided for @tryagain.
   ///
   /// In en, this message translates to:
-  /// **'Try Again 💪'**
+  /// **'Try Again '**
   String get tryagain;
 
   /// No description provided for @youscored.
   ///
   /// In en, this message translates to:
-  /// **'You scored'**
-  String get youscored;
-
-  /// No description provided for @pointsAnd.
-  ///
-  /// In en, this message translates to:
-  /// **'points and didn’t pass the quiz this time.'**
-  String get pointsAnd;
+  /// **'You scored {percentage}% and didn’t pass the quiz this time.'**
+  String youscored(Object percentage);
 
   /// No description provided for @selectAllCorrectAnswers.
   ///

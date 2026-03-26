@@ -108,6 +108,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case QuizInfo:
       return QuizInfo.fromJson(json);
 
+    case QuizResultResponse:
+      return QuizResultResponse.fromJson(json);
+
     default:
       return null;
   }

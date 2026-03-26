@@ -36,12 +36,13 @@ class QuizOptionsWidget extends StatelessWidget {
           child: Ink(
             child: InkWell(
               onTap: () {
-                if (state.response?.isEmpty == true) {
+                if (state.response?.content.isEmpty == true) {
                   context.read<QuizBloc>().addQuizAnswer(
                     NewQuizAnswers(
                       questionID: question.id,
                       selectedOptionIds: [option.id.toString()],
                     ),
+                    step.questions.length,
                   );
                 }
               },

@@ -1127,20 +1127,20 @@ class AppLocalizationsUz extends AppLocalizations {
   String get allCourses => 'Barcha kurslar';
 
   @override
-  String get congratulations => 'Tabriklaymiz! 🎉';
+  String get congratulations => 'Tabriklaymiz! ';
 
   @override
-  String get youhavesuccessfully =>
-      'Siz testni muvaffaqiyatli yakunladingiz va ball to\'pladingiz';
+  String youhavesuccessfully(Object percentage) {
+    return 'Siz testni muvaffaqiyatli yakunladingiz va $percentage% to\'pladingiz';
+  }
 
   @override
-  String get tryagain => 'Qayta urinib ko\'ring 💪';
+  String get tryagain => 'Qayta urinib ko\'ring ';
 
   @override
-  String get youscored => 'Siz to`pladingiz';
-
-  @override
-  String get pointsAnd => 'ball, lekin bu safar viktorinadan o\'ta olmadingiz';
+  String youscored(Object percentage) {
+    return 'Siz $percentage% to`pladingiz, lekin bu safar viktorinadan o\'ta olmadingiz';
+  }
 
   @override
   String get selectAllCorrectAnswers => 'Barcha to\'g\'ri javoblarni tanlang';

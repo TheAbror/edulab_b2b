@@ -106,13 +106,13 @@ final class _$SingleCourseServices extends SingleCourseServices {
   }
 
   @override
-  Future<Response<List<QuizResponse>>> submitQuiz(QuizRequest body) {
+  Future<Response<QuizResultResponse>> submitQuiz(QuizRequest body) {
     final Uri $url = Uri.parse(
       'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/submit',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
-    return client.send<List<QuizResponse>, QuizResponse>($request);
+    return client.send<QuizResultResponse, QuizResultResponse>($request);
   }
 
   @override

@@ -17,10 +17,7 @@ class CourseContentTabInfo extends StatelessWidget {
         padding: EdgeInsets.zero,
         physics: AlwaysScrollableScrollPhysics(),
         children: [
-          SingleCourseBody(
-            isContent: true,
-            id: id,
-          ),
+          SingleCourseBody(isContent: true, id: id),
         ],
       ),
     );

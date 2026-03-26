@@ -5,11 +5,14 @@ part 'quiz_state.dart';
 class QuizBloc extends Cubit<QuizState> {
   QuizBloc() : super(QuizState.initial());
 
-  void setQuizzesCount(int count) {
-    emit(state.copyWith(quizzesCount: count));
-  }
+  // void setQuizzesCount(int count) {
+  //   emit(state.copyWith(quizzesCount: count));
+  // }
 
-  void addQuizAnswer(NewQuizAnswers answer) {
+  void addQuizAnswer(
+    NewQuizAnswers answer,
+    int quizCount,
+  ) {
     final updatedQuizzes = List<NewQuizAnswers>.from(state.answers);
     final ids = List<String>.from(state.answersIDS); // String
     final qIds = List<int>.from(state.questionIDS); // int
@@ -27,6 +30,7 @@ class QuizBloc extends Cubit<QuizState> {
 
     emit(
       state.copyWith(
+        quizzesCount: quizCount,
         answers: updatedQuizzes,
         answersIDS: ids,
         questionIDS: qIds,
@@ -44,28 +48,14 @@ class QuizBloc extends Cubit<QuizState> {
       final response = await ApiProvider.singleCourseServices.submitQuiz(req);
 
       if (response.isSuccessful) {
-        final data = response.body; // List<QuizResponse>
+        final data = response.body;
 
         if (data != null) {
-          final correctAnswersCount = data
-              .where((q) => q.status == QuizStatus.correct)
-              .length;
-
-          final total = data.length;
-
-          final correctnessPercentage = total == 0
-              ? 0
-              : ((correctAnswersCount / total) * 100).round();
-
           emit(
             state.copyWith(
-              correctAnswersCount: correctAnswersCount,
-              overallAnswersCount: total,
-              //when user answers all wrong
-              correctnessPercentage: correctnessPercentage == 0
-                  ? -1
-                  : correctnessPercentage,
               response: data,
+              resultsSubmitted: true,
+              correctnessPercentage: data.quizInfo.scorePercentage,
               blocProgress: BlocProgress.IS_SUCCESS,
             ),
           );

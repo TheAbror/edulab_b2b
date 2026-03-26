@@ -120,12 +120,10 @@ class Status {
 
 @JsonSerializable(includeIfNull: true)
 class SyllabusResponse {
-  @JsonKey(defaultValue: [], name: 'study_goals')
-  final List<String>? studyGoals;
   @JsonKey(defaultValue: [], name: 'course_content')
   final List<ChapterModel>? courseContent;
 
-  SyllabusResponse({required this.studyGoals, this.courseContent});
+  SyllabusResponse({this.courseContent});
 
   factory SyllabusResponse.fromJson(Map<String, dynamic> json) =>
       _$SyllabusResponseFromJson(json);
@@ -146,7 +144,7 @@ class SingleCourseInfo {
   final String shortDescription;
   @JsonKey(defaultValue: [])
   final List<Authors> authors;
-  @JsonKey(defaultValue: [], name: "will_learn")
+  @JsonKey(defaultValue: [], name: "what_will_learn")
   final List<String>? willLearn;
   @JsonKey(defaultValue: [])
   final List<Authors> co_authors;
@@ -213,7 +211,6 @@ class SingleCourseInfo {
     required this.price,
     this.updatedDate,
     this.courseStatus,
-    // this.xapiCourseUrl,
     this.file,
     this.language,
     this.level,
@@ -226,7 +223,6 @@ class SingleCourseInfo {
     this.published,
     this.canPublish,
     this.completionTime,
-    // this.structure,
     required this.chapters,
     this.currentlyActive,
   });
@@ -302,7 +298,7 @@ class CourseShortInfo {
   @JsonKey(defaultValue: '')
   final String? level;
 
-  @JsonKey(name: "will_learn")
+  @JsonKey(name: "what_will_learn")
   final List<String>? willLearn;
 
   @JsonKey(name: "co_author_ids")

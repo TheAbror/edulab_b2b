@@ -18,8 +18,8 @@ class LearningBottomNavButtonLeft extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: Container(
-        height: 36,
-        width: 105,
+        height: 36.h,
+        width: 105.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(defaultRadius.r)),
           border: Border.all(

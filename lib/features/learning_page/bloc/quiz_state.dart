@@ -5,11 +5,10 @@ class QuizState extends Equatable {
   final List<NewQuizAnswers> answers;
   final List<String> answersIDS;
   final List<int> questionIDS;
-  final List<QuizResponse>? response;
-  //
-  final int correctAnswersCount;
-  final int overallAnswersCount;
-  final int correctnessPercentage;
+  final QuizResultResponse? response;
+  final bool resultsSubmitted;
+
+  final double correctnessPercentage;
   final bool isAllSelected;
   final int quizzesCount;
   final BlocProgress blocProgress;
@@ -21,14 +20,21 @@ class QuizState extends Equatable {
     required this.answersIDS,
     required this.questionIDS,
     required this.response,
-    required this.correctAnswersCount,
-    required this.overallAnswersCount,
+    required this.resultsSubmitted,
     required this.correctnessPercentage,
     required this.isAllSelected,
     required this.quizzesCount,
     required this.blocProgress,
     required this.failureMessage,
   });
+
+  bool get passedTheQuiz =>
+      response?.quizInfo.passed == true &&
+      response?.quizInfo.scorePercentage != 0 &&
+      resultsSubmitted;
+
+  bool get failedTheQuiz =>
+      response?.quizInfo.passed == false && resultsSubmitted;
 
   factory QuizState.initial() {
     return QuizState(
@@ -39,9 +45,8 @@ class QuizState extends Equatable {
       answers: [],
       answersIDS: [],
       questionIDS: [],
-      response: [],
-      correctAnswersCount: 0,
-      overallAnswersCount: 0,
+      response: QuizResultResponse.initial(),
+      resultsSubmitted: false,
       correctnessPercentage: 0,
       isAllSelected: false,
       quizzesCount: 0,
@@ -55,10 +60,9 @@ class QuizState extends Equatable {
     List<NewQuizAnswers>? answers,
     List<String>? answersIDS,
     List<int>? questionIDS,
-    List<QuizResponse>? response,
-    int? correctAnswersCount,
-    int? overallAnswersCount,
-    int? correctnessPercentage,
+    QuizResultResponse? response,
+    bool? resultsSubmitted,
+    double? correctnessPercentage,
     bool? isAllSelected,
     int? quizzesCount,
     BlocProgress? blocProgress,
@@ -70,8 +74,7 @@ class QuizState extends Equatable {
       answersIDS: answersIDS ?? this.answersIDS,
       questionIDS: questionIDS ?? this.questionIDS,
       response: response ?? this.response,
-      correctAnswersCount: correctAnswersCount ?? this.correctAnswersCount,
-      overallAnswersCount: overallAnswersCount ?? this.overallAnswersCount,
+      resultsSubmitted: resultsSubmitted ?? this.resultsSubmitted,
       correctnessPercentage:
           correctnessPercentage ?? this.correctnessPercentage,
       isAllSelected: isAllSelected ?? this.isAllSelected,
@@ -88,8 +91,7 @@ class QuizState extends Equatable {
     answersIDS,
     questionIDS,
     response,
-    correctAnswersCount,
-    overallAnswersCount,
+    resultsSubmitted,
     correctnessPercentage,
     isAllSelected,
     quizzesCount,

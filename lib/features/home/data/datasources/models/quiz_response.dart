@@ -2,6 +2,64 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'quiz_response.g.dart';
 
+@JsonSerializable(includeIfNull: true)
+class QuizResultResponse {
+  @JsonKey(defaultValue: [])
+  final List<QuizResponse> content;
+  @JsonKey(name: 'quiz_info')
+  final QuizInfo quizInfo;
+
+  const QuizResultResponse({
+    required this.content,
+    required this.quizInfo,
+  });
+
+  factory QuizResultResponse.initial() {
+    return QuizResultResponse(content: [], quizInfo: QuizInfo.initial());
+  }
+
+  factory QuizResultResponse.fromJson(Map<String, dynamic> json) =>
+      _$QuizResultResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$QuizResultResponseToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true)
+class QuizInfo {
+  @JsonKey(defaultValue: false)
+  final bool passed;
+  @JsonKey(defaultValue: 0, name: 'total_questions')
+  final int totalQuestions;
+  @JsonKey(defaultValue: 0, name: 'correct_answers')
+  final int correctAnswers;
+  @JsonKey(defaultValue: 0, name: 'incorrect_answers')
+  final int incorrectAnswers;
+  @JsonKey(defaultValue: 0, name: 'score_percentage')
+  final double scorePercentage;
+
+  QuizInfo({
+    required this.passed,
+    required this.totalQuestions,
+    required this.correctAnswers,
+    required this.incorrectAnswers,
+    required this.scorePercentage,
+  });
+
+  factory QuizInfo.initial() {
+    return QuizInfo(
+      passed: false,
+      totalQuestions: 0,
+      correctAnswers: 0,
+      incorrectAnswers: 0,
+      scorePercentage: 0,
+    );
+  }
+
+  factory QuizInfo.fromJson(Map<String, dynamic> json) =>
+      _$QuizInfoFromJson(json);
+  Map<String, dynamic> toJson() => _$QuizInfoToJson(this);
+}
+
 enum QuizStatus {
   @JsonValue('CORRECT')
   correct,

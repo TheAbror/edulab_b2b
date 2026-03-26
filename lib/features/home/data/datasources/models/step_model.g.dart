@@ -98,22 +98,6 @@ Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
       'explanation_video': instance.explanationVideo,
     };
 
-QuizInfo _$QuizInfoFromJson(Map<String, dynamic> json) => QuizInfo(
-  passed: json['passed'] as bool? ?? false,
-  totalQuestions: (json['total_questions'] as num?)?.toInt() ?? 0,
-  correctAnswers: (json['correct_answers'] as num?)?.toInt() ?? 0,
-  incorrectAnswers: (json['incorrect_answers'] as num?)?.toInt() ?? 0,
-  scorePercentage: (json['score_percentage'] as num?)?.toDouble() ?? 0,
-);
-
-Map<String, dynamic> _$QuizInfoToJson(QuizInfo instance) => <String, dynamic>{
-  'passed': instance.passed,
-  'total_questions': instance.totalQuestions,
-  'correct_answers': instance.correctAnswers,
-  'incorrect_answers': instance.incorrectAnswers,
-  'score_percentage': instance.scorePercentage,
-};
-
 QuestionOption _$QuestionOptionFromJson(Map<String, dynamic> json) =>
     QuestionOption(
       id: (json['id'] as num?)?.toInt() ?? 0,

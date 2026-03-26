@@ -31,8 +31,6 @@ class StepModel extends Equatable {
   final List<QuestionModel> questions;
   @JsonKey(defaultValue: [], name: 'questions_answers')
   final List<QuestionAnswerModel> answers;
-  // @JsonKey(name: 'quiz_info')
-  // final QuizInfo quizInfo;
 
   const StepModel({
     required this.id,
@@ -49,7 +47,6 @@ class StepModel extends Equatable {
     required this.materials,
     required this.questions,
     required this.answers,
-    // required this.quizInfo,
   });
 
   factory StepModel.initial() {
@@ -63,7 +60,6 @@ class StepModel extends Equatable {
       materials: [],
       answers: [],
       questions: [],
-      // quizInfo: QuizInfo.initial(),
     );
   }
 
@@ -86,7 +82,6 @@ class StepModel extends Equatable {
     List<MediaDTO>? materials,
     List<QuestionModel>? questions,
     List<QuestionAnswerModel>? answers,
-    // QuizInfo? quizInfo,
   }) {
     return StepModel(
       id: id ?? this.id,
@@ -103,7 +98,6 @@ class StepModel extends Equatable {
       materials: materials ?? this.materials,
       questions: questions ?? this.questions,
       answers: answers ?? this.answers,
-      // quizInfo: quizInfo ?? this.quizInfo,
     );
   }
 
@@ -149,42 +143,6 @@ class QuestionModel {
   factory QuestionModel.fromJson(Map<String, dynamic> json) =>
       _$QuestionModelFromJson(json);
   Map<String, dynamic> toJson() => _$QuestionModelToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true)
-class QuizInfo {
-  @JsonKey(defaultValue: false)
-  final bool passed;
-  @JsonKey(defaultValue: 0, name: 'total_questions')
-  final int totalQuestions;
-  @JsonKey(defaultValue: 0, name: 'correct_answers')
-  final int correctAnswers;
-  @JsonKey(defaultValue: 0, name: 'incorrect_answers')
-  final int incorrectAnswers;
-  @JsonKey(defaultValue: 0, name: 'score_percentage')
-  final double scorePercentage;
-
-  QuizInfo({
-    required this.passed,
-    required this.totalQuestions,
-    required this.correctAnswers,
-    required this.incorrectAnswers,
-    required this.scorePercentage,
-  });
-
-  factory QuizInfo.initial() {
-    return QuizInfo(
-      passed: false,
-      totalQuestions: 0,
-      correctAnswers: 0,
-      incorrectAnswers: 0,
-      scorePercentage: 0,
-    );
-  }
-
-  factory QuizInfo.fromJson(Map<String, dynamic> json) =>
-      _$QuizInfoFromJson(json);
-  Map<String, dynamic> toJson() => _$QuizInfoToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true)

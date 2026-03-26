@@ -51,7 +51,7 @@ class SingleCourseState extends Equatable {
         ),
 
         learnersCount: 0,
-        syllabus: SyllabusResponse(studyGoals: []),
+        syllabus: SyllabusResponse(),
         authors: [
           Authors(
             userId: 0,
