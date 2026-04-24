@@ -54,7 +54,7 @@ class _LearningPageState extends State<LearningPage>
           }
           if (state.allSteps.isEmpty) {
             return Scaffold(
-              appBar: _appBar(context),
+              appBar: learningPageEmptyAppBar(context),
               backgroundColor: context.colors.bgPage1,
               body: Center(child: Text(context.localizations.noResults)),
             );
@@ -91,33 +91,6 @@ class _LearningPageState extends State<LearningPage>
                   ),
           );
         },
-      ),
-    );
-  }
-
-  AppBar _appBar(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      titleSpacing: 0,
-      automaticallyImplyLeading: false,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            padding: EdgeInsets.zero,
-            constraints: BoxConstraints(),
-            icon: Assets.icons.main.arrowBack.svg(
-              colorFilter: ColorFilter.mode(
-                context.colors.fgDefault,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
