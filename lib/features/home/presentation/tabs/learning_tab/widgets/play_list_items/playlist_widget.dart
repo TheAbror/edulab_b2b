@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/home/presentation/tabs/learning_tab/widgets/play_list_items/playlist_text.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/play_list_items/playlist_text.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class PlayListwidget extends StatelessWidget {
   const PlayListwidget({super.key});

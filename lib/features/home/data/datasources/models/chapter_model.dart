@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leti_mobile/features/home/data/datasources/models/topic_model.dart';
+import 'package:edulab_b2b/features/home/data/datasources/models/topic_model.dart';
 
 part 'chapter_model.g.dart';
 

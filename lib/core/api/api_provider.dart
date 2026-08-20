@@ -1,6 +1,6 @@
-import 'package:leti_mobile/features/auth/data/datasources/app_versions_service.dart';
-import 'package:leti_mobile/features/single_course/services/single_course_services.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/auth/data/datasources/app_versions_service.dart';
+import 'package:edulab_b2b/features/single_course/services/single_course_services.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart' as http;
 

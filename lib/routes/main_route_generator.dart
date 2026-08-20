@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/auth/presentation/login_page/login_page.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/auth/presentation/login_page/login_page.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class MainRouteGenerator {
   Route<dynamic>? generateRoute(RouteSettings settings) {

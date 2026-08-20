@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/home/presentation/tabs/profile_tab/widgets/profile_tab_languages.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_languages.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});

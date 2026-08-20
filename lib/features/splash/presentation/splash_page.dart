@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/splash/presentation/app_updates_view.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/splash/presentation/app_updates_view.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

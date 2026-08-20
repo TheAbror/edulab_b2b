@@ -12,18 +12,18 @@
             "flutterMode": "profile"
         },
         {
-            "name": "leti_mobile",
+            "name": "edulab_b2b",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "leti_mobile (profile mode)",
+            "name": "edulab_b2b (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "leti_mobile (release mode)",
+            "name": "edulab_b2b (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

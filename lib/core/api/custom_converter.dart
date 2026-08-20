@@ -1,7 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override

@@ -1,4 +1,4 @@
-// import 'package:leti_mobile/features/auth/presentation/widgets/auth_widgets.dart';
+// import 'package:edulab_b2b/features/auth/presentation/widgets/auth_widgets.dart';
 
 // abstract class CheckNetworkFunction {
 //   static Future googleSignUp() async {

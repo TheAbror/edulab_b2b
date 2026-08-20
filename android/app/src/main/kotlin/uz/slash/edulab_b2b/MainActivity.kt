@@ -1,4 +1,4 @@
-package uz.slash.leti
+package uz.slash.edulab_b2b
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, dead_code, unnecessary_null_comparison
 
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 part 'learning_state.dart';
 

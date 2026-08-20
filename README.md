@@ -1,4 +1,4 @@
-# leti_mobile
+# edulab_b2b
 
 A new Flutter project.
 

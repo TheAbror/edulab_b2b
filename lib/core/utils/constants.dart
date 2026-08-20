@@ -1,4 +1,4 @@
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 const defaultRadius = 6;
 var space4 = SizedBox(height: 4.h);

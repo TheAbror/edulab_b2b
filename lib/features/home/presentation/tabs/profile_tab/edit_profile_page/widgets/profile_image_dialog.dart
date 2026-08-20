@@ -1,4 +1,4 @@
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class ProfileImageDialog extends StatelessWidget {
   final String photo;

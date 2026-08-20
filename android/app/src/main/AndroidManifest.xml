@@ -6,7 +6,7 @@
 
 
     <application
-        android:label="LETI EDU"
+        android:label="Edulab"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

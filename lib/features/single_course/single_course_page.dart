@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/single_course/widgets/course_info_header.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/single_course/widgets/course_info_header.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class SingleCoursePage extends StatelessWidget {
   final int id;

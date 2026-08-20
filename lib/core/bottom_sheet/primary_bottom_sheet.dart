@@ -1,4 +1,4 @@
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 import 'search_input.dart';
 import 'default_bottom_sheet.dart';
 import 'bloc/bottom_sheet_data_bloc.dart';

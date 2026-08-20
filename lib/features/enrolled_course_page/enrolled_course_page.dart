@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/enrolled_course_page/appbar/enrolled_course_sliver_appbar.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/enrolled_course_page/appbar/enrolled_course_sliver_appbar.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class EnrolledCoursePage extends StatefulWidget {
   final int id;

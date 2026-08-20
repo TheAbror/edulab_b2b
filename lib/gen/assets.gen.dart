@@ -110,6 +110,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/main
   $AssetsIconsMainGen get main => const $AssetsIconsMainGen();
 
+  /// File path: assets/icons/menu.svg
+  SvgGenImage get menu => const SvgGenImage('assets/icons/menu.svg');
+
   /// Directory path: assets/icons/navbar
   $AssetsIconsNavbarGen get navbar => const $AssetsIconsNavbarGen();
 
@@ -125,7 +128,7 @@ class $AssetsIconsGen {
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
   /// List of all assets
-  List<dynamic> get values => [arrowLeft, icon, letiLogoPng, resendCode];
+  List<dynamic> get values => [arrowLeft, icon, letiLogoPng, menu, resendCode];
 }
 
 class $AssetsImagesGen {

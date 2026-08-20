@@ -1,4 +1,4 @@
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class LearningPage extends StatefulWidget {
   final OpenCourseByTopicSelectionModel args;
@@ -84,6 +84,7 @@ class _LearningPageState extends State<LearningPage>
             bottomNavigationBar: state.isExpanded
                 ? const SizedBox()
                 : LearningBottomNavigation(
+                    courseId: widget.args.courseID,
                     controller: _tabController!,
                     stepsLength: state.allSteps.length,
                     status: state.allSteps[state.appbarTabIndex].status,

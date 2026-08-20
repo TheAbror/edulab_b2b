@@ -1,5 +1,5 @@
-import 'package:leti_mobile/features/home/presentation/widgets/no_internet_widget.dart';
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/features/home/presentation/widgets/no_internet_widget.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});

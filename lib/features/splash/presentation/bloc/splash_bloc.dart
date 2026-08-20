@@ -1,4 +1,4 @@
-import 'package:leti_mobile/widget_imports.dart';
+import 'package:edulab_b2b/widget_imports.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 part 'splash_state.dart';
