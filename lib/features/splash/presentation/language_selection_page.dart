@@ -152,8 +152,8 @@ Widget languageItem(
           ),
           Spacer(),
           Container(
-            height: 22.w,
-            width: 22.w,
+            height: 24.w,
+            width: 24.w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,

@@ -76,8 +76,9 @@ class _Segment extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: 15.sp,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               color: context.colors.fgDefault,
+              letterSpacing: -0.5,
             ),
           ),
         ),

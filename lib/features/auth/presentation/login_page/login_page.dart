@@ -64,7 +64,7 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
@@ -83,7 +83,10 @@ class _BodyState extends State<_Body> {
 
           return Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+              vertical: 20.h,
+            ),
             decoration: BoxDecoration(
               color: context.colors.float,
               borderRadius: BorderRadius.circular(16.r),
@@ -97,15 +100,21 @@ class _BodyState extends State<_Body> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24.sp,
+                    letterSpacing: -0.8,
                     fontWeight: FontWeight.w500,
                     color: context.colors.fgDefault,
                   ),
                 ),
                 SizedBox(height: 6.h),
-                AppText.paragraph2(
+                Text(
                   context.localizations.continueLearningAndGrowing,
-                  color: context.colors.fgSoft,
-                  maxLines: 3,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    letterSpacing: -0.5,
+                    fontWeight: FontWeight.w500,
+                    color: context.colors.fgSoft,
+                  ),
                 ),
                 SizedBox(height: 24.h),
                 AuthMethodSegmentControl(
@@ -229,7 +238,7 @@ class _ContinueButton extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       letterSpacing: -0.16,
                       color: isDisabled
-                          ? context.colors.fgDisabled
+                          ? context.colors.fgDisabled.withOpacity(0.4)
                           : context.colors.float,
                     ),
                   ),
