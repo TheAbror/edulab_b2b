@@ -27,39 +27,8 @@ class CoursesState extends Equatable {
 
   factory CoursesState.initial() {
     return CoursesState(
-      fullCourseInfo: CourseShortInfo(
-        rating: '',
-        id: 0,
-        title: '',
-        progess: 0,
-        showPrice: false,
-        description: [],
-        short_description: '',
-        category: CategoryModel(
-          id: 0,
-          title: '',
-        ),
-        learnersCount: 0,
-        co_authors: [],
-        authors: [
-          Authors(
-            userId: 0,
-            about: '',
-            id: 0,
-            courseCount: 0,
-            firstname: '',
-            lastname: '',
-            jobPosition: '',
-            avatar: MediaDTO.initial(),
-          ),
-        ],
-        thumbnail: MediaDTO.initial(),
-      ),
-      enrollmentResponse: CourseEnrollmentResponse(
-        id: 0,
-        status: '',
-        managerStatus: '',
-      ),
+      fullCourseInfo: CourseShortInfo.initial(),
+      enrollmentResponse: CourseEnrollmentResponse.initial(),
       enrollmentStatus: '',
       coursesAll: const [],
       currentCourse: const [],

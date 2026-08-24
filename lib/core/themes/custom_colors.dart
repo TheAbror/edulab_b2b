@@ -27,6 +27,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color fgDisabled;
   final Color fgSoft;
   final Color bgPage1;
+  final Color bgPage2;
   final Color bgSurface1;
   final Color bgSurface3;
   final Color bgSurface4;
@@ -41,6 +42,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color staticTransparent;
   final Color successContainerDefault;
   final Color errorContainerDefault;
+  final Color errorDefault;
   final Color accentDefault;
   final Color neutralContainerActive;
   final Color status01OnContainer;
@@ -63,6 +65,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.fgDisabled,
     required this.fgSoft,
     required this.bgPage1,
+    required this.bgPage2,
     required this.bgSurface1,
     required this.bgSurface3,
     required this.bgSurface4,
@@ -77,6 +80,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.staticTransparent,
     required this.successContainerDefault,
     required this.errorContainerDefault,
+    required this.errorDefault,
     required this.accentDefault,
     required this.neutralContainerActive,
     required this.status01OnContainer,
@@ -101,6 +105,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? fgDisabled,
     Color? fgSoft,
     Color? bgPage1,
+    Color? bgPage2,
     Color? bgSurface1,
     Color? bgSurface3,
     Color? bgSurface4,
@@ -115,6 +120,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? staticTransparent,
     Color? successContainerDefault,
     Color? errorContainerDefault,
+    Color? errorDefault,
     Color? accentDefault,
     Color? neutralContainerActive,
     Color? status01OnContainer,
@@ -139,6 +145,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       fgDisabled: fgDisabled ?? this.fgDisabled,
       fgSoft: fgSoft ?? this.fgSoft,
       bgPage1: bgPage1 ?? this.bgPage1,
+      bgPage2: bgPage2 ?? this.bgPage2,
       bgSurface1: bgSurface1 ?? this.bgSurface1,
       bgSurface3: bgSurface3 ?? this.bgSurface3,
       bgSurface4: bgSurface4 ?? this.bgSurface4,
@@ -159,6 +166,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
           successContainerDefault ?? this.successContainerDefault,
       errorContainerDefault:
           errorContainerDefault ?? this.errorContainerDefault,
+      errorDefault: errorDefault ?? this.errorDefault,
       accentDefault: accentDefault ?? this.accentDefault,
       neutralContainerActive:
           neutralContainerActive ?? this.neutralContainerActive,
@@ -212,6 +220,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       fgDisabled: Color.lerp(fgDisabled, other.fgDisabled, t)!,
       fgSoft: Color.lerp(fgSoft, other.fgSoft, t)!,
       bgPage1: Color.lerp(bgPage1, other.bgPage1, t)!,
+      bgPage2: Color.lerp(bgPage2, other.bgPage2, t)!,
       bgSurface1: Color.lerp(bgSurface1, other.bgSurface1, t)!,
       bgSurface3: Color.lerp(bgSurface3, other.bgSurface3, t)!,
       bgSurface4: Color.lerp(bgSurface4, other.bgSurface4, t)!,
@@ -267,6 +276,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
       errorContainerDefault: Color.lerp(
         errorContainerDefault,
         other.errorContainerDefault,
+        t,
+      )!,
+      errorDefault: Color.lerp(
+        errorDefault,
+        other.errorDefault,
         t,
       )!,
       accentDefault: Color.lerp(

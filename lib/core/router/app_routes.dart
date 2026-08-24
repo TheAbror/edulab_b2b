@@ -1,7 +1,6 @@
 abstract class AppRoutes {
   //splash & welcome page
   static const splashPage = '/';
-  static const welcomePage = 'welcomePage';
   static const languageSelectionPage = 'languageSelectionPage';
 
   static const enterDetailsPage = 'enterDetailsPage';

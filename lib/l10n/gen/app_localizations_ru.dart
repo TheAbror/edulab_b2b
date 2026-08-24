@@ -765,7 +765,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wehavesentyoucodeto => 'Мы отправили вам код на';
 
   @override
-  String get resetafter => 'Повторная отправка кода';
+  String resetafter(Object seconds) {
+    return 'Повторная отправка через $seconds сек.';
+  }
 
   @override
   String get seconds => 'секунды';
@@ -1095,11 +1097,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get browseCourses => 'Просмотреть курсы';
 
   @override
-  String get welcometoLeti => 'Доступ к платформе LETI EDU';
+  String get welcometoLeti => 'Продолжайте обучение с Edulab';
 
   @override
   String get continueLearningAndGrowing =>
-      'Введите свой номер телефона, чтобы продолжить.';
+      'Получите доступ к рабочему пространству организации, проходите назначенные курсы и отслеживайте свой прогресс.';
 
   @override
   String get pleseEnterFirstLastName =>
@@ -1166,4 +1168,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String smsToNumber(Object phoneNumber) {
     return 'SMS-код был отправлен на номер $phoneNumber';
   }
+
+  @override
+  String get codeSentViaSms => 'Мы отправили вам 4-значный код по SMS на';
+
+  @override
+  String get codeSentViaEmail =>
+      'Мы отправили вам 4-значный код по электронной почте на';
+
+  @override
+  String get legalConsentPrefix => 'Продолжая, вы соглашаетесь с';
+
+  @override
+  String get termsAndPrivacyPolicy =>
+      'Условиями обслуживания и Политикой конфиденциальности Edulab.';
 }

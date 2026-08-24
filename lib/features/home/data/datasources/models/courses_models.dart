@@ -44,6 +44,19 @@ class Authors {
     this.avatar,
   });
 
+  factory Authors.initial() {
+    return Authors(
+      id: 0,
+      userId: 0,
+      firstname: '',
+      lastname: '',
+      jobPosition: '',
+      about: '',
+      courseCount: 0,
+      avatar: MediaDTO.initial(),
+    );
+  }
+
   factory Authors.fromJson(Map<String, dynamic> json) =>
       _$AuthorsFromJson(json);
   Map<String, dynamic> toJson() => _$AuthorsToJson(this);
@@ -57,6 +70,10 @@ class CategoryModel {
   final String title;
 
   CategoryModel({required this.id, required this.title});
+
+  factory CategoryModel.initial() {
+    return CategoryModel(id: 0, title: '');
+  }
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
@@ -124,6 +141,10 @@ class SyllabusResponse {
   final List<ChapterModel>? courseContent;
 
   SyllabusResponse({this.courseContent});
+
+  factory SyllabusResponse.initial() {
+    return SyllabusResponse(courseContent: const []);
+  }
 
   factory SyllabusResponse.fromJson(Map<String, dynamic> json) =>
       _$SyllabusResponseFromJson(json);
@@ -226,6 +247,27 @@ class SingleCourseInfo {
     required this.chapters,
     this.currentlyActive,
   });
+
+  factory SingleCourseInfo.initial() {
+    return SingleCourseInfo(
+      id: 0,
+      title: '',
+      aboutCourse: '',
+      price: '',
+      willLearn: const [],
+      description: const [],
+      showPrice: false,
+      shortDescription: '',
+      co_authors: const [],
+      skills: const [],
+      coAuthorIds: const [],
+      chapters: const [],
+      category: CategoryModel.initial(),
+      learnersCount: 0,
+      syllabus: SyllabusResponse.initial(),
+      authors: [Authors.initial()],
+    );
+  }
 
   factory SingleCourseInfo.fromJson(Map<String, dynamic> json) =>
       _$SingleCourseInfoFromJson(json);
@@ -347,6 +389,23 @@ class CourseShortInfo {
     required this.learnersCount,
   });
 
+  factory CourseShortInfo.initial() {
+    return CourseShortInfo(
+      id: 0,
+      title: '',
+      description: const [],
+      short_description: '',
+      authors: [Authors.initial()],
+      co_authors: const [],
+      showPrice: false,
+      category: CategoryModel.initial(),
+      progess: 0,
+      rating: '',
+      learnersCount: 0,
+      thumbnail: MediaDTO.initial(),
+    );
+  }
+
   factory CourseShortInfo.fromJson(Map<String, dynamic> json) =>
       _$CourseShortInfoFromJson(json);
 
@@ -373,6 +432,10 @@ class CurrentlyActive {
     required this.topicID,
     required this.stepID,
   });
+
+  factory CurrentlyActive.initial() {
+    return CurrentlyActive(chapterID: 0, topicID: 0, stepID: 0);
+  }
 
   factory CurrentlyActive.fromJson(Map<String, dynamic> json) =>
       _$CurrentlyActiveFromJson(json);

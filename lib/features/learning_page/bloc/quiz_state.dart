@@ -38,10 +38,7 @@ class QuizState extends Equatable {
 
   factory QuizState.initial() {
     return QuizState(
-      quizRequests: QuizRequest(
-        stepId: 0,
-        answers: [],
-      ),
+      quizRequests: QuizRequest.initial(),
       answers: [],
       answersIDS: [],
       questionIDS: [],

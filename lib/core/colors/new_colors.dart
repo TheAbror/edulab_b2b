@@ -21,21 +21,21 @@ class CustomThemes {
   static const Color neutral0 = Color(0XFFFFFFFF);
   //accent
   static const Color accent1000 = Color(0XFF000000);
-  static const Color accent990 = Color(0XFF18040B);
-  static const Color accent950 = Color(0XFF2A0813);
-  static const Color accent925 = Color(0XFF330917);
-  static const Color accent900 = Color(0XFF3C0B1B);
-  static const Color accent800 = Color(0XFF470D20);
-  static const Color accent700 = Color(0XFF530F26);
-  static const Color accent600 = Color(0XFF771636);
-  static const Color accent500 = Color(0XFF771636);
-  static const Color accent400 = Color(0XFF92455E);
-  static const Color accent300 = Color(0XFFA7687C);
-  static const Color accent200 = Color(0XFFBB8A9A);
-  static const Color accent100 = Color(0XFFDDC5CD);
-  static const Color accent50 = Color(0XFFF1E8EB);
-  static const Color accent25 = Color(0XFFF8F3F5);
-  static const Color accent10 = Color(0XFFFBF8F9);
+  static const Color accent990 = Color(0XFF01172C);
+  static const Color accent950 = Color(0XFF012951);
+  static const Color accent925 = Color(0XFF023060);
+  static const Color accent900 = Color(0XFF023A72);
+  static const Color accent800 = Color(0XFF024487);
+  static const Color accent700 = Color(0XFF03509E);
+  static const Color accent600 = Color(0XFF0473E3);
+  static const Color accent500 = Color(0XFF0473E3);
+  static const Color accent400 = Color(0XFF368FE9);
+  static const Color accent300 = Color(0XFF5CA4ED);
+  static const Color accent200 = Color(0XFF81B9F1);
+  static const Color accent100 = Color(0XFFC0DCF8);
+  static const Color accent50 = Color(0XFFE6F1FC);
+  static const Color accent25 = Color(0XFFF2F8FE);
+  static const Color accent10 = Color(0XFFF8FBFE);
   static const Color accent0 = Color(0XFFFFFFFF);
   //success
   static const Color success1000 = Color(0XFF000000);

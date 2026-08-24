@@ -1591,8 +1591,8 @@ abstract class AppLocalizations {
   /// No description provided for @resetafter.
   ///
   /// In en, this message translates to:
-  /// **'Resend code in'**
-  String get resetafter;
+  /// **'Resend after {seconds} seconds'**
+  String resetafter(Object seconds);
 
   /// No description provided for @seconds.
   ///
@@ -2233,13 +2233,13 @@ abstract class AppLocalizations {
   /// No description provided for @welcometoLeti.
   ///
   /// In en, this message translates to:
-  /// **'Access to the LETI EDU platform'**
+  /// **'Continue learning with Edulab'**
   String get welcometoLeti;
 
   /// No description provided for @continueLearningAndGrowing.
   ///
   /// In en, this message translates to:
-  /// **'Enter your phone number to continue.'**
+  /// **'Access your organization workspace, complete assigned courses, and track your learning progress.'**
   String get continueLearningAndGrowing;
 
   /// No description provided for @pleseEnterFirstLastName.
@@ -2355,6 +2355,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The SMS code has been sent to {phoneNumber}'**
   String smsToNumber(Object phoneNumber);
+
+  /// No description provided for @codeSentViaSms.
+  ///
+  /// In en, this message translates to:
+  /// **'We have sent you a 4-digit code via SMS to'**
+  String get codeSentViaSms;
+
+  /// No description provided for @codeSentViaEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'We have sent you a 4-digit code via email to'**
+  String get codeSentViaEmail;
+
+  /// No description provided for @legalConsentPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing, you agree to Edulab\'s'**
+  String get legalConsentPrefix;
+
+  /// No description provided for @termsAndPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service and Privacy Policy.'**
+  String get termsAndPrivacyPolicy;
 }
 
 class _AppLocalizationsDelegate

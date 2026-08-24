@@ -768,7 +768,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wehavesentyoucodeto => 'We have sent you code to';
 
   @override
-  String get resetafter => 'Resend code in';
+  String resetafter(Object seconds) {
+    return 'Resend after $seconds seconds';
+  }
 
   @override
   String get seconds => 'seconds';
@@ -1097,11 +1099,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get browseCourses => 'Browse Courses';
 
   @override
-  String get welcometoLeti => 'Access to the LETI EDU platform';
+  String get welcometoLeti => 'Continue learning with Edulab';
 
   @override
   String get continueLearningAndGrowing =>
-      'Enter your phone number to continue.';
+      'Access your organization workspace, complete assigned courses, and track your learning progress.';
 
   @override
   String get pleseEnterFirstLastName =>
@@ -1168,4 +1170,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String smsToNumber(Object phoneNumber) {
     return 'The SMS code has been sent to $phoneNumber';
   }
+
+  @override
+  String get codeSentViaSms => 'We have sent you a 4-digit code via SMS to';
+
+  @override
+  String get codeSentViaEmail => 'We have sent you a 4-digit code via email to';
+
+  @override
+  String get legalConsentPrefix => 'By continuing, you agree to Edulab\'s';
+
+  @override
+  String get termsAndPrivacyPolicy => 'Terms of Service and Privacy Policy.';
 }

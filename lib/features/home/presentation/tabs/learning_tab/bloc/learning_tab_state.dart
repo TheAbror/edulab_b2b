@@ -22,23 +22,7 @@ class LearningTabState extends Equatable {
       tabIndex: 0,
       inProgress: const [],
       completed: const [],
-      statistics: LearningTabStatisticsResponse(
-        streak: StreakResponse(
-          days: StreakDaysResponse(
-            monday: false,
-            tuesday: false,
-            wednesday: false,
-            thursday: false,
-            friday: false,
-            saturday: false,
-            sunday: false,
-          ),
-          label: '',
-        ),
-        totalTimeLearning: '',
-        inProgress: '',
-        completed: '',
-      ),
+      statistics: LearningTabStatisticsResponse.initial(),
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
     );

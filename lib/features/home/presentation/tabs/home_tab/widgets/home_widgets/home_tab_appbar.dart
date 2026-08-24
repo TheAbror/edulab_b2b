@@ -12,11 +12,7 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Assets.icons.main.letiSmallLogoSvg.svg(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.primary,
-                  BlendMode.srcIn,
-                ),
+              Assets.icons.main.edulabLogoSmall.svg(
                 height: 26.w,
                 width: 95.w,
               ),

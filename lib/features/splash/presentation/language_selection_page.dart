@@ -6,119 +6,173 @@ class LanguageSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40.w),
-        child: BlocBuilder<LocalizationBloc, LocalizationState>(
-          builder: (context, state) {
-            final languageName = returnLanguageName(state.languageCode ?? 'ru');
+      backgroundColor: context.colors.bgPage2,
+      body: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          child: BlocBuilder<LocalizationBloc, LocalizationState>(
+            builder: (context, state) {
+              final languageName = returnLanguageName(
+                state.languageCode ?? 'ru',
+              );
 
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Spacer(),
-                AppText.title1(context.localizations.chooseLanguage),
-                space32,
-                themeItem(
-                  'O’zbek',
-                  languageName == 'O’zbek' ? true : false,
-                  () => context.read<LocalizationBloc>().changeLocalization(
-                    'uz',
+              return Center(
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 20.h,
                   ),
-                  context,
-                  Assets.icons.languageIcons.uz.svg(),
-                ),
-                themeItem(
-                  'English',
-                  languageName == 'English' ? true : false,
-                  () => context.read<LocalizationBloc>().changeLocalization(
-                    'en',
+                  decoration: BoxDecoration(
+                    color: context.colors.float,
+                    borderRadius: BorderRadius.circular(16.r),
                   ),
-                  context,
-                  Assets.icons.languageIcons.en.svg(),
-                ),
-                themeItem(
-                  'Русский',
-                  languageName == 'Русский' ? true : false,
-                  () => context.read<LocalizationBloc>().changeLocalization(
-                    'ru',
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        context.localizations.chooseLanguage,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: context.colors.fgDefault,
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      languageItem(
+                        'O’zbek',
+                        languageName == 'O’zbek',
+                        () =>
+                            context.read<LocalizationBloc>().changeLocalization(
+                              'uz',
+                            ),
+                        context,
+                        Assets.icons.languageIcons.uz.svg(),
+                      ),
+                      SizedBox(height: 6.h),
+                      languageItem(
+                        'Русский',
+                        languageName == 'Русский',
+                        () =>
+                            context.read<LocalizationBloc>().changeLocalization(
+                              'ru',
+                            ),
+                        context,
+                        Assets.icons.languageIcons.ru.svg(),
+                      ),
+                      SizedBox(height: 6.h),
+                      languageItem(
+                        'English',
+                        languageName == 'English',
+                        () =>
+                            context.read<LocalizationBloc>().changeLocalization(
+                              'en',
+                            ),
+                        context,
+                        Assets.icons.languageIcons.en.svg(),
+                      ),
+                      SizedBox(height: 24.h),
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          AppRoutes.loginPage,
+                        ),
+                        behavior: HitTestBehavior.opaque,
+                        child: Container(
+                          height: 48.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.circular(999.r),
+                          ),
+                          child: Text(
+                            context.localizations.continueButton,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: -0.16,
+                              color: context.colors.float,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  context,
-                  Assets.icons.languageIcons.ru.svg(),
                 ),
-                Spacer(),
-                ActionButton(
-                  text: context.localizations.next,
-                  onTap: () =>
-                      Navigator.pushNamed(context, AppRoutes.welcomePage),
-                ),
-                space20,
-                space40,
-              ],
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
   }
 }
 
-Widget themeItem(
+Widget languageItem(
   String text,
   bool isSelected,
   VoidCallback onTap,
   BuildContext context,
   Widget languageIcon,
 ) {
+  final primary = Theme.of(context).colorScheme.primary;
+
   return GestureDetector(
     onTap: onTap,
     behavior: HitTestBehavior.opaque,
     child: Container(
       padding: EdgeInsets.all(16.w),
-      margin: EdgeInsets.only(bottom: 12.h),
-      decoration: _decoration(context, isSelected),
+      decoration: BoxDecoration(
+        color: isSelected ? primary.withOpacity(0.05) : Colors.transparent,
+        border: Border.all(
+          color: isSelected ? primary : context.colors.borderMuted,
+          width: 1.w,
+        ),
+        borderRadius: BorderRadius.circular(999.r),
+      ),
       child: Row(
         children: [
-          languageIcon,
-          SizedBox(width: 8.w),
-          AppText.baseText(text),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4.r),
+            child: SizedBox(height: 20.w, width: 20.w, child: languageIcon),
+          ),
+          SizedBox(width: 10.w),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+              color: context.colors.fgDefault,
+            ),
+          ),
           Spacer(),
-          isSelected
-              ? Container(
-                  height: 24.w,
-                  width: 24.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.r),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.primary,
-                      width: 8.w,
+          Container(
+            height: 22.w,
+            width: 22.w,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isSelected ? primary : Colors.transparent,
+              border: isSelected
+                  ? null
+                  : Border.all(color: context.colors.borderMuted, width: 1.w),
+            ),
+            child: isSelected
+                ? Container(
+                    height: 8.w,
+                    width: 8.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: context.colors.float,
                     ),
-                  ),
-                )
-              : Container(
-                  height: 24.w,
-                  width: 24.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.r),
-                    border: Border.all(
-                      color: context.colors.borderMuted.withOpacity(0.15),
-                      width: 2.w,
-                    ),
-                  ),
-                ),
+                  )
+                : null,
+          ),
         ],
       ),
     ),
-  );
-}
-
-BoxDecoration _decoration(BuildContext context, bool isSelected) {
-  return BoxDecoration(
-    border: Border.all(
-      width: 2.w,
-      color: isSelected
-          ? Theme.of(context).colorScheme.primary
-          : context.colors.borderMuted.withOpacity(0.15),
-    ),
-    borderRadius: BorderRadius.circular(12.r),
   );
 }

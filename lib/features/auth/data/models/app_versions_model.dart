@@ -35,6 +35,20 @@ class AppVersionsModel {
     required this.androidStoreUrl,
   });
 
+  factory AppVersionsModel.initial() {
+    return AppVersionsModel(
+      title: '',
+      description: '',
+      showMaintenance: false,
+      iosMinVersion: 1,
+      iosLatestVersion: 1,
+      androidMinVersion: 1,
+      androidLatestVersion: 1,
+      iosStoreUrl: '',
+      androidStoreUrl: '',
+    );
+  }
+
   factory AppVersionsModel.fromJson(Map<String, dynamic> json) =>
       _$AppVersionsModelFromJson(json);
 

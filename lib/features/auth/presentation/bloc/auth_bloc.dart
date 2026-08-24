@@ -8,13 +8,15 @@ class AuthBloc extends Cubit<AuthState> {
   //!----------------------- Sign IN functions start -------------------------------//
 
   void signInStepOne(
-    String phoneNumber,
+    String identifier,
     bool? isResentCode,
   ) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
+    final isEmail = state.authMethod == AuthMethod.email;
     final request = SignInStepOneRequest(
-      phoneNumber: phoneNumber,
+      phoneNumber: isEmail ? '' : identifier,
+      email: isEmail ? identifier : '',
       locale: 'uz',
     );
 
@@ -27,7 +29,8 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           emit(
             state.copyWith(
-              phoneNumber: phoneNumber,
+              phoneNumber: isEmail ? '' : identifier,
+              email: isEmail ? identifier : '',
               blocProgress: isResentCode == true
                   ? BlocProgress.NOT_STARTED
                   : BlocProgress.IS_SUCCESS,
@@ -62,6 +65,7 @@ class AuthBloc extends Cubit<AuthState> {
 
     final request = SignInStepTwoRequest(
       phoneNumber: state.phoneNumber,
+      email: state.email,
       locale: 'uz',
       code: code,
     );
@@ -135,6 +139,7 @@ class AuthBloc extends Cubit<AuthState> {
 
     final request = SignInStepThreeRequest(
       phoneNumber: state.phoneNumber,
+      email: state.email,
       locale: 'uz',
       firstname: firstname,
       lastname: lastname,
@@ -234,6 +239,10 @@ class AuthBloc extends Cubit<AuthState> {
     emit(state.copyWith(isDisabled: false));
   }
 
+  void disableButton() {
+    emit(state.copyWith(isDisabled: true));
+  }
+
   void decrementTimerSeconds() {
     final currentSeconds = state.timerSeconds;
 
@@ -260,6 +269,17 @@ class AuthBloc extends Cubit<AuthState> {
 
   void setPhoneNumber(String phoneNumber) {
     emit(state.copyWith(phoneNumber: phoneNumber));
+  }
+
+  void setAuthMethod(AuthMethod method) {
+    emit(
+      state.copyWith(
+        authMethod: method,
+        isDisabled: true,
+        blocProgress: BlocProgress.NOT_STARTED,
+        failureMessage: '',
+      ),
+    );
   }
 
   void isPasswordHidden() {

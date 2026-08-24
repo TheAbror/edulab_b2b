@@ -7,6 +7,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: context.colors.bgPage2,
       appBar: LoginPageAppBar(),
       body: _Body(),
     );
@@ -19,38 +20,51 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final FocusNode _phoneFocusNode = FocusNode();
+  final _identifierController = TextEditingController();
+  final _identifierFocusNode = FocusNode();
+
+  static final _emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
 
   @override
   void initState() {
     super.initState();
-    _phoneFocusNode.addListener(_onFocusChange);
+    _identifierFocusNode.addListener(_onFocusChange);
   }
 
   void _onFocusChange() {
-    if (_phoneFocusNode.hasFocus && _phoneNumberController.text.isEmpty) {
-      // Set the prefix when field gains focus and is empty
-      _phoneNumberController.text = '+998';
-      _phoneNumberController.selection = TextSelection.fromPosition(
-        TextPosition(offset: _phoneNumberController.text.length),
+    final authMethod = context.read<AuthBloc>().state.authMethod;
+    if (authMethod == AuthMethod.phone &&
+        _identifierFocusNode.hasFocus &&
+        _identifierController.text.isEmpty) {
+      _identifierController.text = '+998';
+      _identifierController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _identifierController.text.length),
       );
     }
   }
 
+  bool _isValid(String value, AuthMethod method) {
+    if (method == AuthMethod.phone) return value.length == 13;
+    return _emailRegex.hasMatch(value.trim());
+  }
+
+  void _onMethodChanged(AuthMethod method) {
+    _identifierController.clear();
+    context.read<AuthBloc>().setAuthMethod(method);
+  }
+
   @override
   void dispose() {
-    _phoneFocusNode.removeListener(_onFocusChange);
-    _phoneFocusNode.dispose();
-    _phoneNumberController.dispose();
+    _identifierFocusNode.removeListener(_onFocusChange);
+    _identifierFocusNode.dispose();
+    _identifierController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
@@ -62,76 +76,110 @@ class _BodyState extends State<_Body> {
             );
 
             context.read<AuthBloc>().setInitialValue();
-            context.read<AuthBloc>().setPhoneNumber(
-              _phoneNumberController.text.trim(),
-            );
-          } else if (state.blocProgress == BlocProgress.FAILED) {
-            showMessage(state.failureMessage, context, isError: true);
           }
         },
         builder: (context, state) {
-          return Form(
-            key: _formKey,
+          final hasError = state.blocProgress == BlocProgress.FAILED;
+
+          return Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+            decoration: BoxDecoration(
+              color: context.colors.float,
+              borderRadius: BorderRadius.circular(16.r),
+            ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                space32,
                 Text(
                   context.localizations.welcometoLeti,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w500,
+                    color: context.colors.fgDefault,
                   ),
                 ),
-                space10,
-
-                AppText.paragraph1(
+                SizedBox(height: 6.h),
+                AppText.paragraph2(
                   context.localizations.continueLearningAndGrowing,
                   color: context.colors.fgSoft,
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
-                space24,
-                TextFormField(
-                  controller: _phoneNumberController,
-                  focusNode: _phoneFocusNode,
-                  keyboardType: TextInputType.phone,
+                SizedBox(height: 24.h),
+                AuthMethodSegmentControl(
+                  value: state.authMethod,
+                  onChanged: _onMethodChanged,
+                ),
+                SizedBox(height: 12.h),
+                AuthIdentifierField(
+                  method: state.authMethod,
+                  controller: _identifierController,
+                  focusNode: _identifierFocusNode,
+                  hasError: hasError,
                   onChanged: (value) {
-                    if (value.length == 13) {
-                      context.read<AuthBloc>().enableButton();
+                    final isValid = _isValid(value, state.authMethod);
+                    if (isValid != !state.isDisabled) {
+                      if (isValid) {
+                        context.read<AuthBloc>().enableButton();
+                      } else {
+                        context.read<AuthBloc>().disableButton();
+                      }
                     }
                   },
-                  inputFormatters: [
-                    // UzbekistanPhoneFormatter(),
-                    LengthLimitingTextInputFormatter(13),
-                  ],
-                  decoration: authSignInFieldDecoration(
-                    context,
-                    context.localizations.phonenumber,
-                  ),
                 ),
-                space16,
-                ActionButton(
-                  text: context.localizations.continueButton,
+                if (hasError) ...[
+                  SizedBox(height: 12.h),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(12.w),
+                    decoration: BoxDecoration(
+                      color: context.colors.errorContainerDefault,
+                      borderRadius: BorderRadius.circular(6.r),
+                    ),
+                    child: Text(
+                      state.failureMessage,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w500,
+                        color: context.colors.fgDefault,
+                      ),
+                    ),
+                  ),
+                ],
+                SizedBox(height: 12.h),
+                _ContinueButton(
                   isDisabled: state.isDisabled,
                   onTap: () {
-                    if (_formKey.currentState!.validate() &&
+                    final value = _identifierController.text.trim();
+                    if (_isValid(value, state.authMethod) &&
                         !state.isDisabled) {
-                      _phoneFocusNode.unfocus();
-                      context.read<AuthBloc>().signInStepOne(
-                        _phoneNumberController.text.trim(),
-                        false,
-                      );
+                      _identifierFocusNode.unfocus();
+                      context.read<AuthBloc>().signInStepOne(value, false);
                     }
                   },
                 ),
-
-                SizedBox(height: 12.h),
-
-                Center(
-                  child: AppText.caption1(
-                    context.localizations.weWillSendYouSMS,
-                    color: context.colors.fgSoft,
-                    maxLines: 2,
+                SizedBox(height: 24.h),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: context.colors.fgDefault,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '${context.localizations.legalConsentPrefix} ',
+                      ),
+                      TextSpan(
+                        text: context.localizations.termsAndPrivacyPolicy,
+                        style: TextStyle(
+                          color: context.colors.infoDefault,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -143,77 +191,51 @@ class _BodyState extends State<_Body> {
   }
 }
 
-class UzbekistanPhoneFormatter extends TextInputFormatter {
-  static const prefix = '+998';
-  static const prefixDigits = '998';
+class _ContinueButton extends StatelessWidget {
+  final bool isDisabled;
+  final VoidCallback onTap;
+
+  const _ContinueButton({required this.isDisabled, required this.onTap});
 
   @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    // 1️⃣ Allow empty → show hint
-    if (newValue.text.isEmpty) {
-      return newValue;
-    }
-
-    if (newValue.text == prefix) {
-      return const TextEditingValue(
-        text: '',
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    }
-
-    String digits = newValue.text.replaceAll(RegExp(r'\D'), '');
-
-    if (digits.startsWith(prefixDigits)) {
-      digits = digits.substring(prefixDigits.length);
-    }
-
-    final text = '$prefix$digits';
-
-    return TextEditingValue(
-      text: text,
-      selection: TextSelection.collapsed(offset: text.length),
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: onTap,
+          behavior: HitTestBehavior.opaque,
+          child: Container(
+            height: 48.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isDisabled
+                  ? context.colors.neutralContainerDefault.withOpacity(0.1)
+                  : Theme.of(context).colorScheme.primary,
+              borderRadius: BorderRadius.circular(999.r),
+            ),
+            child: state.blocProgress == BlocProgress.IS_LOADING
+                ? SizedBox(
+                    width: 18.w,
+                    height: 18.w,
+                    child: CircularProgressIndicator(
+                      color: context.colors.float,
+                      strokeWidth: 2.w,
+                    ),
+                  )
+                : Text(
+                    context.localizations.continueButton,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.16,
+                      color: isDisabled
+                          ? context.colors.fgDisabled
+                          : context.colors.float,
+                    ),
+                  ),
+          ),
+        );
+      },
     );
   }
-}
-
-InputDecoration authSignInFieldDecoration(
-  BuildContext context,
-  String hintText, {
-  bool suffixicon = false,
-}) {
-  return InputDecoration(
-    border: InputBorder.none,
-    contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.w),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: context.colors.borderMuted.withOpacity(0.2),
-        width: 2.w,
-      ),
-      borderRadius: BorderRadius.circular(defaultRadius.r),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Theme.of(context).colorScheme.primary,
-        width: 2.w,
-      ),
-      borderRadius: BorderRadius.circular(defaultRadius.r),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.red, width: 2.w),
-      borderRadius: BorderRadius.circular(defaultRadius.r),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.red, width: 2.w),
-      borderRadius: BorderRadius.circular(defaultRadius.r),
-    ),
-    fillColor: Theme.of(context).colorScheme.surfaceTint,
-    hintText: hintText,
-    prefixIcon: Padding(
-      padding: EdgeInsets.all(12.w),
-      child: Assets.icons.main.call.svg(height: 24.w, width: 24.w),
-    ),
-  );
 }

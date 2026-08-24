@@ -257,7 +257,7 @@ phonenumber,Phone number,Номер телефона,Telefon raqami
 continuewithGoogle,Continue with Google,Продолжить с Google,Google orqali davom eting
 entercode,Enter code,Введите код,Kodni kiriting
 wehavesentyoucodeto,We have sent you code to,Мы отправили вам код на,Sizga kod yubordik
-resetafter,Resend code in,Повторная отправка кода,Kodni qayta yuborish
+resetafter,Resend after {seconds} seconds,Повторная отправка через {seconds} сек.,{seconds} soniyadan keyin qayta yuborish
 seconds,seconds,секунды,soniya
 resendcode,Resend code,Отправить код еще раз,Kodni qayta yuborish
 firstname,First name,Имя,Ism
@@ -380,8 +380,8 @@ price,Price,Цена,Narxi
 noCoursesFound,No courses found,Курсы не найдены,Kurslar topilmadi
 keepLearning,Keep learning - your courses will appear here,Продолжайте обучение — ваши курсы появятся здесь,O'rganishda davom eting - kurslaringiz shu yerda ko'rinadi
 browseCourses,Browse Courses,Просмотреть курсы,Kurslarni ko'rib chiqing
-welcometoLeti,Access to the LETI EDU platform,Доступ к платформе LETI EDU,LETI EDU platformasiga kirish
-continueLearningAndGrowing,Enter your phone number to continue.,"Введите свой номер телефона, чтобы продолжить.",Davom etish uchun telefon raqamingizni kiriting
+welcometoLeti,Continue learning with Edulab,Продолжайте обучение с Edulab,Edulab bilan o'qishni davom eting
+continueLearningAndGrowing,"Access your organization workspace, complete assigned courses, and track your learning progress.","Получите доступ к рабочему пространству организации, проходите назначенные курсы и отслеживайте свой прогресс.","Tashkilotingiz ish maydoniga kiring, tayinlangan kurslarni tugating va o'quv jarayoningizni kuzating."
 pleseEnterFirstLastName,Please enter your first and last name.,"Пожалуйста, введите ваше имя и фамилию.","Iltimos, ismingiz va familiyangizni kiriting."
 yourRequestSuccessManagerWillContact,Your request has been sent successfully. Our manager will contact you shortly.,Ваш запрос успешно отправлен. Наш менеджер свяжется с вами в ближайшее время.,Sizning so`rovingiz muvaffaqiyatli yuborildi. Bizning managerimiz yaqin vaqt ichida siz bilan bog`lanadi.
 requested,Requested,Запрошено,So'ralgan
@@ -401,3 +401,7 @@ updateNow,Update now,Обновить сейчас,Yangilash
 notNow,Not now,Не сейчас,Hozir emas
 weWillSendYouSMS,We will send a verification code via SMS.,Мы вышлем вам код подтверждения по SMS.,Biz SMS orqali tasdiqlash kodini yuboramiz
 smsToNumber,The SMS code has been sent to {phoneNumber},SMS-код был отправлен на номер {phoneNumber},SMS kod {phoneNumber} raqamiga yuborildi
+codeSentViaSms,We have sent you a 4-digit code via SMS to,Мы отправили вам 4-значный код по SMS на,Sizga 4 xonali kod SMS orqali quyidagi raqamga yuborildi
+codeSentViaEmail,We have sent you a 4-digit code via email to,Мы отправили вам 4-значный код по электронной почте на,Sizga 4 xonali kod elektron pochta orqali quyidagi manzilga yuborildi
+legalConsentPrefix,"By continuing, you agree to Edulab's","Продолжая, вы соглашаетесь с",Davom etish orqali siz Edulab'ning
+termsAndPrivacyPolicy,Terms of Service and Privacy Policy.,Условиями обслуживания и Политикой конфиденциальности Edulab.,xizmat ko'rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.

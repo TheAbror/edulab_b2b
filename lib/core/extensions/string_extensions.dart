@@ -60,17 +60,3 @@ extension HumanReadableDate on DateTime? {
 extension CustomColorsContext on BuildContext {
   CustomColors get colors => Theme.of(this).extension<CustomColors>()!;
 }
-
-extension StreakDaysMap on StreakDaysResponse {
-  Map<String, bool> toMap() {
-    return {
-      'monday': monday,
-      'tuesday': tuesday,
-      'wednesday': wednesday,
-      'thursday': thursday,
-      'friday': friday,
-      'saturday': saturday,
-      'sunday': sunday,
-    };
-  }
-}

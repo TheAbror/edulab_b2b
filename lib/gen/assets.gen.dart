@@ -103,10 +103,6 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/learning
   $AssetsIconsLearningGen get learning => const $AssetsIconsLearningGen();
 
-  /// File path: assets/icons/leti_logo_png.png
-  AssetGenImage get letiLogoPng =>
-      const AssetGenImage('assets/icons/leti_logo_png.png');
-
   /// Directory path: assets/icons/main
   $AssetsIconsMainGen get main => const $AssetsIconsMainGen();
 
@@ -128,7 +124,7 @@ class $AssetsIconsGen {
       const $AssetsIconsWelcomeSignForgotIconsGen();
 
   /// List of all assets
-  List<dynamic> get values => [arrowLeft, icon, letiLogoPng, menu, resendCode];
+  List<dynamic> get values => [arrowLeft, icon, menu, resendCode];
 }
 
 class $AssetsImagesGen {
@@ -443,10 +439,6 @@ class $AssetsIconsLearningGen {
   AssetGenImage get emptyDiscussionIcon =>
       const AssetGenImage('assets/icons/learning/emptyDiscussionIcon.png');
 
-  /// File path: assets/icons/learning/fire.png
-  AssetGenImage get fire =>
-      const AssetGenImage('assets/icons/learning/fire.png');
-
   /// File path: assets/icons/learning/left.svg
   SvgGenImage get left => const SvgGenImage('assets/icons/learning/left.svg');
 
@@ -479,7 +471,6 @@ class $AssetsIconsLearningGen {
     completed,
     currentVideoIcon,
     emptyDiscussionIcon,
-    fire,
     left,
     leftI,
     questionMarkIcon,
@@ -493,14 +484,6 @@ class $AssetsIconsLearningGen {
 class $AssetsIconsMainGen {
   const $AssetsIconsMainGen();
 
-  /// File path: assets/icons/main/Leti_logo_4x.png
-  AssetGenImage get letiLogo4x =>
-      const AssetGenImage('assets/icons/main/Leti_logo_4x.png');
-
-  /// File path: assets/icons/main/Leti_logo_small.png
-  AssetGenImage get letiLogoSmall =>
-      const AssetGenImage('assets/icons/main/Leti_logo_small.png');
-
   /// File path: assets/icons/main/arrow_back.svg
   SvgGenImage get arrowBack =>
       const SvgGenImage('assets/icons/main/arrow_back.svg');
@@ -508,27 +491,34 @@ class $AssetsIconsMainGen {
   /// File path: assets/icons/main/call.svg
   SvgGenImage get call => const SvgGenImage('assets/icons/main/call.svg');
 
+  /// File path: assets/icons/main/edulab_logo_big.svg
+  SvgGenImage get edulabLogoBig =>
+      const SvgGenImage('assets/icons/main/edulab_logo_big.svg');
+
+  /// File path: assets/icons/main/edulab_logo_small.svg
+  SvgGenImage get edulabLogoSmall =>
+      const SvgGenImage('assets/icons/main/edulab_logo_small.svg');
+
   /// File path: assets/icons/main/google_icon.png
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/icons/main/google_icon.png');
-
-  /// File path: assets/icons/main/leti_small_logo_svg.svg
-  SvgGenImage get letiSmallLogoSvg =>
-      const SvgGenImage('assets/icons/main/leti_small_logo_svg.svg');
 
   /// File path: assets/icons/main/notification.svg
   SvgGenImage get notification =>
       const SvgGenImage('assets/icons/main/notification.svg');
 
+  /// File path: assets/icons/main/sms.svg
+  SvgGenImage get sms => const SvgGenImage('assets/icons/main/sms.svg');
+
   /// List of all assets
   List<dynamic> get values => [
-    letiLogo4x,
-    letiLogoSmall,
     arrowBack,
     call,
+    edulabLogoBig,
+    edulabLogoSmall,
     googleIcon,
-    letiSmallLogoSvg,
     notification,
+    sms,
   ];
 }
 

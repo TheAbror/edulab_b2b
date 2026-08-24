@@ -1,5 +1,7 @@
 part of 'auth_bloc.dart';
 
+enum AuthMethod { phone, email }
+
 class AuthState extends Equatable {
   final SignUpRequest request;
   final AuthResponse authResponse;
@@ -16,6 +18,8 @@ class AuthState extends Equatable {
   final String firstName;
   final String lastName;
   final bool isFirstAndLastNameValid;
+  final AuthMethod authMethod;
+  final String email;
 
   const AuthState({
     required this.request,
@@ -33,41 +37,14 @@ class AuthState extends Equatable {
     required this.firstName,
     required this.lastName,
     required this.isFirstAndLastNameValid,
+    required this.authMethod,
+    required this.email,
   });
 
   factory AuthState.initial() {
     return AuthState(
-      request: SignUpRequest(
-        firstname: '',
-        lastname: '',
-        midname: '',
-        email: '',
-        password: '',
-        phone: '',
-        verificationCode: '',
-        localeLanguageType: LocaleLanguageType(
-          label: '',
-          value: '',
-        ),
-      ),
-      authResponse: AuthResponse(
-        token: '',
-        signUpRequired: false,
-        userInfo: UserInfo(
-          id: 0,
-          username: '',
-          firstname: '',
-          lastname: '',
-          roles: [],
-          requiredActions: [],
-          email: '',
-          profilePhoto: MediaDTO.initial(),
-
-          status: '',
-          accountType: '',
-          accountTypeStr: '',
-        ),
-      ),
+      request: SignUpRequest.initial(),
+      authResponse: AuthResponse.initial(),
       accountType: AccountType.unknown,
       isPasswordHidden: true,
       isCountDownFinished: false,
@@ -81,6 +58,8 @@ class AuthState extends Equatable {
       firstName: '',
       lastName: '',
       isFirstAndLastNameValid: false,
+      authMethod: AuthMethod.phone,
+      email: '',
     );
   }
 
@@ -100,6 +79,8 @@ class AuthState extends Equatable {
     String? firstName,
     String? lastName,
     bool? isFirstAndLastNameValid,
+    AuthMethod? authMethod,
+    String? email,
   }) {
     return AuthState(
       request: request ?? this.request,
@@ -119,6 +100,8 @@ class AuthState extends Equatable {
       lastName: lastName ?? this.lastName,
       isFirstAndLastNameValid:
           isFirstAndLastNameValid ?? this.isFirstAndLastNameValid,
+      authMethod: authMethod ?? this.authMethod,
+      email: email ?? this.email,
     );
   }
 
@@ -139,5 +122,7 @@ class AuthState extends Equatable {
     firstName,
     lastName,
     isFirstAndLastNameValid,
+    authMethod,
+    email,
   ];
 }

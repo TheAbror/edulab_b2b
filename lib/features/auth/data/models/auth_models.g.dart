@@ -108,6 +108,7 @@ SignInStepOneRequest _$SignInStepOneRequestFromJson(
   Map<String, dynamic> json,
 ) => SignInStepOneRequest(
   phoneNumber: json['phone_number'] as String? ?? '',
+  email: json['email'] as String? ?? '',
   locale: json['locale'] as String? ?? '',
 );
 
@@ -115,6 +116,7 @@ Map<String, dynamic> _$SignInStepOneRequestToJson(
   SignInStepOneRequest instance,
 ) => <String, dynamic>{
   'phone_number': instance.phoneNumber,
+  'email': instance.email,
   'locale': instance.locale,
 };
 
@@ -122,6 +124,7 @@ SignInStepTwoRequest _$SignInStepTwoRequestFromJson(
   Map<String, dynamic> json,
 ) => SignInStepTwoRequest(
   phoneNumber: json['phone_number'] as String? ?? '',
+  email: json['email'] as String? ?? '',
   locale: json['locale'] as String? ?? '',
   code: json['code'] as String? ?? '',
 );
@@ -130,6 +133,7 @@ Map<String, dynamic> _$SignInStepTwoRequestToJson(
   SignInStepTwoRequest instance,
 ) => <String, dynamic>{
   'phone_number': instance.phoneNumber,
+  'email': instance.email,
   'locale': instance.locale,
   'code': instance.code,
 };
@@ -138,6 +142,7 @@ SignInStepThreeRequest _$SignInStepThreeRequestFromJson(
   Map<String, dynamic> json,
 ) => SignInStepThreeRequest(
   phoneNumber: json['phone_number'] as String? ?? '',
+  email: json['email'] as String? ?? '',
   locale: json['locale'] as String? ?? '',
   firstname: json['firstname'] as String? ?? '',
   lastname: json['lastname'] as String? ?? '',
@@ -147,6 +152,7 @@ Map<String, dynamic> _$SignInStepThreeRequestToJson(
   SignInStepThreeRequest instance,
 ) => <String, dynamic>{
   'phone_number': instance.phoneNumber,
+  'email': instance.email,
   'locale': instance.locale,
   'firstname': instance.firstname,
   'lastname': instance.lastname,

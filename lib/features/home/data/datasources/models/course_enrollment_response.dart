@@ -17,6 +17,10 @@ class CourseEnrollmentResponse {
     required this.managerStatus,
   });
 
+  factory CourseEnrollmentResponse.initial() {
+    return CourseEnrollmentResponse(id: 0, status: '', managerStatus: '');
+  }
+
   factory CourseEnrollmentResponse.fromJson(Map<String, dynamic> json) =>
       _$CourseEnrollmentResponseFromJson(json);
   Map<String, dynamic> toJson() => _$CourseEnrollmentResponseToJson(this);

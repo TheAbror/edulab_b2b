@@ -27,17 +27,7 @@ class SplashState extends Equatable {
 
   factory SplashState.initial() {
     return SplashState(
-      appVersionData: AppVersionsModel(
-        showMaintenance: false,
-        iosMinVersion: 1,
-        iosLatestVersion: 1,
-        androidMinVersion: 1,
-        androidLatestVersion: 1,
-        iosStoreUrl: '',
-        androidStoreUrl: '',
-        title: '',
-        description: '',
-      ),
+      appVersionData: AppVersionsModel.initial(),
       showAppUpdatesPage: false,
       authStatus: SplashAuthStatus.initial,
       accountType: AccountType.unknown,

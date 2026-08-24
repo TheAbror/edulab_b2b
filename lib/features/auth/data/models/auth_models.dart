@@ -18,6 +18,14 @@ class AuthResponse {
     this.userInfo,
   });
 
+  factory AuthResponse.initial() {
+    return AuthResponse(
+      token: '',
+      signUpRequired: false,
+      userInfo: UserInfo.initial(),
+    );
+  }
+
   factory AuthResponse.fromJson(Map<String, dynamic> json) =>
       _$AuthResponseFromJson(json);
 
@@ -53,6 +61,19 @@ class SignUpRequest {
     required this.localeLanguageType,
   });
 
+  factory SignUpRequest.initial() {
+    return SignUpRequest(
+      firstname: '',
+      lastname: '',
+      midname: '',
+      email: '',
+      password: '',
+      phone: '',
+      verificationCode: '',
+      localeLanguageType: LocaleLanguageType.initial(),
+    );
+  }
+
   factory SignUpRequest.fromJson(Map<String, dynamic> json) =>
       _$SignUpRequestFromJson(json);
 
@@ -67,6 +88,10 @@ class LocaleLanguageType {
   final String value;
 
   LocaleLanguageType({required this.label, required this.value});
+
+  factory LocaleLanguageType.initial() {
+    return LocaleLanguageType(label: '', value: '');
+  }
 
   factory LocaleLanguageType.fromJson(Map<String, dynamic> json) =>
       _$LocaleLanguageTypeFromJson(json);
@@ -156,10 +181,13 @@ class SignInStepOneRequest {
   @JsonKey(defaultValue: '', name: 'phone_number')
   final String phoneNumber;
   @JsonKey(defaultValue: '')
+  final String email;
+  @JsonKey(defaultValue: '')
   final String locale;
 
   SignInStepOneRequest({
-    required this.phoneNumber,
+    this.phoneNumber = '',
+    this.email = '',
     required this.locale,
   });
 
@@ -174,12 +202,15 @@ class SignInStepTwoRequest {
   @JsonKey(defaultValue: '', name: 'phone_number')
   final String phoneNumber;
   @JsonKey(defaultValue: '')
+  final String email;
+  @JsonKey(defaultValue: '')
   final String locale;
   @JsonKey(defaultValue: '')
   final String code;
 
   SignInStepTwoRequest({
-    required this.phoneNumber,
+    this.phoneNumber = '',
+    this.email = '',
     required this.locale,
     required this.code,
   });
@@ -195,6 +226,8 @@ class SignInStepThreeRequest {
   @JsonKey(defaultValue: '', name: 'phone_number')
   final String phoneNumber;
   @JsonKey(defaultValue: '')
+  final String email;
+  @JsonKey(defaultValue: '')
   final String locale;
   @JsonKey(defaultValue: '')
   final String firstname;
@@ -202,7 +235,8 @@ class SignInStepThreeRequest {
   final String lastname;
 
   SignInStepThreeRequest({
-    required this.phoneNumber,
+    this.phoneNumber = '',
+    this.email = '',
     required this.locale,
     required this.firstname,
     required this.lastname,

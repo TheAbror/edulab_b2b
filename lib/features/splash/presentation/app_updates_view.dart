@@ -52,9 +52,9 @@ class _AppUpdatesViewState extends State<AppUpdatesView> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(24.w),
-                child: Assets.icons.letiLogoPng.image(
+                child: Assets.icons.main.edulabLogoBig.svg(
                   width: 260.w,
-                  fit: BoxFit.fill,
+                  height: 206.w,
                 ),
               ),
             ],

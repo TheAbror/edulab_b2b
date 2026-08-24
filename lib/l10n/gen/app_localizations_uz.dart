@@ -769,7 +769,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get wehavesentyoucodeto => 'Sizga kod yubordik';
 
   @override
-  String get resetafter => 'Kodni qayta yuborish';
+  String resetafter(Object seconds) {
+    return '$seconds soniyadan keyin qayta yuborish';
+  }
 
   @override
   String get seconds => 'soniya';
@@ -1102,11 +1104,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String get browseCourses => 'Kurslarni ko\'rib chiqing';
 
   @override
-  String get welcometoLeti => 'LETI EDU platformasiga kirish';
+  String get welcometoLeti => 'Edulab bilan o\'qishni davom eting';
 
   @override
   String get continueLearningAndGrowing =>
-      'Davom etish uchun telefon raqamingizni kiriting';
+      'Tashkilotingiz ish maydoniga kiring, tayinlangan kurslarni tugating va o\'quv jarayoningizni kuzating.';
 
   @override
   String get pleseEnterFirstLastName =>
@@ -1173,4 +1175,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String smsToNumber(Object phoneNumber) {
     return 'SMS kod $phoneNumber raqamiga yuborildi';
   }
+
+  @override
+  String get codeSentViaSms =>
+      'Sizga 4 xonali kod SMS orqali quyidagi raqamga yuborildi';
+
+  @override
+  String get codeSentViaEmail =>
+      'Sizga 4 xonali kod elektron pochta orqali quyidagi manzilga yuborildi';
+
+  @override
+  String get legalConsentPrefix => 'Davom etish orqali siz Edulab\'ning';
+
+  @override
+  String get termsAndPrivacyPolicy =>
+      'xizmat ko\'rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.';
 }

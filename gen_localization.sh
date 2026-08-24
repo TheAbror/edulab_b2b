@@ -5,7 +5,7 @@ LOCALIZATION_DIR="$CWD/$LOCALIZATION_RELATIVE_PATH"
 
 # Replace DOC_ID and SHEET_ID if you have another Google sheets url
 DOC_ID="1pdHmnwn2Q8P0V-lt1YJSd5PfcTooyChiYSYRZIMJ8fY"
-SHEET_ID="1516804368"
+SHEET_ID="1308175285"
 DOWNLOAD_URL="https://docs.google.com/spreadsheets/d/$DOC_ID/export?format=csv&gid=$SHEET_ID"
 OUTPUT_FILE_NAME="localization.csv"
 

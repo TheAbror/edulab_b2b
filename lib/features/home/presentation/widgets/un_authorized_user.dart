@@ -9,9 +9,9 @@ class UnAuthorizedUser extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Assets.icons.letiLogoPng.image(
+          child: Assets.icons.main.edulabLogoBig.svg(
             height: 64.h,
-            width: 113.w,
+            width: 81.w,
           ),
         ),
 
@@ -43,18 +43,6 @@ class UnAuthorizedUser extends StatelessWidget {
         ),
         SizedBox(height: 30.h),
         ActionButton(
-          text: context.localizations.joinForFree,
-          onTap: () {
-            context.read<HomeBloc>().changeTabIndex(0);
-            Navigator.pushNamed(
-              context,
-              AppRoutes.loginPage,
-            );
-          },
-        ),
-
-        SizedBox(height: 12.h),
-        ActionButton(
           text: context.localizations.login,
           onTap: () {
             context.read<HomeBloc>().changeTabIndex(0);
@@ -64,7 +52,6 @@ class UnAuthorizedUser extends StatelessWidget {
               AppRoutes.loginPage,
             );
           },
-          isFilled: false,
         ),
       ],
     );

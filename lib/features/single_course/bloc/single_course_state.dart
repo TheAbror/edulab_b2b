@@ -32,40 +32,7 @@ class SingleCourseState extends Equatable {
 
   factory SingleCourseState.initial() {
     return SingleCourseState(
-      singleCourse: SingleCourseInfo(
-        id: 0,
-        title: '',
-        aboutCourse: '',
-        description: [],
-        willLearn: [],
-        price: '',
-        shortDescription: '',
-        co_authors: [],
-        skills: [],
-        showPrice: false,
-        coAuthorIds: [],
-        chapters: [],
-        category: CategoryModel(
-          id: 0,
-          title: '',
-        ),
-
-        learnersCount: 0,
-        syllabus: SyllabusResponse(),
-        authors: [
-          Authors(
-            userId: 0,
-            about: '',
-            id: 0,
-            courseCount: 0,
-            firstname: '',
-            lastname: '',
-            jobPosition: '',
-            avatar: MediaDTO.initial(),
-          ),
-        ],
-      ),
-
+      singleCourse: SingleCourseInfo.initial(),
       singleCourseChapters: [],
       courseMaterialsAreHidden: false,
       materialsMoreThan3: true,
@@ -73,7 +40,7 @@ class SingleCourseState extends Equatable {
       isFavorite: false,
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
-      lastStoppedStep: CurrentlyActive(chapterID: 0, topicID: 0, stepID: 0),
+      lastStoppedStep: CurrentlyActive.initial(),
       navigateToLearning: false,
       courseID: 0,
       isRequested: false,

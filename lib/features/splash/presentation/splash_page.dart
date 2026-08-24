@@ -49,19 +49,23 @@ class _SplashView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        SizedBox(height: 260.h),
+        Spacer(),
         Center(
-          child: Assets.icons.main.letiLogo4x.image(
+          child: Assets.icons.main.edulabLogoBig.svg(
             width: 146.w,
             height: 116.w,
           ),
         ),
-        SizedBox(height: 288.h),
-        Center(
-          child: CircularProgressIndicator(
-            color: Theme.of(context).colorScheme.primary,
+        Spacer(),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.h),
+          child: Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ),
+        SizedBox(height: 34.h),
       ],
     );
   }

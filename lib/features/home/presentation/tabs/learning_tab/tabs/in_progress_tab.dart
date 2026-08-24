@@ -54,13 +54,6 @@ class InProgressTab extends StatelessWidget {
           // ),
           // space8,
           //
-          // LearningStreakCard(
-          //   label: statistics.streak.label,
-          //   streak: statistics.streak,
-          // ),
-          // space8,
-
-          //
           // LearningStatisticsItem(
           //   headline: context.localizations.totalTimeLearning,
           //   statisticsData: statistics.totalTimeLearning,
