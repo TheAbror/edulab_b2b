@@ -1,9 +1,9 @@
-import 'package:edulab_b2b/gen/fonts.gen.dart';
 import 'package:edulab_b2b/widget_imports.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData lightTheme() {
   return ThemeData(
-    fontFamily: FontFamily.generalSans,
+    fontFamily: GoogleFonts.inter().fontFamily,
     brightness: Brightness.light,
     scaffoldBackgroundColor: NewColorsLight.bgPage1,
     appBarTheme: const AppBarTheme(
@@ -23,6 +23,7 @@ ThemeData lightTheme() {
       CustomColors(
         float: NewColorsLight.staticWhite,
         borderMuted: NewColorsLight.borderMuted,
+        borderSoft: NewColorsLight.borderSoft,
         accentMuted: NewColorsLight.accentMuted,
         accentContainerDefault: NewColorsLight.accentContainerDefault,
         accentContainerSoft: NewColorsLight.accentContainerSoft,
@@ -64,7 +65,7 @@ ThemeData lightTheme() {
 
 ThemeData darkTheme() {
   return ThemeData(
-    fontFamily: FontFamily.generalSans,
+    fontFamily: GoogleFonts.inter().fontFamily,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: NewColorsDark.bgPage1,
     appBarTheme: const AppBarTheme(
@@ -84,6 +85,7 @@ ThemeData darkTheme() {
       CustomColors(
         float: NewColorsDark.staticWhite,
         borderMuted: NewColorsDark.borderMuted,
+        borderSoft: NewColorsDark.borderSoft,
         accentMuted: NewColorsDark.accentMuted,
         accentContainerDefault: NewColorsDark.accentContainerDefault,
         accentContainerSoft: NewColorsDark.accentContainerSoft,

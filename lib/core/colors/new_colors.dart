@@ -443,8 +443,8 @@ class NewColorsLight {
 
   //! border
   static const Color borderDefault = CustomThemes.neutral500; //50%
-  static const Color borderSoft = CustomThemes.neutral500; //25%
-  static const Color borderMuted = CustomThemes.neutral500; //15%
+  static const Color borderSoft = Color(0XFF4E4E5F); //25%
+  static const Color borderMuted = Color(0XFF4E4E5F); //15%
 
   //! bg
   static const Color bgSurface2 = CustomThemes.neutral10;

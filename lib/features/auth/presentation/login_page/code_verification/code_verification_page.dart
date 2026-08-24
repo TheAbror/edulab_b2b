@@ -136,13 +136,13 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                     borderWidth: 1.w,
                     enabledBorderColor: hasError
                         ? errorColor
-                        : context.colors.borderMuted,
+                        : context.colors.borderMuted.withOpacity(0.15),
                     focusedBorderColor: hasError
                         ? errorColor
                         : Theme.of(context).colorScheme.primary,
                     borderColor: hasError
                         ? errorColor
-                        : context.colors.borderMuted,
+                        : context.colors.borderMuted.withOpacity(0.15),
                     textStyle: TextStyle(
                       fontSize: 17.sp,
                       fontWeight: FontWeight.w500,

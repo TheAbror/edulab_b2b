@@ -21,7 +21,7 @@ class AuthIdentifierField extends StatelessWidget {
     final isPhone = method == AuthMethod.phone;
     final borderColor = hasError
         ? context.colors.errorDefault
-        : context.colors.borderMuted;
+        : context.colors.borderMuted.withOpacity(0.15);
     final labelColor = hasError
         ? context.colors.errorDefault
         : context.colors.fgSoft;

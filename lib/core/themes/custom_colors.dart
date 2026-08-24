@@ -14,6 +14,7 @@ import 'package:edulab_b2b/widget_imports.dart';
 class CustomColors extends ThemeExtension<CustomColors> {
   final Color float;
   final Color borderMuted;
+  final Color borderSoft;
   final Color accentMuted;
   final Color accentContainerDefault;
   final Color accentContainerSoft;
@@ -52,6 +53,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   const CustomColors({
     required this.float,
     required this.borderMuted,
+    required this.borderSoft,
     required this.accentMuted,
     required this.accentContainerDefault,
     required this.accentContainerSoft,
@@ -92,6 +94,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   CustomColors copyWith({
     Color? float,
     Color? borderMuted,
+    Color? borderSoft,
     Color? accentMuted,
     Color? accentContainerDefault,
     Color? accentContainerSoft,
@@ -130,6 +133,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     return CustomColors(
       float: float ?? this.float,
       borderMuted: borderMuted ?? this.borderMuted,
+      borderSoft: borderSoft ?? this.borderSoft,
       accentMuted: accentMuted ?? this.accentMuted,
       accentContainerDefault:
           accentContainerDefault ?? this.accentContainerDefault,
@@ -183,6 +187,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     return CustomColors(
       float: Color.lerp(float, other.float, t)!,
       borderMuted: Color.lerp(borderMuted, other.borderMuted, t)!,
+      borderSoft: Color.lerp(borderSoft, other.borderSoft, t)!,
       accentMuted: Color.lerp(accentMuted, other.accentMuted, t)!,
       accentContainerDefault: Color.lerp(
         accentContainerDefault,

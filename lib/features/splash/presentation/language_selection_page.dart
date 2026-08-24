@@ -10,7 +10,7 @@ class LanguageSelectionPage extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: BlocBuilder<LocalizationBloc, LocalizationState>(
             builder: (context, state) {
               final languageName = returnLanguageName(
@@ -128,7 +128,9 @@ Widget languageItem(
       decoration: BoxDecoration(
         color: isSelected ? primary.withOpacity(0.05) : Colors.transparent,
         border: Border.all(
-          color: isSelected ? primary : context.colors.borderMuted,
+          color: isSelected
+              ? primary
+              : context.colors.borderMuted.withOpacity(0.15),
           width: 1.w,
         ),
         borderRadius: BorderRadius.circular(999.r),
@@ -158,7 +160,10 @@ Widget languageItem(
               color: isSelected ? primary : Colors.transparent,
               border: isSelected
                   ? null
-                  : Border.all(color: context.colors.borderMuted, width: 1.w),
+                  : Border.all(
+                      color: context.colors.borderSoft.withOpacity(0.25),
+                      width: 1.w,
+                    ),
             ),
             child: isSelected
                 ? Container(
