@@ -167,7 +167,17 @@ class _BodyState extends State<_Body> {
                     if (_isValid(value, state.authMethod) &&
                         !state.isDisabled) {
                       _identifierFocusNode.unfocus();
-                      context.read<AuthBloc>().signInStepOne(value, false);
+
+                      //context.read<AuthBloc>().signInStepOne(value, false);
+
+                      // TODO: remoe below code
+                      // server-side; bypass signInStepOne and navigate
+                      // directly for now. Restore the signInStepOne call
+                      // once checking is ready.
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.codeVerificationPage,
+                      );
                     }
                   },
                 ),

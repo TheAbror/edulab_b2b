@@ -96,7 +96,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
           final errorColor = context.colors.errorDefault;
 
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
@@ -185,13 +185,13 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Assets.icons.resendCode.svg(),
+                              Assets.icons.resendCode.svg(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                               SizedBox(width: 8.w),
-                              Text(
+                              AppText.paragraph1Medium(
                                 context.localizations.resendCode,
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ],
                           ),
