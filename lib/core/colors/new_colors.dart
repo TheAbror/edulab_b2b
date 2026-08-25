@@ -3,31 +3,31 @@ import 'package:flutter/material.dart';
 class CustomThemes {
   //neutral
   static const Color neutral1000 = Color(0XFF000000);
-  static const Color neutral990 = Color(0XFF100E13);
-  static const Color neutral950 = Color(0XFF1C1822);
-  static const Color neutral925 = Color(0XFF231D2A);
-  static const Color neutral900 = Color(0XFF292231);
-  static const Color neutral800 = Color(0XFF31293A);
-  static const Color neutral700 = Color(0XFF393044);
-  static const Color neutral600 = Color(0XFF453A52);
-  static const Color neutral500 = Color(0XFF514461);
-  static const Color neutral400 = Color(0XFF746981);
-  static const Color neutral300 = Color(0XFF8E8598);
-  static const Color neutral200 = Color(0XFFA8A1B0);
-  static const Color neutral100 = Color(0XFFD3D0D7);
-  static const Color neutral50 = Color(0XFFEEECEF);
+  static const Color neutral990 = Color(0XFF101013);
+  static const Color neutral950 = Color(0XFF1B1B21);
+  static const Color neutral925 = Color(0XFF222229);
+  static const Color neutral900 = Color(0XFF272730);
+  static const Color neutral800 = Color(0XFF2F2F39);
+  static const Color neutral700 = Color(0XFF373743);
+  static const Color neutral600 = Color(0XFF424251);
+  static const Color neutral500 = Color(0XFF4E4E5F);
+  static const Color neutral400 = Color(0XFF71717F);
+  static const Color neutral300 = Color(0XFF8C8C97);
+  static const Color neutral200 = Color(0XFFA6A6AF);
+  static const Color neutral100 = Color(0XFFD3D3D7);
+  static const Color neutral50 = Color(0XFFEDEDEF);
   static const Color neutral25 = Color(0XFFF6F6F7);
-  static const Color neutral10 = Color(0XFFFAF9FA);
+  static const Color neutral10 = Color(0XFFFAFAFA);
   static const Color neutral0 = Color(0XFFFFFFFF);
   //accent
   static const Color accent1000 = Color(0XFF000000);
-  static const Color accent990 = Color(0XFF01172C);
-  static const Color accent950 = Color(0XFF012951);
-  static const Color accent925 = Color(0XFF023060);
+  static const Color accent990 = Color(0XFF01172D);
+  static const Color accent950 = Color(0XFF01284F);
+  static const Color accent925 = Color(0XFF023162);
   static const Color accent900 = Color(0XFF023A72);
-  static const Color accent800 = Color(0XFF024487);
-  static const Color accent700 = Color(0XFF03509E);
-  static const Color accent600 = Color(0XFF0473E3);
+  static const Color accent800 = Color(0XFF024588);
+  static const Color accent700 = Color(0XFF03519F);
+  static const Color accent600 = Color(0XFF0362C1);
   static const Color accent500 = Color(0XFF0473E3);
   static const Color accent400 = Color(0XFF368FE9);
   static const Color accent300 = Color(0XFF5CA4ED);
@@ -35,7 +35,7 @@ class CustomThemes {
   static const Color accent100 = Color(0XFFC0DCF8);
   static const Color accent50 = Color(0XFFE6F1FC);
   static const Color accent25 = Color(0XFFF2F8FE);
-  static const Color accent10 = Color(0XFFF8FBFE);
+  static const Color accent10 = Color(0XFFF7FBFE);
   static const Color accent0 = Color(0XFFFFFFFF);
   //success
   static const Color success1000 = Color(0XFF000000);
@@ -232,13 +232,14 @@ class NewColorsDark {
   static const Color borderMuted = CustomThemes.neutral200; //15%
 
   //! bg
-  static const Color bgSurface2 = CustomThemes.neutral900;
-  static const Color bgSurface3 = CustomThemes.neutral800;
-  static const Color bgSurface4 = CustomThemes.neutral700;
-  static const Color bgSurface5 = CustomThemes.neutral600;
-  static const Color bgPage1 = CustomThemes.neutral950;
-  static const Color bgPage2 = CustomThemes.neutral950;
-  static const Color bgSurface1 = CustomThemes.neutral925;
+  static const Color bgSurface2 = CustomThemes.neutral925;
+  static const Color bgSurface3 = CustomThemes.neutral700;
+  static const Color bgSurface4 = CustomThemes.neutral600;
+  static const Color bgSurface5 = CustomThemes.neutral500;
+  static const Color bgPage1 = CustomThemes.neutral990;
+  static const Color bgPage2 = CustomThemes.neutral990;
+  static const Color bgPage3 = CustomThemes.neutral990;
+  static const Color bgSurface1 = CustomThemes.neutral900;
   static const Color bgDisabled = CustomThemes.neutral200; // 10%
 
   //! neutral
@@ -426,8 +427,8 @@ class NewColorsDark {
   static const Color staticContrast = CustomThemes.accent400; //20%
 
   //! gradient
-  static const Color gradientContainer01Start = CustomThemes.accent925;
-  static const Color gradientContainer01End = CustomThemes.status06_925;
+  static const Color gradientContainer01Start = CustomThemes.info925;
+  static const Color gradientContainer01End = CustomThemes.success950;
   static const Color gradientTextPage01Start = CustomThemes.neutral950;
   static const Color gradientTextPage01End = staticTransparent;
   static const Color gradientTextSurface01Start = bgSurface1;
@@ -438,7 +439,7 @@ class NewColorsLight {
   //! foreground
   static const Color fgDefault = CustomThemes.neutral990;
   static const Color fgSoft = CustomThemes.neutral500;
-  static const Color fgMuted = CustomThemes.neutral300;
+  static const Color fgMuted = CustomThemes.neutral400;
   static const Color fgDisabled = CustomThemes.neutral500; //40%
 
   //! border
@@ -447,12 +448,13 @@ class NewColorsLight {
   static const Color borderMuted = Color(0XFF4E4E5F); //15%
 
   //! bg
-  static const Color bgSurface2 = CustomThemes.neutral10;
+  static const Color bgSurface2 = CustomThemes.neutral0;
   static const Color bgSurface3 = CustomThemes.neutral25;
   static const Color bgSurface4 = CustomThemes.neutral50;
   static const Color bgSurface5 = CustomThemes.neutral100;
   static const Color bgPage1 = CustomThemes.neutral0;
-  static const Color bgPage2 = CustomThemes.neutral50;
+  static const Color bgPage2 = CustomThemes.neutral25;
+  static const Color bgPage3 = CustomThemes.neutral50;
   static const Color bgSurface1 = CustomThemes.neutral0;
   static const Color bgDisabled = CustomThemes.neutral500; // 10%
 
@@ -468,7 +470,7 @@ class NewColorsLight {
   static const Color neutralContainerMuted = CustomThemes.neutral500; // 3%
   static const Color neutralContainerHover = CustomThemes.neutral500; // 20%
   static const Color neutralContainerActive = CustomThemes.neutral500; // 30%
-  static const Color neutralOnContainer = CustomThemes.neutral500;
+  static const Color neutralOnContainer = CustomThemes.neutral950;
 
   //! success
   static const Color successDefault = CustomThemes.success500;
@@ -482,7 +484,7 @@ class NewColorsLight {
   static const Color successContainerMuted = CustomThemes.success500; // 3%
   static const Color successContainerHover = CustomThemes.success500; // 20%
   static const Color successContainerActive = CustomThemes.success500; // 30%
-  static const Color successOnContainer = CustomThemes.success500;
+  static const Color successOnContainer = CustomThemes.success700;
 
   //! warning
   static const Color warningDefault = CustomThemes.warning500;
@@ -496,7 +498,7 @@ class NewColorsLight {
   static const Color warningContainerMuted = CustomThemes.warning500; // 3%
   static const Color warningContainerHover = CustomThemes.warning500; // 20%
   static const Color warningContainerActive = CustomThemes.warning500; // 30%
-  static const Color warningOnContainer = CustomThemes.warning500;
+  static const Color warningOnContainer = CustomThemes.warning800;
 
   //! error
   static const Color errorDefault = CustomThemes.error500;
@@ -510,7 +512,7 @@ class NewColorsLight {
   static const Color errorContainerMuted = CustomThemes.error500; // 3%
   static const Color errorContainerHover = CustomThemes.error500; // 20%
   static const Color errorContainerActive = CustomThemes.error500; // 30%
-  static const Color errorOnContainer = CustomThemes.error500;
+  static const Color errorOnContainer = CustomThemes.error600;
 
   //! accent
   static const Color accentDefault = CustomThemes.accent500;
@@ -524,7 +526,7 @@ class NewColorsLight {
   static const Color accentContainerMuted = CustomThemes.accent500; // 3%
   static const Color accentContainerHover = CustomThemes.accent500; // 20%
   static const Color accentContainerActive = CustomThemes.accent500; // 30%
-  static const Color accentOnContainer = CustomThemes.accent500;
+  static const Color accentOnContainer = CustomThemes.accent700;
 
   //! info
   static const Color infoDefault = CustomThemes.info500;
@@ -538,7 +540,7 @@ class NewColorsLight {
   static const Color infoContainerMuted = CustomThemes.info500; // 3%
   static const Color infoContainerHover = CustomThemes.info500; // 20%
   static const Color infoContainerActive = CustomThemes.info500; // 30%
-  static const Color infoOnContainer = CustomThemes.info500;
+  static const Color infoOnContainer = CustomThemes.info700;
 
   //! status01
   static const Color status01Default = CustomThemes.status01_500;
@@ -553,7 +555,7 @@ class NewColorsLight {
   static const Color status01ContainerMuted = CustomThemes.status01_500; // 3%
   static const Color status01ContainerHover = CustomThemes.status01_500; // 20%
   static const Color status01ContainerActive = CustomThemes.status01_500; // 30%
-  static const Color status01OnContainer = CustomThemes.status01_500;
+  static const Color status01OnContainer = CustomThemes.status01_800;
 
   //! status02
   static const Color status02Default = CustomThemes.status02_500;
@@ -568,7 +570,7 @@ class NewColorsLight {
   static const Color status02ContainerMuted = CustomThemes.status02_500; // 3%
   static const Color status02ContainerHover = CustomThemes.status02_500; // 20%
   static const Color status02ContainerActive = CustomThemes.status02_500; // 30%
-  static const Color status02OnContainer = CustomThemes.status02_500;
+  static const Color status02OnContainer = CustomThemes.status02_700;
 
   //! status03
   static const Color status03Default = CustomThemes.status03_500;
@@ -583,7 +585,7 @@ class NewColorsLight {
   static const Color status03ContainerMuted = CustomThemes.status03_500; // 3%
   static const Color status03ContainerHover = CustomThemes.status03_500; // 20%
   static const Color status03ContainerActive = CustomThemes.status03_500; // 30%
-  static const Color status03OnContainer = CustomThemes.status03_500;
+  static const Color status03OnContainer = CustomThemes.status03_700;
 
   //! status04
   static const Color status04Default = CustomThemes.status04_500;
@@ -598,7 +600,7 @@ class NewColorsLight {
   static const Color status04ContainerMuted = CustomThemes.status04_500; // 3%
   static const Color status04ContainerHover = CustomThemes.status04_500; // 20%
   static const Color status04ContainerActive = CustomThemes.status04_500; // 30%
-  static const Color status04OnContainer = CustomThemes.status04_500;
+  static const Color status04OnContainer = CustomThemes.status04_700;
 
   //! status05
   static const Color status05Default = CustomThemes.status05_500;
@@ -613,7 +615,7 @@ class NewColorsLight {
   static const Color status05ContainerMuted = CustomThemes.status05_500; // 3%
   static const Color status05ContainerHover = CustomThemes.status05_500; // 20%
   static const Color status05ContainerActive = CustomThemes.status05_500; // 30%
-  static const Color status05OnContainer = CustomThemes.status05_500;
+  static const Color status05OnContainer = CustomThemes.status05_700;
 
   //! status06
   static const Color status06Default = CustomThemes.status06_500;
@@ -628,7 +630,7 @@ class NewColorsLight {
   static const Color status06ContainerMuted = CustomThemes.status06_500; // 3%
   static const Color status06ContainerHover = CustomThemes.status06_500; // 20%
   static const Color status06ContainerActive = CustomThemes.status06_500; // 30%
-  static const Color status06OnContainer = CustomThemes.status06_500;
+  static const Color status06OnContainer = CustomThemes.status06_700;
 
   //! static
   static const Color staticWhite = CustomThemes.neutral0;
@@ -641,10 +643,10 @@ class NewColorsLight {
   static const Color staticContrast = CustomThemes.accent500; //10%
 
   //! gradient
-  static const Color gradientContainer01Start = CustomThemes.accent50;
-  static const Color gradientContainer01End = CustomThemes.status06_50;
+  static const Color gradientContainer01Start = CustomThemes.info50;
+  static const Color gradientContainer01End = CustomThemes.success50;
   static const Color gradientTextPage01Start = CustomThemes.neutral0;
   static const Color gradientTextPage01End = staticTransparent;
   static const Color gradientTextSurface01Start = bgSurface1;
-  static const Color gradientTextSurface01End = NewColorsDark.staticTransparent;
+  static const Color gradientTextSurface01End = staticTransparent;
 }
