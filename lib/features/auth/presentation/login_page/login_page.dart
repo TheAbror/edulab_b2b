@@ -144,7 +144,9 @@ class _BodyState extends State<_Body> {
                     width: double.infinity,
                     padding: EdgeInsets.all(12.w),
                     decoration: BoxDecoration(
-                      color: context.colors.errorContainerDefault,
+                      color: context.colors.errorContainerDefault.withOpacity(
+                        0.1,
+                      ),
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                     child: Text(
@@ -175,7 +177,9 @@ class _BodyState extends State<_Body> {
                   text: TextSpan(
                     style: TextStyle(
                       fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
                       color: context.colors.fgDefault,
+                      letterSpacing: -0.8,
                     ),
                     children: [
                       TextSpan(
@@ -186,6 +190,7 @@ class _BodyState extends State<_Body> {
                         style: TextStyle(
                           color: context.colors.infoDefault,
                           decoration: TextDecoration.underline,
+                          letterSpacing: -0.5,
                         ),
                       ),
                     ],
