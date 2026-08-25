@@ -2,11 +2,25 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 part 'courses_state.dart';
 
+// TODO: remove once the backend (leti.slash.uz) is reachable again — for now this
+// serves fixture data so the Courses tab can be designed without a live API.
+const bool kUseMockCourseData = true;
+
 class CoursesBloc extends Cubit<CoursesState> {
   CoursesBloc() : super(CoursesState.initial());
 
   void getAllCourses() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    if (kUseMockCourseData) {
+      emit(
+        state.copyWith(
+          coursesAll: mockCourses,
+          blocProgress: BlocProgress.LOADED,
+        ),
+      );
+      return;
+    }
 
     try {
       final response = await ApiProvider.coursesServices.getAllCourses();
@@ -49,6 +63,16 @@ class CoursesBloc extends Cubit<CoursesState> {
 
   void getAllCoursesAsUnauthorized() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    if (kUseMockCourseData) {
+      emit(
+        state.copyWith(
+          coursesAll: mockCourses,
+          blocProgress: BlocProgress.LOADED,
+        ),
+      );
+      return;
+    }
 
     try {
       final response = await ApiProvider.coursesServices

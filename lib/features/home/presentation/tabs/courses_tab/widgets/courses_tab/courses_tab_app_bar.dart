@@ -5,12 +5,15 @@ class CoursesTabAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return AppBar(automaticallyImplyLeading: false, title: SearchAndFilter());
     return AppBar(
       automaticallyImplyLeading: false,
-      centerTitle: true,
-      title: AppText.customTitle2Medium(
+      centerTitle: false,
+      backgroundColor: context.colors.bgPage3,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      title: AppText.title3(
         context.localizations.coursesTab.makeFirstCapital(),
+        color: context.colors.fgDefault,
       ),
     );
   }
