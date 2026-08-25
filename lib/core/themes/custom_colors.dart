@@ -29,6 +29,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color fgSoft;
   final Color bgPage1;
   final Color bgPage2;
+  final Color bgPage3;
   final Color bgSurface1;
   final Color bgSurface3;
   final Color bgSurface4;
@@ -68,6 +69,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.fgSoft,
     required this.bgPage1,
     required this.bgPage2,
+    required this.bgPage3,
     required this.bgSurface1,
     required this.bgSurface3,
     required this.bgSurface4,
@@ -109,6 +111,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? fgSoft,
     Color? bgPage1,
     Color? bgPage2,
+    Color? bgPage3,
     Color? bgSurface1,
     Color? bgSurface3,
     Color? bgSurface4,
@@ -150,6 +153,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       fgSoft: fgSoft ?? this.fgSoft,
       bgPage1: bgPage1 ?? this.bgPage1,
       bgPage2: bgPage2 ?? this.bgPage2,
+      bgPage3: bgPage3 ?? this.bgPage3,
       bgSurface1: bgSurface1 ?? this.bgSurface1,
       bgSurface3: bgSurface3 ?? this.bgSurface3,
       bgSurface4: bgSurface4 ?? this.bgSurface4,
@@ -226,6 +230,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       fgSoft: Color.lerp(fgSoft, other.fgSoft, t)!,
       bgPage1: Color.lerp(bgPage1, other.bgPage1, t)!,
       bgPage2: Color.lerp(bgPage2, other.bgPage2, t)!,
+      bgPage3: Color.lerp(bgPage3, other.bgPage3, t)!,
       bgSurface1: Color.lerp(bgSurface1, other.bgSurface1, t)!,
       bgSurface3: Color.lerp(bgSurface3, other.bgSurface3, t)!,
       bgSurface4: Color.lerp(bgSurface4, other.bgSurface4, t)!,

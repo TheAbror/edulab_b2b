@@ -14,7 +14,6 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
 
   List<Widget> pages = [
     HomeTab(),
-    LearningTab(),
     CoursesTab(),
     const ProfileTab(),
   ];
@@ -119,6 +118,7 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
             onWillPop: () async => false,
             child: Scaffold(
               appBar: _appBar(context, state.tabIndex) as PreferredSizeWidget,
+              backgroundColor: context.colors.bgPage3,
               body: PageView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: pageController,
@@ -135,15 +135,10 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
   }
 
   Widget _appBar(context, selectedIndex) {
-    final bool? isAuthorized = PreferencesServices.getAuthStatus();
-
-    if (selectedIndex == 1 && isAuthorized == true) {
-      return LearningTabAppBar();
-    }
-    if (selectedIndex == 2) {
+    if (selectedIndex == 1) {
       return CoursesTabAppBar();
     }
-    if (selectedIndex == 3) {
+    if (selectedIndex == 2) {
       return PreferredSize(
         preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
         child: SizedBox(height: MediaQuery.of(context).padding.top),

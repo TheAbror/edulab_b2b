@@ -100,7 +100,7 @@ export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/b
 export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/course_all_categories_bottomsheet_tile.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/course_all_categories_bottomsheet_top_icons.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/bottom_sheet/filter_courses_bottomsheet.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_find_something_to_learn_widget.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_no_assigned_courses_widget.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_my_study_widget.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/home_tab/widgets/home_widgets/home_tab_appbar.dart';
 export 'package:edulab_b2b/features/single_course/single_course_page.dart';

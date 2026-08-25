@@ -711,16 +711,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skipfornow => 'Skip';
 
   @override
-  String get homeTab => 'HOME';
+  String get homeTab => 'Home';
 
   @override
-  String get learingTab => 'LEARNING';
+  String get learingTab => 'Learning';
 
   @override
-  String get coursesTab => 'COURSES';
+  String get coursesTab => 'Courses';
 
   @override
-  String get profileTab => 'PROFILE';
+  String get profileTab => 'Profile';
 
   @override
   String get welcometoEdulab => 'Welcome to Edulab';
@@ -1074,14 +1074,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enrollToThisCourse => 'Enroll to this course';
 
   @override
-  String get learnWithLeti => 'Learn with Leti — Start Your Journey Today';
+  String get noAssignedCoursesTitle =>
+      'This section will display the courses you are currently taking.';
 
   @override
-  String get exploreHighQuality =>
-      'Explore high-quality courses across different fields. Begin today — more subjects are coming soon.';
+  String get noAssignedCoursesSubtitle =>
+      'You don\'t have any assigned courses yet. Browse available courses below and start learning!';
 
   @override
-  String get joinForFree => 'Sign up';
+  String get viewCourses => 'View courses';
 
   @override
   String get ourCourses => 'Our courses';

@@ -99,6 +99,23 @@ class LanguageSelectionPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: 12.h),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            AppRoutes.rootPage,
+                          ),
+                          behavior: HitTestBehavior.opaque,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.h),
+                            child: AppText.paragraph1Medium(
+                              context.localizations.skipforNow,
+                              color: context.colors.fgSoft,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

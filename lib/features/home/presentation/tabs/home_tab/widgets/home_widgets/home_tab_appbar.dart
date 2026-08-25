@@ -9,6 +9,7 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
       builder: (context, state) {
         return AppBar(
           automaticallyImplyLeading: false,
+          backgroundColor: context.colors.bgPage3,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -16,12 +17,7 @@ class HomeTabAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 26.w,
                 width: 95.w,
               ),
-              // Assets.icons.main.notification.svg(
-              //   colorFilter: ColorFilter.mode(
-              //     context.colors.neutralContainerActive,
-              //     BlendMode.srcIn,
-              //   ),
-              // ),
+              Assets.icons.main.notification.svg(height: 24.w, width: 24.w),
             ],
           ),
         );

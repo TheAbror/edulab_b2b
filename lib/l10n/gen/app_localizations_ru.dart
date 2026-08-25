@@ -708,16 +708,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get skipfornow => 'Пропустить';
 
   @override
-  String get homeTab => 'ГЛАВНАЯ';
+  String get homeTab => 'Главная';
 
   @override
-  String get learingTab => 'ОБУЧЕНИЕ';
+  String get learingTab => 'Обучение';
 
   @override
-  String get coursesTab => 'КУРСЫ';
+  String get coursesTab => 'Курсы';
 
   @override
-  String get profileTab => 'ПРОФИЛЬ';
+  String get profileTab => 'Профиль';
 
   @override
   String get welcometoEdulab => 'Добро пожаловать в Edulab';
@@ -1072,14 +1072,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get enrollToThisCourse => 'Записаться на этот курс';
 
   @override
-  String get learnWithLeti => 'Учитесь с Лети — начните свой путь сегодня!';
+  String get noAssignedCoursesTitle =>
+      'В этом разделе будут отображаться курсы, которые вы сейчас проходите.';
 
   @override
-  String get exploreHighQuality =>
-      'Изучите высококачественные курсы по различным направлениям. Начните сегодня — скоро появятся новые предметы.';
+  String get noAssignedCoursesSubtitle =>
+      'У вас пока нет назначенных курсов. Просмотрите доступные курсы ниже и начните обучение!';
 
   @override
-  String get joinForFree => 'Зарегистрироваться';
+  String get viewCourses => 'Просмотреть курсы';
 
   @override
   String get ourCourses => 'Наши курсы';

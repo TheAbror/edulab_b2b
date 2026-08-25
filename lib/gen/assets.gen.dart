@@ -371,6 +371,11 @@ class $AssetsIconsHomeTabIconsGen {
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/icons/home_tab_icons/google_icon.png');
 
+  /// File path: assets/icons/home_tab_icons/no_assigned_courses.png
+  AssetGenImage get noAssignedCourses => const AssetGenImage(
+    'assets/icons/home_tab_icons/no_assigned_courses.png',
+  );
+
   /// File path: assets/icons/home_tab_icons/recommendedAvatar.png
   AssetGenImage get recommendedAvatar =>
       const AssetGenImage('assets/icons/home_tab_icons/recommendedAvatar.png');
@@ -390,6 +395,7 @@ class $AssetsIconsHomeTabIconsGen {
     confettiBottom,
     confettiTop,
     googleIcon,
+    noAssignedCourses,
     recommendedAvatar,
     shareIcon,
     star,
@@ -529,45 +535,16 @@ class $AssetsIconsNavbarGen {
   SvgGenImage get coursesEmpty =>
       const SvgGenImage('assets/icons/navbar/courses_empty.svg');
 
-  /// File path: assets/icons/navbar/home_empty.svg
-  SvgGenImage get homeEmpty =>
-      const SvgGenImage('assets/icons/navbar/home_empty.svg');
-
   /// File path: assets/icons/navbar/home_filled.svg
   SvgGenImage get homeFilled =>
       const SvgGenImage('assets/icons/navbar/home_filled.svg');
-
-  /// File path: assets/icons/navbar/learningEmpty.svg
-  SvgGenImage get learningEmpty =>
-      const SvgGenImage('assets/icons/navbar/learningEmpty.svg');
-
-  /// File path: assets/icons/navbar/learningFilled.svg
-  SvgGenImage get learningFilled =>
-      const SvgGenImage('assets/icons/navbar/learningFilled.svg');
-
-  /// File path: assets/icons/navbar/my_learning_empty.svg
-  SvgGenImage get myLearningEmpty =>
-      const SvgGenImage('assets/icons/navbar/my_learning_empty.svg');
-
-  /// File path: assets/icons/navbar/my_learning_filled.svg
-  SvgGenImage get myLearningFilled =>
-      const SvgGenImage('assets/icons/navbar/my_learning_filled.svg');
 
   /// File path: assets/icons/navbar/profile_empty.svg
   SvgGenImage get profileEmpty =>
       const SvgGenImage('assets/icons/navbar/profile_empty.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
-    coursesEmpty,
-    homeEmpty,
-    homeFilled,
-    learningEmpty,
-    learningFilled,
-    myLearningEmpty,
-    myLearningFilled,
-    profileEmpty,
-  ];
+  List<SvgGenImage> get values => [coursesEmpty, homeFilled, profileEmpty];
 }
 
 class $AssetsIconsProfileGen {

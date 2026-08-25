@@ -712,16 +712,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get skipfornow => 'O‘tkazib yuborish';
 
   @override
-  String get homeTab => 'BOSH SAHIFA';
+  String get homeTab => 'Bosh sahifa';
 
   @override
-  String get learingTab => 'O‘QISH';
+  String get learingTab => 'O‘qish';
 
   @override
-  String get coursesTab => 'KURSLAR';
+  String get coursesTab => 'Kurslar';
 
   @override
-  String get profileTab => 'PROFIL';
+  String get profileTab => 'Profil';
 
   @override
   String get welcometoEdulab => 'Edulab’ga xush kelibsiz';
@@ -1077,15 +1077,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enrollToThisCourse => 'Ushbu kursga yozilish';
 
   @override
-  String get learnWithLeti =>
-      'Leti bilan o\'rganing — Bugun sayohatingizni boshlang';
+  String get noAssignedCoursesTitle =>
+      'Bu bo\'limda siz hozir o\'qiyotgan kurslar ko\'rsatiladi.';
 
   @override
-  String get exploreHighQuality =>
-      'Turli sohalardagi yuqori sifatli kurslarni o\'rganing. Bugun boshlang — tez orada ko\'proq fanlar qo\'shiladi.';
+  String get noAssignedCoursesSubtitle =>
+      'Sizga hali kurslar tayinlanmagan. Quyidagi mavjud kurslarni ko\'rib chiqing va o\'qishni boshlang!';
 
   @override
-  String get joinForFree => 'Ro\'yxatdan o\'tish';
+  String get viewCourses => 'Kurslarni ko\'rish';
 
   @override
   String get ourCourses => 'Bizning kurslarimiz';

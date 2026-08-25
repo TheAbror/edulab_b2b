@@ -14,17 +14,17 @@ class HomeBottomNavigation extends StatelessWidget {
       decoration: _Decoration(context),
       child: BottomNavigationBar(
         elevation: 0,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
+        selectedFontSize: 13,
+        unselectedFontSize: 13,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Theme.of(context).colorScheme.background,
         showUnselectedLabels: true,
         selectedItemColor: context.colors.fgDefault,
         unselectedItemColor: context.colors.fgMuted,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w500, height: 1.5),
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600, height: 1.2),
         unselectedLabelStyle: TextStyle(
-          fontWeight: FontWeight.w500,
-          height: 1.5,
+          fontWeight: FontWeight.w400,
+          height: 1.2,
         ),
         currentIndex: tabIndex,
         onTap: (index) {
@@ -33,43 +33,45 @@ class HomeBottomNavigation extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: lang.homeTab,
-
-            icon: navBar.homeEmpty.svg(),
-            // activeIcon: navBar.homeFilled.svg(),
-            activeIcon: navBar.homeFilled.svg(
+            icon: navBar.homeFilled.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                context.colors.fgMuted,
                 BlendMode.srcIn,
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: lang.learingTab,
-            icon: navBar.learningEmpty.svg(),
-            // activeIcon: navBar.learningFilled.svg(),
-            activeIcon: navBar.learningFilled.svg(
+            activeIcon: navBar.homeFilled.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                context.colors.fgDefault,
                 BlendMode.srcIn,
               ),
             ),
           ),
           BottomNavigationBarItem(
             label: lang.coursesTab,
-            icon: navBar.coursesEmpty.svg(),
+            icon: navBar.coursesEmpty.svg(
+              colorFilter: ColorFilter.mode(
+                context.colors.fgMuted,
+                BlendMode.srcIn,
+              ),
+            ),
             activeIcon: navBar.coursesEmpty.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                context.colors.fgDefault,
                 BlendMode.srcIn,
               ),
             ),
           ),
           BottomNavigationBarItem(
             label: lang.profileTab,
-            icon: navBar.profileEmpty.svg(),
+            icon: navBar.profileEmpty.svg(
+              colorFilter: ColorFilter.mode(
+                context.colors.fgMuted,
+                BlendMode.srcIn,
+              ),
+            ),
             activeIcon: navBar.profileEmpty.svg(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
+                context.colors.fgDefault,
                 BlendMode.srcIn,
               ),
             ),

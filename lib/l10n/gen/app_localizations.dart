@@ -1483,25 +1483,25 @@ abstract class AppLocalizations {
   /// No description provided for @homeTab.
   ///
   /// In en, this message translates to:
-  /// **'HOME'**
+  /// **'Home'**
   String get homeTab;
 
   /// No description provided for @learingTab.
   ///
   /// In en, this message translates to:
-  /// **'LEARNING'**
+  /// **'Learning'**
   String get learingTab;
 
   /// No description provided for @coursesTab.
   ///
   /// In en, this message translates to:
-  /// **'COURSES'**
+  /// **'Courses'**
   String get coursesTab;
 
   /// No description provided for @profileTab.
   ///
   /// In en, this message translates to:
-  /// **'PROFILE'**
+  /// **'Profile'**
   String get profileTab;
 
   /// No description provided for @welcometoEdulab.
@@ -2182,23 +2182,23 @@ abstract class AppLocalizations {
   /// **'Enroll to this course'**
   String get enrollToThisCourse;
 
-  /// No description provided for @learnWithLeti.
+  /// No description provided for @noAssignedCoursesTitle.
   ///
   /// In en, this message translates to:
-  /// **'Learn with Leti — Start Your Journey Today'**
-  String get learnWithLeti;
+  /// **'This section will display the courses you are currently taking.'**
+  String get noAssignedCoursesTitle;
 
-  /// No description provided for @exploreHighQuality.
+  /// No description provided for @noAssignedCoursesSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Explore high-quality courses across different fields. Begin today — more subjects are coming soon.'**
-  String get exploreHighQuality;
+  /// **'You don\'t have any assigned courses yet. Browse available courses below and start learning!'**
+  String get noAssignedCoursesSubtitle;
 
-  /// No description provided for @joinForFree.
+  /// No description provided for @viewCourses.
   ///
   /// In en, this message translates to:
-  /// **'Sign up'**
-  String get joinForFree;
+  /// **'View courses'**
+  String get viewCourses;
 
   /// No description provided for @ourCourses.
   ///
