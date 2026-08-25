@@ -1177,9 +1177,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Мы отправили вам 4-значный код по электронной почте на';
 
   @override
-  String get legalConsentPrefix => 'Продолжая, вы соглашаетесь с';
+  String get legalConsentPrefix =>
+      'Продолжая, вы принимаете публичную оферту и соглашаетесь с нашими';
 
   @override
   String get termsAndPrivacyPolicy =>
-      'Условиями обслуживания и Политикой конфиденциальности Edulab.';
+      'Условиями и Политикой конфиденциальности.';
 }

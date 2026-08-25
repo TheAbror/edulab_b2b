@@ -1178,8 +1178,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get codeSentViaEmail => 'We have sent you a 4-digit code via email to';
 
   @override
-  String get legalConsentPrefix => 'By continuing, you agree to Edulab\'s';
+  String get legalConsentPrefix =>
+      'By continuing, you accept the public offer and agree to our';
 
   @override
-  String get termsAndPrivacyPolicy => 'Terms of Service and Privacy Policy.';
+  String get termsAndPrivacyPolicy => 'Terms and Privacy Policy.';
 }

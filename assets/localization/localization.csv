@@ -403,5 +403,5 @@ weWillSendYouSMS,We will send a verification code via SMS.,Мы вышлем в�
 smsToNumber,The SMS code has been sent to {phoneNumber},SMS-код был отправлен на номер {phoneNumber},SMS kod {phoneNumber} raqamiga yuborildi
 codeSentViaSms,We have sent you a 4-digit code via SMS to,Мы отправили вам 4-значный код по SMS на,Sizga 4 xonali kod SMS orqali quyidagi raqamga yuborildi
 codeSentViaEmail,We have sent you a 4-digit code via email to,Мы отправили вам 4-значный код по электронной почте на,Sizga 4 xonali kod elektron pochta orqali quyidagi manzilga yuborildi
-legalConsentPrefix,"By continuing, you agree to Edulab's","Продолжая, вы соглашаетесь с",Davom etish orqali siz Edulab'ning
-termsAndPrivacyPolicy,Terms of Service and Privacy Policy.,Условиями обслуживания и Политикой конфиденциальности Edulab.,xizmat ko'rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.
+legalConsentPrefix,"By continuing, you accept the public offer and agree to our","Продолжая, вы принимаете публичную оферту и соглашаетесь с нашими","Davom etish orqali siz ommaviy oferta shartlarini qabul qilib, bizning"
+termsAndPrivacyPolicy,Terms and Privacy Policy.,Условиями и Политикой конфиденциальности.,Foydalanish shartlari va Maxfiylik siyosatimizga rozilik bildirasiz.

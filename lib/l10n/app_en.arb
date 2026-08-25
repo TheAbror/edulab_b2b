@@ -756,8 +756,8 @@
   "@codeSentViaSms": {},
   "codeSentViaEmail": "We have sent you a 4-digit code via email to",
   "@codeSentViaEmail": {},
-  "legalConsentPrefix": "By continuing, you agree to Edulab's",
+  "legalConsentPrefix": "By continuing, you accept the public offer and agree to our",
   "@legalConsentPrefix": {},
-  "termsAndPrivacyPolicy": "Terms of Service and Privacy Policy.",
+  "termsAndPrivacyPolicy": "Terms and Privacy Policy.",
   "@termsAndPrivacyPolicy": {}
 }

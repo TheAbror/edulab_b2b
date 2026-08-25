@@ -1185,9 +1185,10 @@ class AppLocalizationsUz extends AppLocalizations {
       'Sizga 4 xonali kod elektron pochta orqali quyidagi manzilga yuborildi';
 
   @override
-  String get legalConsentPrefix => 'Davom etish orqali siz Edulab\'ning';
+  String get legalConsentPrefix =>
+      'Davom etish orqali siz ommaviy oferta shartlarini qabul qilib, bizning';
 
   @override
   String get termsAndPrivacyPolicy =>
-      'xizmat ko\'rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.';
+      'Foydalanish shartlari va Maxfiylik siyosatimizga rozilik bildirasiz.';
 }

@@ -2371,13 +2371,13 @@ abstract class AppLocalizations {
   /// No description provided for @legalConsentPrefix.
   ///
   /// In en, this message translates to:
-  /// **'By continuing, you agree to Edulab\'s'**
+  /// **'By continuing, you accept the public offer and agree to our'**
   String get legalConsentPrefix;
 
   /// No description provided for @termsAndPrivacyPolicy.
   ///
   /// In en, this message translates to:
-  /// **'Terms of Service and Privacy Policy.'**
+  /// **'Terms and Privacy Policy.'**
   String get termsAndPrivacyPolicy;
 }
 

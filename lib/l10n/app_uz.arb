@@ -756,8 +756,8 @@
   "@codeSentViaSms": {},
   "codeSentViaEmail": "Sizga 4 xonali kod elektron pochta orqali quyidagi manzilga yuborildi",
   "@codeSentViaEmail": {},
-  "legalConsentPrefix": "Davom etish orqali siz Edulab'ning",
+  "legalConsentPrefix": "Davom etish orqali siz ommaviy oferta shartlarini qabul qilib, bizning",
   "@legalConsentPrefix": {},
-  "termsAndPrivacyPolicy": "xizmat ko'rsatish shartlari va maxfiylik siyosatiga rozilik bildirasiz.",
+  "termsAndPrivacyPolicy": "Foydalanish shartlari va Maxfiylik siyosatimizga rozilik bildirasiz.",
   "@termsAndPrivacyPolicy": {}
 }
