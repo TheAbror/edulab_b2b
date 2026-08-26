@@ -95,8 +95,6 @@ dev_dependencies:
 
   flutter_gen_runner: ^5.11.0
 
-  arb_generator: 0.0.4
-
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
@@ -113,15 +111,6 @@ flutter_gen:
     rive: true
 
 
-arb_generator:
-  input_filepath: "assets/localization/localization.csv"
-  output_directory: "lib/l10n"
-  filename_prepend: "app_"
-  csv_settings:
-    delimiter: ","
-    base_index: 1
-
-
 flutter:
   uses-material-design: true
   generate: true
@@ -129,6 +118,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/stores/
+    - assets/images/avatars/
     - assets/icons/downloader/
     - assets/icons/home_tab_icons/
     - assets/icons/welcome_sign_forgot_icons/
@@ -139,4 +129,3 @@ flutter:
     - assets/icons/language_icons/
     - assets/icons/navbar/
     - assets/icons/chat/
-    - assets/localization/

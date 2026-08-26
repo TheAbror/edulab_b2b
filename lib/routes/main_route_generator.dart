@@ -51,6 +51,11 @@ class MainRouteGenerator {
           builder: (_) => FrequentlyAskedQuestionsPage(),
         );
 
+      case AppRoutes.aboutEdulabPage:
+        return CustomCupertinoStyleNavigationRoute(
+          builder: (_) => const AboutEdulabPage(),
+        );
+
       case AppRoutes.homeTab:
         return CustomCupertinoStyleNavigationRoute(builder: (_) => HomeTab());
 

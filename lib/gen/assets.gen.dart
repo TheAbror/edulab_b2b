@@ -153,6 +153,9 @@ class $AssetsImagesGen {
   AssetGenImage get networkImageErrorCase =>
       const AssetGenImage('assets/images/network_image_error_case.png');
 
+  /// Directory path: assets/images/avatars
+  $AssetsImagesAvatarsGen get avatars => const $AssetsImagesAvatarsGen();
+
   /// Directory path: assets/images/stores
   $AssetsImagesStoresGen get stores => const $AssetsImagesStoresGen();
 
@@ -535,6 +538,14 @@ class $AssetsIconsNavbarGen {
   SvgGenImage get coursesEmpty =>
       const SvgGenImage('assets/icons/navbar/courses_empty.svg');
 
+  /// File path: assets/icons/navbar/courses_filled.svg
+  SvgGenImage get coursesFilled =>
+      const SvgGenImage('assets/icons/navbar/courses_filled.svg');
+
+  /// File path: assets/icons/navbar/home_empty.svg
+  SvgGenImage get homeEmpty =>
+      const SvgGenImage('assets/icons/navbar/home_empty.svg');
+
   /// File path: assets/icons/navbar/home_filled.svg
   SvgGenImage get homeFilled =>
       const SvgGenImage('assets/icons/navbar/home_filled.svg');
@@ -543,8 +554,19 @@ class $AssetsIconsNavbarGen {
   SvgGenImage get profileEmpty =>
       const SvgGenImage('assets/icons/navbar/profile_empty.svg');
 
+  /// File path: assets/icons/navbar/profile_filled.svg
+  SvgGenImage get profileFilled =>
+      const SvgGenImage('assets/icons/navbar/profile_filled.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [coursesEmpty, homeFilled, profileEmpty];
+  List<SvgGenImage> get values => [
+    coursesEmpty,
+    coursesFilled,
+    homeEmpty,
+    homeFilled,
+    profileEmpty,
+    profileFilled,
+  ];
 }
 
 class $AssetsIconsProfileGen {
@@ -597,6 +619,73 @@ class $AssetsIconsWelcomeSignForgotIconsGen {
     handWithLightBulb3Png,
     passwordReset,
     successCircle,
+  ];
+}
+
+class $AssetsImagesAvatarsGen {
+  const $AssetsImagesAvatarsGen();
+
+  /// File path: assets/images/avatars/bear.png
+  AssetGenImage get bear =>
+      const AssetGenImage('assets/images/avatars/bear.png');
+
+  /// File path: assets/images/avatars/bee.png
+  AssetGenImage get bee => const AssetGenImage('assets/images/avatars/bee.png');
+
+  /// File path: assets/images/avatars/chicken.png
+  AssetGenImage get chicken =>
+      const AssetGenImage('assets/images/avatars/chicken.png');
+
+  /// File path: assets/images/avatars/hippo.png
+  AssetGenImage get hippo =>
+      const AssetGenImage('assets/images/avatars/hippo.png');
+
+  /// File path: assets/images/avatars/koala.png
+  AssetGenImage get koala =>
+      const AssetGenImage('assets/images/avatars/koala.png');
+
+  /// File path: assets/images/avatars/lion.png
+  AssetGenImage get lion =>
+      const AssetGenImage('assets/images/avatars/lion.png');
+
+  /// File path: assets/images/avatars/meerkat.png
+  AssetGenImage get meerkat =>
+      const AssetGenImage('assets/images/avatars/meerkat.png');
+
+  /// File path: assets/images/avatars/panda.png
+  AssetGenImage get panda =>
+      const AssetGenImage('assets/images/avatars/panda.png');
+
+  /// File path: assets/images/avatars/parrot.png
+  AssetGenImage get parrot =>
+      const AssetGenImage('assets/images/avatars/parrot.png');
+
+  /// File path: assets/images/avatars/penguin.png
+  AssetGenImage get penguin =>
+      const AssetGenImage('assets/images/avatars/penguin.png');
+
+  /// File path: assets/images/avatars/sea_lion.png
+  AssetGenImage get seaLion =>
+      const AssetGenImage('assets/images/avatars/sea_lion.png');
+
+  /// File path: assets/images/avatars/tiger.png
+  AssetGenImage get tiger =>
+      const AssetGenImage('assets/images/avatars/tiger.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    bear,
+    bee,
+    chicken,
+    hippo,
+    koala,
+    lion,
+    meerkat,
+    panda,
+    parrot,
+    penguin,
+    seaLion,
+    tiger,
   ];
 }
 

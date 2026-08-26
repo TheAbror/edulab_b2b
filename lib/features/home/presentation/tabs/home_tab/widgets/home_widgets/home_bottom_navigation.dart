@@ -33,7 +33,7 @@ class HomeBottomNavigation extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: lang.homeTab,
-            icon: navBar.homeFilled.svg(
+            icon: navBar.homeEmpty.svg(
               colorFilter: ColorFilter.mode(
                 context.colors.fgMuted,
                 BlendMode.srcIn,
@@ -54,7 +54,7 @@ class HomeBottomNavigation extends StatelessWidget {
                 BlendMode.srcIn,
               ),
             ),
-            activeIcon: navBar.coursesEmpty.svg(
+            activeIcon: navBar.coursesFilled.svg(
               colorFilter: ColorFilter.mode(
                 context.colors.fgDefault,
                 BlendMode.srcIn,
@@ -69,7 +69,7 @@ class HomeBottomNavigation extends StatelessWidget {
                 BlendMode.srcIn,
               ),
             ),
-            activeIcon: navBar.profileEmpty.svg(
+            activeIcon: navBar.profileFilled.svg(
               colorFilter: ColorFilter.mode(
                 context.colors.fgDefault,
                 BlendMode.srcIn,

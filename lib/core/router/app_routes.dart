@@ -28,4 +28,5 @@ abstract class AppRoutes {
   static const profileTab = 'profile';
   static const editProfilePage = 'editProfilePage';
   static const frequentlyAskedQuestionsPage = 'frequentlyAskedQuestionsPage';
+  static const aboutEdulabPage = 'aboutEdulabPage';
 }

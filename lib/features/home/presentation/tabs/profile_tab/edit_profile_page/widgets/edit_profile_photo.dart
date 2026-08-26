@@ -27,12 +27,11 @@ Center ProfilePhoto(context, String photo, LocalStorageUserInfo db) {
               ),
 
             if (db.profile_photo == null)
-              Container(
-                height: 72.h,
-                width: 72.w,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(100),
+              ClipOval(
+                child: defaultAvatarForUserId(db.id).image(
+                  width: 84.w,
+                  height: 84.w,
+                  fit: BoxFit.cover,
                 ),
               ),
           ],

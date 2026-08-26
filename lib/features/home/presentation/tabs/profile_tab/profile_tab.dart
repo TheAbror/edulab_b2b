@@ -17,74 +17,97 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lang = context.localizations;
-    final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
-    return isAuthorized == null
-        ? Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: UnAuthorizedUser(),
-          )
-        : Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //! AppBar
-                ProfileTabAppBar(),
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      children: [
+        //! Profile card
+        ProfileTabAppBar(),
+        space24,
 
-                // //! Video preferences
-                // ProfileTabHeader(lang.videoPreferences, context),
-                // ProfileTabSubHeader(context, lang.downloadOptions, () {}),
-                // ProfileTabSubHeader(
-                //   context,
-                //   lang.videoPlayBackOptions,
-                //   () {},
-                // ),
-                // space24,
+        //! Settings
+        ProfileTabHeader(lang.staffSettings, context),
+        space12,
 
-                //! Account settings
-                ProfileTabHeader(lang.accountSettings, context),
+        //! Video preferences
+        ProfileTabSectionCard(
+          context,
+          caption: lang.videoPreferences,
+          items: [
+            ProfileTabSectionItem(
+              context,
+              title: lang.downloadOptions,
+              onTap: () {},
+            ),
+            ProfileTabSectionItem(
+              context,
+              title: lang.videoPlayBackOptions,
+              onTap: () {},
+            ),
+          ],
+        ),
+        space12,
 
-                BlocBuilder<LocalizationBloc, LocalizationState>(
-                  builder: (context, localizationState) {
-                    return ProfileTabSubHeader(
+        //! Account settings
+        BlocBuilder<LocalizationBloc, LocalizationState>(
+          builder: (context, localizationState) {
+            return BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, homeState) {
+                return ProfileTabSectionCard(
+                  context,
+                  caption: lang.accountSettings,
+                  items: [
+                    ProfileTabSectionItem(
                       context,
-                      lang.language,
-                      () => languageSelectionDialog(context),
-                      selectedResult: returnLanguageName(
+                      title: lang.language,
+                      value: returnLanguageName(
                         localizationState.languageCode ?? '',
                       ),
-                    );
-                  },
-                ),
-                space24,
+                      onTap: () => languageSelectionDialog(context),
+                    ),
+                    ProfileTabSectionItem(
+                      context,
+                      title: lang.theme,
+                      value: homeState.isLightTheme ? lang.light : lang.dark,
+                      onTap: () => themeSelectionDialog(context),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+        ),
+        space12,
 
-                //! Appearance
-                ProfileTabHeader(lang.appearance, context),
-                ProfileTabSubHeader(
+        //! Help and support
+        ProfileTabSectionCard(
+          context,
+          caption: lang.helpAndSupport,
+          items: [
+            ProfileTabSectionItem(
+              context,
+              title: lang.frequesntlyAskedQuestions,
+              onTap: () {
+                Navigator.pushNamed(
                   context,
-                  lang.theme,
-                  () => themeSelectionDialog(context),
-                ),
-                space24,
-
-                //! Help and support
-                // ProfileTabHeader(lang.helpAndSupport, context),
-                // ProfileTabSubHeader(
-                //   context,
-                //   lang.frequesntlyAskedQuestions,
-                //   () {
-                //     Navigator.pushNamed(
-                //       context,
-                //       AppRoutes.frequentlyAskedQuestionsPage,
-                //     );
-                //   },
-                // ),
-                Spacer(),
-                ProfileTabLogOutButton(),
-                space20,
-              ],
+                  AppRoutes.frequentlyAskedQuestionsPage,
+                );
+              },
             ),
-          );
+            ProfileTabSectionItem(
+              context,
+              title: lang.aboutEdulab,
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.aboutEdulabPage);
+              },
+            ),
+          ],
+        ),
+        space24,
+
+        ProfileTabLogOutButton(),
+        space20,
+      ],
+    );
   }
 }

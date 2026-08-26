@@ -2,18 +2,12 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 class OurCoursesWidget extends StatefulWidget {
   final String? headline;
-  final String? coursesCount;
-  final int? courseDuration;
-  final List<CertificateByTopicIdModel?>? isCertificateAvailble;
   final List<CourseShortInfo> courses;
   final bool? isHeaderedNeeded;
 
   const OurCoursesWidget({
     super.key,
     this.headline,
-    this.coursesCount,
-    this.courseDuration = 0,
-    this.isCertificateAvailble,
     required this.courses,
     this.isHeaderedNeeded = true,
   });
@@ -29,13 +23,6 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
   bool isLoadingSelected = false;
   final bool? isAuthorized = PreferencesServices.getAuthStatus();
 
-  static const List<Map<String, dynamic>> _priceData = [
-    {'original': '5 000 000 UZS'},
-    {'original': '3 000 000 UZS'},
-    {'original': ''},
-    {'original': '1 500 000 UZS'},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,15 +37,19 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
             crossAxisCount: 2,
             crossAxisSpacing: 8.w,
             mainAxisSpacing: 8.h,
-            childAspectRatio: 175.w / 280.h,
+            mainAxisExtent: 234.h,
           ),
           controller: _scrollController,
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           shrinkWrap: true,
-          itemCount: widget.courses.length,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: widget.courses.length < 4 ? widget.courses.length : 4,
           itemBuilder: (context, index) {
             final singleCourseItem = widget.courses[index];
             final isSelected = selectedCourseId == singleCourseItem.id;
+            final author = singleCourseItem.authors.isNotEmpty
+                ? singleCourseItem.authors.first
+                : null;
 
             return GestureDetector(
               onTap: () => _onTap(context, singleCourseItem),
@@ -68,13 +59,10 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                   left: 10.w,
                   right: 10.w,
                   top: 10.h,
-                  bottom: 8.h,
+                  bottom: 16.h,
                 ),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 2.w,
-                    color: context.colors.borderMuted.withOpacity(0.15),
-                  ),
+                  color: context.colors.bgSurface1,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Column(
@@ -82,62 +70,69 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
                   children: [
                     _buildThumbnail(context, singleCourseItem, isSelected),
                     SizedBox(height: 8.h),
-                    Text(
-                      singleCourseItem.title,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-
-                    SizedBox(height: 2.h),
-
-                    CourseInfo(
-                      learners: singleCourseItem.learnersCount.toString(),
-                      rating: singleCourseItem.rating,
-                      context: context,
-                      isCertificateAvailble:
-                          widget.isCertificateAvailble != null &&
-                              widget
-                                      .isCertificateAvailble?[index]
-                                      ?.title
-                                      .isNotEmpty ==
-                                  true
-                          ? true
-                          : false,
-                    ),
-
-                    singleCourseItem.short_description.length < 25
-                        ? Spacer()
-                        : space10,
-
-                    if (singleCourseItem.showPrice == true) ...[
-                      Spacer(),
-                      Text(
-                        _priceData[index].values.first,
+                    SizedBox(
+                      height: 12.h,
+                      child: Text(
+                        singleCourseItem.category.title,
                         style: TextStyle(
-                          decoration: TextDecoration.lineThrough,
-                          decorationStyle: TextDecorationStyle.solid,
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 10.sp,
+                          height: 1.2,
                           color: context.colors.fgMuted,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      AppText.footNote(
-                        singleCourseItem.price?.isEmpty == true
-                            ? context.localizations.free
-                            : singleCourseItem.price ?? '',
-                        color: context.colors.fgDefault,
+                    ),
+                    SizedBox(height: 4.h),
+                    SizedBox(
+                      height: 36.h,
+                      child: Text(
+                        singleCourseItem.title,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          height: 18 / 14,
+                          fontWeight: FontWeight.w400,
+                          color: context.colors.fgDefault,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
+                    ),
+                    SizedBox(height: 8.h),
+                    SizedBox(
+                      height: 20.h,
+                      child: author == null
+                          ? const SizedBox.shrink()
+                          : Row(
+                              children: [
+                                _buildAuthorAvatar(context, author),
+                                SizedBox(width: 8.w),
+                                Expanded(
+                                  child: Text(
+                                    '${author.firstname} ${author.lastname}'
+                                        .trim(),
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      color: context.colors.fgDefault,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                    ),
                   ],
                 ),
               ),
             );
           },
         ),
+
+        if (widget.isHeaderedNeeded == true) ...[
+          space10,
+          _ShowAllButton(context),
+        ],
       ],
     );
   }
@@ -213,81 +208,91 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
     );
   }
 
+  Widget _buildAuthorAvatar(BuildContext context, Authors author) {
+    final initials =
+        '${author.firstname.isNotEmpty ? author.firstname[0] : ''}${author.lastname.isNotEmpty ? author.lastname[0] : ''}'
+            .toUpperCase();
+
+    return ClipOval(
+      child: Container(
+        width: 16.w,
+        height: 16.w,
+        color: context.colors.neutralContainerDefault.withOpacity(0.1),
+        child: CachedNetworkImage(
+          imageUrl: author.avatar?.originalUrl ?? '',
+          fit: BoxFit.cover,
+          placeholder: (context, url) => const SizedBox.shrink(),
+          errorWidget: (context, url, error) => Center(
+            child: Text(
+              initials,
+              style: TextStyle(
+                fontSize: 7.sp,
+                color: context.colors.neutralOnContainer,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _Header(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.headline ?? context.localizations.ourCourses,
-                style: TextStyle(
-                  fontSize: 17.sp,
-                  letterSpacing: -1,
-                  fontWeight: FontWeight.w500,
-                ),
+          Text(
+            widget.headline ?? context.localizations.coursesTab,
+            style: TextStyle(
+              fontSize: 16.sp,
+              letterSpacing: -0.16,
+              fontWeight: FontWeight.w500,
+              color: context.colors.fgDefault,
+            ),
+          ),
+          GestureDetector(
+            onTap: () => context.read<HomeBloc>().changeTabIndex(1),
+            behavior: HitTestBehavior.opaque,
+            child: Text(
+              context.localizations.showAll,
+              style: TextStyle(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w500,
+                color: context.colors.accentDefault,
               ),
-              SizedBox(height: 4.h),
-              widget.coursesCount != null &&
-                      widget.coursesCount?.isNotEmpty == true
-                  ? Text(
-                      '${widget.coursesCount} courses ',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        letterSpacing: -1,
-                        color: Theme.of(context).colorScheme.surfaceTint,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  : SizedBox(),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
-}
 
-Row CourseInfo({
-  required String learners,
-  required String rating,
-  int? courseDuration,
-  required BuildContext context,
-  bool? isCertificateAvailble,
-}) {
-  return Row(
-    children: [
-      Assets.icons.courses.user.svg(),
-      SizedBox(width: 6.w),
-      Text(
-        learners,
-        style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
-      ),
-      SizedBox(width: 10.w),
-      Assets.icons.courses.star.svg(),
-      SizedBox(width: 6.w),
-      Text(
-        rating,
-        style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
-      ),
-
-      if (courseDuration != null) ...[
-        SizedBox(width: 10.w),
-        Assets.icons.courses.clock.svg(),
-        SizedBox(width: 6.w),
-        Text(
-          '${courseDuration}H',
-          style: TextStyle(fontSize: 10.sp, color: context.colors.fgMuted),
+  Widget _ShowAllButton(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      child: GestureDetector(
+        onTap: () => context.read<HomeBloc>().changeTabIndex(1),
+        behavior: HitTestBehavior.opaque,
+        child: Container(
+          height: 48.h,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: context.colors.bgSurface1,
+            borderRadius: BorderRadius.circular(999.r),
+          ),
+          child: Text(
+            context.localizations.showAll,
+            style: TextStyle(
+              fontSize: 16.sp,
+              letterSpacing: -0.16,
+              fontWeight: FontWeight.w500,
+              color: context.colors.accentOnContainer,
+            ),
+          ),
         ),
-        SizedBox(width: 10.w),
-        isCertificateAvailble == true
-            ? Assets.icons.courses.courseCertificate.svg()
-            : SizedBox.shrink(),
-      ],
-    ],
-  );
+      ),
+    );
+  }
 }

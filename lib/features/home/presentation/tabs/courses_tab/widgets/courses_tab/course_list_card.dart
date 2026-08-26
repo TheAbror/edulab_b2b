@@ -24,56 +24,59 @@ class _CourseListCardState extends State<CourseListCard> {
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
-        children: List.generate(widget.courses.length, (index) {
-          final course = widget.courses[index];
-          final isLast = index == widget.courses.length - 1;
+        children: List.generate(
+          3,
+          (index) {
+            final course = widget.courses[index];
+            final isLast = index == widget.courses.length - 1;
 
-          return GestureDetector(
-            onTap: () => _onTap(context, course),
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                border: isLast
-                    ? null
-                    : Border(
-                        bottom: BorderSide(
-                          color: context.colors.borderMuted.withOpacity(0.15),
+            return GestureDetector(
+              onTap: () => _onTap(context, course),
+              behavior: HitTestBehavior.opaque,
+              child: Container(
+                padding: EdgeInsets.all(16.w),
+                decoration: BoxDecoration(
+                  border: isLast
+                      ? null
+                      : Border(
+                          bottom: BorderSide(
+                            color: context.colors.borderMuted.withOpacity(0.15),
+                          ),
                         ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText.headline2(
+                            course.title,
+                            maxLines: 2,
+                            color: context.colors.fgDefault,
+                          ),
+                          SizedBox(height: 10.h),
+                          AppText.caption1(
+                            course.short_description,
+                            maxLines: 2,
+                            color: context.colors.fgSoft,
+                          ),
+                        ],
                       ),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppText.headline2(
-                          course.title,
-                          maxLines: 2,
-                          color: context.colors.fgDefault,
-                        ),
-                        SizedBox(height: 10.h),
-                        AppText.caption1(
-                          course.short_description,
-                          maxLines: 2,
-                          color: context.colors.fgSoft,
-                        ),
-                      ],
                     ),
-                  ),
-                  SizedBox(width: 16.w),
-                  _buildThumbnail(
-                    context,
-                    course,
-                    isSelected: selectedCourseId == course.id,
-                  ),
-                ],
+                    SizedBox(width: 16.w),
+                    _buildThumbnail(
+                      context,
+                      course,
+                      isSelected: selectedCourseId == course.id,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }

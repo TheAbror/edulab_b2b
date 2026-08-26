@@ -35,30 +35,20 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 14.h),
+        height: 48.h,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: context.colors.neutralContainerDefault.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(6.r),
+          color: context.colors.bgSurface1,
+          borderRadius: BorderRadius.circular(999.r),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Assets.icons.profile.logout.svg(
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.primary,
-                BlendMode.srcIn,
-              ),
-            ),
-            SizedBox(width: 8.w),
-            Text(
-              context.localizations.logout,
-              style: TextStyle(
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ],
+        child: Text(
+          context.localizations.logout,
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            letterSpacing: -0.16,
+            color: context.colors.neutralOnContainer,
+          ),
         ),
       ),
     );
