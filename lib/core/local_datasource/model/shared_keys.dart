@@ -5,6 +5,8 @@ abstract class ShPrefKeys {
   static var authStatus = 'authStatus';
   static var theme = 'theme';
   static var lang = 'lang';
+  static var selectedAvatar = 'selectedAvatar';
+  static var profileBio = 'profileBio';
 
   //
 

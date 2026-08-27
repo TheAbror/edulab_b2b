@@ -1191,4 +1191,73 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get termsAndPrivacyPolicy =>
       'Foydalanish shartlari va Maxfiylik siyosatimizga rozilik bildirasiz.';
+
+  @override
+  String get edit => 'Tahrirlash';
+
+  @override
+  String get upload => 'Yuklash';
+
+  @override
+  String get changeType => 'Turini o\'zgartirish';
+
+  @override
+  String get avatarType => 'Avatar turi';
+
+  @override
+  String get initials => 'Bosh harflar';
+
+  @override
+  String get avatarPanda => 'Panda';
+
+  @override
+  String get avatarMeerkat => 'Surikat';
+
+  @override
+  String get avatarChicken => 'Jo\'ja';
+
+  @override
+  String get avatarBear => 'Ayiq';
+
+  @override
+  String get avatarKoala => 'Koala';
+
+  @override
+  String get avatarSeaLion => 'Dengiz sheri';
+
+  @override
+  String get avatarPenguin => 'Pingvin';
+
+  @override
+  String get avatarTiger => 'Yo\'lbars';
+
+  @override
+  String get avatarLion => 'Sher';
+
+  @override
+  String get avatarBee => 'Ari';
+
+  @override
+  String get avatarParrot => 'Toti';
+
+  @override
+  String get avatarHippo => 'Begemot';
+
+  @override
+  String get featureComingSoon => 'Bu funksiya tez orada qo\'shiladi';
+
+  @override
+  String get changesSaved => 'O\'zgarishlar saqlandi';
+
+  @override
+  String get fullName => 'To\'liq ism';
+
+  @override
+  String get aboutMe => 'Men haqimda';
+
+  @override
+  String get saveChanges => 'O\'zgarishlarni saqlash';
+
+  @override
+  String get userInfo => 'Foydalanuvchi ma\'lumotlari';
 }

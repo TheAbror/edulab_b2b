@@ -68,6 +68,31 @@ class PreferencesServices {
     return LocalStorageUserInfo.fromJson(jsonDecode(jsonString));
   }
 
+  // Locally-picked default avatar (e.g. 'panda', 'initials'). Independent of
+  // the account's uploaded profile_photo - there is no backend endpoint for
+  // this yet, so it only lives on-device.
+  static String? getSelectedAvatarKey() {
+    return _getPrefs().getString(ShPrefKeys.selectedAvatar);
+  }
+
+  static Future<bool> saveSelectedAvatarKey(String? key) async {
+    if (key == null) {
+      return _getPrefs().remove(ShPrefKeys.selectedAvatar);
+    }
+
+    return _getPrefs().setString(ShPrefKeys.selectedAvatar, key);
+  }
+
+  // "About me" bio. There's no backend field for this yet, so like the
+  // avatar type above, it's local-only for now.
+  static String? getProfileBio() {
+    return _getPrefs().getString(ShPrefKeys.profileBio);
+  }
+
+  static Future<bool> saveProfileBio(String bio) async {
+    return _getPrefs().setString(ShPrefKeys.profileBio, bio);
+  }
+
   static Future<bool> clearAll() async {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.clear();

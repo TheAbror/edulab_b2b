@@ -27,7 +27,6 @@ class _Body extends StatelessWidget {
 
         //! Settings
         ProfileTabHeader(lang.staffSettings, context),
-        space12,
 
         //! Video preferences
         ProfileTabSectionCard(

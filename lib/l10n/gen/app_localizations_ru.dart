@@ -1184,4 +1184,73 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get termsAndPrivacyPolicy =>
       'Условиями и Политикой конфиденциальности.';
+
+  @override
+  String get edit => 'Изменить';
+
+  @override
+  String get upload => 'Загрузить';
+
+  @override
+  String get changeType => 'Изменить тип';
+
+  @override
+  String get avatarType => 'Тип аватара';
+
+  @override
+  String get initials => 'Инициалы';
+
+  @override
+  String get avatarPanda => 'Панда';
+
+  @override
+  String get avatarMeerkat => 'Сурикат';
+
+  @override
+  String get avatarChicken => 'Цыплёнок';
+
+  @override
+  String get avatarBear => 'Медведь';
+
+  @override
+  String get avatarKoala => 'Коала';
+
+  @override
+  String get avatarSeaLion => 'Морской лев';
+
+  @override
+  String get avatarPenguin => 'Пингвин';
+
+  @override
+  String get avatarTiger => 'Тигр';
+
+  @override
+  String get avatarLion => 'Лев';
+
+  @override
+  String get avatarBee => 'Пчела';
+
+  @override
+  String get avatarParrot => 'Попугай';
+
+  @override
+  String get avatarHippo => 'Бегемот';
+
+  @override
+  String get featureComingSoon => 'Эта функция скоро появится';
+
+  @override
+  String get changesSaved => 'Изменения сохранены';
+
+  @override
+  String get fullName => 'Полное имя';
+
+  @override
+  String get aboutMe => 'О себе';
+
+  @override
+  String get saveChanges => 'Сохранить изменения';
+
+  @override
+  String get userInfo => 'Информация о пользователе';
 }

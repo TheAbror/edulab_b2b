@@ -1184,4 +1184,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsAndPrivacyPolicy => 'Terms and Privacy Policy.';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get upload => 'Upload';
+
+  @override
+  String get changeType => 'Change type';
+
+  @override
+  String get avatarType => 'Avatar type';
+
+  @override
+  String get initials => 'Initials';
+
+  @override
+  String get avatarPanda => 'Panda';
+
+  @override
+  String get avatarMeerkat => 'Meerkat';
+
+  @override
+  String get avatarChicken => 'Chicken';
+
+  @override
+  String get avatarBear => 'Bear';
+
+  @override
+  String get avatarKoala => 'Koala';
+
+  @override
+  String get avatarSeaLion => 'Sea Lion';
+
+  @override
+  String get avatarPenguin => 'Penguin';
+
+  @override
+  String get avatarTiger => 'Tiger';
+
+  @override
+  String get avatarLion => 'Lion';
+
+  @override
+  String get avatarBee => 'Bee';
+
+  @override
+  String get avatarParrot => 'Parrot';
+
+  @override
+  String get avatarHippo => 'Hippo';
+
+  @override
+  String get featureComingSoon => 'This feature is coming soon';
+
+  @override
+  String get changesSaved => 'Changes saved';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get aboutMe => 'About me';
+
+  @override
+  String get saveChanges => 'Save changes';
+
+  @override
+  String get userInfo => 'User info';
 }

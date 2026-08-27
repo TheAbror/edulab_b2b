@@ -1,40 +1,36 @@
 import 'package:edulab_b2b/widget_imports.dart';
 
 class EditProfileBiography extends StatelessWidget {
-  final FocusNode textFieldFocusNode;
+  final TextEditingController controller;
 
-  const EditProfileBiography({super.key, required this.textFieldFocusNode});
+  const EditProfileBiography({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // Request focus for the TextField when the container is tapped
-        FocusScope.of(context).requestFocus(textFieldFocusNode);
-      },
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        height: 96.h,
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
-        margin: EdgeInsets.only(bottom: 12.h),
-        decoration: EditProfileBoxDecoration(context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            TextField(
-              // controller: TextEditingController(text: 'Biography'),
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.zero,
-                hintText: 'Biography',
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
-            ),
-          ],
+    return Container(
+      height: 96.h,
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      decoration: EditProfileBoxDecoration(context),
+      child: TextField(
+        controller: controller,
+        maxLines: null,
+        expands: true,
+        textAlignVertical: TextAlignVertical.top,
+        style: TextStyle(
+          fontSize: 15.sp,
+          fontWeight: FontWeight.w400,
+          color: context.colors.fgDefault,
+        ),
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding: EdgeInsets.zero,
+          hintText: context.localizations.aboutMe,
+          hintStyle: TextStyle(color: context.colors.fgSoft),
+          border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
+          disabledBorder: InputBorder.none,
         ),
       ),
     );
@@ -47,7 +43,7 @@ BoxDecoration EditProfileBoxDecoration(BuildContext context) {
     borderRadius: BorderRadius.circular(6.r),
     border: Border.all(
       color: context.colors.borderMuted.withOpacity(0.15),
-      width: 2.w,
+      width: 1.w,
     ),
   );
 }

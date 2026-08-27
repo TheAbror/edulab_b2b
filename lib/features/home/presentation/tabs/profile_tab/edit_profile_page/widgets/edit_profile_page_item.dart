@@ -2,51 +2,48 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 class EditProfilePageItem extends StatelessWidget {
   final String label;
-  final String text;
-  final FocusNode textFieldFocusNode;
+  final TextEditingController controller;
 
   const EditProfilePageItem({
     super.key,
     required this.label,
-    required this.text,
-    required this.textFieldFocusNode,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).requestFocus(textFieldFocusNode);
-      },
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
-        margin: EdgeInsets.only(bottom: 12.h),
-        decoration: EditProfileBoxDecoration(context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.surfaceTint,
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 12.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label.toUpperCase(),
+            style: TextStyle(
+              color: context.colors.fgMuted,
+              fontSize: 11.sp,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.3,
             ),
-            TextField(
-              readOnly: true,
-              controller: TextEditingController(text: text),
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.zero,
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
+          ),
+          TextField(
+            controller: controller,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+              color: context.colors.fgDefault,
             ),
-          ],
-        ),
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding: EdgeInsets.zero,
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
+          ),
+        ],
       ),
     );
   }

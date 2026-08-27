@@ -45,6 +45,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color successContainerDefault;
   final Color errorContainerDefault;
   final Color errorDefault;
+  final Color errorOnContainer;
   final Color accentDefault;
   final Color neutralContainerActive;
   final Color status01OnContainer;
@@ -85,6 +86,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.successContainerDefault,
     required this.errorContainerDefault,
     required this.errorDefault,
+    required this.errorOnContainer,
     required this.accentDefault,
     required this.neutralContainerActive,
     required this.status01OnContainer,
@@ -127,6 +129,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? successContainerDefault,
     Color? errorContainerDefault,
     Color? errorDefault,
+    Color? errorOnContainer,
     Color? accentDefault,
     Color? neutralContainerActive,
     Color? status01OnContainer,
@@ -175,6 +178,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       errorContainerDefault:
           errorContainerDefault ?? this.errorContainerDefault,
       errorDefault: errorDefault ?? this.errorDefault,
+      errorOnContainer: errorOnContainer ?? this.errorOnContainer,
       accentDefault: accentDefault ?? this.accentDefault,
       neutralContainerActive:
           neutralContainerActive ?? this.neutralContainerActive,
@@ -291,6 +295,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
       errorDefault: Color.lerp(
         errorDefault,
         other.errorDefault,
+        t,
+      )!,
+      errorOnContainer: Color.lerp(
+        errorOnContainer,
+        other.errorOnContainer,
         t,
       )!,
       accentDefault: Color.lerp(

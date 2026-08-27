@@ -73,6 +73,8 @@ export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_prof
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_page_app_bar.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_page_item.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo_action_sheet.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_avatar_type_sheet.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/profile_image_dialog.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_pages_app_bar.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_subheader_with_vertical_space.dart';

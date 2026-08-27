@@ -8,13 +8,15 @@ class ProfileTabAppBar extends StatefulWidget {
 }
 
 class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
-  final db = PreferencesServices.getUserInfo();
-
   @override
   Widget build(BuildContext context) {
+    final db = PreferencesServices.getUserInfo();
+
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, AppRoutes.editProfilePage);
+      onTap: () async {
+        await Navigator.pushNamed(context, AppRoutes.editProfilePage);
+        // Name/photo/avatar type may have changed on the edit screen.
+        if (context.mounted) setState(() {});
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
@@ -30,32 +32,7 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
         ),
         child: Row(
           children: [
-            ClipOval(
-              child: (db?.profile_photo?.originalUrl ?? '').isEmpty
-                  ? defaultAvatarForUserId(db?.id).image(
-                      width: 48.w,
-                      height: 48.w,
-                      fit: BoxFit.cover,
-                    )
-                  : CachedNetworkImage(
-                      imageUrl: db!.profile_photo!.originalUrl,
-                      width: 48.w,
-                      height: 48.w,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
-                        width: 48.w,
-                        height: 48.w,
-                        color: Colors.grey[200],
-                        child: Center(child: CircularProgressIndicator()),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          defaultAvatarForUserId(db?.id).image(
-                            width: 48.w,
-                            height: 48.w,
-                            fit: BoxFit.cover,
-                          ),
-                    ),
-            ),
+            ProfileAvatarImage(db: db, size: 48.w),
 
             SizedBox(width: 8.w),
             Expanded(
@@ -78,8 +55,9 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
                       vertical: 2.h,
                     ),
                     decoration: BoxDecoration(
-                      color: context.colors.neutralContainerDefault
-                          .withOpacity(0.1),
+                      color: context.colors.neutralContainerDefault.withOpacity(
+                        0.1,
+                      ),
                       borderRadius: BorderRadius.circular(999.r),
                     ),
                     child: Text(

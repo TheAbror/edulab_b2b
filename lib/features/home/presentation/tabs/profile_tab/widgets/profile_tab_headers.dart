@@ -2,7 +2,10 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 Padding ProfileTabHeader(String text, BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(bottom: 12.h),
+    padding: EdgeInsets.only(
+      bottom: 4.h,
+      left: 16.w,
+    ),
     child: Text(
       text.toUpperCase(),
       style: TextStyle(

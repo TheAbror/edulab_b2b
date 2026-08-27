@@ -3,6 +3,7 @@ import 'package:edulab_b2b/widget_imports.dart';
 AppBar EditProfilePageAppBar(BuildContext context) {
   return AppBar(
     elevation: 0.0,
+    backgroundColor: context.colors.bgPage3,
     automaticallyImplyLeading: false,
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

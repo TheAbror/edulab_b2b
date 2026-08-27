@@ -2379,6 +2379,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms and Privacy Policy.'**
   String get termsAndPrivacyPolicy;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @upload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get upload;
+
+  /// No description provided for @changeType.
+  ///
+  /// In en, this message translates to:
+  /// **'Change type'**
+  String get changeType;
+
+  /// No description provided for @avatarType.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar type'**
+  String get avatarType;
+
+  /// No description provided for @initials.
+  ///
+  /// In en, this message translates to:
+  /// **'Initials'**
+  String get initials;
+
+  /// No description provided for @avatarPanda.
+  ///
+  /// In en, this message translates to:
+  /// **'Panda'**
+  String get avatarPanda;
+
+  /// No description provided for @avatarMeerkat.
+  ///
+  /// In en, this message translates to:
+  /// **'Meerkat'**
+  String get avatarMeerkat;
+
+  /// No description provided for @avatarChicken.
+  ///
+  /// In en, this message translates to:
+  /// **'Chicken'**
+  String get avatarChicken;
+
+  /// No description provided for @avatarBear.
+  ///
+  /// In en, this message translates to:
+  /// **'Bear'**
+  String get avatarBear;
+
+  /// No description provided for @avatarKoala.
+  ///
+  /// In en, this message translates to:
+  /// **'Koala'**
+  String get avatarKoala;
+
+  /// No description provided for @avatarSeaLion.
+  ///
+  /// In en, this message translates to:
+  /// **'Sea Lion'**
+  String get avatarSeaLion;
+
+  /// No description provided for @avatarPenguin.
+  ///
+  /// In en, this message translates to:
+  /// **'Penguin'**
+  String get avatarPenguin;
+
+  /// No description provided for @avatarTiger.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiger'**
+  String get avatarTiger;
+
+  /// No description provided for @avatarLion.
+  ///
+  /// In en, this message translates to:
+  /// **'Lion'**
+  String get avatarLion;
+
+  /// No description provided for @avatarBee.
+  ///
+  /// In en, this message translates to:
+  /// **'Bee'**
+  String get avatarBee;
+
+  /// No description provided for @avatarParrot.
+  ///
+  /// In en, this message translates to:
+  /// **'Parrot'**
+  String get avatarParrot;
+
+  /// No description provided for @avatarHippo.
+  ///
+  /// In en, this message translates to:
+  /// **'Hippo'**
+  String get avatarHippo;
+
+  /// No description provided for @featureComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is coming soon'**
+  String get featureComingSoon;
+
+  /// No description provided for @changesSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes saved'**
+  String get changesSaved;
+
+  /// No description provided for @fullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullName;
+
+  /// No description provided for @aboutMe.
+  ///
+  /// In en, this message translates to:
+  /// **'About me'**
+  String get aboutMe;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get saveChanges;
+
+  /// No description provided for @userInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'User info'**
+  String get userInfo;
 }
 
 class _AppLocalizationsDelegate
