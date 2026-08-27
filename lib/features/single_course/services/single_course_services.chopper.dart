@@ -21,7 +21,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<SingleCourseInfo>> getSingleCourse(int id) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/${id}',
+      'https://944b-213-230-79-129.ngrok-free.app/course/${id}',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<SingleCourseInfo, SingleCourseInfo>($request);
@@ -30,7 +30,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<SingleCourseInfo>> getSingleCourseAsUnathorized(int id) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/public/course/${id}',
+      'https://944b-213-230-79-129.ngrok-free.app/public/course/${id}',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<SingleCourseInfo, SingleCourseInfo>($request);
@@ -39,7 +39,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<CheckEnrollmentResponse>> checkEnrollment(int id) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/enrollment/check/?course_id=${id}',
+      'https://944b-213-230-79-129.ngrok-free.app/enrollment/check/?course_id=${id}',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<CheckEnrollmentResponse, CheckEnrollmentResponse>(
@@ -52,7 +52,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
     EnrollmentRequest body,
   ) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/enrollment/',
+      'https://944b-213-230-79-129.ngrok-free.app/enrollment/',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -69,7 +69,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
     required int topicId,
   }) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/',
+      'https://944b-213-230-79-129.ngrok-free.app/learning/',
     );
     final Map<String, dynamic> $params = <String, dynamic>{
       'chapter_id': chapterId,
@@ -89,7 +89,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<CourseProgressModel>> completeStep(CompleteStepRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/complete',
+      'https://944b-213-230-79-129.ngrok-free.app/learning/complete',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -99,7 +99,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<SingleCourseInfo>> resumeCourseById(int id) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/${id}',
+      'https://944b-213-230-79-129.ngrok-free.app/learning/${id}',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<SingleCourseInfo, SingleCourseInfo>($request);
@@ -108,7 +108,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
   @override
   Future<Response<QuizResultResponse>> submitQuiz(QuizRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/learning/submit',
+      'https://944b-213-230-79-129.ngrok-free.app/learning/submit',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -120,7 +120,7 @@ final class _$SingleCourseServices extends SingleCourseServices {
     MakeCourseFavoriteRequest body,
   ) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/add-to-favorites',
+      'https://944b-213-230-79-129.ngrok-free.app/course/add-to-favorites',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);

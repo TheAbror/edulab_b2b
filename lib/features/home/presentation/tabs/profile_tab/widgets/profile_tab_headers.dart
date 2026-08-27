@@ -3,7 +3,7 @@ import 'package:edulab_b2b/widget_imports.dart';
 Padding ProfileTabHeader(String text, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
-      bottom: 4.h,
+      bottom: 8.h,
       left: 16.w,
     ),
     child: Text(
@@ -42,6 +42,7 @@ Widget ProfileTabSectionCard(
             letterSpacing: 0.3,
           ),
         ),
+        SizedBox(height: 6.h),
         for (var i = 0; i < items.length; i++)
           Container(
             decoration: i == 0
@@ -65,6 +66,7 @@ Widget ProfileTabSectionItem(
   required String title,
   String? value,
   required VoidCallback onTap,
+  int maxLines = 1,
 }) {
   return GestureDetector(
     onTap: onTap,
@@ -80,7 +82,9 @@ Widget ProfileTabSectionItem(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 color: context.colors.fgDefault,
+                height: 1.25,
               ),
+              maxLines: maxLines,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -96,8 +100,10 @@ Widget ProfileTabSectionItem(
             SizedBox(width: 20.w),
           ],
           Assets.icons.learning.arrowRight.svg(
+            width: 20.w,
+            height: 20.w,
             colorFilter: ColorFilter.mode(
-              Theme.of(context).colorScheme.surfaceTint,
+              context.colors.fgMuted,
               BlendMode.srcIn,
             ),
           ),

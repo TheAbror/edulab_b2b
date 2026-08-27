@@ -74,8 +74,10 @@ class _ProfileTabAppBarState extends State<ProfileTabAppBar> {
             ),
             SizedBox(width: 8.w),
             Assets.icons.courses.arrowRight.svg(
+              width: 20.w,
+              height: 20.w,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.surfaceTint,
+                context.colors.fgMuted,
                 BlendMode.srcIn,
               ),
             ),

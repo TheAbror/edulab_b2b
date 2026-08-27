@@ -21,7 +21,7 @@ final class _$CourseServices extends CourseServices {
   @override
   Future<Response<HomeCoursesResponse>> getAllCourses() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/',
+      'https://944b-213-230-79-129.ngrok-free.app/course/',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<HomeCoursesResponse, HomeCoursesResponse>($request);
@@ -30,7 +30,7 @@ final class _$CourseServices extends CourseServices {
   @override
   Future<Response<List<CourseShortInfo>>> getAllCoursesAsUnauthorized() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/public/course/all',
+      'https://944b-213-230-79-129.ngrok-free.app/public/course/all',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);

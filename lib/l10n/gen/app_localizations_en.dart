@@ -61,7 +61,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get faceID => 'FaceID security';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'Log out';
 
   @override
   String get auto => 'Auto';

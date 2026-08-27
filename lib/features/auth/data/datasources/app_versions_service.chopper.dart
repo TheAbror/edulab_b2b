@@ -21,7 +21,7 @@ final class _$AppVersionsService extends AppVersionsService {
   @override
   Future<Response<AppVersionsModel>> getAppVersions() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/settings/versions',
+      'https://944b-213-230-79-129.ngrok-free.app/settings/versions',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<AppVersionsModel, AppVersionsModel>($request);

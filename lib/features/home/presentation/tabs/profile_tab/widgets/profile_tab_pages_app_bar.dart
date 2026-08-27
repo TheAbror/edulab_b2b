@@ -2,6 +2,7 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 AppBar profileTabPagesAppBar(BuildContext context, String text) {
   return AppBar(
+    backgroundColor: context.colors.bgPage3,
     automaticallyImplyLeading: false,
     title: Row(
       mainAxisAlignment: MainAxisAlignment.start,

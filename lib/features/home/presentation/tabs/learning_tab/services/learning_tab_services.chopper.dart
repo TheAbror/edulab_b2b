@@ -21,7 +21,7 @@ final class _$LearningTabServices extends LearningTabServices {
   @override
   Future<Response<List<CourseShortInfo>>> getInProgress() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own?status=IN_PROGRESS',
+      'https://944b-213-230-79-129.ngrok-free.app/course/own?status=IN_PROGRESS',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
@@ -30,7 +30,7 @@ final class _$LearningTabServices extends LearningTabServices {
   @override
   Future<Response<List<CourseShortInfo>>> getCompleted() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/course/own?status=COMPLETED',
+      'https://944b-213-230-79-129.ngrok-free.app/course/own?status=COMPLETED',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
@@ -39,7 +39,7 @@ final class _$LearningTabServices extends LearningTabServices {
   @override
   Future<Response<LearningTabStatisticsResponse>> getStatistics() {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/statistics/',
+      'https://944b-213-230-79-129.ngrok-free.app/statistics/',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client

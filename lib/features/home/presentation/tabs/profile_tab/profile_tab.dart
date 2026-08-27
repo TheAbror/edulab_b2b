@@ -45,7 +45,7 @@ class _Body extends StatelessWidget {
             ),
           ],
         ),
-        space12,
+        SizedBox(height: 8.h),
 
         //! Account settings
         BlocBuilder<LocalizationBloc, LocalizationState>(
@@ -76,7 +76,7 @@ class _Body extends StatelessWidget {
             );
           },
         ),
-        space12,
+        SizedBox(height: 8.h),
 
         //! Help and support
         ProfileTabSectionCard(
@@ -102,7 +102,7 @@ class _Body extends StatelessWidget {
             ),
           ],
         ),
-        space24,
+        SizedBox(height: 28.h),
 
         ProfileTabLogOutButton(),
         space20,

@@ -3,52 +3,40 @@ import 'package:edulab_b2b/widget_imports.dart';
 class FrequentlyAskedQuestionsPage extends StatelessWidget {
   const FrequentlyAskedQuestionsPage({super.key});
 
+  static const _questions = [
+    'How to find a course?',
+    'Can I preview a course before purchasing?',
+    'What course features are abailable',
+    'Do I receive anything after I complete a course?',
+    'What is available on Edulab for certification exam preparation?',
+    'How do I pay for a course?',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: profileTabPagesAppBar(context, 'Frequently asked questions'),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        child: Column(
-          children: [
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'How to find a course?',
-              () {},
-            ),
-            space16,
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'Can I preview a course before purchasing?',
-              () {},
-            ),
-            space16,
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'What course features are abailable',
-              () {},
-            ),
-            space16,
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'Do I receive anything after I complete a course?',
-              () {},
-            ),
-            space16,
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'What is available on Edulab for certification exam preparation?',
-              () {},
-            ),
-            space16,
-            ProfileTabSubHeaderWithVerticalSpace(
-              context,
-              'How do I pay for a course?',
-              () {},
-            ),
-            space16,
-          ],
-        ),
+      backgroundColor: context.colors.bgPage3,
+      appBar: profileTabPagesAppBar(
+        context,
+        context.localizations.frequesntlyAskedQuestions,
+      ),
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        children: [
+          ProfileTabSectionCard(
+            context,
+            caption: 'FAQ',
+            items: [
+              for (final question in _questions)
+                ProfileTabSectionItem(
+                  context,
+                  title: question,
+                  maxLines: 2,
+                  onTap: () {},
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }

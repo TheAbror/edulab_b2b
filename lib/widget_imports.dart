@@ -59,7 +59,6 @@ export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/learning
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/appBars/learning_tab_appbar.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/profile_tab.dart';
 export 'package:edulab_b2b/features/home/data/datasources/models/courses_models.dart';
-export 'package:edulab_b2b/features/home/data/datasources/mock/mock_courses_data.dart';
 export 'package:edulab_b2b/features/home/data/datasources/models/home_models.dart';
 export 'package:edulab_b2b/features/home/data/datasources/models/certificates_models.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/cards/learning_resume_card.dart';
@@ -77,7 +76,6 @@ export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_prof
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_avatar_type_sheet.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/profile_image_dialog.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_pages_app_bar.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_subheader_with_vertical_space.dart';
 export 'package:edulab_b2b/features/home/data/datasources/services/courses_services.dart';
 export 'package:edulab_b2b/features/splash/data/datasources/app_version_service.dart';
 export 'package:flutter_downloader/flutter_downloader.dart';

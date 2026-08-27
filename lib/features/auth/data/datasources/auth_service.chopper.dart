@@ -21,7 +21,7 @@ final class _$AuthService extends AuthService {
   @override
   Future<Response<MobileResponse>> signInStepOne(SignInStepOneRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_one',
+      'https://944b-213-230-79-129.ngrok-free.app/signin/step_one',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -31,7 +31,7 @@ final class _$AuthService extends AuthService {
   @override
   Future<Response<AuthResponse>> signInStepTwo(SignInStepTwoRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_two',
+      'https://944b-213-230-79-129.ngrok-free.app/signin/step_two',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -41,7 +41,7 @@ final class _$AuthService extends AuthService {
   @override
   Future<Response<AuthResponse>> signInStepThree(SignInStepThreeRequest body) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/signin/step_three',
+      'https://944b-213-230-79-129.ngrok-free.app/signin/step_three',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -53,7 +53,7 @@ final class _$AuthService extends AuthService {
     SignUpKeyRequest body,
   ) {
     final Uri $url = Uri.parse(
-      'https://leti.slash.uz/edulab_corp/api/v1/core/mobile/verify_code/send',
+      'https://944b-213-230-79-129.ngrok-free.app/verify_code/send',
     );
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);

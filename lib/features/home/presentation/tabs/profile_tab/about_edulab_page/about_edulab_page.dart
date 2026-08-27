@@ -32,6 +32,7 @@ class _AboutEdulabPageState extends State<AboutEdulabPage> {
     final lang = context.localizations;
 
     return Scaffold(
+      backgroundColor: context.colors.bgPage3,
       appBar: profileTabPagesAppBar(context, lang.aboutEdulab),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
