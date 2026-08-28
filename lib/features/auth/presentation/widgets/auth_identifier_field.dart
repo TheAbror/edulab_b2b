@@ -73,7 +73,7 @@ class AuthIdentifierField extends StatelessWidget {
                       ? TextInputType.phone
                       : TextInputType.emailAddress,
                   inputFormatters: isPhone
-                      ? [LengthLimitingTextInputFormatter(13)]
+                      ? const [PhoneInputFormatter()]
                       : null,
                   style: TextStyle(
                     fontSize: 14.sp,
@@ -83,7 +83,9 @@ class AuthIdentifierField extends StatelessWidget {
                     isDense: true,
                     isCollapsed: true,
                     border: InputBorder.none,
-                    hintText: isPhone ? '+998' : 'email@example.com',
+                    hintText: isPhone
+                        ? '+998 00 000 00 00'
+                        : 'email@example.com',
                     hintStyle: TextStyle(
                       fontSize: 14.sp,
                       color: context.colors.fgMuted,

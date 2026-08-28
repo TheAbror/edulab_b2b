@@ -1138,19 +1138,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get allCourses => 'Все курсы';
 
   @override
-  String get congratulations => 'Поздравляем! ';
+  String get congratulations => 'Поздравляем! 🎉';
 
   @override
-  String youhavesuccessfully(Object percentage) {
-    return 'Вы успешно прошли викторину и набрали $percentage%';
+  String youhavesuccessfully(Object score) {
+    return 'Вы успешно прошли викторину и набрали $score баллов.';
   }
 
   @override
-  String get tryagain => 'Попробуйте еще раз ';
+  String get tryagain => 'Попробуйте еще раз 💪';
 
   @override
-  String youscored(Object percentage) {
-    return 'Вы набрали $percentage%, но на этот раз не прошли викторину';
+  String youscored(Object score) {
+    return 'Вы набрали $score баллов и на этот раз не прошли викторину.';
   }
 
   @override

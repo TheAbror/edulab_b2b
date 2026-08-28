@@ -31,7 +31,7 @@ class _BodyState extends State<_Body> {
 
   void _onFocusChange() {
     if (_identifierFocusNode.hasFocus && _identifierController.text.isEmpty) {
-      _identifierController.text = '+998';
+      _identifierController.text = '+998 ';
       _identifierController.selection = TextSelection.fromPosition(
         TextPosition(offset: _identifierController.text.length),
       );
@@ -39,7 +39,7 @@ class _BodyState extends State<_Body> {
   }
 
   // Sign-in is phone + OTP only; the API has no e-mail OTP endpoint.
-  bool _isValid(String value) => value.length == 13;
+  bool _isValid(String value) => isPhoneComplete(value);
 
   @override
   void dispose() {
@@ -149,7 +149,10 @@ class _BodyState extends State<_Body> {
                     final value = _identifierController.text.trim();
                     if (_isValid(value) && !state.isDisabled) {
                       _identifierFocusNode.unfocus();
-                      context.read<AuthBloc>().signInStepOne(value, false);
+                      context.read<AuthBloc>().signInStepOne(
+                        phoneApiValue(value),
+                        false,
+                      );
                     }
                   },
                 ),

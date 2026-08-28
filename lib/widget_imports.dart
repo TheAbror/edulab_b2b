@@ -21,6 +21,7 @@ export 'package:edulab_b2b/core/utils/default_avatar.dart';
 export 'package:edulab_b2b/features/splash/domain/enums/splash_auth_status.dart';
 export 'package:edulab_b2b/core/localization/bloc/localization_bloc.dart';
 export 'package:edulab_b2b/core/utils/constants.dart';
+export 'package:edulab_b2b/core/utils/phone_input_formatter.dart';
 export 'package:edulab_b2b/core/local_datasource/model/shared_keys.dart';
 export 'package:edulab_b2b/features/splash/presentation/bloc/splash_bloc.dart';
 export 'package:edulab_b2b/features/splash/presentation/language_selection_page.dart';

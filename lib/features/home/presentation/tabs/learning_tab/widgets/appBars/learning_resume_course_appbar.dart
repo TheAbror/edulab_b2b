@@ -40,21 +40,22 @@ class LearningResumeCourseAppBar extends StatelessWidget
               ),
             ),
           ),
-          SizedBox(width: 8.w),
-          Center(
-            child: SizedBox(
-              width: 256.w,
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -1,
-                ),
-                overflow: TextOverflow.ellipsis,
+          SizedBox(width: 20.w),
+          Expanded(
+            child: Text(
+              title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 17.sp,
+                height: 22 / 17,
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.17,
+                color: context.colors.fgDefault,
               ),
             ),
           ),
+          SizedBox(width: 16.w),
         ],
       ),
       bottom: PreferredSize(
@@ -125,7 +126,6 @@ class LearningResumeCourseAppBar extends StatelessWidget
                       ),
                       context,
                       isSelected: isSelected,
-                      isCompleted: isCompleted,
                     );
                   }).toList(),
                 );
@@ -214,24 +214,25 @@ class LearningResumeCourseAppBar extends StatelessWidget
     Widget widget,
     BuildContext context, {
     required bool isSelected,
-    required bool isCompleted,
   }) {
-    final Color borderColor = isCompleted
-        ? context.colors.neutralMuted
-        : context.colors.accentMuted;
-
+    // 48x32 pill with a 24x24 icon, per the "course stepper" component. The
+    // 2px border marks the step the learner is currently on.
     return Container(
       height: 32.h,
       width: 48.w,
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: isSelected
-            ? context.colors.accentContainerDefault.withOpacity(0.1)
-            : context.colors.containerDefault.withOpacity(0.1),
-        border: isSelected ? Border.all(width: 2.w, color: borderColor) : null,
-        borderRadius: BorderRadius.circular(50.r),
+        color: context.colors.neutralContainerDefault.withOpacity(0.1),
+        border: isSelected
+            ? Border.all(width: 2.w, color: context.colors.neutralMuted)
+            : null,
+        borderRadius: BorderRadius.circular(100.r),
       ),
-      child: widget,
+      child: SizedBox(
+        height: 24.w,
+        width: 24.w,
+        child: widget,
+      ),
     );
   }
 

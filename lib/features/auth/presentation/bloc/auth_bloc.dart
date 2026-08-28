@@ -7,7 +7,7 @@ class AuthBloc extends Cubit<AuthState> {
 
   // The mobile sign-in endpoints (LoginInDTO / LoginEnterCodeDTO) require an
   // account_type. This app only signs in learners.
-  static const String _accountType = 'ORGANIZATION';
+  static const String _accountType = 'EMPLOYEE';
 
   // signin/step_* only accepts en | ru | uz.
   String get _locale {

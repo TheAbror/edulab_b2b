@@ -1144,19 +1144,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get allCourses => 'Barcha kurslar';
 
   @override
-  String get congratulations => 'Tabriklaymiz! ';
+  String get congratulations => 'Tabriklaymiz! 🎉';
 
   @override
-  String youhavesuccessfully(Object percentage) {
-    return 'Siz testni muvaffaqiyatli yakunladingiz va $percentage% to\'pladingiz';
+  String youhavesuccessfully(Object score) {
+    return 'Siz testni muvaffaqiyatli yakunladingiz va $score ball to‘pladingiz.';
   }
 
   @override
-  String get tryagain => 'Qayta urinib ko\'ring ';
+  String get tryagain => 'Qayta urinib ko‘ring 💪';
 
   @override
-  String youscored(Object percentage) {
-    return 'Siz $percentage% to`pladingiz, lekin bu safar viktorinadan o\'ta olmadingiz';
+  String youscored(Object score) {
+    return 'Siz $score ball to‘pladingiz va bu safar testdan o‘ta olmadingiz.';
   }
 
   @override
