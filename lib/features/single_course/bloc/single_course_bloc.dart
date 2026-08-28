@@ -90,18 +90,17 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
         final data = response.body;
 
         if (data != null) {
-          final content = data.syllabus?.courseContent;
+          final chapters = data.chapters.isNotEmpty
+              ? data.chapters
+              : (data.syllabus?.courseContent ?? const []);
+          final hasMoreThan3Chapters = chapters.length > 3;
           emit(
             state.copyWith(
               singleCourse: data,
-              singleCourseChapters: data.chapters,
+              singleCourseChapters: chapters,
               lastStoppedStep: data.currentlyActive,
-              courseMaterialsAreHidden: (content?.isNotEmpty == true)
-                  ? ((content?.length ?? 0) > 3 ? true : false)
-                  : false,
-              materialsMoreThan3: (content?.isNotEmpty == true)
-                  ? ((content?.length ?? 0) > 3 ? true : false)
-                  : false,
+              courseMaterialsAreHidden: hasMoreThan3Chapters,
+              materialsMoreThan3: hasMoreThan3Chapters,
               isFavorite: data.is_favorite,
               blocProgress: BlocProgress.LOADED,
             ),
@@ -147,18 +146,17 @@ class SingleCourseBloc extends Cubit<SingleCourseState> {
         final data = response.body;
 
         if (data != null) {
-          final content = data.syllabus?.courseContent;
+          final chapters = data.chapters.isNotEmpty
+              ? data.chapters
+              : (data.syllabus?.courseContent ?? const []);
+          final hasMoreThan3Chapters = chapters.length > 3;
           emit(
             state.copyWith(
               singleCourse: data,
-              singleCourseChapters: data.chapters,
+              singleCourseChapters: chapters,
               lastStoppedStep: data.currentlyActive,
-              courseMaterialsAreHidden: (content?.isNotEmpty == true)
-                  ? ((content?.length ?? 0) > 3 ? true : false)
-                  : false,
-              materialsMoreThan3: (content?.isNotEmpty == true)
-                  ? ((content?.length ?? 0) > 3 ? true : false)
-                  : false,
+              courseMaterialsAreHidden: hasMoreThan3Chapters,
+              materialsMoreThan3: hasMoreThan3Chapters,
               isFavorite: data.is_favorite,
               blocProgress: BlocProgress.LOADED,
             ),

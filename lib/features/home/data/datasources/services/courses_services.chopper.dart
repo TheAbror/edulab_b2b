@@ -19,18 +19,18 @@ final class _$CourseServices extends CourseServices {
   final Type definitionType = CourseServices;
 
   @override
-  Future<Response<HomeCoursesResponse>> getAllCourses() {
+  Future<Response<List<CourseShortInfo>>> getAllCourses() {
     final Uri $url = Uri.parse(
-      'https://944b-213-230-79-129.ngrok-free.app/course/',
+      'https://2785-213-230-79-129.ngrok-free.app/edulab/api/v1/core/mobile/course/all',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<HomeCoursesResponse, HomeCoursesResponse>($request);
+    return client.send<List<CourseShortInfo>, CourseShortInfo>($request);
   }
 
   @override
   Future<Response<List<CourseShortInfo>>> getAllCoursesAsUnauthorized() {
     final Uri $url = Uri.parse(
-      'https://944b-213-230-79-129.ngrok-free.app/public/course/all',
+      'https://2785-213-230-79-129.ngrok-free.app/edulab/api/v1/core/mobile/public/course/all',
     );
     final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<List<CourseShortInfo>, CourseShortInfo>($request);

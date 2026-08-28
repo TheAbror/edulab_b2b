@@ -1,15 +1,11 @@
 import 'package:edulab_b2b/widget_imports.dart';
 
 class OurCoursesWidget extends StatefulWidget {
-  final String? headline;
   final List<CourseShortInfo> courses;
-  final bool? isHeaderedNeeded;
 
   const OurCoursesWidget({
     super.key,
-    this.headline,
     required this.courses,
-    this.isHeaderedNeeded = true,
   });
 
   @override
@@ -29,8 +25,8 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 12.h),
-        if (widget.isHeaderedNeeded == true) _Header(context),
-        if (widget.isHeaderedNeeded == true) space10,
+        _Header(context),
+        space10,
 
         GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -129,7 +125,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
           },
         ),
 
-        if (widget.isHeaderedNeeded == true) ...[
+        if (widget.courses.length > 4) ...[
           space10,
           _ShowAllButton(context),
         ],
@@ -244,7 +240,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            widget.headline ?? context.localizations.coursesTab,
+            context.localizations.coursesTab,
             style: TextStyle(
               fontSize: 16.sp,
               letterSpacing: -0.16,

@@ -139,26 +139,25 @@ class _LearningPageVideoTabState extends State<LearningPageVideoTab>
             aspectRatio: _videoController!.value.aspectRatio,
             child: Chewie(controller: _chewieController!),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 8.h),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (widget.step.title.isNotEmpty)
-                  Text(
+                  AppText.title3(
                     widget.step.title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    color: context.colors.fgDefault,
+                    maxLines: 2,
                   ),
 
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
 
                 if (widget.step.text?.isNotEmpty == true)
                   Text(
                     widget.step.text!,
-                    style: const TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
 
                 const SizedBox(height: 16),

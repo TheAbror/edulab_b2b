@@ -23,8 +23,6 @@ class _BodyState extends State<_Body> {
   final _identifierController = TextEditingController();
   final _identifierFocusNode = FocusNode();
 
-  static final _emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
-
   @override
   void initState() {
     super.initState();
@@ -32,10 +30,7 @@ class _BodyState extends State<_Body> {
   }
 
   void _onFocusChange() {
-    final authMethod = context.read<AuthBloc>().state.authMethod;
-    if (authMethod == AuthMethod.phone &&
-        _identifierFocusNode.hasFocus &&
-        _identifierController.text.isEmpty) {
+    if (_identifierFocusNode.hasFocus && _identifierController.text.isEmpty) {
       _identifierController.text = '+998';
       _identifierController.selection = TextSelection.fromPosition(
         TextPosition(offset: _identifierController.text.length),
@@ -43,15 +38,8 @@ class _BodyState extends State<_Body> {
     }
   }
 
-  bool _isValid(String value, AuthMethod method) {
-    if (method == AuthMethod.phone) return value.length == 13;
-    return _emailRegex.hasMatch(value.trim());
-  }
-
-  void _onMethodChanged(AuthMethod method) {
-    _identifierController.clear();
-    context.read<AuthBloc>().setAuthMethod(method);
-  }
+  // Sign-in is phone + OTP only; the API has no e-mail OTP endpoint.
+  bool _isValid(String value) => value.length == 13;
 
   @override
   void dispose() {
@@ -117,18 +105,13 @@ class _BodyState extends State<_Body> {
                   ),
                 ),
                 SizedBox(height: 24.h),
-                AuthMethodSegmentControl(
-                  value: state.authMethod,
-                  onChanged: _onMethodChanged,
-                ),
-                SizedBox(height: 12.h),
                 AuthIdentifierField(
-                  method: state.authMethod,
+                  method: AuthMethod.phone,
                   controller: _identifierController,
                   focusNode: _identifierFocusNode,
                   hasError: hasError,
                   onChanged: (value) {
-                    final isValid = _isValid(value, state.authMethod);
+                    final isValid = _isValid(value);
                     if (isValid != !state.isDisabled) {
                       if (isValid) {
                         context.read<AuthBloc>().enableButton();
@@ -164,20 +147,9 @@ class _BodyState extends State<_Body> {
                   isDisabled: state.isDisabled,
                   onTap: () {
                     final value = _identifierController.text.trim();
-                    if (_isValid(value, state.authMethod) &&
-                        !state.isDisabled) {
+                    if (_isValid(value) && !state.isDisabled) {
                       _identifierFocusNode.unfocus();
-
-                      //context.read<AuthBloc>().signInStepOne(value, false);
-
-                      // TODO: remoe below code
-                      // server-side; bypass signInStepOne and navigate
-                      // directly for now. Restore the signInStepOne call
-                      // once checking is ready.
-                      Navigator.pushNamed(
-                        context,
-                        AppRoutes.codeVerificationPage,
-                      );
+                      context.read<AuthBloc>().signInStepOne(value, false);
                     }
                   },
                 ),

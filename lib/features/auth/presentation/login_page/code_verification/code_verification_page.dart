@@ -173,9 +173,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                             if (state.isCountDownFinished) {
                               context.read<AuthBloc>().setInitialValue();
                               context.read<AuthBloc>().signInStepOne(
-                                state.authMethod == AuthMethod.email
-                                    ? state.email
-                                    : state.phoneNumber,
+                                state.phoneNumber,
                                 true,
                               );
                               startTimer();

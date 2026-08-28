@@ -17,12 +17,10 @@ class CoursesBloc extends Cubit<CoursesState> {
         if (data != null) {
           emit(
             state.copyWith(
-              coursesAll: data.content,
+              coursesAll: data,
               blocProgress: BlocProgress.LOADED,
             ),
           );
-
-          print(data);
         }
       } else {
         final error = ErrorResponse.fromJson(

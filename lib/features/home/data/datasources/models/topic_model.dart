@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:edulab_b2b/features/home/data/datasources/models/step_model.dart';
+import 'package:edulab_b2b/features/home/data/datasources/models/quiz_response.dart';
 
 part 'topic_model.g.dart';
 
@@ -22,6 +23,8 @@ class TopicModel {
   @JsonKey(name: 'steps_info')
   final Map<String, dynamic>? stepsInfo;
   @JsonKey(defaultValue: [])
+  final List<MediaDTO> resources;
+  @JsonKey(defaultValue: [])
   final List<StepModel> steps;
 
   TopicModel({
@@ -33,6 +36,7 @@ class TopicModel {
     this.chapterId,
     required this.status,
     this.stepsInfo,
+    required this.resources,
     required this.steps,
   });
 
@@ -43,6 +47,7 @@ class TopicModel {
       description: '',
       priority: 0,
       status: '',
+      resources: const [],
       steps: [],
     );
   }

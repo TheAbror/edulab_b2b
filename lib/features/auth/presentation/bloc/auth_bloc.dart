@@ -5,19 +5,28 @@ part 'auth_state.dart';
 class AuthBloc extends Cubit<AuthState> {
   AuthBloc() : super(AuthState.initial());
 
+  // The mobile sign-in endpoints (LoginInDTO / LoginEnterCodeDTO) require an
+  // account_type. This app only signs in learners.
+  static const String _accountType = 'ORGANIZATION';
+
+  // signin/step_* only accepts en | ru | uz.
+  String get _locale {
+    final lang = PreferencesServices.getLangCode();
+    return (lang == 'en' || lang == 'ru' || lang == 'uz') ? lang! : 'uz';
+  }
+
   //!----------------------- Sign IN functions start -------------------------------//
 
   void signInStepOne(
-    String identifier,
+    String phoneNumber,
     bool? isResentCode,
   ) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final isEmail = state.authMethod == AuthMethod.email;
     final request = SignInStepOneRequest(
-      phoneNumber: isEmail ? '' : identifier,
-      email: isEmail ? identifier : '',
-      locale: 'uz',
+      phoneNumber: phoneNumber,
+      accountType: _accountType,
+      locale: _locale,
     );
 
     try {
@@ -29,8 +38,7 @@ class AuthBloc extends Cubit<AuthState> {
         if (data != null) {
           emit(
             state.copyWith(
-              phoneNumber: isEmail ? '' : identifier,
-              email: isEmail ? identifier : '',
+              phoneNumber: phoneNumber,
               blocProgress: isResentCode == true
                   ? BlocProgress.NOT_STARTED
                   : BlocProgress.IS_SUCCESS,
@@ -65,8 +73,8 @@ class AuthBloc extends Cubit<AuthState> {
 
     final request = SignInStepTwoRequest(
       phoneNumber: state.phoneNumber,
-      email: state.email,
-      locale: 'uz',
+      accountType: _accountType,
+      locale: _locale,
       code: code,
     );
 
@@ -92,6 +100,9 @@ class AuthBloc extends Cubit<AuthState> {
                     lastName: user.lastname,
                     account_type_str: user.accountType,
                     email: user.email,
+                    phone: user.phone,
+                    department: user.department,
+                    jobPosition: user.jobPosition,
                     status: user.status,
                     profile_photo: user.profilePhoto,
                   ),
@@ -168,6 +179,9 @@ class AuthBloc extends Cubit<AuthState> {
                     lastName: user.lastname,
                     account_type_str: user.accountType,
                     email: user.email,
+                    phone: user.phone,
+                    department: user.department,
+                    jobPosition: user.jobPosition,
                     status: user.status,
                     profile_photo: user.profilePhoto,
                   ),

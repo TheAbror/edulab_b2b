@@ -15,6 +15,7 @@ class LearningPage extends StatefulWidget {
 class _LearningPageState extends State<LearningPage>
     with TickerProviderStateMixin {
   TabController? _tabController;
+  int? _topicId;
 
   void _initTabController(
     StepModel step,
@@ -61,7 +62,9 @@ class _LearningPageState extends State<LearningPage>
           }
 
           if (_tabController == null ||
-              _tabController!.length != state.allSteps.length) {
+              _tabController!.length != state.allSteps.length ||
+              _topicId != state.topicID) {
+            _topicId = state.topicID;
             _initTabController(
               state.step,
               state.allSteps,
@@ -89,6 +92,7 @@ class _LearningPageState extends State<LearningPage>
                     stepsLength: state.allSteps.length,
                     status: state.allSteps[state.appbarTabIndex].status,
                     stepModel: state.allSteps[state.appbarTabIndex],
+                    state: state,
                   ),
           );
         },

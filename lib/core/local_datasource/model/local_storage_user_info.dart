@@ -7,6 +7,9 @@ class LocalStorageUserInfo {
   final String? lastName;
   final String? account_type_str;
   final String? email;
+  final String? phone;
+  final String? department;
+  final String? jobPosition;
   final String? status;
   final MediaDTO? profile_photo;
 
@@ -19,6 +22,9 @@ class LocalStorageUserInfo {
     required this.email,
     required this.status,
     required this.profile_photo,
+    this.phone,
+    this.department,
+    this.jobPosition,
   });
 
   Map<String, dynamic> toJson() {
@@ -29,6 +35,9 @@ class LocalStorageUserInfo {
       "lastName": lastName ?? '',
       "account_type_str": account_type_str ?? '',
       "email": email ?? '',
+      "phone": phone ?? '',
+      "department": department ?? '',
+      "job_position": jobPosition ?? '',
       "status": status ?? '',
       "profile_photo": profile_photo?.toJson(),
     };
@@ -42,6 +51,9 @@ class LocalStorageUserInfo {
       lastName: json["lastName"] ?? "",
       account_type_str: json["account_type_str"] ?? "",
       email: json["email"] ?? "",
+      phone: json["phone"] ?? "",
+      department: json["department"] ?? "",
+      jobPosition: json["job_position"] ?? "",
       status: json["status"] ?? "",
       profile_photo: json["profile_photo"] != null
           ? MediaDTO.fromJson(json["profile_photo"])

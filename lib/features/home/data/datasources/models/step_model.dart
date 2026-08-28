@@ -15,7 +15,10 @@ class StepModel extends Equatable {
   final String type;
   @JsonKey(defaultValue: 0)
   final int priority;
-  @JsonKey(defaultValue: StepItemStatus.closed)
+  @JsonKey(
+    defaultValue: StepItemStatus.closed,
+    unknownEnumValue: StepItemStatus.closed,
+  )
   final StepItemStatus status;
   final MediaDTO? media;
   final String? text;
@@ -115,7 +118,8 @@ class QuestionModel {
   final String? footerText;
   @JsonKey(defaultValue: 0)
   final int index;
-  final QuestionType type;
+  // Nullable: the backend omits `type` on some step payloads (e.g. course/{id}).
+  final QuestionType? type;
   @JsonKey(defaultValue: '')
   final String difficulty;
   @JsonKey(defaultValue: 0)
@@ -132,7 +136,7 @@ class QuestionModel {
     required this.text,
     this.footerText,
     required this.index,
-    required this.type,
+    this.type,
     required this.difficulty,
     required this.priority,
     required this.options,
@@ -168,6 +172,14 @@ class QuestionOption {
   Map<String, dynamic> toJson() => _$QuestionOptionToJson(this);
 }
 
+// `selected_options` comes back either as a list of ids ([1, 2]) or as a list of
+// option objects ([{id: 1, ...}]); normalise both to a list of ids.
+Object? _readSelectedOptionIds(Map<dynamic, dynamic> json, String key) {
+  final raw = json['selected_options'];
+  if (raw is! List) return raw;
+  return raw.map((e) => e is Map ? e['id'] : e).toList();
+}
+
 @JsonSerializable(includeIfNull: true)
 class QuestionAnswerModel {
   @JsonKey(defaultValue: 0)
@@ -176,7 +188,7 @@ class QuestionAnswerModel {
   final int number;
   @JsonKey(defaultValue: '')
   final String text;
-  final QuestionType type;
+  final QuestionType? type;
   @JsonKey(defaultValue: '')
   final String difficulty;
   @JsonKey(defaultValue: 0)
@@ -189,14 +201,14 @@ class QuestionAnswerModel {
   final String status;
   @JsonKey(name: 'explanation_video')
   final MediaDTO? explanationVideo;
-  @JsonKey(name: 'selected_options')
+  @JsonKey(name: 'selected_options', readValue: _readSelectedOptionIds)
   final List<int>? selectedOptions;
 
   QuestionAnswerModel({
     required this.id,
     required this.number,
     required this.text,
-    required this.type,
+    this.type,
     required this.difficulty,
     required this.priority,
     required this.index,
@@ -211,12 +223,20 @@ class QuestionAnswerModel {
   Map<String, dynamic> toJson() => _$QuestionAnswerModelToJson(this);
 }
 
+// `value` is sometimes a string, sometimes a nested object; only keep it when
+// it's a plain string so parsing never throws.
+Object? _readAnswerOptionValue(Map<dynamic, dynamic> json, String key) {
+  final value = json['value'];
+  return value is String ? value : null;
+}
+
 @JsonSerializable(includeIfNull: true)
 class AnswerOption {
   @JsonKey(defaultValue: 0)
   final int id;
   @JsonKey(defaultValue: '')
   final String text;
+  @JsonKey(readValue: _readAnswerOptionValue)
   final String? value;
 
   AnswerOption({

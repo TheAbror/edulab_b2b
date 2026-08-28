@@ -114,10 +114,18 @@ class UserInfo {
   @JsonKey(defaultValue: [])
   final List<String>? roles;
   // final String roles_map: HashMap<String, String>? = null
+  // API returns a plain list of action codes, e.g.
+  // ["ENROLLMENT_REQUIRED", "UPDATE_PASSWORD", "VERIFY_EMAIL"].
   @JsonKey(defaultValue: [], name: 'required_actions')
-  final List<UserRequiredActions>? requiredActions;
+  final List<String>? requiredActions;
   @JsonKey(defaultValue: '')
   final String? email;
+  @JsonKey(defaultValue: '')
+  final String? phone;
+  @JsonKey(defaultValue: '')
+  final String? department;
+  @JsonKey(defaultValue: '', name: 'job_position')
+  final String? jobPosition;
   @JsonKey(defaultValue: '')
   final String? status;
   @JsonKey(defaultValue: '', name: 'account_type')
@@ -134,6 +142,9 @@ class UserInfo {
     required this.roles,
     required this.requiredActions,
     this.email,
+    this.phone,
+    this.department,
+    this.jobPosition,
     required this.status,
     required this.accountType,
     required this.accountTypeStr,
@@ -149,6 +160,9 @@ class UserInfo {
       roles: const [],
       requiredActions: const [],
       email: '',
+      phone: '',
+      department: '',
+      jobPosition: '',
       status: '',
       accountType: '',
       accountTypeStr: '',
@@ -161,33 +175,19 @@ class UserInfo {
   Map<String, dynamic> toJson() => _$UserInfoToJson(this);
 }
 
-@JsonSerializable(includeIfNull: true)
-class UserRequiredActions {
-  @JsonKey(defaultValue: '')
-  final String status;
-  @JsonKey(defaultValue: '', name: 'account_type')
-  final String accountType;
-
-  UserRequiredActions({required this.status, required this.accountType});
-
-  factory UserRequiredActions.fromJson(Map<String, dynamic> json) =>
-      _$UserRequiredActionsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserRequiredActionsToJson(this);
-}
-
+// Request body for POST signin/step_one -> LoginInDTO
 @JsonSerializable(includeIfNull: true)
 class SignInStepOneRequest {
   @JsonKey(defaultValue: '', name: 'phone_number')
   final String phoneNumber;
-  @JsonKey(defaultValue: '')
-  final String email;
+  @JsonKey(defaultValue: '', name: 'account_type')
+  final String accountType;
   @JsonKey(defaultValue: '')
   final String locale;
 
   SignInStepOneRequest({
     this.phoneNumber = '',
-    this.email = '',
+    required this.accountType,
     required this.locale,
   });
 
@@ -197,12 +197,13 @@ class SignInStepOneRequest {
   Map<String, dynamic> toJson() => _$SignInStepOneRequestToJson(this);
 }
 
+// Request body for POST signin/step_two -> LoginEnterCodeDTO
 @JsonSerializable(includeIfNull: true)
 class SignInStepTwoRequest {
   @JsonKey(defaultValue: '', name: 'phone_number')
   final String phoneNumber;
-  @JsonKey(defaultValue: '')
-  final String email;
+  @JsonKey(defaultValue: '', name: 'account_type')
+  final String accountType;
   @JsonKey(defaultValue: '')
   final String locale;
   @JsonKey(defaultValue: '')
@@ -210,7 +211,7 @@ class SignInStepTwoRequest {
 
   SignInStepTwoRequest({
     this.phoneNumber = '',
-    this.email = '',
+    required this.accountType,
     required this.locale,
     required this.code,
   });

@@ -899,6 +899,21 @@ class AppLocalizationsUz extends AppLocalizations {
   String get whatUWillLearn => 'Siz nimani o‘rganasiz';
 
   @override
+  String get courseContent => 'Kurs mazmuni';
+
+  @override
+  String get skillsYouWillGain => 'Egallaydigan ko‘nikmalaringiz';
+
+  @override
+  String get aboutTheCourse => 'Kurs haqida';
+
+  @override
+  String get instructors => 'O‘qituvchilar';
+
+  @override
+  String get playPreview => 'Ko‘rib chiqish';
+
+  @override
   String get certificateOfCompletion => 'Tugatish sertifikati';
 
   @override
@@ -1260,4 +1275,35 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get userInfo => 'Foydalanuvchi ma\'lumotlari';
+
+  @override
+  String get phoneNumber => 'Telefon raqami';
+
+  @override
+  String get employeeId => 'Xodim ID raqami';
+
+  @override
+  String get aboutCourse => 'Kurs haqida';
+
+  @override
+  String get youreEnrolledTitle => 'Siz kursga yozildingiz.';
+
+  @override
+  String get youreEnrolledSubtitle =>
+      'Siz kursga yozildingiz — boshlash uchun «Davom etish» tugmasini bosing.';
+
+  @override
+  String percentComplete(Object percent) {
+    return '$percent% bajarildi';
+  }
+
+  @override
+  String videoCountShort(Object count) {
+    return '$count video';
+  }
+
+  @override
+  String testCountShort(Object count) {
+    return '$count test';
+  }
 }

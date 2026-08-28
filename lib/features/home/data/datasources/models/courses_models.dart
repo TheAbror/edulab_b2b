@@ -151,6 +151,16 @@ class SyllabusResponse {
   Map<String, dynamic> toJson() => _$SyllabusResponseToJson(this);
 }
 
+Object? _readEnrollmentsCount(Map<dynamic, dynamic> json, String key) =>
+    json['enrollments_count'] ?? json['learners_count'];
+
+// Some endpoints send `status` as a plain string (e.g. "PUBLISHED") instead of
+// the {label, value} object this model expects; ignore it when it isn't an object.
+Object? _readStatusObject(Map<dynamic, dynamic> json, String key) {
+  final value = json[key];
+  return value is Map ? value : null;
+}
+
 @JsonSerializable(includeIfNull: true)
 class SingleCourseInfo {
   @JsonKey(defaultValue: 0)
@@ -161,7 +171,7 @@ class SingleCourseInfo {
   final String aboutCourse;
   @JsonKey(defaultValue: [])
   final List<String> description;
-  @JsonKey(defaultValue: "")
+  @JsonKey(defaultValue: "", name: 'short_description')
   final String shortDescription;
   @JsonKey(defaultValue: [])
   final List<Authors> authors;
@@ -195,14 +205,17 @@ class SingleCourseInfo {
   final List<LabelValueAsIntResponse> skills;
   @JsonKey(name: "co_author_ids", defaultValue: [])
   final List<int> coAuthorIds;
+  @JsonKey(readValue: _readStatusObject)
   final Status? status;
-  @JsonKey(name: "learners_count", defaultValue: 0)
+  // course/{id} returns "enrollments_count"; course/all returns "learners_count".
+  @JsonKey(defaultValue: 0, readValue: _readEnrollmentsCount)
   final int learnersCount;
   final SyllabusResponse? syllabus;
   final int? progress;
   final bool? published;
+  @JsonKey(name: 'can_publish')
   final bool? canPublish;
-  @JsonKey(name: "completion_time", defaultValue: '-- || --')
+  @JsonKey(name: "time_to_complete", defaultValue: '-- || --')
   final String? completionTime;
   @JsonKey(defaultValue: '')
   final String price;

@@ -896,6 +896,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whatUWillLearn => 'What you’ll learn';
 
   @override
+  String get courseContent => 'Course content';
+
+  @override
+  String get skillsYouWillGain => 'Skills you’ll gain';
+
+  @override
+  String get aboutTheCourse => 'About the course';
+
+  @override
+  String get instructors => 'Instructors';
+
+  @override
+  String get playPreview => 'Play preview';
+
+  @override
   String get certificateOfCompletion => 'Certificate of completion';
 
   @override
@@ -1253,4 +1268,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get userInfo => 'User info';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get employeeId => 'Employee ID';
+
+  @override
+  String get aboutCourse => 'About course';
+
+  @override
+  String get youreEnrolledTitle => 'You\'re enrolled.';
+
+  @override
+  String get youreEnrolledSubtitle =>
+      'You are enrolled — tap \"Continue\" to begin.';
+
+  @override
+  String percentComplete(Object percent) {
+    return '$percent% complete';
+  }
+
+  @override
+  String videoCountShort(Object count) {
+    return '$count video';
+  }
+
+  @override
+  String testCountShort(Object count) {
+    return '$count test';
+  }
 }

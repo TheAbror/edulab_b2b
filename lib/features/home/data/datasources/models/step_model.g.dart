@@ -13,7 +13,11 @@ StepModel _$StepModelFromJson(Map<String, dynamic> json) => StepModel(
   type: json['type'] as String? ?? '',
   priority: (json['priority'] as num?)?.toInt() ?? 0,
   status:
-      $enumDecodeNullable(_$StepItemStatusEnumMap, json['status']) ??
+      $enumDecodeNullable(
+        _$StepItemStatusEnumMap,
+        json['status'],
+        unknownValue: StepItemStatus.closed,
+      ) ??
       StepItemStatus.closed,
   media: json['media'] == null
       ? null
@@ -68,7 +72,9 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
       text: json['text'] as String? ?? '',
       footerText: json['footer_text'] as String?,
       index: (json['index'] as num?)?.toInt() ?? 0,
-      type: QuestionType.fromJson(json['type'] as Map<String, dynamic>),
+      type: json['type'] == null
+          ? null
+          : QuestionType.fromJson(json['type'] as Map<String, dynamic>),
       difficulty: json['difficulty'] as String? ?? '',
       priority: (json['priority'] as num?)?.toInt() ?? 0,
       options:
@@ -119,7 +125,9 @@ QuestionAnswerModel _$QuestionAnswerModelFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num?)?.toInt() ?? 0,
       number: (json['number'] as num?)?.toInt() ?? 0,
       text: json['text'] as String? ?? '',
-      type: QuestionType.fromJson(json['type'] as Map<String, dynamic>),
+      type: json['type'] == null
+          ? null
+          : QuestionType.fromJson(json['type'] as Map<String, dynamic>),
       difficulty: json['difficulty'] as String? ?? '',
       priority: (json['priority'] as num?)?.toInt() ?? 0,
       index: (json['index'] as num?)?.toInt() ?? 0,
@@ -134,9 +142,10 @@ QuestionAnswerModel _$QuestionAnswerModelFromJson(Map<String, dynamic> json) =>
           : MediaDTO.fromJson(
               json['explanation_video'] as Map<String, dynamic>,
             ),
-      selectedOptions: (json['selected_options'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
-          .toList(),
+      selectedOptions:
+          (_readSelectedOptionIds(json, 'selected_options') as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList(),
     );
 
 Map<String, dynamic> _$QuestionAnswerModelToJson(
@@ -158,7 +167,7 @@ Map<String, dynamic> _$QuestionAnswerModelToJson(
 AnswerOption _$AnswerOptionFromJson(Map<String, dynamic> json) => AnswerOption(
   id: (json['id'] as num?)?.toInt() ?? 0,
   text: json['text'] as String? ?? '',
-  value: json['value'] as String?,
+  value: _readAnswerOptionValue(json, 'value') as String?,
 );
 
 Map<String, dynamic> _$AnswerOptionToJson(AnswerOption instance) =>

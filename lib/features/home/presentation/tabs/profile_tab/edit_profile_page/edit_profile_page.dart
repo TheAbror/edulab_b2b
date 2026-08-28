@@ -9,16 +9,12 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   LocalStorageUserInfo? db;
-  late final TextEditingController _firstNameController;
-  late final TextEditingController _lastNameController;
   late final TextEditingController _bioController;
 
   @override
   void initState() {
     super.initState();
     db = PreferencesServices.getUserInfo();
-    _firstNameController = TextEditingController(text: db?.firstName ?? '');
-    _lastNameController = TextEditingController(text: db?.lastName ?? '');
     _bioController = TextEditingController(
       text: PreferencesServices.getProfileBio() ?? '',
     );
@@ -26,8 +22,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   void dispose() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
     _bioController.dispose();
     super.dispose();
   }
@@ -43,6 +37,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
       lastName: current.lastName,
       account_type_str: current.account_type_str,
       email: current.email,
+      phone: current.phone,
+      department: current.department,
+      jobPosition: current.jobPosition,
       status: current.status,
       profile_photo: null,
     );
@@ -56,26 +53,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   Future<void> _saveChanges() async {
-    final current = db;
-    if (current == null) return;
-
-    final updated = LocalStorageUserInfo(
-      id: current.id,
-      username: current.username,
-      firstName: _firstNameController.text.trim(),
-      lastName: _lastNameController.text.trim(),
-      account_type_str: current.account_type_str,
-      email: current.email,
-      status: current.status,
-      profile_photo: current.profile_photo,
-    );
-
-    await PreferencesServices.saveUserInfo(updated);
     await PreferencesServices.saveProfileBio(_bioController.text.trim());
 
     if (!mounted) return;
 
-    setState(() => db = updated);
     showMessage(context.localizations.changesSaved, context);
     Navigator.pop(context);
   }
@@ -96,21 +77,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
             onRemove: _removePhoto,
             onAvatarTypeChanged: _onAvatarTypeChanged,
           ),
-          space24,
 
-          ProfileTabHeader(lang.userInfo, context),
-          space12,
-          _card(context, [
-            EditProfilePageItem(
-              label: lang.firstName,
-              controller: _firstNameController,
-            ),
-            EditProfilePageItem(
-              label: lang.lastName,
-              controller: _lastNameController,
-            ),
-          ]),
-          space12,
+          space24,
+          _infoCard(context),
 
           _card(
             context,
@@ -146,6 +115,37 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
+  /// "USER INFO" card - read-only view of what the backend returned at login.
+  /// Rows with no value are dropped; if nothing is left the card is hidden.
+  Widget _infoCard(BuildContext context) {
+    final lang = context.localizations;
+    final rows = <Widget>[];
+
+    void add(String label, String? value) {
+      final trimmed = (value ?? '').trim();
+      if (trimmed.isEmpty) return;
+      rows.add(EditProfileInfoRow(label: label, value: trimmed));
+    }
+
+    add(lang.fullName, '${db?.firstName ?? ''} ${db?.lastName ?? ''}'.trim());
+    add(lang.department, db?.department);
+    add(lang.position, db?.jobPosition);
+    add(lang.email, db?.email);
+    add(lang.phoneNumber, db?.phone);
+    add(lang.employeeId, db?.username);
+
+    if (rows.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ProfileTabHeader(lang.userInfo, context),
+        _card(context, rows),
+        space12,
+      ],
+    );
+  }
+
   Widget _card(
     BuildContext context,
     List<Widget> items, {
@@ -162,7 +162,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (var i = 0; i < items.length; i++)
             Container(

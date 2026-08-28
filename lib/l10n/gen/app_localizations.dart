@@ -1834,6 +1834,36 @@ abstract class AppLocalizations {
   /// **'What you’ll learn'**
   String get whatUWillLearn;
 
+  /// No description provided for @courseContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Course content'**
+  String get courseContent;
+
+  /// No description provided for @skillsYouWillGain.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills you’ll gain'**
+  String get skillsYouWillGain;
+
+  /// No description provided for @aboutTheCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'About the course'**
+  String get aboutTheCourse;
+
+  /// No description provided for @instructors.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructors'**
+  String get instructors;
+
+  /// No description provided for @playPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Play preview'**
+  String get playPreview;
+
   /// No description provided for @certificateOfCompletion.
   ///
   /// In en, this message translates to:
@@ -2517,6 +2547,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'User info'**
   String get userInfo;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phoneNumber;
+
+  /// No description provided for @employeeId.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee ID'**
+  String get employeeId;
+
+  /// No description provided for @aboutCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'About course'**
+  String get aboutCourse;
+
+  /// No description provided for @youreEnrolledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re enrolled.'**
+  String get youreEnrolledTitle;
+
+  /// No description provided for @youreEnrolledSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You are enrolled — tap \"Continue\" to begin.'**
+  String get youreEnrolledSubtitle;
+
+  /// No description provided for @percentComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% complete'**
+  String percentComplete(Object percent);
+
+  /// No description provided for @videoCountShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} video'**
+  String videoCountShort(Object count);
+
+  /// No description provided for @testCountShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} test'**
+  String testCountShort(Object count);
 }
 
 class _AppLocalizationsDelegate

@@ -894,6 +894,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get whatUWillLearn => 'Чему вы научитесь';
 
   @override
+  String get courseContent => 'Содержание курса';
+
+  @override
+  String get skillsYouWillGain => 'Навыки, которые вы получите';
+
+  @override
+  String get aboutTheCourse => 'О курсе';
+
+  @override
+  String get instructors => 'Преподаватели';
+
+  @override
+  String get playPreview => 'Смотреть превью';
+
+  @override
   String get certificateOfCompletion => 'Сертификат об окончании';
 
   @override
@@ -1253,4 +1268,35 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get userInfo => 'Информация о пользователе';
+
+  @override
+  String get phoneNumber => 'Номер телефона';
+
+  @override
+  String get employeeId => 'Табельный номер';
+
+  @override
+  String get aboutCourse => 'О курсе';
+
+  @override
+  String get youreEnrolledTitle => 'Вы записаны.';
+
+  @override
+  String get youreEnrolledSubtitle =>
+      'Вы записаны на курс — нажмите «Продолжить», чтобы начать.';
+
+  @override
+  String percentComplete(Object percent) {
+    return '$percent% пройдено';
+  }
+
+  @override
+  String videoCountShort(Object count) {
+    return '$count видео';
+  }
+
+  @override
+  String testCountShort(Object count) {
+    return '$count тест';
+  }
 }

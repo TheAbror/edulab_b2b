@@ -70,7 +70,7 @@ export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/p
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_themes.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_biography_item.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_page_app_bar.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_page_item.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_info_row.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo_action_sheet.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_avatar_type_sheet.dart';
@@ -84,9 +84,6 @@ export 'package:edulab_b2b/features/our_courses/our_courses_widget.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/courses_tab/course_tab_item.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/search_and_filter.dart';
 export 'package:edulab_b2b/core/bottom_sheet/primary_loader.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_text.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_info.dart';
-export 'package:edulab_b2b/features/home/presentation/tabs/courses_tab/widgets/course_content/course_content_tab_materials.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:edulab_b2b/core/flutter_downloader_utils/app_utils.dart';
 export 'package:edulab_b2b/core/flutter_downloader_utils/file_download_utils.dart';
@@ -122,6 +119,10 @@ export 'package:edulab_b2b/features/auth/presentation/login_page/code_verificati
 export 'package:edulab_b2b/features/auth/presentation/enter_details_page/enter_details_page.dart';
 export 'package:edulab_b2b/features/home/presentation/root_page.dart';
 export 'package:edulab_b2b/features/enrolled_course_page/enrolled_course_page.dart';
+export 'package:edulab_b2b/features/enrolled_course_page/widgets/course_segment_control.dart';
+export 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course_header_card.dart';
+export 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course_content_card.dart';
+export 'package:edulab_b2b/features/enrolled_course_page/widgets/youre_enrolled_card.dart';
 export 'package:edulab_b2b/features/learning_page/learning_page.dart';
 export 'package:edulab_b2b/features/chat/chat_page.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/edit_profile_page.dart';
@@ -140,6 +141,7 @@ export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/tabs/in_
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/no_results_widget.dart';
 export 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 export 'package:edulab_b2b/features/single_course/widgets/single_course_page_widgets.dart';
+export 'package:edulab_b2b/features/single_course/widgets/course_page_sections.dart';
 export 'package:edulab_b2b/features/home/presentation/widgets/id_and_title.dart';
 export 'package:chewie/chewie.dart';
 export 'package:edulab_b2b/features/learning_page/bloc/learning_bloc.dart';

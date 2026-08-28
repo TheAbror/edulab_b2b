@@ -25,6 +25,7 @@ class SingleCoursePage extends StatelessWidget {
         return bloc;
       },
       child: Scaffold(
+        backgroundColor: context.colors.bgPage3,
         appBar: CourseInfoAppBar(id: id),
         body: SingleCourseBody(
           isContent: false,
@@ -63,113 +64,49 @@ class SingleCourseBodyState extends State<SingleCourseBody> {
           return const PrimaryLoader();
         }
 
+        final course = state.singleCourse;
+        final willLearn = course.willLearn ?? const [];
+        final chapters = state.singleCourseChapters.isNotEmpty
+            ? state.singleCourseChapters
+            : (course.syllabus?.courseContent ?? const []);
+        final skills = course.skills
+            .map((s) => s.label)
+            .where((label) => label.isNotEmpty)
+            .toList();
+        final instructors = <Authors>[...course.authors, ...course.co_authors];
+
         return SingleChildScrollView(
           child: Column(
             children: [
-              //HERE
               if (!widget.isContent) CourseInfoHeader(id: widget.id),
-              //
-              Padding(
-                padding: EdgeInsets.only(top: 24.h, left: 16.w, right: 16.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //willLearn
-                    if (state.singleCourse.willLearn?.isNotEmpty == true) ...[
-                      space12,
-                      CourseInfoBlocsTitle(
-                        text: context.localizations.whatUWillLearn,
-                      ),
-                      space16,
-                      ListView.builder(
-                        padding: EdgeInsets.zero,
-                        itemCount: state.singleCourse.willLearn?.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return CourseInfoWhatYouWillLearnItems(
-                            text: state.singleCourse.willLearn?[index] ?? '',
-                          );
-                        },
-                      ),
-                      space24,
-                    ],
 
-                    // Course materials
-                    if (!widget.isContent)
-                      if (state
-                              .singleCourse
-                              .syllabus
-                              ?.courseContent
-                              ?.isNotEmpty ==
-                          true) ...[
-                        CourseInfoBlocsTitle(
-                          text: context.localizations.courseMaterials,
-                        ),
-                        ExpandableCourseMaterials(state: state),
-                        // SizedBox(height: 16.h),
-                        if (state.materialsMoreThan3)
-                          ShowAllButtonWithChangingText(
-                            isHidden: state.courseMaterialsAreHidden,
-                            onTap: () {
-                              context
-                                  .read<SingleCourseBloc>()
-                                  .manageCourseMaterials();
-                            },
-                          ),
-                      ],
+              if (willLearn.isNotEmpty)
+                WhatYouWillLearnSection(items: willLearn),
 
-                    //aboutCourse
-                    if (state.singleCourse.aboutCourse.isNotEmpty) ...[
-                      SizedBox(height: 20.h),
-                      CourseInfoBlocsTitle(
-                        text: context.localizations.description,
-                      ),
-                      space8,
-                      ExpandableHtml(
-                        state: state,
-                        html: state.singleCourse.aboutCourse,
-                      ),
-                      space10,
-                      if (state.singleCourse.aboutCourse.length > 100)
-                        ShowMoreTextWithOpacity(
-                          text: context.localizations.showAll,
-                          isDescriptionHidden: state.isDescriptionHidden,
-                        ),
-                      space24,
-                    ],
-
-                    //AUTHORS
-                    if (state.singleCourse.authors.isNotEmpty) ...[
-                      CourseInfoBlocsTitle(text: context.localizations.authors),
-                      space16,
-                      ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
-                        itemCount: state.singleCourse.authors.length,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          final item = state.singleCourse.authors[index];
-
-                          return CourseInfoAuthorDetails(
-                            onTap: () {},
-                            authorName:
-                                '${item.lastname}'
-                                ' '
-                                '${item.firstname}',
-                            authorPhoto: item.avatar?.originalUrl ?? '',
-                            authorPosition: item.jobPosition,
-                            courseCount: item.courseCount,
-                            about: item.about,
-                          );
-                        },
-                      ),
-
-                      SizedBox(height: 40.h),
-                    ],
-                  ],
+              if (!widget.isContent && chapters.isNotEmpty)
+                CourseContentSection(
+                  chapters: chapters,
+                  isCollapsed: state.courseMaterialsAreHidden,
+                  showToggle: state.materialsMoreThan3,
+                  onToggle: () =>
+                      context.read<SingleCourseBloc>().manageCourseMaterials(),
                 ),
-              ),
+
+              if (skills.isNotEmpty) SkillsYouWillGainSection(skills: skills),
+
+              if (course.aboutCourse.isNotEmpty)
+                AboutTheCourseSection(
+                  html: course.aboutCourse,
+                  isCollapsed: state.isDescriptionHidden,
+                  onToggle: () => context
+                      .read<SingleCourseBloc>()
+                      .manageDescriptionHidden(),
+                ),
+
+              if (instructors.isNotEmpty)
+                InstructorsSection(authors: instructors),
+
+              SizedBox(height: 24.h),
             ],
           ),
         );

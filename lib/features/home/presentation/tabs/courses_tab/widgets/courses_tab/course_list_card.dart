@@ -25,7 +25,7 @@ class _CourseListCardState extends State<CourseListCard> {
       ),
       child: Column(
         children: List.generate(
-          3,
+          widget.courses.length,
           (index) {
             final course = widget.courses[index];
             final isLast = index == widget.courses.length - 1;

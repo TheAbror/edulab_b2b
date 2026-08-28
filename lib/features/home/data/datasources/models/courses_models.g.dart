@@ -110,7 +110,7 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           [],
-      shortDescription: json['shortDescription'] as String? ?? '',
+      shortDescription: json['short_description'] as String? ?? '',
       authors:
           (json['authors'] as List<dynamic>?)
               ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
@@ -171,17 +171,20 @@ SingleCourseInfo _$SingleCourseInfoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => (e as num).toInt())
               .toList() ??
           [],
-      status: json['status'] == null
+      status: _readStatusObject(json, 'status') == null
           ? null
-          : Status.fromJson(json['status'] as Map<String, dynamic>),
-      learnersCount: (json['learners_count'] as num?)?.toInt() ?? 0,
+          : Status.fromJson(
+              _readStatusObject(json, 'status') as Map<String, dynamic>,
+            ),
+      learnersCount:
+          (_readEnrollmentsCount(json, 'learnersCount') as num?)?.toInt() ?? 0,
       syllabus: json['syllabus'] == null
           ? null
           : SyllabusResponse.fromJson(json['syllabus'] as Map<String, dynamic>),
       progress: (json['progress'] as num?)?.toInt(),
       published: json['published'] as bool?,
-      canPublish: json['canPublish'] as bool?,
-      completionTime: json['completion_time'] as String? ?? '-- || --',
+      canPublish: json['can_publish'] as bool?,
+      completionTime: json['time_to_complete'] as String? ?? '-- || --',
       chapters:
           (json['chapters'] as List<dynamic>?)
               ?.map((e) => ChapterModel.fromJson(e as Map<String, dynamic>))
@@ -200,7 +203,7 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'title': instance.title,
       'about_course': instance.aboutCourse,
       'description': instance.description,
-      'shortDescription': instance.shortDescription,
+      'short_description': instance.shortDescription,
       'authors': instance.authors,
       'what_will_learn': instance.willLearn,
       'co_authors': instance.co_authors,
@@ -220,12 +223,12 @@ Map<String, dynamic> _$SingleCourseInfoToJson(SingleCourseInfo instance) =>
       'skills': instance.skills,
       'co_author_ids': instance.coAuthorIds,
       'status': instance.status,
-      'learners_count': instance.learnersCount,
+      'learnersCount': instance.learnersCount,
       'syllabus': instance.syllabus,
       'progress': instance.progress,
       'published': instance.published,
-      'canPublish': instance.canPublish,
-      'completion_time': instance.completionTime,
+      'can_publish': instance.canPublish,
+      'time_to_complete': instance.completionTime,
       'price': instance.price,
       'chapters': instance.chapters,
       'current_active': instance.currentlyActive,

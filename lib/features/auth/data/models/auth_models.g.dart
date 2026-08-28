@@ -68,10 +68,13 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) => UserInfo(
       (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
   requiredActions:
       (json['required_actions'] as List<dynamic>?)
-          ?.map((e) => UserRequiredActions.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e as String)
           .toList() ??
       [],
   email: json['email'] as String? ?? '',
+  phone: json['phone'] as String? ?? '',
+  department: json['department'] as String? ?? '',
+  jobPosition: json['job_position'] as String? ?? '',
   status: json['status'] as String? ?? '',
   accountType: json['account_type'] as String? ?? '',
   accountTypeStr: json['account_type_str'] as String? ?? '',
@@ -86,29 +89,19 @@ Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
   'roles': instance.roles,
   'required_actions': instance.requiredActions,
   'email': instance.email,
+  'phone': instance.phone,
+  'department': instance.department,
+  'job_position': instance.jobPosition,
   'status': instance.status,
   'account_type': instance.accountType,
   'account_type_str': instance.accountTypeStr,
-};
-
-UserRequiredActions _$UserRequiredActionsFromJson(Map<String, dynamic> json) =>
-    UserRequiredActions(
-      status: json['status'] as String? ?? '',
-      accountType: json['account_type'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$UserRequiredActionsToJson(
-  UserRequiredActions instance,
-) => <String, dynamic>{
-  'status': instance.status,
-  'account_type': instance.accountType,
 };
 
 SignInStepOneRequest _$SignInStepOneRequestFromJson(
   Map<String, dynamic> json,
 ) => SignInStepOneRequest(
   phoneNumber: json['phone_number'] as String? ?? '',
-  email: json['email'] as String? ?? '',
+  accountType: json['account_type'] as String? ?? '',
   locale: json['locale'] as String? ?? '',
 );
 
@@ -116,7 +109,7 @@ Map<String, dynamic> _$SignInStepOneRequestToJson(
   SignInStepOneRequest instance,
 ) => <String, dynamic>{
   'phone_number': instance.phoneNumber,
-  'email': instance.email,
+  'account_type': instance.accountType,
   'locale': instance.locale,
 };
 
@@ -124,7 +117,7 @@ SignInStepTwoRequest _$SignInStepTwoRequestFromJson(
   Map<String, dynamic> json,
 ) => SignInStepTwoRequest(
   phoneNumber: json['phone_number'] as String? ?? '',
-  email: json['email'] as String? ?? '',
+  accountType: json['account_type'] as String? ?? '',
   locale: json['locale'] as String? ?? '',
   code: json['code'] as String? ?? '',
 );
@@ -133,7 +126,7 @@ Map<String, dynamic> _$SignInStepTwoRequestToJson(
   SignInStepTwoRequest instance,
 ) => <String, dynamic>{
   'phone_number': instance.phoneNumber,
-  'email': instance.email,
+  'account_type': instance.accountType,
   'locale': instance.locale,
   'code': instance.code,
 };

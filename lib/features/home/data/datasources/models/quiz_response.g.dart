@@ -124,14 +124,14 @@ Map<String, dynamic> _$QuizAnswerOptionToJson(QuizAnswerOption instance) =>
     };
 
 MediaDTO _$MediaDTOFromJson(Map<String, dynamic> json) => MediaDTO(
-  src: json['src'] as String,
-  originalName: json['original_name'] as String,
-  url: json['url'] as String,
-  fileSizeStr: json['file_size_str'] as String,
-  originalUrl: json['original_url'] as String,
-  thumbUrl: json['thumb_url'] as String,
-  fileSize: (json['file_size'] as num).toInt(),
-  extension: json['extension'] as String,
+  src: json['src'] as String? ?? '',
+  originalName: json['original_name'] as String? ?? '',
+  url: json['url'] as String? ?? '',
+  fileSizeStr: json['file_size_str'] as String? ?? '',
+  originalUrl: json['original_url'] as String? ?? '',
+  thumbUrl: json['thumb_url'] as String? ?? '',
+  fileSize: (json['file_size'] as num?)?.toInt() ?? 0,
+  extension: json['extension'] as String? ?? '',
 );
 
 Map<String, dynamic> _$MediaDTOToJson(MediaDTO instance) => <String, dynamic>{

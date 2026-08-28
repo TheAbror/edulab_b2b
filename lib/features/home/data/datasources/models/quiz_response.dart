@@ -175,18 +175,23 @@ class QuizAnswerOption {
 
 @JsonSerializable(includeIfNull: true)
 class MediaDTO {
+  // The backend sometimes returns partial media objects (e.g. an empty
+  // preview_video), so every field tolerates a missing / null value.
+  @JsonKey(defaultValue: '')
   final String src;
-  @JsonKey(name: 'original_name')
+  @JsonKey(name: 'original_name', defaultValue: '')
   final String originalName;
+  @JsonKey(defaultValue: '')
   final String url;
-  @JsonKey(name: 'file_size_str')
+  @JsonKey(name: 'file_size_str', defaultValue: '')
   final String fileSizeStr;
-  @JsonKey(name: 'original_url')
+  @JsonKey(name: 'original_url', defaultValue: '')
   final String originalUrl;
-  @JsonKey(name: 'thumb_url')
+  @JsonKey(name: 'thumb_url', defaultValue: '')
   final String thumbUrl;
-  @JsonKey(name: 'file_size')
+  @JsonKey(name: 'file_size', defaultValue: 0)
   final int fileSize;
+  @JsonKey(defaultValue: '')
   final String extension;
 
   const MediaDTO({

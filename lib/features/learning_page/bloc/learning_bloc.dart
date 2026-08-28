@@ -146,6 +146,29 @@ class LearningBloc extends Cubit<LearningState> {
     emit(state.copyWith(isExpanded: value));
   }
 
+  /// Jump straight to a [topic] (and its parent [chapter]) picked from the
+  /// course-content bottom sheet. All data already lives in [state.resumedCourse]
+  /// so no extra network call is needed.
+  void openTopic(ChapterModel chapter, TopicModel topic) {
+    if (topic.steps.isEmpty) return;
+
+    final firstStep = topic.steps.first;
+
+    emit(
+      state.copyWith(
+        chapter: chapter,
+        topic: topic,
+        step: firstStep,
+        allSteps: topic.steps,
+        appbarTabIndex: 0,
+        chapterID: chapter.id,
+        topicID: topic.id,
+        stepID: firstStep.id,
+        blocProgress: BlocProgress.LOADED,
+      ),
+    );
+  }
+
   void changeMaterialsTabIndex(int index) {
     emit(state.copyWith(materialsTabIndex: index));
   }
