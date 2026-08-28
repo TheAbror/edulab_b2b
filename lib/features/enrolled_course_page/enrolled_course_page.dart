@@ -1,7 +1,3 @@
-import 'package:edulab_b2b/features/enrolled_course_page/widgets/course_segment_control.dart';
-import 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course_content_card.dart';
-import 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course_header_card.dart';
-import 'package:edulab_b2b/features/enrolled_course_page/widgets/youre_enrolled_card.dart';
 import 'package:edulab_b2b/widget_imports.dart';
 
 class EnrolledCoursePage extends StatelessWidget {

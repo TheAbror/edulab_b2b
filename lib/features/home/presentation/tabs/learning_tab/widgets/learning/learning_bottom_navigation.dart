@@ -22,18 +22,25 @@ class LearningBottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     final next = _nextTopic(state);
 
+    /// The bar sits in [Scaffold.bottomNavigationBar], which does not apply the
+    /// safe area itself. iOS reserves ~34px for the home indicator while Android
+    /// reports the gesture/nav bar inset, so pad by the real inset (with a small
+    /// minimum for devices that report none) instead of a hardcoded gap.
+    final safeBottom = MediaQuery.paddingOf(context).bottom;
+    final bottomPadding = safeBottom > 12.h ? safeBottom : 12.h;
+
     return Container(
       padding: EdgeInsets.only(
         left: 16.w,
         right: 16.w,
-        bottom: 40.h,
+        top: 12.h,
+        bottom: bottomPadding,
       ),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(color: context.colors.borderMuted.withOpacity(0.15)),
         ),
       ),
-      height: 100.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

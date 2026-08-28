@@ -5,22 +5,28 @@ part 'home_state.dart';
 enum InternetStatus { connected, disconnected }
 
 class HomeBloc extends Cubit<HomeState> {
-  late final StreamSubscription _subscription;
+  late final StreamSubscription<bool> _subscription;
 
   HomeBloc() : super(HomeState.initial()) {
-    _subscription = InternetConnectionChecker.instance.onStatusChange.listen((
-      status,
+    _subscription = ConnectivityService.instance.onStatusChange.listen((
+      isConnected,
     ) {
+      if (isClosed) return;
+
       if (WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
         emit(
           state.copyWith(
-            internetStatus: status == InternetConnectionStatus.connected
+            internetStatus: isConnected
                 ? InternetStatus.connected
                 : InternetStatus.disconnected,
           ),
         );
       }
     });
+
+    // The stream only fires on change, so the app launching offline needs its
+    // own check to surface the dialog.
+    checkConnection();
   }
 
   @override
@@ -30,7 +36,9 @@ class HomeBloc extends Cubit<HomeState> {
   }
 
   Future<void> checkConnection() async {
-    final isConnected = await InternetConnectionChecker.instance.hasConnection;
+    final isConnected = await ConnectivityService.instance.hasConnection;
+
+    if (isClosed) return;
 
     emit(
       state.copyWith(

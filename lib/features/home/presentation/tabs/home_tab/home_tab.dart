@@ -46,17 +46,15 @@ class _HomeTabState extends State<HomeTab> {
                   children: [
                     HomeTabAppBar(),
 
-                    // "Courses you're currently taking": driven by
-                    // course/own?status=IN_PROGRESS (LearningTabBloc.inProgress).
-                    // Show the resume carousel when the learner has enrolled
-                    // courses in progress, otherwise the empty state.
+                    // My STUDY
                     BlocBuilder<LearningTabBloc, LearningTabState>(
                       builder: (context, learningState) {
                         final inProgress = learningState.inProgress;
 
                         // Don't flash the empty state while the first fetch is
                         // still running for a signed-in user.
-                        final waitingForFirstLoad = isAuthorized == true &&
+                        final waitingForFirstLoad =
+                            isAuthorized == true &&
                             inProgress.isEmpty &&
                             (learningState.blocProgress ==
                                     BlocProgress.NOT_STARTED ||
@@ -79,35 +77,21 @@ class _HomeTabState extends State<HomeTab> {
                         }
 
                         return Padding(
-                          padding: EdgeInsets.only(top: 8.h, bottom: 24.h),
-                          child: SizedBox(
-                            height: 226.h,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              padding: EdgeInsets.only(left: 8.w),
-                              itemCount: inProgress.length,
-                              itemBuilder: (context, index) {
-                                final item = inProgress[index];
-
-                                return HomeMyStudyWidget(
-                                  width: inProgress.length == 1 ? 350.w : 330.w,
-                                  title: item.title,
-                                  image: item.thumbnail?.originalUrl ?? '',
-                                  progress: item.progess,
-                                  buttonText:
-                                      context.localizations.continueButton,
-                                  continueCourse: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      AppRoutes.learningPage,
-                                      arguments: OpenCourseByTopicSelectionModel(
-                                        courseID: item.id,
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
+                          padding: EdgeInsets.only(top: 8.h),
+                          child: HomeMyStudySection(
+                            courses: inProgress,
+                            onShowAll: () {
+                              context.read<HomeBloc>().changeTabIndex(1);
+                            },
+                            onContinue: (course) {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.learningPage,
+                                arguments: OpenCourseByTopicSelectionModel(
+                                  courseID: course.id,
+                                ),
+                              );
+                            },
                           ),
                         );
                       },

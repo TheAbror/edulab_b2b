@@ -1,5 +1,8 @@
 import 'package:edulab_b2b/widget_imports.dart';
 
+/// "My-study-card": course thumbnail + title, progress bar and a filled
+/// Continue pill. Fixed 176h so the inner blocks distribute exactly like the
+/// design regardless of whether the title wraps to one or two lines.
 class HomeCourseResumeCard extends StatelessWidget {
   final String title;
   final int progress;
@@ -19,117 +22,157 @@ class HomeCourseResumeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 176.h,
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
-        borderRadius: BorderRadius.circular((defaultRadius * 2).r),
+        color: context.colors.bgSurface1,
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(
+          color: context.colors.borderMuted.withOpacity(0.15),
+          width: 1.w,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4.r),
-                child: CachedNetworkImage(
-                  imageUrl: image,
-                  height: 40.h,
-                  width: 46.w,
-                  fit: BoxFit.fill,
-                  placeholder: (context, url) => Container(
-                    height: 40.h,
-                    width: 46.w,
-                    color: Colors.grey[200],
-                    child: Center(child: CircularProgressIndicator()),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    height: 40.h,
-                    width: 46.w,
-                    decoration: BoxDecoration(
-                      color: context.colors.neutralContainerDefault.withOpacity(
-                        0.1,
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/network_image_error_case.png',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 16.w),
-              SizedBox(
-                width: 231.w,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: -0.7,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+          _header(context),
+          _progress(context),
+          _continueButton(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _header(BuildContext context) {
+    return SizedBox(
+      height: 40.h,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4.r),
+            child: _thumbnail(context),
           ),
-          SizedBox(height: 10.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                context.localizations.courseProgress,
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Center(
+              child: Text(
+                title,
                 style: TextStyle(
-                  color: context.colors.fgMuted,
-                  fontSize: 12.sp,
-                  letterSpacing: -0.5,
+                  fontSize: 15.sp,
+                  height: 20 / 15,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.07,
+                  color: context.colors.fgDefault,
                 ),
-              ),
-              Text(
-                '$progress%',
-                style: TextStyle(
-                  color: context.colors.fgMuted,
-                  fontSize: 12.sp,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 6.h),
-          LinearProgressIndicator(
-            minHeight: 4.h,
-            value: progress.toDouble() / 100,
-            color: Theme.of(context).colorScheme.primary,
-            backgroundColor: context.colors.bgSurface3,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          SizedBox(height: 12.h),
-          GestureDetector(
-            onTap: onPressed,
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 6.h),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                border: Border.all(
-                  color: context.colors.accentMuted,
-                  width: 2.w,
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  buttonText,
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _thumbnail(BuildContext context) {
+    // Courses without a thumbnail go straight to the fallback instead of
+    // asking the cache manager to fetch an empty URL.
+    if (image.isEmpty) return _thumbnailFallback(context);
+
+    return CachedNetworkImage(
+      imageUrl: image,
+      height: 40.h,
+      width: 46.w,
+      fit: BoxFit.cover,
+      placeholder: (context, url) => Container(
+        height: 40.h,
+        width: 46.w,
+        color: context.colors.bgSurface3,
+      ),
+      errorWidget: (context, url, error) => _thumbnailFallback(context),
+    );
+  }
+
+  Widget _thumbnailFallback(BuildContext context) {
+    return Container(
+      height: 40.h,
+      width: 46.w,
+      decoration: BoxDecoration(
+        color: context.colors.neutralContainerDefault.withOpacity(0.1),
+        image: DecorationImage(
+          image: AssetImage('assets/images/network_image_error_case.png'),
+        ),
+      ),
+    );
+  }
+
+  Widget _progress(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                context.localizations.courseProgress,
+                style: TextStyle(
+                  color: context.colors.fgMuted,
+                  fontSize: 12.sp,
+                  height: 14 / 12,
+                  letterSpacing: 0.2,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Text(
+              '$progress%',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: context.colors.fgMuted,
+                fontSize: 12.sp,
+                height: 14 / 12,
+                letterSpacing: 0.2,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 6.h),
+        LinearProgressIndicator(
+          minHeight: 4.h,
+          value: (progress / 100).clamp(0.0, 1.0),
+          color: context.colors.accentDefault,
+          backgroundColor: context.colors.bgSurface3,
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+      ],
+    );
+  }
+
+  Widget _continueButton(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        height: 36.h,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        decoration: BoxDecoration(
+          color: context.colors.accentDefault,
+          borderRadius: BorderRadius.circular(999.r),
+        ),
+        child: Text(
+          buttonText,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 15.sp,
+            height: 20 / 15,
+            color: context.colors.accentOnAccent,
+          ),
+        ),
       ),
     );
   }

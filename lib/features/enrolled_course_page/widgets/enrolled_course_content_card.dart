@@ -225,10 +225,19 @@ class _TopicRow extends StatelessWidget {
         ),
       );
     }
-    return (_isCompleted
-            ? Assets.icons.learning.completed
-            : Assets.icons.learning.active)
-        .svg(height: 20.w, width: 20.w);
+    if (_isCompleted) {
+      return Assets.icons.learning.completed.svg(height: 20.w, width: 20.w);
+    }
+    // In-progress: the shared "active" glyph ships with an off-brand fill, so
+    // tint it to the accent colour to match the design.
+    return Assets.icons.learning.active.svg(
+      height: 20.w,
+      width: 20.w,
+      colorFilter: ColorFilter.mode(
+        context.colors.accentDefault,
+        BlendMode.srcIn,
+      ),
+    );
   }
 }
 
@@ -240,15 +249,18 @@ class _ActivityBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 16.h,
-      alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 4.w),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(4.r),
-      ),
-      child: AppText.caption3(label, color: color),
+    return Row(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(4.r),
+          ),
+          child: AppText.caption3(label, color: color),
+        ),
+      ],
     );
   }
 }

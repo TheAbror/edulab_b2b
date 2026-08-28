@@ -161,7 +161,7 @@ export 'package:edulab_b2b/features/home/data/datasources/models/course_progress
 export 'package:edulab_b2b/features/home/data/datasources/models/course_enrollment_response.dart';
 export 'package:edulab_b2b/features/learning_page/widgets/open_course_by_topic_selection_model.dart';
 export 'dart:async';
-export 'package:internet_connection_checker/internet_connection_checker.dart';
+export 'package:edulab_b2b/core/network/connectivity_service.dart';
 export 'package:edulab_b2b/main.dart';
 export 'package:edulab_b2b/features/home/presentation/widgets/un_authorized_user.dart';
 export 'package:edulab_b2b/features/home/data/datasources/models/quiz_response.dart';

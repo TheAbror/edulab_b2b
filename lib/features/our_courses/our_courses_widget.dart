@@ -24,7 +24,7 @@ class _OurCoursesWidgetState extends State<OurCoursesWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 12.h),
+        SizedBox(height: 20.h),
         _Header(context),
         space10,
 
