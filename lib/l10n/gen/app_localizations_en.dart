@@ -1210,6 +1210,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changeType => 'Change type';
 
   @override
+  String get selectAnotherPhoto => 'Select another photo';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get photoAccessDenied =>
+      'Allow photo access in Settings to choose a picture';
+
+  @override
+  String get photoUploadFailed =>
+      'Could not upload the photo. Please try again.';
+
+  @override
   String get avatarType => 'Avatar type';
 
   @override

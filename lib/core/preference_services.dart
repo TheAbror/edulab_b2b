@@ -83,14 +83,29 @@ class PreferencesServices {
     return _getPrefs().setString(ShPrefKeys.selectedAvatar, key);
   }
 
-  // "About me" bio. There's no backend field for this yet, so like the
-  // avatar type above, it's local-only for now.
+  // "About me" bio. Mirrors the backend's `about_me` so the Edit profile page
+  // can render it without waiting on a round trip.
   static String? getProfileBio() {
     return _getPrefs().getString(ShPrefKeys.profileBio);
   }
 
   static Future<bool> saveProfileBio(String bio) async {
     return _getPrefs().setString(ShPrefKeys.profileBio, bio);
+  }
+
+  // Path to the locally cached avatar written by [ProfilePhotoStorage]. Shown
+  // in preference to the server's profile_photo URL so a fresh crop appears
+  // immediately.
+  static String? getProfilePhotoPath() {
+    return _getPrefs().getString(ShPrefKeys.profilePhotoPath);
+  }
+
+  static Future<bool> saveProfilePhotoPath(String? path) async {
+    if (path == null) {
+      return _getPrefs().remove(ShPrefKeys.profilePhotoPath);
+    }
+
+    return _getPrefs().setString(ShPrefKeys.profilePhotoPath, path);
   }
 
   static Future<bool> clearAll() async {

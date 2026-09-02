@@ -2,12 +2,16 @@ import 'package:edulab_b2b/widget_imports.dart';
 
 class EditProfileAvatarRow extends StatelessWidget {
   final LocalStorageUserInfo? db;
+
+  /// Opens the gallery and applies whatever comes back.
+  final VoidCallback onPickPhoto;
   final VoidCallback onRemove;
   final VoidCallback onAvatarTypeChanged;
 
   const EditProfileAvatarRow({
     super.key,
     required this.db,
+    required this.onPickPhoto,
     required this.onRemove,
     required this.onAvatarTypeChanged,
   });
@@ -35,12 +39,7 @@ class EditProfileAvatarRow extends StatelessWidget {
             _pillButton(
               context,
               text: context.localizations.edit,
-              onTap: () => showEditProfilePhotoActionSheet(
-                context,
-                hasPhoto: hasPhoto,
-                onRemove: onRemove,
-                onAvatarTypeChanged: onAvatarTypeChanged,
-              ),
+              onTap: onPickPhoto,
             ),
             SizedBox(width: 6.w),
             _pillButton(
@@ -53,12 +52,7 @@ class EditProfileAvatarRow extends StatelessWidget {
             _pillButton(
               context,
               text: context.localizations.upload,
-              onTap: () => showEditProfilePhotoActionSheet(
-                context,
-                hasPhoto: hasPhoto,
-                onRemove: onRemove,
-                onAvatarTypeChanged: onAvatarTypeChanged,
-              ),
+              onTap: onPickPhoto,
             ),
           Spacer(),
           GestureDetector(
@@ -66,6 +60,7 @@ class EditProfileAvatarRow extends StatelessWidget {
             onTap: () => showEditProfilePhotoActionSheet(
               context,
               hasPhoto: hasPhoto,
+              onPickPhoto: onPickPhoto,
               onRemove: onRemove,
               onAvatarTypeChanged: onAvatarTypeChanged,
             ),

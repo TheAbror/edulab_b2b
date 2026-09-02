@@ -1,5 +1,9 @@
 import 'package:edulab_b2b/widget_imports.dart';
 
+/// Marks "leave the photo alone" in [_EditProfilePageState._pushProfile],
+/// which has to tell that apart from an explicit null meaning "clear it".
+const Object _keepPhoto = Object();
+
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
@@ -10,6 +14,7 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   LocalStorageUserInfo? db;
   late final TextEditingController _bioController;
+  bool _isBusy = false;
 
   @override
   void initState() {
@@ -26,39 +31,158 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  void _removePhoto() {
-    final current = db;
-    if (current == null) return;
+  /// Gallery -> crop -> disk -> backend.
+  ///
+  /// The crop is cached locally and shown right away, so a failed upload leaves
+  /// the user looking at the photo they chose rather than silently reverting.
+  Future<void> _pickPhoto() async {
+    if (_isBusy) return;
 
-    final updated = LocalStorageUserInfo(
-      id: current.id,
-      username: current.username,
-      firstName: current.firstName,
-      lastName: current.lastName,
-      account_type_str: current.account_type_str,
-      email: current.email,
-      phone: current.phone,
-      department: current.department,
-      jobPosition: current.jobPosition,
-      status: current.status,
-      profile_photo: null,
+    final bytes = await pickAndCropAvatar(context);
+    if (bytes == null || !mounted) return;
+
+    setState(() => _isBusy = true);
+
+    await ProfilePhotoStorage.save(bytes);
+    if (!mounted) return;
+    setState(() {});
+
+    final media = await MediaUploadApi.uploadImage(
+      bytes,
+      fileName: 'avatar.png',
     );
 
-    PreferencesServices.saveUserInfo(updated);
-    setState(() => db = updated);
+    // `src` is the reference the profile endpoint wants; `url` is the fallback
+    // for the odd response that only fills that one in.
+    final reference = (media?.src.isNotEmpty ?? false)
+        ? media!.src
+        : (media?.url.isNotEmpty ?? false)
+        ? media!.url
+        : null;
+
+    if (reference == null) {
+      if (!mounted) return;
+
+      setState(() => _isBusy = false);
+      showMessage(context.localizations.photoUploadFailed, context, isError: true);
+      return;
+    }
+
+    final saved = await _pushProfile(
+      photoReference: reference,
+      uploadedMedia: media,
+    );
+    if (!mounted) return;
+
+    setState(() => _isBusy = false);
+    if (!saved) {
+      showMessage(context.localizations.photoUploadFailed, context, isError: true);
+    }
+  }
+
+  Future<void> _removePhoto() async {
+    if (_isBusy) return;
+
+    setState(() => _isBusy = true);
+
+    await ProfilePhotoStorage.clear();
+    if (!mounted) return;
+
+    final saved = await _pushProfile(photoReference: null);
+    if (!mounted) return;
+
+    setState(() {
+      _isBusy = false;
+      db = db?.copyWith(profile_photo: null);
+    });
+
+    final current = db;
+    if (current != null) await PreferencesServices.saveUserInfo(current);
+
+    if (!saved && mounted) {
+      showMessage(context.localizations.somethingWentWrong, context, isError: true);
+    }
   }
 
   void _onAvatarTypeChanged() {
     setState(() {});
   }
 
+  /// `PUT /mobile/profile/` always carries both fields - the backend replaces
+  /// what it receives, so sending one alone would clear the other.
+  ///
+  /// [photoReference] is the string the media upload handed back, or null to
+  /// clear the avatar; omit it to resend whatever the account already has.
+  ///
+  /// [uploadedMedia] is what the upload returned. It stands in when a
+  /// successful response doesn't echo `profile_photo` back - without it the
+  /// account would look photo-less locally, and the next Save changes would
+  /// send null and wipe the avatar server-side.
+  Future<bool> _pushProfile({
+    Object? photoReference = _keepPhoto,
+    MediaDTO? uploadedMedia,
+  }) async {
+    final reference = identical(photoReference, _keepPhoto)
+        ? _currentPhotoReference
+        : photoReference as String?;
+
+    try {
+      final response = await ApiProvider.profileServices.updateProfile(
+        ProfileUpdateRequest(
+          aboutMe: _bioController.text.trim(),
+          profilePhoto: reference,
+        ),
+      );
+
+      final body = response.body;
+      if (!response.isSuccessful || body == null) return false;
+
+      await PreferencesServices.saveProfileBio(body.aboutMe);
+
+      final current = db;
+      if (current != null) {
+        final updated = current.copyWith(
+          profile_photo: body.profilePhoto ?? uploadedMedia,
+        );
+        await PreferencesServices.saveUserInfo(updated);
+        if (mounted) setState(() => db = updated);
+      }
+
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// What the account currently points at, as the API's string form.
+  String? get _currentPhotoReference {
+    final src = db?.profile_photo?.src;
+    return (src == null || src.isEmpty) ? null : src;
+  }
+
   Future<void> _saveChanges() async {
+    if (_isBusy) return;
+
+    setState(() => _isBusy = true);
+
+    // Keep the bio locally even if the request fails, so the user's typing
+    // isn't thrown away.
     await PreferencesServices.saveProfileBio(_bioController.text.trim());
+    final saved = await _pushProfile();
 
     if (!mounted) return;
 
+    setState(() => _isBusy = false);
+
+    if (!saved) {
+      showMessage(context.localizations.somethingWentWrong, context, isError: true);
+      return;
+    }
+
+    // Stay on the page: popping here tore down the route before BotToast could
+    // show the confirmation, since BotToastNavigatorObserver clears toasts on
+    // navigation. The user leaves via the back button when they're done.
     showMessage(context.localizations.changesSaved, context);
-    Navigator.pop(context);
   }
 
   @override
@@ -74,6 +198,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         children: [
           EditProfileAvatarRow(
             db: db,
+            onPickPhoto: _pickPhoto,
             onRemove: _removePhoto,
             onAvatarTypeChanged: _onAvatarTypeChanged,
           ),
@@ -98,15 +223,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 color: context.colors.neutralContainerDefault.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(999.r),
               ),
-              child: Text(
-                lang.saveChanges,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -0.16,
-                  color: context.colors.neutralOnContainer,
-                ),
-              ),
+              child: _isBusy
+                  ? SizedBox(
+                      width: 18.w,
+                      height: 18.w,
+                      child: CircularProgressIndicator(
+                        color: context.colors.neutralOnContainer,
+                        strokeWidth: 2.w,
+                      ),
+                    )
+                  : Text(
+                      lang.saveChanges,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.16,
+                        color: context.colors.neutralOnContainer,
+                      ),
+                    ),
             ),
           ),
           space20,

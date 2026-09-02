@@ -37,14 +37,18 @@ String initialsFor(LocalStorageUserInfo? db) {
   return initials.isEmpty ? '?' : initials.toUpperCase();
 }
 
+/// True when the user has a real photo rather than a default avatar - either
+/// one they just cropped (still only on disk) or one the backend returned.
 bool hasUploadedPhoto(LocalStorageUserInfo? db) {
+  if (ProfilePhotoStorage.current() != null) return true;
+
   final url = db?.profile_photo?.originalUrl;
   return db?.profile_photo != null && url != null && url.isNotEmpty;
 }
 
-/// Renders the user's avatar, honoring (in priority order): an uploaded
-/// profile photo, a locally-picked default avatar type, then falling back
-/// to the deterministic per-user default.
+/// Renders the user's avatar, honoring (in priority order): the locally
+/// cropped photo, an uploaded profile photo, a locally-picked default avatar
+/// type, then falling back to the deterministic per-user default.
 class ProfileAvatarImage extends StatelessWidget {
   final LocalStorageUserInfo? db;
   final double size;
@@ -53,9 +57,24 @@ class ProfileAvatarImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The freshly cropped file wins: it's what the user just picked, and it's
+    // on screen before the upload has had a chance to finish.
+    final localPhoto = ProfilePhotoStorage.current();
+    if (localPhoto != null) {
+      return ClipOval(
+        child: Image.file(
+          localPhoto,
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => _fallback(context),
+        ),
+      );
+    }
+
     final photoUrl = db?.profile_photo?.originalUrl;
 
-    if (hasUploadedPhoto(db) && photoUrl != null) {
+    if (photoUrl != null && photoUrl.isNotEmpty) {
       return ClipOval(
         child: CachedNetworkImage(
           imageUrl: photoUrl,

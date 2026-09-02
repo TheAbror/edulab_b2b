@@ -3,6 +3,7 @@ import 'package:edulab_b2b/widget_imports.dart';
 Future<void> showEditProfilePhotoActionSheet(
   BuildContext context, {
   required bool hasPhoto,
+  required VoidCallback onPickPhoto,
   required VoidCallback onRemove,
   required VoidCallback onAvatarTypeChanged,
 }) {
@@ -28,13 +29,14 @@ Future<void> showEditProfilePhotoActionSheet(
                   children: [
                     _actionRow(
                       sheetContext,
-                      text: context.localizations.edit,
+                      // Same action either way; the label just reflects
+                      // whether there's already a photo to replace.
+                      text: hasPhoto
+                          ? context.localizations.edit
+                          : context.localizations.upload,
                       onTap: () {
                         Navigator.pop(sheetContext);
-                        showMessage(
-                          context.localizations.featureComingSoon,
-                          context,
-                        );
+                        onPickPhoto();
                       },
                     ),
                     Divider(

@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
 ///Custom [CupertinoPageRoute] to ensure gestures
-class CustomCupertinoStyleNavigationRoute extends CupertinoPageRoute {
+///
+///[T] is the type the route pops with; it defaults to dynamic, so the named
+///routes in MainRouteGenerator can keep constructing it without a type
+///argument while screens that return a value can ask for one.
+class CustomCupertinoStyleNavigationRoute<T> extends CupertinoPageRoute<T> {
   @override
   bool get hasScopedWillPopCallback => false;
 

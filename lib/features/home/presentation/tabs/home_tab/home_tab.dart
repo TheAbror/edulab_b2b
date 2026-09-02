@@ -67,7 +67,7 @@ class _HomeTabState extends State<HomeTab> {
 
                         if (inProgress.isEmpty) {
                           return Padding(
-                            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 24.h),
+                            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 0.h),
                             child: HomeNoAssignedCoursesWidget(
                               onTap: () {
                                 context.read<HomeBloc>().changeTabIndex(1);

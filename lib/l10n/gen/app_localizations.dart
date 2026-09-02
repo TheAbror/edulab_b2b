@@ -2428,6 +2428,30 @@ abstract class AppLocalizations {
   /// **'Change type'**
   String get changeType;
 
+  /// No description provided for @selectAnotherPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Select another photo'**
+  String get selectAnotherPhoto;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @photoAccessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow photo access in Settings to choose a picture'**
+  String get photoAccessDenied;
+
+  /// No description provided for @photoUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload the photo. Please try again.'**
+  String get photoUploadFailed;
+
   /// No description provided for @avatarType.
   ///
   /// In en, this message translates to:

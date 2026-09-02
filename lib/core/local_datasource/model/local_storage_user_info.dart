@@ -27,6 +27,28 @@ class LocalStorageUserInfo {
     this.jobPosition,
   });
 
+  /// [profile_photo] is passed as a sentinel-free `Object?` so that omitting it
+  /// keeps the current photo while passing null clears it.
+  LocalStorageUserInfo copyWith({Object? profile_photo = _unset}) {
+    return LocalStorageUserInfo(
+      id: id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      account_type_str: account_type_str,
+      email: email,
+      phone: phone,
+      department: department,
+      jobPosition: jobPosition,
+      status: status,
+      profile_photo: identical(profile_photo, _unset)
+          ? this.profile_photo
+          : profile_photo as MediaDTO?,
+    );
+  }
+
+  static const Object _unset = Object();
+
   Map<String, dynamic> toJson() {
     return {
       "id": id ?? 0,

@@ -75,6 +75,15 @@ export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_prof
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_photo_action_sheet.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/edit_profile_avatar_type_sheet.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/crop_avatar_page/crop_avatar_page.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/crop_avatar_page/widgets/crop_avatar_page_app_bar.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/crop_avatar_page/widgets/crop_circle_painter.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/crop_avatar_page/widgets/crop_zoom_controls.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/models/profile_models.dart';
+export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/services/profile_services.dart';
+export 'package:edulab_b2b/core/utils/avatar_picker.dart';
+export 'package:edulab_b2b/core/utils/profile_photo_storage.dart';
+export 'package:edulab_b2b/core/api/media_upload_api.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/widgets/profile_image_dialog.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/widgets/profile_tab_pages_app_bar.dart';
 export 'package:edulab_b2b/features/home/data/datasources/services/courses_services.dart';

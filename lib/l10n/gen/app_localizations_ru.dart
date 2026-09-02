@@ -1210,6 +1210,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get changeType => 'Изменить тип';
 
   @override
+  String get selectAnotherPhoto => 'Выбрать другое фото';
+
+  @override
+  String get reset => 'Сбросить';
+
+  @override
+  String get photoAccessDenied =>
+      'Разрешите доступ к фото в настройках, чтобы выбрать снимок';
+
+  @override
+  String get photoUploadFailed =>
+      'Не удалось загрузить фото. Попробуйте ещё раз.';
+
+  @override
   String get avatarType => 'Тип аватара';
 
   @override

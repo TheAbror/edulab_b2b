@@ -7,6 +7,7 @@ abstract class ShPrefKeys {
   static var lang = 'lang';
   static var selectedAvatar = 'selectedAvatar';
   static var profileBio = 'profileBio';
+  static var profilePhotoPath = 'profilePhotoPath';
 
   //
 

@@ -12,6 +12,7 @@ class ApiProvider {
   static late SingleCourseServices singleCourseServices;
   static late LearningTabServices learningTabServices;
   static late AppVersionsService appVersionsService;
+  static late ProfileServices profileServices;
 
   static NotAuthorizedInterceptor notAuthorizedInterceptor =
       NotAuthorizedInterceptor();
@@ -29,6 +30,7 @@ class ApiProvider {
         SingleCourseServices.create(),
         LearningTabServices.create(),
         AppVersionsService.create(),
+        ProfileServices.create(),
       ],
       interceptors: getInterceptors(),
       converter: CustomDataConverter(),
@@ -39,6 +41,7 @@ class ApiProvider {
     coursesServices = _client.getService<CourseServices>();
     singleCourseServices = _client.getService<SingleCourseServices>();
     learningTabServices = _client.getService<LearningTabServices>();
+    profileServices = _client.getService<ProfileServices>();
   }
 
   static getInterceptors({String? language}) {

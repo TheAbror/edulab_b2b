@@ -38,6 +38,10 @@ class _RootPageState extends State<RootPage> with WidgetsBindingObserver {
               if (!context.mounted) return;
               ApiProvider.create();
 
+              // Before clearAll, which drops the path this needs to find the
+              // cached avatar and delete it.
+              ProfilePhotoStorage.clear();
+
               PreferencesServices.clearAll();
 
               context.read<AuthBloc>().clearAll();

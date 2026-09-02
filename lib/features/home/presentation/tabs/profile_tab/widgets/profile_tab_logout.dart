@@ -25,6 +25,11 @@ class _ProfileTabLogOutButtonState extends State<ProfileTabLogOutButton> {
           context.read<ProfileBloc>().clearAll();
           context.read<LocalizationBloc>().clearAll();
           ApiProvider.create();
+
+          // Before clearAll, which drops the path this needs to find the
+          // cached avatar. Not awaited (like clearAll below): the path is read
+          // synchronously, so the deletion can finish after we've navigated.
+          ProfilePhotoStorage.clear();
           PreferencesServices.clearAll();
 
           Navigator.pushReplacementNamed(

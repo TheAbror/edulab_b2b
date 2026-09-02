@@ -1217,6 +1217,20 @@ class AppLocalizationsUz extends AppLocalizations {
   String get changeType => 'Turini o\'zgartirish';
 
   @override
+  String get selectAnotherPhoto => 'Boshqa rasm tanlash';
+
+  @override
+  String get reset => 'Tiklash';
+
+  @override
+  String get photoAccessDenied =>
+      'Rasm tanlash uchun sozlamalardan galereyaga ruxsat bering';
+
+  @override
+  String get photoUploadFailed =>
+      'Rasmni yuklab bo‘lmadi. Qaytadan urinib ko‘ring.';
+
+  @override
   String get avatarType => 'Avatar turi';
 
   @override
