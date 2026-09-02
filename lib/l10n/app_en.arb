@@ -831,5 +831,13 @@
   "videoCountShort": "{count} video",
   "@videoCountShort": {},
   "testCountShort": "{count} test",
-  "@testCountShort": {}
+  "@testCountShort": {},
+  "chat": "Chat",
+  "@chat": {},
+  "yourTeacher": "Your teacher",
+  "@yourTeacher": {},
+  "lastSeenRecently": "Last seen recently",
+  "@lastSeenRecently": {},
+  "sendAMessage": "Send a message",
+  "@sendAMessage": {}
 }

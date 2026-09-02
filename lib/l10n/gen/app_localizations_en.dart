@@ -1299,4 +1299,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String testCountShort(Object count) {
     return '$count test';
   }
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get yourTeacher => 'Your teacher';
+
+  @override
+  String get lastSeenRecently => 'Last seen recently';
+
+  @override
+  String get sendAMessage => 'Send a message';
 }

@@ -85,7 +85,7 @@ class HomeBottomNavigation extends StatelessWidget {
     return BoxDecoration(
       border: Border(
         top: BorderSide(
-          color: context.colors.borderMuted.withOpacity(0.15),
+          color: Colors.transparent,
           width: 1.w,
         ),
       ),

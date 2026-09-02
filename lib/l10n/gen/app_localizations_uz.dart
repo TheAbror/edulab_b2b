@@ -1306,4 +1306,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String testCountShort(Object count) {
     return '$count test';
   }
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get yourTeacher => 'Sizning o‘qituvchingiz';
+
+  @override
+  String get lastSeenRecently => 'Yaqinda onlayn edi';
+
+  @override
+  String get sendAMessage => 'Xabar yozing';
 }

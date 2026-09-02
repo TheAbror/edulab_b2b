@@ -56,6 +56,19 @@ class LearningResumeCourseAppBar extends StatelessWidget
             ),
           ),
           SizedBox(width: 16.w),
+          GestureDetector(
+            onTap: () => showChatBottomSheet(context),
+            behavior: HitTestBehavior.opaque,
+            child: Assets.icons.chat.chat.svg(
+              width: 24.w,
+              height: 24.w,
+              colorFilter: ColorFilter.mode(
+                context.colors.fgDefault,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
+          SizedBox(width: 16.w),
         ],
       ),
       bottom: PreferredSize(

@@ -831,5 +831,13 @@
   "videoCountShort": "{count} видео",
   "@videoCountShort": {},
   "testCountShort": "{count} тест",
-  "@testCountShort": {}
+  "@testCountShort": {},
+  "chat": "Чат",
+  "@chat": {},
+  "yourTeacher": "Ваш преподаватель",
+  "@yourTeacher": {},
+  "lastSeenRecently": "Недавно был(а) в сети",
+  "@lastSeenRecently": {},
+  "sendAMessage": "Напишите сообщение",
+  "@sendAMessage": {}
 }

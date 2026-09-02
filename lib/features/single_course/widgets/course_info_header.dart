@@ -100,7 +100,8 @@ class CourseInfoHeader extends StatelessWidget {
                       _PillButton(
                         text: context.localizations.playPreview,
                         filled: false,
-                        onTap: () => showCoursePreviewSheet(context, previewUrl),
+                        onTap: () =>
+                            showCoursePreviewSheet(context, previewUrl),
                       ),
                     ],
                   ],
@@ -273,9 +274,7 @@ class _PillButton extends StatelessWidget {
                     : context.colors.accentDefault)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(9999),
-          border: filled
-              ? null
-              : Border.all(color: context.colors.accentMuted),
+          border: filled ? null : Border.all(color: context.colors.accentMuted),
         ),
         child: Text(
           text,

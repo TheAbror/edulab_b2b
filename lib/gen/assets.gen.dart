@@ -129,8 +129,19 @@ class $AssetsIconsChatGen {
   /// File path: assets/icons/chat/send.svg
   SvgGenImage get send => const SvgGenImage('assets/icons/chat/send.svg');
 
+  /// File path: assets/icons/chat/sendBold.svg
+  SvgGenImage get sendBold =>
+      const SvgGenImage('assets/icons/chat/sendBold.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [attach, chat, emoji, emptyChat, send];
+  List<SvgGenImage> get values => [
+    attach,
+    chat,
+    emoji,
+    emptyChat,
+    send,
+    sendBold,
+  ];
 }
 
 class $AssetsIconsCoursesGen {

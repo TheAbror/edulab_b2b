@@ -831,5 +831,13 @@
   "videoCountShort": "{count} video",
   "@videoCountShort": {},
   "testCountShort": "{count} test",
-  "@testCountShort": {}
+  "@testCountShort": {},
+  "chat": "Chat",
+  "@chat": {},
+  "yourTeacher": "Sizning o‘qituvchingiz",
+  "@yourTeacher": {},
+  "lastSeenRecently": "Yaqinda onlayn edi",
+  "@lastSeenRecently": {},
+  "sendAMessage": "Xabar yozing",
+  "@sendAMessage": {}
 }

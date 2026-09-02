@@ -188,9 +188,7 @@ class _TopicRow extends StatelessWidget {
               SizedBox(height: 8.h),
               Padding(
                 padding: EdgeInsets.only(left: 28.w),
-                child: Wrap(
-                  spacing: 4.w,
-                  runSpacing: 4.h,
+                child: Row(
                   children: [
                     if (_videoCount > 0)
                       _ActivityBadge(
@@ -252,6 +250,7 @@ class _ActivityBadge extends StatelessWidget {
     return Row(
       children: [
         Container(
+          margin: EdgeInsets.only(right: 2.h),
           padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
           alignment: Alignment.center,
           decoration: BoxDecoration(

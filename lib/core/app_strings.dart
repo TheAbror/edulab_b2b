@@ -1,6 +1,6 @@
 class AppStrings {
   static const baseLive =
-      'https://2785-213-230-79-129.ngrok-free.app/edulab/api/v1/core/mobile/';
+      'https://7e3e-213-230-79-129.ngrok-free.app/edulab/api/v1/core/mobile/';
 
   //https://944b-213-230-79-129.ngrok-free.app/edulab/docs/swagger-ui/#/
 

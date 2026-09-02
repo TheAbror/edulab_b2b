@@ -66,9 +66,6 @@ class MainRouteGenerator {
           ),
         );
 
-      case AppRoutes.chatPage:
-        return CustomCupertinoStyleNavigationRoute(builder: (_) => ChatPage());
-
       case AppRoutes.singleCoursePage:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => SingleCoursePage(id: settings.arguments as int),

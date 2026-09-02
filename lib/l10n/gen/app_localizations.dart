@@ -2595,6 +2595,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} test'**
   String testCountShort(Object count);
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @yourTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher'**
+  String get yourTeacher;
+
+  /// No description provided for @lastSeenRecently.
+  ///
+  /// In en, this message translates to:
+  /// **'Last seen recently'**
+  String get lastSeenRecently;
+
+  /// No description provided for @sendAMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a message'**
+  String get sendAMessage;
 }
 
 class _AppLocalizationsDelegate

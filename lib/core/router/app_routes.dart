@@ -22,7 +22,6 @@ abstract class AppRoutes {
 
   // my learning
   static const learningPage = 'learningPage';
-  static const chatPage = 'chatPage';
 
   //profile
   static const profileTab = 'profile';

@@ -47,7 +47,7 @@ class _WebViewPageState extends State<WebViewPage> {
             Spacer(),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, AppRoutes.chatPage);
+                showChatBottomSheet(context);
               },
               child: Assets.icons.chat.chat.svg(
                 colorFilter: ColorFilter.mode(

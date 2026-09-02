@@ -92,7 +92,6 @@ export 'package:edulab_b2b/features/home/presentation/bloc/learning_materials_bl
 export 'package:percent_indicator/circular_percent_indicator.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/learning/learning_bottom_sheet_nav_buttons.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/learning/course_download_item.dart';
-export 'package:edulab_b2b/features/chat/chat_appbar.dart';
 export 'package:edulab_b2b/features/home/presentation/bloc/bottom_sheet_filter_bloc.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/learning/this_course_status.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/learning_tab/widgets/play_list_items/playlist_course_card.dart';
@@ -125,7 +124,7 @@ export 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course
 export 'package:edulab_b2b/features/enrolled_course_page/widgets/enrolled_course_content_card.dart';
 export 'package:edulab_b2b/features/enrolled_course_page/widgets/youre_enrolled_card.dart';
 export 'package:edulab_b2b/features/learning_page/learning_page.dart';
-export 'package:edulab_b2b/features/chat/chat_page.dart';
+export 'package:edulab_b2b/features/chat/chat_bottom_sheet.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/edit_profile_page/edit_profile_page.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/frequently_asked_questions_page/frequently_asked_questions_page.dart';
 export 'package:edulab_b2b/features/home/presentation/tabs/profile_tab/about_edulab_page/about_edulab_page.dart';

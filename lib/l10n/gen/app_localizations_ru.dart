@@ -1299,4 +1299,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String testCountShort(Object count) {
     return '$count тест';
   }
+
+  @override
+  String get chat => 'Чат';
+
+  @override
+  String get yourTeacher => 'Ваш преподаватель';
+
+  @override
+  String get lastSeenRecently => 'Недавно был(а) в сети';
+
+  @override
+  String get sendAMessage => 'Напишите сообщение';
 }
